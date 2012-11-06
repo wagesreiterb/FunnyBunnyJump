@@ -7,6 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82380A38163B09020018DF1A /* QQSpriteBalloonShake.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */; };
+		82380A4A163C8AE70018DF1A /* particleExplodingBalloon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */; };
+		82380A4C163C8C1E0018DF1A /* particleExplodingBalloonTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */; };
+		82380A4F163D41AF0018DF1A /* GCHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A4E163D41AE0018DF1A /* GCHelper.mm */; };
+		82380A52163D77A40018DF1A /* GameState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A51163D77A30018DF1A /* GameState.mm */; };
+		82380A57163D7E130018DF1A /* GCDatabase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A56163D7E120018DF1A /* GCDatabase.mm */; };
+		8246F0311624B73F0091680F /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0261624AF9A00B5303B /* Constants.h */; };
+		8246F0321624B73F0091680F /* GameManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0271624AF9A00B5303B /* GameManager.h */; };
+		8246F0331624B73F0091680F /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0281624AF9A00B5303B /* GameManager.mm */; };
+		8246F0341624B73F0091680F /* QQHomeScreen.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02F1624B10F00B5303B /* QQHomeScreen.h */; };
+		8246F0351624B73F0091680F /* QQHomeScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0301624B10F00B5303B /* QQHomeScreen.mm */; };
+		8246F0361624B73F0091680F /* QQSeasonsScreen.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0251624AF9A00B5303B /* QQSeasonsScreen.h */; };
+		8246F0371624B73F0091680F /* QQSeaosnsScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0291624AF9A00B5303B /* QQSeaosnsScreen.mm */; };
+		8246F0381624B73F0091680F /* QQLevelChooser.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02D1624B01300B5303B /* QQLevelChooser.h */; };
+		8246F0391624B73F0091680F /* QQLevelChooser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02E1624B01300B5303B /* QQLevelChooser.mm */; };
+		8246F03A1624B73F0091680F /* CCScrollLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0181624AF9A00B5303B /* CCScrollLayer.h */; };
+		8246F03B1624B73F0091680F /* CCScrollLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0191624AF9A00B5303B /* CCScrollLayer.mm */; };
+		8246F03C1624B73F0091680F /* QQSpriteBar.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01A1624AF9A00B5303B /* QQSpriteBar.h */; };
+		8246F03D1624B73F0091680F /* QQSpriteBar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01B1624AF9A00B5303B /* QQSpriteBar.mm */; };
+		8246F03E1624B73F0091680F /* QQSpriteTrampoline.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01C1624AF9A00B5303B /* QQSpriteTrampoline.h */; };
+		8246F03F1624B73F0091680F /* QQSpriteTrampoline.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01F1624AF9A00B5303B /* QQSpriteTrampoline.mm */; };
+		8246F0401624B73F0091680F /* QQLabelTimer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01D1624AF9A00B5303B /* QQLabelTimer.h */; };
+		8246F0411624B73F0091680F /* QQLabelTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F01E1624AF9A00B5303B /* QQLabelTimer.mm */; };
+		8246F0421624B73F0091680F /* QQSpriteStar.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0201624AF9A00B5303B /* QQSpriteStar.h */; };
+		8246F0431624B73F0091680F /* QQSpriteStar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0211624AF9A00B5303B /* QQSpriteStar.mm */; };
+		8246F0441624B73F0091680F /* QQSpriteBalloon.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0221624AF9A00B5303B /* QQSpriteBalloon.h */; };
+		8246F0451624B73F0091680F /* QQSpriteBalloon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0231624AF9A00B5303B /* QQSpriteBalloon.mm */; };
+		8246F0461624B73F0091680F /* QQLevel.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0241624AF9A00B5303B /* QQLevel.h */; };
+		8246F0471624B73F0091680F /* QQLevel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02C1624AF9A00B5303B /* QQLevel.mm */; };
+		8246F0481624B73F0091680F /* QQSpritePlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02A1624AF9A00B5303B /* QQSpritePlayer.h */; };
+		8246F0491624B73F0091680F /* QQSpritePlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F02B1624AF9A00B5303B /* QQSpritePlayer.mm */; };
+		8246F04C1624B96D0091680F /* particleExplodingStar5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8246F04B1624B96D0091680F /* particleExplodingStar5.plist */; };
+		8246F0501625FDC20091680F /* particleBeam.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8246F04F1625FDC20091680F /* particleBeam.plist */; };
+		8246F066162F30850091680F /* objects.pshs in Resources */ = {isa = PBXBuildFile; fileRef = 8246F05F162F30850091680F /* objects.pshs */; };
+		8246F067162F30850091680F /* objects_assets-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F060162F30850091680F /* objects_assets-hd.png */; };
+		8246F068162F30850091680F /* objects_assets-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F061162F30850091680F /* objects_assets-ipadhd.png */; };
+		8246F069162F30850091680F /* objects_assets.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F062162F30850091680F /* objects_assets.png */; };
+		8246F06A162F30850091680F /* objects_UntitledSheet-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F063162F30850091680F /* objects_UntitledSheet-hd.png */; };
+		8246F06B162F30850091680F /* objects_UntitledSheet-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */; };
+		8246F06C162F30850091680F /* objects_UntitledSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F065162F30850091680F /* objects_UntitledSheet.png */; };
+		8246F070162F39A80091680F /* objects_backgrounds-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06D162F39A80091680F /* objects_backgrounds-hd.png */; };
+		8246F071162F39A80091680F /* objects_backgrounds-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */; };
+		8246F072162F39A80091680F /* objects_backgrounds.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06F162F39A80091680F /* objects_backgrounds.png */; };
+		8246F0741631BD630091680F /* parallaxClouds.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8246F0731631BD630091680F /* parallaxClouds.plhs */; };
+		8246F07A16329EFE0091680F /* levelFall2012002.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8246F07916329EFE0091680F /* levelFall2012002.plhs */; };
+		8246F08016330DC00091680F /* pauseLayer.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8246F07F16330DC00091680F /* pauseLayer.plhs */; };
+		8246F084163410FF0091680F /* objects_foregrounds.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F081163410FF0091680F /* objects_foregrounds.png */; };
+		8246F085163410FF0091680F /* objects_foregrounds-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F082163410FF0091680F /* objects_foregrounds-hd.png */; };
+		8246F086163410FF0091680F /* objects_foregrounds-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F083163410FF0091680F /* objects_foregrounds-ipadhd.png */; };
+		8246F08A163462BC0091680F /* objects_backgrounds2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F087163462BC0091680F /* objects_backgrounds2-hd.png */; };
+		8246F08B163462BC0091680F /* objects_backgrounds2-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F088163462BC0091680F /* objects_backgrounds2-ipadhd.png */; };
+		8246F08C163462BC0091680F /* objects_backgrounds2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F089163462BC0091680F /* objects_backgrounds2.png */; };
 		8282ED4B1624ADBD00B5303B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4A1624ADBD00B5303B /* QuartzCore.framework */; };
 		8282ED4D1624ADBD00B5303B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4C1624ADBD00B5303B /* OpenGLES.framework */; };
 		8282ED4F1624ADBD00B5303B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4E1624ADBD00B5303B /* OpenAL.framework */; };
@@ -15,7 +67,7 @@
 		8282ED551624ADBD00B5303B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED541624ADBD00B5303B /* UIKit.framework */; };
 		8282ED571624ADBD00B5303B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED561624ADBD00B5303B /* Foundation.framework */; };
 		8282ED591624ADBD00B5303B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED581624ADBD00B5303B /* CoreGraphics.framework */; };
-		8282ED5B1624ADBD00B5303B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED5A1624ADBD00B5303B /* GameKit.framework */; };
+		8282ED5B1624ADBD00B5303B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED5A1624ADBD00B5303B /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8282ED5F1624ADBD00B5303B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282ED5E1624ADBD00B5303B /* Default.png */; };
 		8282ED611624ADBD00B5303B /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282ED601624ADBD00B5303B /* Default-Landscape~ipad.png */; };
 		8282ED631624ADBD00B5303B /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282ED621624ADBD00B5303B /* fps_images.png */; };
@@ -181,9 +233,97 @@
 		8282EF721624ADC000B5303B /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF711624ADC000B5303B /* GLES-Render.mm */; };
 		8282EF751624ADC000B5303B /* PhysicsSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF741624ADC000B5303B /* PhysicsSprite.mm */; };
 		8282EF771624ADC000B5303B /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EF761624ADC000B5303B /* blocks.png */; };
+		8282EFAF1624AEF700B5303B /* LHMouseJointExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF821624AEF700B5303B /* LHMouseJointExt.mm */; };
+		8282EFB01624AEF700B5303B /* LHDictionaryExt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF851624AEF700B5303B /* LHDictionaryExt.mm */; };
+		8282EFB11624AEF700B5303B /* LevelHelperLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF871624AEF700B5303B /* LevelHelperLoader.mm */; };
+		8282EFB21624AEF700B5303B /* LICENSE_LevelHelper.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8282EF891624AEF700B5303B /* LICENSE_LevelHelper.txt */; };
+		8282EFB31624AEF700B5303B /* LHAnimationNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF8C1624AEF700B5303B /* LHAnimationNode.mm */; };
+		8282EFB41624AEF700B5303B /* LHBatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF8E1624AEF700B5303B /* LHBatch.mm */; };
+		8282EFB51624AEF700B5303B /* LHBezier.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF901624AEF700B5303B /* LHBezier.mm */; };
+		8282EFB61624AEF700B5303B /* LHContactInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF921624AEF700B5303B /* LHContactInfo.mm */; };
+		8282EFB71624AEF700B5303B /* LHContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF941624AEF700B5303B /* LHContactListener.mm */; };
+		8282EFB81624AEF700B5303B /* LHContactNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF961624AEF700B5303B /* LHContactNode.mm */; };
+		8282EFB91624AEF700B5303B /* LHCustomSpriteMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF981624AEF700B5303B /* LHCustomSpriteMgr.mm */; };
+		8282EFBA1624AEF700B5303B /* LHCuttingEngineMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF9A1624AEF700B5303B /* LHCuttingEngineMgr.mm */; };
+		8282EFBB1624AEF700B5303B /* LHFixture.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF9C1624AEF700B5303B /* LHFixture.mm */; };
+		8282EFBC1624AEF700B5303B /* LHJoint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EF9E1624AEF700B5303B /* LHJoint.mm */; };
+		8282EFBD1624AEF700B5303B /* LHLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFA01624AEF700B5303B /* LHLayer.mm */; };
+		8282EFBE1624AEF700B5303B /* LHNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFA21624AEF700B5303B /* LHNode.mm */; };
+		8282EFBF1624AEF700B5303B /* LHParallaxNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFA41624AEF700B5303B /* LHParallaxNode.mm */; };
+		8282EFC01624AEF700B5303B /* LHPathNode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFA61624AEF700B5303B /* LHPathNode.mm */; };
+		8282EFC11624AEF700B5303B /* LHSettings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFA81624AEF700B5303B /* LHSettings.mm */; };
+		8282EFC21624AEF700B5303B /* LHSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFAA1624AEF700B5303B /* LHSprite.mm */; };
+		8282EFC31624AEF700B5303B /* LHTouchMgr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFAC1624AEF700B5303B /* LHTouchMgr.mm */; };
+		8282EFC41624AEF700B5303B /* SHDocumentLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282EFAE1624AEF700B5303B /* SHDocumentLoader.mm */; };
+		8282EFF51624AF4A00B5303B /* homeScreen.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFCB1624AF4A00B5303B /* homeScreen.plhs */; };
+		8282EFF61624AF4A00B5303B /* level001.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFCC1624AF4A00B5303B /* level001.plhs */; };
+		8282EFF81624AF4A00B5303B /* levelChooser.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFCE1624AF4A00B5303B /* levelChooser.plhs */; };
+		8282EFF91624AF4A00B5303B /* levelFall2012001.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFCF1624AF4A00B5303B /* levelFall2012001.plhs */; };
+		8282EFFA1624AF4A00B5303B /* levelJoystick.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD01624AF4A00B5303B /* levelJoystick.plhs */; };
+		8282EFFB1624AF4A00B5303B /* levelSpring2012001.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD11624AF4A00B5303B /* levelSpring2012001.plhs */; };
+		8282EFFC1624AF4A00B5303B /* levelSummer2012001.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD21624AF4A00B5303B /* levelSummer2012001.plhs */; };
+		8282EFFD1624AF4A00B5303B /* levelWinter2012001.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD31624AF4A00B5303B /* levelWinter2012001.plhs */; };
+		8282EFFF1624AF4A00B5303B /* seasonBackground.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD61624AF4A00B5303B /* seasonBackground.plhs */; };
+		8282F0001624AF4A00B5303B /* seasonFall.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD71624AF4A00B5303B /* seasonFall.plhs */; };
+		8282F0011624AF4A00B5303B /* seasonSpring.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD81624AF4A00B5303B /* seasonSpring.plhs */; };
+		8282F0021624AF4A00B5303B /* seasonSummer.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD91624AF4A00B5303B /* seasonSummer.plhs */; };
+		8282F0031624AF4A00B5303B /* seasonWinter.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDA1624AF4A00B5303B /* seasonWinter.plhs */; };
+		8282F0041624AF4A00B5303B /* 008973519_prev.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */; };
+		8282F0051624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */; };
+		8282F0061624AF4A00B5303B /* 9193__melack__salt-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */; };
+		8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */; };
+		8282F0081624AF4A00B5303B /* balloon.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE01624AF4A00B5303B /* balloon.wav */; };
+		8282F0091624AF4A00B5303B /* boink.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE11624AF4A00B5303B /* boink.wav */; };
+		8282F00A1624AF4A00B5303B /* crazyTraffic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */; };
+		8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */; };
+		8282F00C1624AF4A00B5303B /* heavyLaserBeam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */; };
+		8282F00D1624AF4A00B5303B /* ouch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE51624AF4A00B5303B /* ouch.mp3 */; };
+		8282F00E1624AF4A00B5303B /* zippy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE61624AF4A00B5303B /* zippy.mp3 */; };
+		8282F00F1624AF4A00B5303B /* fallingLeaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE81624AF4A00B5303B /* fallingLeaves.plist */; };
+		8282F0101624AF4A00B5303B /* fallingLeaves.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE91624AF4A00B5303B /* fallingLeaves.png */; };
+		8282F0121624AF4A00B5303B /* rain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFEB1624AF4A00B5303B /* rain.plist */; };
+		8282F0131624AF4A00B5303B /* rain.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFEC1624AF4A00B5303B /* rain.png */; };
+		8282F0141624AF4A00B5303B /* snow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFED1624AF4A00B5303B /* snow.plist */; };
+		8282F0151624AF4A00B5303B /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFEE1624AF4A00B5303B /* snow.png */; };
+		8282F0161624AF4A00B5303B /* sun.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFEF1624AF4A00B5303B /* sun.plist */; };
+		8282F0171624AF4A00B5303B /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFF01624AF4A00B5303B /* sun.png */; };
+		828F2B9D1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */; };
+		828F2BA41646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */; };
+		82DC330316498DA9007E7416 /* levelWinter2012002.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 82DC330216498DA9007E7416 /* levelWinter2012002.plhs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82380A36163B09010018DF1A /* QQSpriteBalloonShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonShake.h; sourceTree = "<group>"; };
+		82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonShake.mm; sourceTree = "<group>"; };
+		82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleExplodingBalloon.plist; sourceTree = "<group>"; };
+		82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleExplodingBalloonTexture.png; sourceTree = "<group>"; };
+		82380A4D163D41AB0018DF1A /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
+		82380A4E163D41AE0018DF1A /* GCHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GCHelper.mm; sourceTree = "<group>"; };
+		82380A50163D77A10018DF1A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		82380A51163D77A30018DF1A /* GameState.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameState.mm; sourceTree = "<group>"; };
+		82380A53163D7CFB0018DF1A /* GCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDatabase.h; sourceTree = "<group>"; };
+		82380A56163D7E120018DF1A /* GCDatabase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GCDatabase.mm; sourceTree = "<group>"; };
+		8246F04B1624B96D0091680F /* particleExplodingStar5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleExplodingStar5.plist; sourceTree = "<group>"; };
+		8246F04F1625FDC20091680F /* particleBeam.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleBeam.plist; sourceTree = "<group>"; };
+		8246F05F162F30850091680F /* objects.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = objects.pshs; sourceTree = "<group>"; };
+		8246F060162F30850091680F /* objects_assets-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_assets-hd.png"; sourceTree = "<group>"; };
+		8246F061162F30850091680F /* objects_assets-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_assets-ipadhd.png"; sourceTree = "<group>"; };
+		8246F062162F30850091680F /* objects_assets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_assets.png; sourceTree = "<group>"; };
+		8246F063162F30850091680F /* objects_UntitledSheet-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_UntitledSheet-hd.png"; sourceTree = "<group>"; };
+		8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_UntitledSheet-ipadhd.png"; sourceTree = "<group>"; };
+		8246F065162F30850091680F /* objects_UntitledSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_UntitledSheet.png; sourceTree = "<group>"; };
+		8246F06D162F39A80091680F /* objects_backgrounds-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds-hd.png"; sourceTree = "<group>"; };
+		8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds-ipadhd.png"; sourceTree = "<group>"; };
+		8246F06F162F39A80091680F /* objects_backgrounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_backgrounds.png; sourceTree = "<group>"; };
+		8246F0731631BD630091680F /* parallaxClouds.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = parallaxClouds.plhs; sourceTree = "<group>"; };
+		8246F07916329EFE0091680F /* levelFall2012002.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelFall2012002.plhs; sourceTree = "<group>"; };
+		8246F07F16330DC00091680F /* pauseLayer.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pauseLayer.plhs; sourceTree = "<group>"; };
+		8246F081163410FF0091680F /* objects_foregrounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_foregrounds.png; sourceTree = "<group>"; };
+		8246F082163410FF0091680F /* objects_foregrounds-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_foregrounds-hd.png"; sourceTree = "<group>"; };
+		8246F083163410FF0091680F /* objects_foregrounds-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_foregrounds-ipadhd.png"; sourceTree = "<group>"; };
+		8246F087163462BC0091680F /* objects_backgrounds2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds2-hd.png"; sourceTree = "<group>"; };
+		8246F088163462BC0091680F /* objects_backgrounds2-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds2-ipadhd.png"; sourceTree = "<group>"; };
+		8246F089163462BC0091680F /* objects_backgrounds2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_backgrounds2.png; sourceTree = "<group>"; };
 		8282ED461624ADBD00B5303B /* FunnyBunnyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyBunnyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8282ED4A1624ADBD00B5303B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8282ED4C1624ADBD00B5303B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -545,6 +685,115 @@
 		8282EF731624ADC000B5303B /* PhysicsSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
 		8282EF741624ADC000B5303B /* PhysicsSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsSprite.mm; sourceTree = "<group>"; };
 		8282EF761624ADC000B5303B /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
+		8282EF811624AEF700B5303B /* LHMouseJointExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMouseJointExt.h; sourceTree = "<group>"; };
+		8282EF821624AEF700B5303B /* LHMouseJointExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHMouseJointExt.mm; sourceTree = "<group>"; };
+		8282EF841624AEF700B5303B /* LHDictionaryExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDictionaryExt.h; sourceTree = "<group>"; };
+		8282EF851624AEF700B5303B /* LHDictionaryExt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHDictionaryExt.mm; sourceTree = "<group>"; };
+		8282EF861624AEF700B5303B /* LevelHelperLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelHelperLoader.h; sourceTree = "<group>"; };
+		8282EF871624AEF700B5303B /* LevelHelperLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelHelperLoader.mm; sourceTree = "<group>"; };
+		8282EF881624AEF700B5303B /* lhConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhConfig.h; sourceTree = "<group>"; };
+		8282EF891624AEF700B5303B /* LICENSE_LevelHelper.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_LevelHelper.txt; sourceTree = "<group>"; };
+		8282EF8B1624AEF700B5303B /* LHAnimationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAnimationNode.h; sourceTree = "<group>"; };
+		8282EF8C1624AEF700B5303B /* LHAnimationNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHAnimationNode.mm; sourceTree = "<group>"; };
+		8282EF8D1624AEF700B5303B /* LHBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBatch.h; sourceTree = "<group>"; };
+		8282EF8E1624AEF700B5303B /* LHBatch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHBatch.mm; sourceTree = "<group>"; };
+		8282EF8F1624AEF700B5303B /* LHBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBezier.h; sourceTree = "<group>"; };
+		8282EF901624AEF700B5303B /* LHBezier.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHBezier.mm; sourceTree = "<group>"; };
+		8282EF911624AEF700B5303B /* LHContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHContactInfo.h; sourceTree = "<group>"; };
+		8282EF921624AEF700B5303B /* LHContactInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHContactInfo.mm; sourceTree = "<group>"; };
+		8282EF931624AEF700B5303B /* LHContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHContactListener.h; sourceTree = "<group>"; };
+		8282EF941624AEF700B5303B /* LHContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHContactListener.mm; sourceTree = "<group>"; };
+		8282EF951624AEF700B5303B /* LHContactNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHContactNode.h; sourceTree = "<group>"; };
+		8282EF961624AEF700B5303B /* LHContactNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHContactNode.mm; sourceTree = "<group>"; };
+		8282EF971624AEF700B5303B /* LHCustomSpriteMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCustomSpriteMgr.h; sourceTree = "<group>"; };
+		8282EF981624AEF700B5303B /* LHCustomSpriteMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHCustomSpriteMgr.mm; sourceTree = "<group>"; };
+		8282EF991624AEF700B5303B /* LHCuttingEngineMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCuttingEngineMgr.h; sourceTree = "<group>"; };
+		8282EF9A1624AEF700B5303B /* LHCuttingEngineMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHCuttingEngineMgr.mm; sourceTree = "<group>"; };
+		8282EF9B1624AEF700B5303B /* LHFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHFixture.h; sourceTree = "<group>"; };
+		8282EF9C1624AEF700B5303B /* LHFixture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHFixture.mm; sourceTree = "<group>"; };
+		8282EF9D1624AEF700B5303B /* LHJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHJoint.h; sourceTree = "<group>"; };
+		8282EF9E1624AEF700B5303B /* LHJoint.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHJoint.mm; sourceTree = "<group>"; };
+		8282EF9F1624AEF700B5303B /* LHLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHLayer.h; sourceTree = "<group>"; };
+		8282EFA01624AEF700B5303B /* LHLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHLayer.mm; sourceTree = "<group>"; };
+		8282EFA11624AEF700B5303B /* LHNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHNode.h; sourceTree = "<group>"; };
+		8282EFA21624AEF700B5303B /* LHNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHNode.mm; sourceTree = "<group>"; };
+		8282EFA31624AEF700B5303B /* LHParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHParallaxNode.h; sourceTree = "<group>"; };
+		8282EFA41624AEF700B5303B /* LHParallaxNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHParallaxNode.mm; sourceTree = "<group>"; };
+		8282EFA51624AEF700B5303B /* LHPathNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPathNode.h; sourceTree = "<group>"; };
+		8282EFA61624AEF700B5303B /* LHPathNode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHPathNode.mm; sourceTree = "<group>"; };
+		8282EFA71624AEF700B5303B /* LHSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSettings.h; sourceTree = "<group>"; };
+		8282EFA81624AEF700B5303B /* LHSettings.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHSettings.mm; sourceTree = "<group>"; };
+		8282EFA91624AEF700B5303B /* LHSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSprite.h; sourceTree = "<group>"; };
+		8282EFAA1624AEF700B5303B /* LHSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHSprite.mm; sourceTree = "<group>"; };
+		8282EFAB1624AEF700B5303B /* LHTouchMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTouchMgr.h; sourceTree = "<group>"; };
+		8282EFAC1624AEF700B5303B /* LHTouchMgr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LHTouchMgr.mm; sourceTree = "<group>"; };
+		8282EFAD1624AEF700B5303B /* SHDocumentLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDocumentLoader.h; sourceTree = "<group>"; };
+		8282EFAE1624AEF700B5303B /* SHDocumentLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SHDocumentLoader.mm; sourceTree = "<group>"; };
+		8282EFCB1624AF4A00B5303B /* homeScreen.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = homeScreen.plhs; sourceTree = "<group>"; };
+		8282EFCC1624AF4A00B5303B /* level001.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = level001.plhs; sourceTree = "<group>"; };
+		8282EFCE1624AF4A00B5303B /* levelChooser.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelChooser.plhs; sourceTree = "<group>"; };
+		8282EFCF1624AF4A00B5303B /* levelFall2012001.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelFall2012001.plhs; sourceTree = "<group>"; };
+		8282EFD01624AF4A00B5303B /* levelJoystick.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelJoystick.plhs; sourceTree = "<group>"; };
+		8282EFD11624AF4A00B5303B /* levelSpring2012001.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelSpring2012001.plhs; sourceTree = "<group>"; };
+		8282EFD21624AF4A00B5303B /* levelSummer2012001.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelSummer2012001.plhs; sourceTree = "<group>"; };
+		8282EFD31624AF4A00B5303B /* levelWinter2012001.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelWinter2012001.plhs; sourceTree = "<group>"; };
+		8282EFD61624AF4A00B5303B /* seasonBackground.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonBackground.plhs; sourceTree = "<group>"; };
+		8282EFD71624AF4A00B5303B /* seasonFall.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonFall.plhs; sourceTree = "<group>"; };
+		8282EFD81624AF4A00B5303B /* seasonSpring.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonSpring.plhs; sourceTree = "<group>"; };
+		8282EFD91624AF4A00B5303B /* seasonSummer.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonSummer.plhs; sourceTree = "<group>"; };
+		8282EFDA1624AF4A00B5303B /* seasonWinter.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonWinter.plhs; sourceTree = "<group>"; };
+		8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 008973519_prev.mp3; sourceTree = "<group>"; };
+		8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "19261__martian__jumps-from-reason-3-rev.wav"; sourceTree = "<group>"; };
+		8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "9193__melack__salt-3.wav"; sourceTree = "<group>"; };
+		8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "95535__robinhood76__01633-cartoon-yuppie-shout.wav"; sourceTree = "<group>"; };
+		8282EFE01624AF4A00B5303B /* balloon.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = balloon.wav; sourceTree = "<group>"; };
+		8282EFE11624AF4A00B5303B /* boink.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boink.wav; sourceTree = "<group>"; };
+		8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crazyTraffic.mp3; sourceTree = "<group>"; };
+		8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = franticDataShimmer.mp3; sourceTree = "<group>"; };
+		8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heavyLaserBeam.mp3; sourceTree = "<group>"; };
+		8282EFE51624AF4A00B5303B /* ouch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ouch.mp3; sourceTree = "<group>"; };
+		8282EFE61624AF4A00B5303B /* zippy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zippy.mp3; sourceTree = "<group>"; };
+		8282EFE81624AF4A00B5303B /* fallingLeaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fallingLeaves.plist; sourceTree = "<group>"; };
+		8282EFE91624AF4A00B5303B /* fallingLeaves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fallingLeaves.png; sourceTree = "<group>"; };
+		8282EFEB1624AF4A00B5303B /* rain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rain.plist; sourceTree = "<group>"; };
+		8282EFEC1624AF4A00B5303B /* rain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rain.png; sourceTree = "<group>"; };
+		8282EFED1624AF4A00B5303B /* snow.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = snow.plist; sourceTree = "<group>"; };
+		8282EFEE1624AF4A00B5303B /* snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snow.png; sourceTree = "<group>"; };
+		8282EFEF1624AF4A00B5303B /* sun.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sun.plist; sourceTree = "<group>"; };
+		8282EFF01624AF4A00B5303B /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
+		8282F0181624AF9A00B5303B /* CCScrollLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCScrollLayer.h; sourceTree = "<group>"; };
+		8282F0191624AF9A00B5303B /* CCScrollLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CCScrollLayer.mm; sourceTree = "<group>"; };
+		8282F01A1624AF9A00B5303B /* QQSpriteBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSpriteBar.h; sourceTree = "<group>"; };
+		8282F01B1624AF9A00B5303B /* QQSpriteBar.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBar.mm; sourceTree = "<group>"; };
+		8282F01C1624AF9A00B5303B /* QQSpriteTrampoline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSpriteTrampoline.h; sourceTree = "<group>"; };
+		8282F01D1624AF9A00B5303B /* QQLabelTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQLabelTimer.h; sourceTree = "<group>"; };
+		8282F01E1624AF9A00B5303B /* QQLabelTimer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQLabelTimer.mm; sourceTree = "<group>"; };
+		8282F01F1624AF9A00B5303B /* QQSpriteTrampoline.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteTrampoline.mm; sourceTree = "<group>"; };
+		8282F0201624AF9A00B5303B /* QQSpriteStar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSpriteStar.h; sourceTree = "<group>"; };
+		8282F0211624AF9A00B5303B /* QQSpriteStar.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteStar.mm; sourceTree = "<group>"; };
+		8282F0221624AF9A00B5303B /* QQSpriteBalloon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloon.h; sourceTree = "<group>"; };
+		8282F0231624AF9A00B5303B /* QQSpriteBalloon.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloon.mm; sourceTree = "<group>"; };
+		8282F0241624AF9A00B5303B /* QQLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQLevel.h; sourceTree = "<group>"; };
+		8282F0251624AF9A00B5303B /* QQSeasonsScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSeasonsScreen.h; sourceTree = "<group>"; };
+		8282F0261624AF9A00B5303B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8282F0271624AF9A00B5303B /* GameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		8282F0281624AF9A00B5303B /* GameManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GameManager.mm; sourceTree = "<group>"; };
+		8282F0291624AF9A00B5303B /* QQSeaosnsScreen.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSeaosnsScreen.mm; sourceTree = "<group>"; };
+		8282F02A1624AF9A00B5303B /* QQSpritePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQSpritePlayer.h; sourceTree = "<group>"; };
+		8282F02B1624AF9A00B5303B /* QQSpritePlayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpritePlayer.mm; sourceTree = "<group>"; };
+		8282F02C1624AF9A00B5303B /* QQLevel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQLevel.mm; sourceTree = "<group>"; };
+		8282F02D1624B01300B5303B /* QQLevelChooser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQLevelChooser.h; sourceTree = "<group>"; };
+		8282F02E1624B01300B5303B /* QQLevelChooser.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQLevelChooser.mm; sourceTree = "<group>"; };
+		8282F02F1624B10F00B5303B /* QQHomeScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQHomeScreen.h; sourceTree = "<group>"; };
+		8282F0301624B10F00B5303B /* QQHomeScreen.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQHomeScreen.mm; sourceTree = "<group>"; };
+		828F2B9B1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonSizechanger.h; sourceTree = "<group>"; };
+		828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonSizechanger.mm; sourceTree = "<group>"; };
+		828F2BA21646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQSpriteBalloonThreetimestoucher.h; path = ../QQSpriteBalloonThreetimestoucher.h; sourceTree = "<group>"; };
+		828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = QQSpriteBalloonThreetimestoucher.mm; path = ../QQSpriteBalloonThreetimestoucher.mm; sourceTree = "<group>"; };
+		82DC32FD16483F1A007E7416 /* LHCustomClasses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHCustomClasses.h; sourceTree = "<group>"; };
+		82DC330016483F93007E7416 /* QQBalloonClass.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = QQBalloonClass.mm; sourceTree = "<group>"; };
+		82DC330116483F93007E7416 /* QQBalloonClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQBalloonClass.h; sourceTree = "<group>"; };
+		82DC330216498DA9007E7416 /* levelWinter2012002.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelWinter2012002.plhs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +852,43 @@
 		8282ED5C1624ADBD00B5303B /* FunnyBunnyJump */ = {
 			isa = PBXGroup;
 			children = (
+				8282F0261624AF9A00B5303B /* Constants.h */,
+				8282F0271624AF9A00B5303B /* GameManager.h */,
+				8282F0281624AF9A00B5303B /* GameManager.mm */,
+				82380A4D163D41AB0018DF1A /* GCHelper.h */,
+				82380A4E163D41AE0018DF1A /* GCHelper.mm */,
+				82380A50163D77A10018DF1A /* GameState.h */,
+				82380A51163D77A30018DF1A /* GameState.mm */,
+				82380A53163D7CFB0018DF1A /* GCDatabase.h */,
+				82380A56163D7E120018DF1A /* GCDatabase.mm */,
+				8282F02F1624B10F00B5303B /* QQHomeScreen.h */,
+				8282F0301624B10F00B5303B /* QQHomeScreen.mm */,
+				8282F0251624AF9A00B5303B /* QQSeasonsScreen.h */,
+				8282F0291624AF9A00B5303B /* QQSeaosnsScreen.mm */,
+				8282F02D1624B01300B5303B /* QQLevelChooser.h */,
+				8282F02E1624B01300B5303B /* QQLevelChooser.mm */,
+				8282F0181624AF9A00B5303B /* CCScrollLayer.h */,
+				8282F0191624AF9A00B5303B /* CCScrollLayer.mm */,
+				8282F01A1624AF9A00B5303B /* QQSpriteBar.h */,
+				8282F01B1624AF9A00B5303B /* QQSpriteBar.mm */,
+				8282F01C1624AF9A00B5303B /* QQSpriteTrampoline.h */,
+				8282F01F1624AF9A00B5303B /* QQSpriteTrampoline.mm */,
+				8282F01D1624AF9A00B5303B /* QQLabelTimer.h */,
+				8282F01E1624AF9A00B5303B /* QQLabelTimer.mm */,
+				8282F0201624AF9A00B5303B /* QQSpriteStar.h */,
+				8282F0211624AF9A00B5303B /* QQSpriteStar.mm */,
+				8282F0221624AF9A00B5303B /* QQSpriteBalloon.h */,
+				8282F0231624AF9A00B5303B /* QQSpriteBalloon.mm */,
+				82380A36163B09010018DF1A /* QQSpriteBalloonShake.h */,
+				82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */,
+				828F2B9B1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.h */,
+				828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */,
+				828F2BA21646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.h */,
+				828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */,
+				8282F0241624AF9A00B5303B /* QQLevel.h */,
+				8282F02C1624AF9A00B5303B /* QQLevel.mm */,
+				8282F02A1624AF9A00B5303B /* QQSpritePlayer.h */,
+				8282F02B1624AF9A00B5303B /* QQSpritePlayer.mm */,
 				8282EF671624ADC000B5303B /* AppDelegate.h */,
 				8282EF681624ADC000B5303B /* AppDelegate.mm */,
 				8282EF6A1624ADC000B5303B /* HelloWorldLayer.h */,
@@ -623,6 +909,10 @@
 		8282ED5D1624ADBD00B5303B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8282EFC51624AF4A00B5303B /* Images */,
+				8282EFCA1624AF4A00B5303B /* Levels */,
+				8282EFDB1624AF4A00B5303B /* Sounds */,
+				8282EFE71624AF4A00B5303B /* Particle */,
 				8282ED5E1624ADBD00B5303B /* Default.png */,
 				8282ED601624ADBD00B5303B /* Default-Landscape~ipad.png */,
 				8282ED621624ADBD00B5303B /* fps_images.png */,
@@ -648,6 +938,7 @@
 				8282EE9D1624ADBF00B5303B /* LICENSE_CocosDenshion.txt */,
 				8282EECF1624ADBF00B5303B /* LICENSE_Kazmath.txt */,
 				8282EF621624ADC000B5303B /* LICENSE_Box2D.txt */,
+				8282EF7D1624AEF700B5303B /* LevelHelper */,
 				8282ED781624ADBD00B5303B /* cocos2d */,
 				8282EE8F1624ADBF00B5303B /* CocosDenshion */,
 				8282EE9E1624ADBF00B5303B /* kazmath */,
@@ -1142,6 +1433,180 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8282EF7D1624AEF700B5303B /* LevelHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8282EF7E1624AEF700B5303B /* CustomClasses */,
+				8282EF801624AEF700B5303B /* ExtendingCategories */,
+				8282EF831624AEF700B5303B /* Helpers */,
+				8282EF861624AEF700B5303B /* LevelHelperLoader.h */,
+				8282EF871624AEF700B5303B /* LevelHelperLoader.mm */,
+				8282EF881624AEF700B5303B /* lhConfig.h */,
+				8282EF891624AEF700B5303B /* LICENSE_LevelHelper.txt */,
+				8282EF8A1624AEF700B5303B /* Nodes */,
+			);
+			path = LevelHelper;
+			sourceTree = "<group>";
+		};
+		8282EF7E1624AEF700B5303B /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				82DC32FD16483F1A007E7416 /* LHCustomClasses.h */,
+				82DC330016483F93007E7416 /* QQBalloonClass.mm */,
+				82DC330116483F93007E7416 /* QQBalloonClass.h */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		8282EF801624AEF700B5303B /* ExtendingCategories */ = {
+			isa = PBXGroup;
+			children = (
+				8282EF811624AEF700B5303B /* LHMouseJointExt.h */,
+				8282EF821624AEF700B5303B /* LHMouseJointExt.mm */,
+			);
+			path = ExtendingCategories;
+			sourceTree = "<group>";
+		};
+		8282EF831624AEF700B5303B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8282EF841624AEF700B5303B /* LHDictionaryExt.h */,
+				8282EF851624AEF700B5303B /* LHDictionaryExt.mm */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8282EF8A1624AEF700B5303B /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				8282EF8B1624AEF700B5303B /* LHAnimationNode.h */,
+				8282EF8C1624AEF700B5303B /* LHAnimationNode.mm */,
+				8282EF8D1624AEF700B5303B /* LHBatch.h */,
+				8282EF8E1624AEF700B5303B /* LHBatch.mm */,
+				8282EF8F1624AEF700B5303B /* LHBezier.h */,
+				8282EF901624AEF700B5303B /* LHBezier.mm */,
+				8282EF911624AEF700B5303B /* LHContactInfo.h */,
+				8282EF921624AEF700B5303B /* LHContactInfo.mm */,
+				8282EF931624AEF700B5303B /* LHContactListener.h */,
+				8282EF941624AEF700B5303B /* LHContactListener.mm */,
+				8282EF951624AEF700B5303B /* LHContactNode.h */,
+				8282EF961624AEF700B5303B /* LHContactNode.mm */,
+				8282EF971624AEF700B5303B /* LHCustomSpriteMgr.h */,
+				8282EF981624AEF700B5303B /* LHCustomSpriteMgr.mm */,
+				8282EF991624AEF700B5303B /* LHCuttingEngineMgr.h */,
+				8282EF9A1624AEF700B5303B /* LHCuttingEngineMgr.mm */,
+				8282EF9B1624AEF700B5303B /* LHFixture.h */,
+				8282EF9C1624AEF700B5303B /* LHFixture.mm */,
+				8282EF9D1624AEF700B5303B /* LHJoint.h */,
+				8282EF9E1624AEF700B5303B /* LHJoint.mm */,
+				8282EF9F1624AEF700B5303B /* LHLayer.h */,
+				8282EFA01624AEF700B5303B /* LHLayer.mm */,
+				8282EFA11624AEF700B5303B /* LHNode.h */,
+				8282EFA21624AEF700B5303B /* LHNode.mm */,
+				8282EFA31624AEF700B5303B /* LHParallaxNode.h */,
+				8282EFA41624AEF700B5303B /* LHParallaxNode.mm */,
+				8282EFA51624AEF700B5303B /* LHPathNode.h */,
+				8282EFA61624AEF700B5303B /* LHPathNode.mm */,
+				8282EFA71624AEF700B5303B /* LHSettings.h */,
+				8282EFA81624AEF700B5303B /* LHSettings.mm */,
+				8282EFA91624AEF700B5303B /* LHSprite.h */,
+				8282EFAA1624AEF700B5303B /* LHSprite.mm */,
+				8282EFAB1624AEF700B5303B /* LHTouchMgr.h */,
+				8282EFAC1624AEF700B5303B /* LHTouchMgr.mm */,
+				8282EFAD1624AEF700B5303B /* SHDocumentLoader.h */,
+				8282EFAE1624AEF700B5303B /* SHDocumentLoader.mm */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		8282EFC51624AF4A00B5303B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8246F081163410FF0091680F /* objects_foregrounds.png */,
+				8246F082163410FF0091680F /* objects_foregrounds-hd.png */,
+				8246F083163410FF0091680F /* objects_foregrounds-ipadhd.png */,
+				8246F05F162F30850091680F /* objects.pshs */,
+				8246F060162F30850091680F /* objects_assets-hd.png */,
+				8246F061162F30850091680F /* objects_assets-ipadhd.png */,
+				8246F062162F30850091680F /* objects_assets.png */,
+				8246F063162F30850091680F /* objects_UntitledSheet-hd.png */,
+				8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */,
+				8246F065162F30850091680F /* objects_UntitledSheet.png */,
+				8246F06D162F39A80091680F /* objects_backgrounds-hd.png */,
+				8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */,
+				8246F06F162F39A80091680F /* objects_backgrounds.png */,
+				8246F087163462BC0091680F /* objects_backgrounds2-hd.png */,
+				8246F088163462BC0091680F /* objects_backgrounds2-ipadhd.png */,
+				8246F089163462BC0091680F /* objects_backgrounds2.png */,
+			);
+			name = Images;
+			path = Resources/Images;
+			sourceTree = "<group>";
+		};
+		8282EFCA1624AF4A00B5303B /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				8246F07F16330DC00091680F /* pauseLayer.plhs */,
+				8246F07916329EFE0091680F /* levelFall2012002.plhs */,
+				8282EFCB1624AF4A00B5303B /* homeScreen.plhs */,
+				8282EFCC1624AF4A00B5303B /* level001.plhs */,
+				8282EFCE1624AF4A00B5303B /* levelChooser.plhs */,
+				8282EFCF1624AF4A00B5303B /* levelFall2012001.plhs */,
+				8282EFD01624AF4A00B5303B /* levelJoystick.plhs */,
+				8282EFD11624AF4A00B5303B /* levelSpring2012001.plhs */,
+				8282EFD21624AF4A00B5303B /* levelSummer2012001.plhs */,
+				8282EFD31624AF4A00B5303B /* levelWinter2012001.plhs */,
+				82DC330216498DA9007E7416 /* levelWinter2012002.plhs */,
+				8282EFD61624AF4A00B5303B /* seasonBackground.plhs */,
+				8282EFD71624AF4A00B5303B /* seasonFall.plhs */,
+				8282EFD81624AF4A00B5303B /* seasonSpring.plhs */,
+				8282EFD91624AF4A00B5303B /* seasonSummer.plhs */,
+				8282EFDA1624AF4A00B5303B /* seasonWinter.plhs */,
+				8246F0731631BD630091680F /* parallaxClouds.plhs */,
+			);
+			name = Levels;
+			path = Resources/Levels;
+			sourceTree = "<group>";
+		};
+		8282EFDB1624AF4A00B5303B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */,
+				8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */,
+				8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */,
+				8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */,
+				8282EFE01624AF4A00B5303B /* balloon.wav */,
+				8282EFE11624AF4A00B5303B /* boink.wav */,
+				8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */,
+				8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */,
+				8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */,
+				8282EFE51624AF4A00B5303B /* ouch.mp3 */,
+				8282EFE61624AF4A00B5303B /* zippy.mp3 */,
+			);
+			name = Sounds;
+			path = Resources/Sounds;
+			sourceTree = "<group>";
+		};
+		8282EFE71624AF4A00B5303B /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+				82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */,
+				82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */,
+				8246F04F1625FDC20091680F /* particleBeam.plist */,
+				8246F04B1624B96D0091680F /* particleExplodingStar5.plist */,
+				8282EFE81624AF4A00B5303B /* fallingLeaves.plist */,
+				8282EFE91624AF4A00B5303B /* fallingLeaves.png */,
+				8282EFEB1624AF4A00B5303B /* rain.plist */,
+				8282EFEC1624AF4A00B5303B /* rain.png */,
+				8282EFED1624AF4A00B5303B /* snow.plist */,
+				8282EFEE1624AF4A00B5303B /* snow.png */,
+				8282EFEF1624AF4A00B5303B /* sun.plist */,
+				8282EFF01624AF4A00B5303B /* sun.png */,
+			);
+			name = Particle;
+			path = Resources/Particle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1206,6 +1671,63 @@
 				8282ED761624ADBD00B5303B /* iTunesArtwork in Resources */,
 				8282EEB41624ADBF00B5303B /* ChangeLog in Resources */,
 				8282EF771624ADC000B5303B /* blocks.png in Resources */,
+				8282EFB21624AEF700B5303B /* LICENSE_LevelHelper.txt in Resources */,
+				8282EFF51624AF4A00B5303B /* homeScreen.plhs in Resources */,
+				8282EFF61624AF4A00B5303B /* level001.plhs in Resources */,
+				8282EFF81624AF4A00B5303B /* levelChooser.plhs in Resources */,
+				8282EFF91624AF4A00B5303B /* levelFall2012001.plhs in Resources */,
+				8282EFFA1624AF4A00B5303B /* levelJoystick.plhs in Resources */,
+				8282EFFB1624AF4A00B5303B /* levelSpring2012001.plhs in Resources */,
+				8282EFFC1624AF4A00B5303B /* levelSummer2012001.plhs in Resources */,
+				8282EFFD1624AF4A00B5303B /* levelWinter2012001.plhs in Resources */,
+				8282EFFF1624AF4A00B5303B /* seasonBackground.plhs in Resources */,
+				8282F0001624AF4A00B5303B /* seasonFall.plhs in Resources */,
+				8282F0011624AF4A00B5303B /* seasonSpring.plhs in Resources */,
+				8282F0021624AF4A00B5303B /* seasonSummer.plhs in Resources */,
+				8282F0031624AF4A00B5303B /* seasonWinter.plhs in Resources */,
+				8282F0041624AF4A00B5303B /* 008973519_prev.mp3 in Resources */,
+				8282F0051624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav in Resources */,
+				8282F0061624AF4A00B5303B /* 9193__melack__salt-3.wav in Resources */,
+				8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */,
+				8282F0081624AF4A00B5303B /* balloon.wav in Resources */,
+				8282F0091624AF4A00B5303B /* boink.wav in Resources */,
+				8282F00A1624AF4A00B5303B /* crazyTraffic.mp3 in Resources */,
+				8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */,
+				8282F00C1624AF4A00B5303B /* heavyLaserBeam.mp3 in Resources */,
+				8282F00D1624AF4A00B5303B /* ouch.mp3 in Resources */,
+				8282F00E1624AF4A00B5303B /* zippy.mp3 in Resources */,
+				8282F00F1624AF4A00B5303B /* fallingLeaves.plist in Resources */,
+				8282F0101624AF4A00B5303B /* fallingLeaves.png in Resources */,
+				8282F0121624AF4A00B5303B /* rain.plist in Resources */,
+				8282F0131624AF4A00B5303B /* rain.png in Resources */,
+				8282F0141624AF4A00B5303B /* snow.plist in Resources */,
+				8282F0151624AF4A00B5303B /* snow.png in Resources */,
+				8282F0161624AF4A00B5303B /* sun.plist in Resources */,
+				8282F0171624AF4A00B5303B /* sun.png in Resources */,
+				8246F04C1624B96D0091680F /* particleExplodingStar5.plist in Resources */,
+				8246F0501625FDC20091680F /* particleBeam.plist in Resources */,
+				8246F066162F30850091680F /* objects.pshs in Resources */,
+				8246F067162F30850091680F /* objects_assets-hd.png in Resources */,
+				8246F068162F30850091680F /* objects_assets-ipadhd.png in Resources */,
+				8246F069162F30850091680F /* objects_assets.png in Resources */,
+				8246F06A162F30850091680F /* objects_UntitledSheet-hd.png in Resources */,
+				8246F06B162F30850091680F /* objects_UntitledSheet-ipadhd.png in Resources */,
+				8246F06C162F30850091680F /* objects_UntitledSheet.png in Resources */,
+				8246F070162F39A80091680F /* objects_backgrounds-hd.png in Resources */,
+				8246F071162F39A80091680F /* objects_backgrounds-ipadhd.png in Resources */,
+				8246F072162F39A80091680F /* objects_backgrounds.png in Resources */,
+				8246F0741631BD630091680F /* parallaxClouds.plhs in Resources */,
+				8246F07A16329EFE0091680F /* levelFall2012002.plhs in Resources */,
+				8246F08016330DC00091680F /* pauseLayer.plhs in Resources */,
+				8246F084163410FF0091680F /* objects_foregrounds.png in Resources */,
+				8246F085163410FF0091680F /* objects_foregrounds-hd.png in Resources */,
+				8246F086163410FF0091680F /* objects_foregrounds-ipadhd.png in Resources */,
+				8246F08A163462BC0091680F /* objects_backgrounds2-hd.png in Resources */,
+				8246F08B163462BC0091680F /* objects_backgrounds2-ipadhd.png in Resources */,
+				8246F08C163462BC0091680F /* objects_backgrounds2.png in Resources */,
+				82380A4A163C8AE70018DF1A /* particleExplodingBalloon.plist in Resources */,
+				82380A4C163C8C1E0018DF1A /* particleExplodingBalloonTexture.png in Resources */,
+				82DC330316498DA9007E7416 /* levelWinter2012002.plhs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,6 +1738,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8246F0311624B73F0091680F /* Constants.h in Sources */,
+				8246F0321624B73F0091680F /* GameManager.h in Sources */,
+				8246F0331624B73F0091680F /* GameManager.mm in Sources */,
+				8246F0341624B73F0091680F /* QQHomeScreen.h in Sources */,
+				8246F0351624B73F0091680F /* QQHomeScreen.mm in Sources */,
+				8246F0361624B73F0091680F /* QQSeasonsScreen.h in Sources */,
+				8246F0371624B73F0091680F /* QQSeaosnsScreen.mm in Sources */,
+				8246F0381624B73F0091680F /* QQLevelChooser.h in Sources */,
+				8246F0391624B73F0091680F /* QQLevelChooser.mm in Sources */,
+				8246F03A1624B73F0091680F /* CCScrollLayer.h in Sources */,
+				8246F03B1624B73F0091680F /* CCScrollLayer.mm in Sources */,
+				8246F03C1624B73F0091680F /* QQSpriteBar.h in Sources */,
+				8246F03D1624B73F0091680F /* QQSpriteBar.mm in Sources */,
+				8246F03E1624B73F0091680F /* QQSpriteTrampoline.h in Sources */,
+				8246F03F1624B73F0091680F /* QQSpriteTrampoline.mm in Sources */,
+				8246F0401624B73F0091680F /* QQLabelTimer.h in Sources */,
+				8246F0411624B73F0091680F /* QQLabelTimer.mm in Sources */,
+				8246F0421624B73F0091680F /* QQSpriteStar.h in Sources */,
+				8246F0431624B73F0091680F /* QQSpriteStar.mm in Sources */,
+				8246F0441624B73F0091680F /* QQSpriteBalloon.h in Sources */,
+				8246F0451624B73F0091680F /* QQSpriteBalloon.mm in Sources */,
+				8246F0461624B73F0091680F /* QQLevel.h in Sources */,
+				8246F0471624B73F0091680F /* QQLevel.mm in Sources */,
+				8246F0481624B73F0091680F /* QQSpritePlayer.h in Sources */,
+				8246F0491624B73F0091680F /* QQSpritePlayer.mm in Sources */,
 				8282ED7B1624ADBD00B5303B /* CCAction.m in Sources */,
 				8282ED7E1624ADBD00B5303B /* CCActionCamera.m in Sources */,
 				8282ED811624ADBD00B5303B /* CCActionCatmullRom.m in Sources */,
@@ -1367,6 +1914,33 @@
 				8282EF6F1624ADC000B5303B /* IntroLayer.mm in Sources */,
 				8282EF721624ADC000B5303B /* GLES-Render.mm in Sources */,
 				8282EF751624ADC000B5303B /* PhysicsSprite.mm in Sources */,
+				8282EFAF1624AEF700B5303B /* LHMouseJointExt.mm in Sources */,
+				8282EFB01624AEF700B5303B /* LHDictionaryExt.mm in Sources */,
+				8282EFB11624AEF700B5303B /* LevelHelperLoader.mm in Sources */,
+				8282EFB31624AEF700B5303B /* LHAnimationNode.mm in Sources */,
+				8282EFB41624AEF700B5303B /* LHBatch.mm in Sources */,
+				8282EFB51624AEF700B5303B /* LHBezier.mm in Sources */,
+				8282EFB61624AEF700B5303B /* LHContactInfo.mm in Sources */,
+				8282EFB71624AEF700B5303B /* LHContactListener.mm in Sources */,
+				8282EFB81624AEF700B5303B /* LHContactNode.mm in Sources */,
+				8282EFB91624AEF700B5303B /* LHCustomSpriteMgr.mm in Sources */,
+				8282EFBA1624AEF700B5303B /* LHCuttingEngineMgr.mm in Sources */,
+				8282EFBB1624AEF700B5303B /* LHFixture.mm in Sources */,
+				8282EFBC1624AEF700B5303B /* LHJoint.mm in Sources */,
+				8282EFBD1624AEF700B5303B /* LHLayer.mm in Sources */,
+				8282EFBE1624AEF700B5303B /* LHNode.mm in Sources */,
+				8282EFBF1624AEF700B5303B /* LHParallaxNode.mm in Sources */,
+				8282EFC01624AEF700B5303B /* LHPathNode.mm in Sources */,
+				8282EFC11624AEF700B5303B /* LHSettings.mm in Sources */,
+				8282EFC21624AEF700B5303B /* LHSprite.mm in Sources */,
+				8282EFC31624AEF700B5303B /* LHTouchMgr.mm in Sources */,
+				8282EFC41624AEF700B5303B /* SHDocumentLoader.mm in Sources */,
+				82380A38163B09020018DF1A /* QQSpriteBalloonShake.mm in Sources */,
+				82380A4F163D41AF0018DF1A /* GCHelper.mm in Sources */,
+				82380A52163D77A40018DF1A /* GameState.mm in Sources */,
+				82380A57163D7E130018DF1A /* GCDatabase.mm in Sources */,
+				828F2B9D1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm in Sources */,
+				828F2BA41646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +2046,7 @@
 				8282EF7C1624ADC000B5303B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[GCHelper sharedInstance] authenticateLocalUser];
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
@@ -76,7 +77,12 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 	
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]]; 
+	//[director_ pushScene: [IntroLayer scene]];
+    //[director_ pushScene: [QQLevel scene]];
+    [director_ runWithScene: [QQHomeScreen scene]];
+
+    
+    //[[CCDirector sharedDirector] runWithScene: [QQHomeScreen scene]];
 	
 	
 	// Create a Navigation Controller with the Director
