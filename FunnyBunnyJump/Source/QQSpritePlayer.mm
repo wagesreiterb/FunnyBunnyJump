@@ -196,10 +196,10 @@
 
 -(void)setPause:(BOOL)pause {
     if(pause == YES) {
-        [self pauseAnimation];
+        //[self pauseAnimation];
         [self makeStatic];
     } else {
-        [self playAnimation];
+        //[self playAnimation];
         [self makeDynamic];
     }
 }

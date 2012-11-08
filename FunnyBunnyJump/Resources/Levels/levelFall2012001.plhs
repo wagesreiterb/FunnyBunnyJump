@@ -2207,7 +2207,7 @@
 		<key>ProjectPath</key>
 		<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump</string>
 		<key>SafeFrame</key>
-		<string>{0, 0}</string>
+		<string>{480, 320}</string>
 		<key>Tags</key>
 		<array>
 			<string>DEFAULT</string>

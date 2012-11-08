@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.966</string>
+	<string>1.4.967</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -64,13 +64,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 385}, {512, 384}}</string>
+								<string>{{513, 385}, {512, 384}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -169,7 +169,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{492, 99}, {15.5, 13.75}}</string>
+								<string>{{495, 99}, {15.5, 13.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -244,7 +244,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{475, 116}, {15.5, 13}}</string>
+								<string>{{418, 184}, {15.5, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -319,7 +319,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{475, 116}, {15.5, 13}}</string>
+								<string>{{418, 184}, {15.5, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -410,7 +410,19 @@
 		<key>BundleIdentifier</key>
 		<string></string>
 		<key>CustomClasses</key>
-		<array/>
+		<array>
+			<dict>
+				<key>ClassName</key>
+				<string>QQBalloonClass</string>
+				<key>ClassRepresentation</key>
+				<dict>
+					<key>movingStartDelay</key>
+					<real>1</real>
+					<key>score</key>
+					<real>5</real>
+				</dict>
+			</dict>
+		</array>
 		<key>Device</key>
 		<integer>2</integer>
 		<key>GameWorld</key>
@@ -426,7 +438,7 @@
 		<key>ProjectPath</key>
 		<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump</string>
 		<key>SafeFrame</key>
-		<string>{0, 0}</string>
+		<string>{480, 320}</string>
 		<key>Tags</key>
 		<array>
 			<string>DEFAULT</string>
@@ -439,6 +451,12 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
+			<string>TAG_BALLOON_YELLOW</string>
+			<string>TAG_BALLOON_ORANGE</string>
+			<string>TAG_BALLOON_PURPLE</string>
+			<string>TAG_BALLOON_SIZECHANGER</string>
+			<string>TAG_BALLOON_SHAKER</string>
+			<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 		</array>
 		<key>ZoomValue</key>
 		<real>0.0</real>

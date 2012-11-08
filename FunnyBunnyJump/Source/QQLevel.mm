@@ -53,6 +53,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     NSInteger balloonsLeft = 0;
     
+    /*
     NSArray *balloonsYellow = [loader spritesWithTag:TAG_BALLOON_YELLOW];
     for(QQSpriteBalloon *balloonYellow in balloonsYellow) {
         [balloonYellow reactToTouch:balloonYellow withWorld:_world withLayer:self];
@@ -88,16 +89,64 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [balloon reactToTouch:balloon withWorld:_world withLayer:self];
         balloonsLeft++;
     }
+     */
+    
+    
+    
+    
+    
+    
+    
+    NSArray *balloonsYellow = [loader spritesWithTag:TAG_BALLOON_YELLOW];
+    for(QQSpriteBalloon *balloonYellow in balloonsYellow) {
+        [balloonYellow reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+    
+    
+    NSArray *balloonsPurple = [loader spritesWithTag:TAG_BALLOON_PURPLE];
+    for(QQSpriteBalloonShake *balloonPurple in balloonsPurple) {
+        [balloonPurple reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+    
+    NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
+    for(QQSpriteBalloonShake *balloon in balloonsShaker) {
+        [balloon reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+    
+    NSArray *balloonsOrange = [loader spritesWithTag:TAG_BALLOON_ORANGE];
+    for(QQSpriteBalloonShake *balloonOrange in balloonsOrange) {
+        [balloonOrange reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+    
+    NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
+    for(QQSpriteBalloonShake *balloon in balloonsSizechanger) {
+        [balloon reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+    
+    NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
+    for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
+        [balloon reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
+     
+     
     
     //level completed    
     if(balloonsLeft == 0) {
         [self levelCompleted];
     }
 
+    /*
     NSArray *stars = [loader spritesWithTag:TAG_STAR];
     for(QQSpriteStar *star in stars) {
         [star reactToTouch:star withWorld:_world withLayer:self];
     }
+     */
 }
 
 -(void)levelCompleted {
@@ -336,12 +385,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
                 [balloon setReactToCollision:YES];
             }
-            
-            //[_leftEar body]->SetGravityScale(3.0);
-            //[_rightEar body]->SetGravityScale(3.0);
-            //[_player stopAnimation];
-            //[_player prepareAnimationNamed:@"bunny_jump_up" fromSHScene:@"objects"];
-            //[_player restartAnimation];
         }
     }
 }
@@ -351,9 +394,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     } else {
         [_trampoline shallChangeRestitution: TRUE];
         [_trampoline setRestitution:1.0f];
-        
-        //[_leftEar body]->SetGravityScale(0.3);
-        //[_rightEar body]->SetGravityScale(0.3);
     }
 }
 
@@ -478,7 +518,9 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteStar class]
                                                            forTag:TAG_STAR];
 
+    
     loader = [[LevelHelperLoader alloc] initWithContentOfFile:[[GameManager sharedGameManager] levelToRun]];
+    //loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelWinter2012003"];
     [loader addObjectsToWorld:_world cocos2dLayer:self]; //creating the objects
     
     if([loader hasPhysicBoundaries])
@@ -504,7 +546,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     
     //TODO
-    _countDown = 100;
+    _countDown = COUNTDOWN;
     
 
     _spritePauseButton = [loaderJoystick spriteWithUniqueName:@"buttonPause"];
@@ -517,7 +559,13 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     
-    LHSprite* balloon = [loader spriteWithUniqueName:@"balloon_orange"];
+    /*
+    LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
+    if(balloon == nil) {
+        NSLog(@"BALLOON IS NIL");
+    } else {
+        NSLog(@"WE HAVE A BALLOON");
+    }
     [balloon makeDynamic];
     NSString* classInfo = [balloon userInfoClassName];
     NSLog(@"classInfo %@", classInfo);
@@ -533,9 +581,10 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     } else {
         NSLog(@"don't work!");
     }
+     */
     
     
-    NSLog(@"LevelName: %@", [[GameManager sharedGameManager] levelToRun]);
+    //NSLog(@"LevelName: %@", [[GameManager sharedGameManager] levelToRun]);
     
 }
 
@@ -674,9 +723,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             [loaderPause release];
         }
     }
-    
-    //[_player pauseAnimation];
-    //[_player setPause:pause_];
 }
 
 -(void)enableJoystick:(ccTime)dt {
@@ -775,20 +821,60 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 
 -(void)setupBalloon {
-    NSArray *balloonsPurple = [loader spritesWithTag:TAG_BALLOON_PURPLE];
-    for(QQSpriteBalloonShake *balloonPurple in balloonsPurple) {
-        [balloonPurple startMoving];
-    }
-    
     NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
     for(QQSpriteBalloonShake *balloon in balloonsShaker) {
-        [balloon startMoving];
+        //[balloon startMoving];
+        if(balloon == nil) {
+            NSLog(@"BALLOON IS NIL");
+        } else {
+            NSLog(@"WE HAVE A BALLOON");
+        }
+        NSString* classInfo = [balloon userInfoClassName];
+        NSLog(@"classInfo %@", classInfo);
+        
+        QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+        
+        int movingStartDelay;
+        if(myInfo != nil){
+            //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+            int score = [myInfo score];
+            movingStartDelay = [myInfo movingStartDelay];
+            NSLog(@"");
+            NSLog(@"score: %d", score);
+            NSLog(@"movingStartDelay: %d", movingStartDelay);
+        } else {
+            NSLog(@"don't work!");
+        }
+        [balloon startMovingWithDelay:movingStartDelay];
     }
     
     NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
     for(QQSpriteBalloonSizechanger *balloon in balloonsSizechanger) {
         [balloon start:0.05f];
     }
+    
+    /*
+    LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
+    if(balloon == nil) {
+        NSLog(@"BALLOON IS NIL");
+    } else {
+        NSLog(@"WE HAVE A BALLOON");
+    }
+    NSString* classInfo = [balloon userInfoClassName];
+    NSLog(@"classInfo %@", classInfo);
+    
+    QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+    
+    if(myInfo != nil){
+        //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+        int score = [myInfo score];
+        int movingStartDelay = [myInfo movingStartDelay];
+        NSLog(@"score: %d", score);
+        NSLog(@"score: %d", movingStartDelay);
+    } else {
+        NSLog(@"don't work!");
+    }
+     */
 }
 
 
@@ -847,7 +933,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _handRight = [loader spriteWithUniqueName:@"hand_right"];
     //[_player prepareAnimationNamed:@"jumper" fromSHScene:@"objects"];
     //[_player prepareAnimationNamed:@"moul" fromSHScene:@"objects"];
-    
     //[_player prepareAnimationNamed:@"bunny_jump_up" fromSHScene:@"objects"];
     //[_player playAnimation];
 }

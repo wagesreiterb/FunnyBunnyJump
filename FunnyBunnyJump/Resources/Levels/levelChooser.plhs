@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.966</string>
+	<string>1.4.967</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -64,13 +64,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{513, 385}, {512, 384}}</string>
+								<string>{{0, 385}, {512, 384}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<true/>
 								<key>Opacity</key>
@@ -169,7 +169,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -191,7 +191,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>1</string>
 								<key>ZOrder</key>
@@ -244,7 +244,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -266,7 +266,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>2</string>
 								<key>ZOrder</key>
@@ -319,7 +319,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -341,7 +341,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>3</string>
 								<key>ZOrder</key>
@@ -394,7 +394,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -416,7 +416,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001</string>
 								<key>ZOrder</key>
@@ -469,7 +469,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -491,7 +491,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_1</string>
 								<key>ZOrder</key>
@@ -544,7 +544,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -566,7 +566,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_1</string>
 								<key>ZOrder</key>
@@ -619,7 +619,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -641,7 +641,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_1</string>
 								<key>ZOrder</key>
@@ -694,7 +694,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -716,7 +716,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_2</string>
 								<key>ZOrder</key>
@@ -769,7 +769,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -791,7 +791,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_2</string>
 								<key>ZOrder</key>
@@ -844,7 +844,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -866,7 +866,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_3</string>
 								<key>ZOrder</key>
@@ -919,7 +919,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -941,7 +941,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_2</string>
 								<key>ZOrder</key>
@@ -994,7 +994,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1016,7 +1016,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_3</string>
 								<key>ZOrder</key>
@@ -1069,7 +1069,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1091,7 +1091,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_3</string>
 								<key>ZOrder</key>
@@ -1144,7 +1144,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1166,7 +1166,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_4</string>
 								<key>ZOrder</key>
@@ -1219,7 +1219,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1241,7 +1241,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_4</string>
 								<key>ZOrder</key>
@@ -1294,7 +1294,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1316,7 +1316,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_5</string>
 								<key>ZOrder</key>
@@ -1369,7 +1369,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1391,7 +1391,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_4</string>
 								<key>ZOrder</key>
@@ -1444,7 +1444,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1466,7 +1466,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_5</string>
 								<key>ZOrder</key>
@@ -1519,7 +1519,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1541,7 +1541,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_5</string>
 								<key>ZOrder</key>
@@ -1594,7 +1594,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1616,7 +1616,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_6</string>
 								<key>ZOrder</key>
@@ -1669,7 +1669,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1691,7 +1691,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_6</string>
 								<key>ZOrder</key>
@@ -1744,7 +1744,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{156, 121}, {50, 50}}</string>
+								<string>{{365, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1766,7 +1766,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals002_7</string>
 								<key>ZOrder</key>
@@ -1819,7 +1819,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{105, 121}, {50, 50}}</string>
+								<string>{{416, 0}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1841,7 +1841,7 @@
 								<key>TagName</key>
 								<string>TAG_LEVELCHOOSER</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals001_6</string>
 								<key>ZOrder</key>
@@ -1894,7 +1894,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1916,7 +1916,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_7</string>
 								<key>ZOrder</key>
@@ -1969,7 +1969,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{46, 217}, {50, 50}}</string>
+								<string>{{365, 51}, {50, 50}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1991,7 +1991,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>LevelChooserNumerals003_8</string>
 								<key>ZOrder</key>
@@ -2074,7 +2074,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{624, 365}, {15.5, 13}}</string>
+								<string>{{418, 184}, {15.5, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2165,7 +2165,19 @@
 		<key>BundleIdentifier</key>
 		<string></string>
 		<key>CustomClasses</key>
-		<array/>
+		<array>
+			<dict>
+				<key>ClassName</key>
+				<string>QQBalloonClass</string>
+				<key>ClassRepresentation</key>
+				<dict>
+					<key>movingStartDelay</key>
+					<real>1</real>
+					<key>score</key>
+					<real>5</real>
+				</dict>
+			</dict>
+		</array>
 		<key>Device</key>
 		<integer>2</integer>
 		<key>GameWorld</key>
@@ -2181,7 +2193,7 @@
 		<key>ProjectPath</key>
 		<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump</string>
 		<key>SafeFrame</key>
-		<string>{0, 0}</string>
+		<string>{480, 320}</string>
 		<key>Tags</key>
 		<array>
 			<string>DEFAULT</string>
@@ -2194,6 +2206,12 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
+			<string>TAG_BALLOON_YELLOW</string>
+			<string>TAG_BALLOON_ORANGE</string>
+			<string>TAG_BALLOON_PURPLE</string>
+			<string>TAG_BALLOON_SIZECHANGER</string>
+			<string>TAG_BALLOON_SHAKER</string>
+			<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 		</array>
 		<key>ZoomValue</key>
 		<real>0.0</real>

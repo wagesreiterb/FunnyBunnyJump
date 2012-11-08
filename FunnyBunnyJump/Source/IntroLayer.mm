@@ -9,7 +9,6 @@
 
 // Import the interfaces
 #import "IntroLayer.h"
-#import "HelloWorldLayer.h"
 
 
 #pragma mark - IntroLayer
@@ -58,8 +57,10 @@
 	[self scheduleOnce:@selector(makeTransition:) delay:1];
 }
 
+/*
 -(void) makeTransition:(ccTime)dt
 {
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] withColor:ccWHITE]];
 }
+ */
 @end

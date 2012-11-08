@@ -80,24 +80,27 @@ static GameManager* _sharedGameManager = nil;
             
         case kLevel001: {
             NSString *fullLevelName = @"level";
-            //fullLevelName = [fullLevelName stringByAppendingString:@"Spring"];
             fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012001"];
-            
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
-            //[[GameManager sharedGameManager] setLevelToRun:@"levelSpring2012001"];
             sceneToRun =[QQLevel scene];
             break;
         }
             
         case kLevel002: {
             NSString *fullLevelName = @"level";
-            //fullLevelName = [fullLevelName stringByAppendingString:@"Spring"];
             fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012002"];
-            
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
-            //[[GameManager sharedGameManager] setLevelToRun:@"levelSpring2012001"];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+            
+        case kLevel003: {
+            NSString *fullLevelName = @"level";
+            fullLevelName = [fullLevelName stringByAppendingString:seasonName];
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012003"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
         }

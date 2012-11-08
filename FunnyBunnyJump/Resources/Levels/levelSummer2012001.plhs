@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.966</string>
+	<string>1.4.967</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -64,13 +64,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{513, 385}, {512, 384}}</string>
+								<string>{{0, 385}, {512, 384}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -169,7 +169,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 374}, {512, 179.75}}</string>
+								<string>{{0, 566}, {512, 179.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -274,7 +274,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{158, 147}, {50, 7.5}}</string>
+								<string>{{181, 101}, {50, 7.5}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -296,7 +296,7 @@
 								<key>TagName</key>
 								<string>TAG_MAX_HEIGHT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>maxHeight</string>
 								<key>ZOrder</key>
@@ -349,7 +349,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{98, 166}, {159.75, 12.75}}</string>
+								<string>{{222, 121}, {159.75, 12.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -371,7 +371,7 @@
 								<key>TagName</key>
 								<string>TAG_FLOOR</string>
 								<key>TextureOffset</key>
-								<string>{0, -0.25}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>floor</string>
 								<key>ZOrder</key>
@@ -424,7 +424,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{283, 46}, {58.5, 95.75}}</string>
+								<string>{{306, 0}, {58.5, 95.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -446,7 +446,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0.25}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>stone_right</string>
 								<key>ZOrder</key>
@@ -499,7 +499,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{222, 46}, {60.75, 95.75}}</string>
+								<string>{{244, 0}, {60.75, 95.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -521,7 +521,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0.25, -0.25}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>stone_left</string>
 								<key>ZOrder</key>
@@ -574,7 +574,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{393, 97}, {100, 20}}</string>
+								<string>{{121, 121}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -596,7 +596,7 @@
 								<key>TagName</key>
 								<string>TAG_TRAMPOLINE</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>trampoline</string>
 								<key>ZOrder</key>
@@ -649,7 +649,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{35, 46}, {512, 30.75}}</string>
+								<string>{{38, 0}, {512, 30.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -671,7 +671,7 @@
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
 								<string>backgroundSummerForegroundTrampoline</string>
 								<key>ZOrder</key>
@@ -754,7 +754,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{481, 0}, {25, 29.75}}</string>
+								<string>{{392, 161}, {25, 29.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -829,7 +829,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -904,7 +904,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -979,7 +979,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1054,7 +1054,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1129,7 +1129,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1204,7 +1204,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1279,7 +1279,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1354,7 +1354,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{387, 201}, {41.75, 49}}</string>
+								<string>{{418, 65}, {41.75, 49}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1445,7 +1445,19 @@
 		<key>BundleIdentifier</key>
 		<string></string>
 		<key>CustomClasses</key>
-		<array/>
+		<array>
+			<dict>
+				<key>ClassName</key>
+				<string>QQBalloonClass</string>
+				<key>ClassRepresentation</key>
+				<dict>
+					<key>movingStartDelay</key>
+					<real>1</real>
+					<key>score</key>
+					<real>5</real>
+				</dict>
+			</dict>
+		</array>
 		<key>Device</key>
 		<integer>2</integer>
 		<key>GameWorld</key>
@@ -1461,7 +1473,7 @@
 		<key>ProjectPath</key>
 		<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump</string>
 		<key>SafeFrame</key>
-		<string>{0, 0}</string>
+		<string>{480, 320}</string>
 		<key>Tags</key>
 		<array>
 			<string>DEFAULT</string>
@@ -1474,6 +1486,12 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
+			<string>TAG_BALLOON_YELLOW</string>
+			<string>TAG_BALLOON_ORANGE</string>
+			<string>TAG_BALLOON_PURPLE</string>
+			<string>TAG_BALLOON_SIZECHANGER</string>
+			<string>TAG_BALLOON_SHAKER</string>
+			<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 		</array>
 		<key>ZoomValue</key>
 		<real>0.0</real>

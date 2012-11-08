@@ -16,6 +16,13 @@
     _moveLeft = YES;
 }
 
+-(void)startMovingWithDelay:(int)delay {
+    float interval = 1.0f;
+    //[self schedule: @selector(tick:) interval:interval];
+    [self schedule: @selector(tick:) interval:interval repeat:-1 delay:delay];
+    _moveLeft = YES;
+}
+
 -(void)tick:(ccTime)dt {
     b2Vec2 vel = body->GetLinearVelocity();
     float desiredVel = 0;

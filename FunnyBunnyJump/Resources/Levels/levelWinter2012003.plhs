@@ -28,16 +28,28 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>score</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>movingStartDelay</key>
+									<real>1</real>
+									<key>score</key>
+									<real>5</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
 							<key>ParentClass</key>
 							<string>LHBatch</string>
 							<key>ParentName</key>
-							<string>backgrounds2</string>
+							<string>UntitledSheet</string>
 							<key>PathProperties</key>
 							<dict/>
 							<key>PhysicProperties</key>
@@ -48,11 +60,11 @@
 							<key>SHSceneName</key>
 							<string>objects.pshs</string>
 							<key>SHSheetName</key>
-							<string>backgrounds2</string>
+							<string>UntitledSheet</string>
 							<key>SHSpriteName</key>
-							<string>seasonChooserWinter</string>
+							<string>balloon_purple</string>
 							<key>SheetImage</key>
-							<string>objects_backgrounds2.png</string>
+							<string>objects_UntitledSheet.png</string>
 							<key>TextureProperties</key>
 							<dict>
 								<key>Angle</key>
@@ -64,7 +76,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{215, 513}, {213.75, 160}}</string>
+								<string>{{418, 115}, {33, 45.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -76,99 +88,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{240, 160}</string>
+								<string>{371.25, 233.75}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{213.25, 160}</string>
+								<string>{33, 45.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0.25, -0}</string>
+								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>seasonChooserWinter</string>
+								<string>balloonPurple</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>seasonChooserWinter</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>backgrounds2</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>backgrounds2</string>
-							<key>SHSpriteName</key>
-							<string>seasonChooserFrame</string>
-							<key>SheetImage</key>
-							<string>objects_backgrounds2.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{0, 513}, {213.75, 160}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<false/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{240, 160}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{213.25, 160}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0.25, -0}</string>
-								<key>UniqueName</key>
-								<string>seasonChooserFrame</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>seasonChooserFrame</string>
+							<string>balloonPurple</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -185,17 +122,17 @@
 					<key>SHScene</key>
 					<string>objects.pshs</string>
 					<key>SheetImage</key>
-					<string>objects_backgrounds2.png</string>
+					<string>objects_UntitledSheet.png</string>
 					<key>SheetImageRelative</key>
-					<string>/Resources/Images/objects_backgrounds2.png</string>
+					<string>/Resources/Images/objects_UntitledSheet.png</string>
 					<key>Tag</key>
 					<integer>0</integer>
 					<key>TagName</key>
 					<string>DEFAULT</string>
 					<key>UniqueName</key>
-					<string>backgrounds2</string>
+					<string>UntitledSheet</string>
 					<key>ZOrder</key>
-					<integer>0</integer>
+					<integer>5</integer>
 				</dict>
 			</array>
 			<key>CustomClassInfo</key>

@@ -112,7 +112,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 [[GameManager sharedGameManager] runSceneWithID:kLevel002];
                 break;
             case 3:
-                NSLog(@"3");
+                [[GameManager sharedGameManager] runSceneWithID:kLevel003];
                 break;
                 
             case 1001:

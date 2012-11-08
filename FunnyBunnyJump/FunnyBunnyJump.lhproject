@@ -48,7 +48,7 @@
 		</dict>
 	</array>
 	<key>CustomScreenSize</key>
-	<string>{0, 0}</string>
+	<string>{480, 320}</string>
 	<key>Device</key>
 	<integer>2</integer>
 	<key>Engine</key>

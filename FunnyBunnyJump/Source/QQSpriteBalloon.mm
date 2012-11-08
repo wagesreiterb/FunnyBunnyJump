@@ -64,6 +64,22 @@
     return [object isKindOfClass:[QQSpriteBalloon class]];
 }
 
+-(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer {
+    //CCLOG(@"reactToTouch");
+    if(wasTouched) {
+        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+        [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+        [layer addChild:_particle];
+        [_particle release];
+                
+        wasTouched = FALSE;
+
+        [self body]->SetActive(false);
+        [self removeSelf];
+    }
+}
+
+/*
 -(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer {
     //CCLOG(@"reactToTouch");
     if(wasTouched) {
@@ -71,16 +87,17 @@
         [_particle setPosition:CGPointMake([balloon position].x, [balloon position].y)];
         [layer addChild:_particle];
         [_particle release];
-                
+        
         wasTouched = FALSE;
-
+        
         [balloon body]->SetActive(false);
         [self removeSelf];
-                
+        
         return nil;
     }
     return balloon;
 }
+*/
 
 -(id)removeMe {
     [self removeSelf];

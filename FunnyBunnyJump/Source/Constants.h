@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define COUNTDOWN 100;
+
 @protocol Constants <NSObject>
 
 typedef enum {
@@ -17,14 +19,17 @@ typedef enum {
     kLevelChooser = 3,
     
     kLevel001 = 2012001,
-    kLevel002 = 2012002
+    kLevel002 = 2012002,
+    kLevel003 = 2012003
     //kLevelSpring2012002 = 2012002
+    
     
 } SceneTypes;
 
 typedef enum {
     spring, summer, fall, winter
 } Seasons;
+
 
 
 @end

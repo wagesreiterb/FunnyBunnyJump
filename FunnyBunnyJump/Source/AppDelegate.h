@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "QQHomeScreen.h"
 #import "GCHelper.h"
+#import "GameManager.h"
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {

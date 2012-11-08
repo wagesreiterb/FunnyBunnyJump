@@ -36,5 +36,6 @@
 
 //------------------------------------------------------------------------------
 //create your own custom methods here
--(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer;
+//-(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer;
+-(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer;
 @end
