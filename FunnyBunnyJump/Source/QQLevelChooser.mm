@@ -70,8 +70,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 -(void) setupLevelHelper {
     self.isTouchEnabled = YES;
     self.isAccelerometerEnabled = YES;
-    [[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
-    [self schedule: @selector(tick:) interval:1.0f/70.0f];
+    //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
+    //[self schedule: @selector(tick:) interval:1.0f/70.0f];
  
     //[LevelHelperLoader dontStretchArtOnIpad];
     loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelChooser"];
@@ -86,7 +86,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _levelChooserIcons = [loader spritesWithTag:TAG_LEVELCHOOSER];
     for(LHSprite* mySprite in _levelChooserIcons)
     {
-        [mySprite registerTouchBeginObserver:self selector:@selector(touchBegin:)];
+        [mySprite registerTouchBeganObserver:self selector:@selector(touchBegan:)];
     }
 
     //[self setupAudio];
@@ -99,7 +99,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
  */
 
--(void)touchBegin:(LHTouchInfo*)info{
+-(void)touchBegan:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
     

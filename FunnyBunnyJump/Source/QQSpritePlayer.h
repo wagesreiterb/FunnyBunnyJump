@@ -12,6 +12,7 @@
 {
     //int life;
     //int magic;
+    BOOL shallResetPosition;
     BOOL jumping;
     enum state {jumping_up, jumping_down, on_seesaw};
     BOOL acceptForces;
@@ -31,6 +32,7 @@
     BOOL totallyDead;   //player has no more lifes left
 }
 //add your own properties here
+@property BOOL shallResetPosition;
 @property (getter=isDead) BOOL dead;
 @property CGPoint location;
 @property BOOL acceptForces;
@@ -62,6 +64,7 @@
 
 //------------------------------------------------------------------------------
 //create your own custom methods here
+-(void)resetPosition;
 -(void)whichDirection;
 -(void)applyForce;
 -(void)applyStartJump;

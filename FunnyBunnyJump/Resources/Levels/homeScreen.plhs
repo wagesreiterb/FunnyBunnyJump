@@ -676,9 +676,6 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
-			<string>TAG_BALLOON_YELLOW</string>
-			<string>TAG_BALLOON_ORANGE</string>
-			<string>TAG_BALLOON_PURPLE</string>
 			<string>TAG_BALLOON_SIZECHANGER</string>
 			<string>TAG_BALLOON_SHAKER</string>
 			<string>TAG_BALLOON_THREETIMESTOUCHER</string>

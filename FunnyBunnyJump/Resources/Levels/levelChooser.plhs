@@ -37,7 +37,7 @@
 							<key>ParentClass</key>
 							<string>LHBatch</string>
 							<key>ParentName</key>
-							<string>backgrounds</string>
+							<string>backgrounds2</string>
 							<key>PathProperties</key>
 							<dict/>
 							<key>PhysicProperties</key>
@@ -48,11 +48,11 @@
 							<key>SHSceneName</key>
 							<string>objects.pshs</string>
 							<key>SHSheetName</key>
-							<string>backgrounds</string>
+							<string>backgrounds2</string>
 							<key>SHSpriteName</key>
-							<string>backgroundSummerBackground</string>
+							<string>seasonChooserSummer</string>
 							<key>SheetImage</key>
-							<string>objects_backgrounds.png</string>
+							<string>objects_backgrounds2.png</string>
 							<key>TextureProperties</key>
 							<dict>
 								<key>Angle</key>
@@ -64,7 +64,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 385}, {512, 384}}</string>
+								<string>{{215, 674}, {213.75, 160}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -72,28 +72,28 @@
 								<key>IsRotated</key>
 								<false/>
 								<key>Locked</key>
-								<true/>
+								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
 								<string>{240, 160}</string>
 								<key>Scale</key>
-								<string>{1, 1}</string>
+								<string>{2.2508792877197266, 2}</string>
 								<key>SpriteSize</key>
-								<string>{512, 384}</string>
+								<string>{213.25, 160}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>TagName</key>
 								<string>DEFAULT</string>
 								<key>TextureOffset</key>
-								<string>{0, -0}</string>
+								<string>{0.25, -0}</string>
 								<key>UniqueName</key>
-								<string>backgroundSummerBackground</string>
+								<string>seasonChooserSummer</string>
 								<key>ZOrder</key>
-								<integer>-2</integer>
+								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>backgroundSummerBackground</string>
+							<string>seasonChooserSummer</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -110,17 +110,17 @@
 					<key>SHScene</key>
 					<string>objects.pshs</string>
 					<key>SheetImage</key>
-					<string>objects_backgrounds.png</string>
+					<string>objects_backgrounds2.png</string>
 					<key>SheetImageRelative</key>
-					<string>/Resources/Images/objects_backgrounds.png</string>
+					<string>/Resources/Images/objects_backgrounds2.png</string>
 					<key>Tag</key>
 					<integer>0</integer>
 					<key>TagName</key>
 					<string>DEFAULT</string>
 					<key>UniqueName</key>
-					<string>backgrounds</string>
+					<string>backgrounds2</string>
 					<key>ZOrder</key>
-					<integer>0</integer>
+					<integer>-2</integer>
 				</dict>
 				<dict>
 					<key>Children</key>
@@ -2206,9 +2206,6 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
-			<string>TAG_BALLOON_YELLOW</string>
-			<string>TAG_BALLOON_ORANGE</string>
-			<string>TAG_BALLOON_PURPLE</string>
 			<string>TAG_BALLOON_SIZECHANGER</string>
 			<string>TAG_BALLOON_SHAKER</string>
 			<string>TAG_BALLOON_THREETIMESTOUCHER</string>

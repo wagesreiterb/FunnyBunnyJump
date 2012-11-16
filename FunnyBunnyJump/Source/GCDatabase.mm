@@ -37,30 +37,51 @@ id loadData(NSString * filename) {
                                           initForReadingWithData:data] autorelease];
         id retval = [unarchiver decodeObjectForKey:@"Data"];
         [unarchiver finishDecoding];
+        NSLog(@"+++ loadData");
         return retval;
     }
+    
+    /*else {
+        NSLog(@"+++ loadData else else else");
+        
+        if([[GameState sharedInstance] tempHighScore] == nil) {
+            NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
+            [[GameState sharedInstance] setTempHighScore:tmpDict];
+        }
+    }
+     */
+    
+    /*
     else {
         NSLog(@"loadData::kein file - fotze");
+        
+        [GameState sharedInstance].tempHighScore = [NSMutableDictionary dictionary];
+
+        [[GameState sharedInstance].tempHighScore retain];
+        NSLog(@"+++ loadData tempHighScore %@", [GameState sharedInstance].tempHighScore);
+        NSLog(@"+++ loadData tempHighScore retainCount %d", [[GameState sharedInstance].tempHighScore retainCount]);
     }
-    
+     */
     return nil;
 }
 
 void saveData(id theData, NSString *filename) {
-    NSLog(@"---saveData");
     NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
     NSKeyedArchiver *archiver = [[[NSKeyedArchiver alloc] initForWritingWithMutableData:data] autorelease];
     [archiver encodeObject:theData forKey:@"Data"];
     [archiver finishEncoding];
     
-    //BOOL retVal = [data writeToFile:pathForFile(filename) atomically:YES];
-    BOOL retVal = [data writeToFile:pathForFile(filename) atomically:YES];
+
+    [data writeToFile:pathForFile(filename) atomically:YES];
     
+    /*
+    BOOL retVal = [data writeToFile:pathForFile(filename) atomically:YES];
     NSLog(@"save: filePath: %@", pathForFile(filename));
     NSLog(@"%i", retVal);
     BOOL yes = YES;
     BOOL no = NO;
     NSLog(@"YES: %i, NO: %i", yes = YES, no = NO);
+    */
 }
 
 //@implementation GCDatabase

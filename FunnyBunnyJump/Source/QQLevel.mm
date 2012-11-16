@@ -33,11 +33,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
     
     [self updateLifes];
-    [self updatePoints];
+    [self updateScore];
+    [self updateHighScore];
+    
     [_bar updateBar:dt];
     
     [_player applyForce];
     [_player whichDirection];
+    [_player resetPosition];
     //[_player applyStartJump];
     [_player beam];
     //[_player upOrDownAction:_earLeft withEarRight:_earRight];
@@ -45,80 +48,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     [_trampoline move:dt];
     [_trampoline setRestitutionAtTick];
-
-    //NSArray *balloons = [loader spritesWithTag:TAG_BALLOON];
-    //for(QQSpriteBalloon *balloon in balloons) {
-    //    [balloon reactToTouch:balloon withWorld:_world withLayer:self];
-    //}
     
     NSInteger balloonsLeft = 0;
-    
-    /*
-    NSArray *balloonsYellow = [loader spritesWithTag:TAG_BALLOON_YELLOW];
-    for(QQSpriteBalloon *balloonYellow in balloonsYellow) {
-        [balloonYellow reactToTouch:balloonYellow withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsPurple = [loader spritesWithTag:TAG_BALLOON_PURPLE];
-    for(QQSpriteBalloonShake *balloonPurple in balloonsPurple) {
-        [balloonPurple reactToTouch:balloonPurple withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
-    for(QQSpriteBalloonShake *balloon in balloonsShaker) {
-        [balloon reactToTouch:balloon withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsOrange = [loader spritesWithTag:TAG_BALLOON_ORANGE];
-    for(QQSpriteBalloonShake *balloonOrange in balloonsOrange) {
-        [balloonOrange reactToTouch:balloonOrange withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
-    for(QQSpriteBalloonShake *balloon in balloonsSizechanger) {
-        [balloon reactToTouch:balloon withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
-    for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
-        [balloon reactToTouch:balloon withWorld:_world withLayer:self];
-        balloonsLeft++;
-    }
-     */
-    
-    
-    
-    
-    
-    
-    
-    NSArray *balloonsYellow = [loader spritesWithTag:TAG_BALLOON_YELLOW];
-    for(QQSpriteBalloon *balloonYellow in balloonsYellow) {
-        [balloonYellow reactToTouch:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    
-    NSArray *balloonsPurple = [loader spritesWithTag:TAG_BALLOON_PURPLE];
-    for(QQSpriteBalloonShake *balloonPurple in balloonsPurple) {
-        [balloonPurple reactToTouch:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
+
     NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
     for(QQSpriteBalloonShake *balloon in balloonsShaker) {
         [balloon reactToTouch:_world withLayer:self];
-        balloonsLeft++;
-    }
-    
-    NSArray *balloonsOrange = [loader spritesWithTag:TAG_BALLOON_ORANGE];
-    for(QQSpriteBalloonShake *balloonOrange in balloonsOrange) {
-        [balloonOrange reactToTouch:_world withLayer:self];
         balloonsLeft++;
     }
     
@@ -130,7 +65,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
     for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
-        [balloon reactToTouch:_world withLayer:self];
+        [balloon reactToTouchWithWorld:_world withLayer:self];
         balloonsLeft++;
     }
      
@@ -138,24 +73,56 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     //level completed    
     if(balloonsLeft == 0) {
-        [self levelCompleted];
+        [self gameOverWithLevelPassed:YES];
+        //[self levelCompleted];
     }
-
-    /*
-    NSArray *stars = [loader spritesWithTag:TAG_STAR];
-    for(QQSpriteStar *star in stars) {
-        [star reactToTouch:star withWorld:_world withLayer:self];
-    }
-     */
 }
 
+-(void)gameOverWithLevelPassed:(BOOL)levelPassed {
+    if(levelPassed) {
+        //TODO: save score
+        [self showOverlayGameOver];
+    } else {
+        if([_player lifes] > 0) {
+            //TODO: pause
+            //[[CCDirector sharedDirector] pause];
+            
+            [self scheduleOnce:@selector(pauseLevelAtSchedule:) delay:0.3f];
+            
+            _levelStarted = NO;
+            [_player setShallResetPosition:YES];
+            [_player setVisible:NO];
+            
+            //[_player transformPosition:[_player position]];
+            
+            //move player to original positiony
+        } else {
+            [self showOverlayGameOver];
+        }
+    }
+}
+
+-(void)pauseLevelAtSchedule:(ccTime)dt {
+    [[CCDirector sharedDirector] pause];
+    [_player setVisible:YES];
+}
+
+-(void)showOverlayGameOver {
+    _loaderOverlayGameOver = [[LevelHelperLoader alloc] initWithContentOfFile:@"overlayGameOver"];
+    [_loaderOverlayGameOver addSpritesToLayer:self];
+    
+}
+
+/*
 -(void)levelCompleted {
     //save score
     //halt physics
-    [[CCDirector sharedDirector] pause];
+    //[[CCDirector sharedDirector] pause];
     //show popup screen with current score, high score
     
 }
+*/
+
 ////////////////////////////////////////////////////////////////////////////////
 -(void)step:(ccTime)dt {
 	float32 frameTime = dt;
@@ -201,67 +168,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _world = new b2World(gravity);
     _world->SetContinuousPhysics(true);
 }
-
-/*
- -(void)beginEndCollisionBetweenBalloonYellowAndPlayer:(LHContactInfo*)contact{
- if([contact contactType]) {
- QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
- [touchedBalloon setWasTouched:TRUE];
  
- [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
- } else {
- }
- }
- */
-
--(void)beginEndCollisionBetweenBalloonYellowAndPlayer:(LHContactInfo*)contact{
-    if([contact contactType]) {
-        QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
-        [touchedBalloon setWasTouched:TRUE];
-
-        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-        
-        alreadyFiredBallon = NO;
-    } else {
-        if(alreadyFiredBallon) {
-            CCLOG(@"YES BBB");
-        } else {
-            CCLOG(@"NO BBB");
-            
-            QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
-            [touchedBalloon setWasTouched:TRUE];
-            
-            [_player setBalloonTouched:TRUE];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-            
-            _points += _countDown;
-            
-            alreadyFiredBallon = YES;
-        }
-    }
-}
-
--(void)beginEndCollisionBetweenBalloonPurpleAndPlayer:(LHContactInfo*)contact{
-    if([contact contactType]) {
-        QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
-        [touchedBalloon setWasTouched:TRUE];
-        
-        [_player setBalloonTouched:TRUE];
-        
-        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-        
-        _points += _countDown;
-    } else {
-    }
-}
-
 -(void)beginEndCollisionBetweenBalloonShakerAndPlayer:(LHContactInfo*)contact{
     if([contact contactType]) {
         QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
         [touchedBalloon setWasTouched:TRUE];
         [_player setBalloonTouched:TRUE];
         [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-        _points += _countDown;
+        _score += _countDown;
     } else {
         //CCLOG(@"touch ended");
     }
@@ -272,47 +186,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         QQSpriteBalloonThreetimestoucher *touchedBalloon = (QQSpriteBalloonThreetimestoucher*)[contact bodyA]->GetUserData();
         [touchedBalloon setWasTouched:TRUE];
         [_player setBalloonTouched:TRUE];
-        //[[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-        _points += _countDown;
-    } else {
-
-    }
-}
-
-
--(void)beginEndCollisionBetweenBalloonOrangeAndPlayer:(LHContactInfo*)contact{
-    if([contact contactType]) {
-            alreadyFiredBallon = NO;
-    } else {
-        if(alreadyFiredBallon) {
-            CCLOG(@"YES BBB");
-        } else {
-            CCLOG(@"NO BBB");
-            
-            QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
-            [touchedBalloon setWasTouched:TRUE];
-            
-            [_player setBalloonTouched:TRUE];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-            
-            alreadyFiredBallon = YES;
-        }  
-    }
-}
-
-/*
--(void)beginEndCollisionBetweenBalloonAndPlayer:(LHContactInfo*)contact{
-    if([contact contactType]) {     
-        QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
-        [touchedBalloon setWasTouched:TRUE];
-        
-        [_player setBalloonTouched:TRUE];
-
         [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        _score += _countDown;
     } else {
+
     }
 }
- */
 
 -(void)beginEndCollisionBetweenBalloonSizechangerAndPlayer:(LHContactInfo*)contact{
     if([contact contactType]) {
@@ -322,11 +201,10 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         } else {
             QQSpriteBalloonSizechanger *touchedBalloon = (QQSpriteBalloonSizechanger*)[contact bodyA]->GetUserData();
             [touchedBalloon setWasTouched:TRUE];
-            
             [_player setBalloonTouched:TRUE];
             [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-            
             alreadyFiredBallon = YES;
+            _score += _countDown;
         }
     }
 }
@@ -366,13 +244,13 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         
     } else {
         //[_trampoline setRestitution:[_trampoline initialRestitution]];
-        CCLOG(@"Trampoline and Player touch");
+        //CCLOG(@"Trampoline and Player touch");
 
         
         if(alreadyFired) {
-            CCLOG(@"YES");
+            //CCLOG(@"YES");
         } else {
-            CCLOG(@"NO");
+            //CCLOG(@"NO");
             
             [[SimpleAudioEngine sharedEngine] playEffect:@"boink.wav"];
             [_trampoline shallChangeRestitution: TRUE];
@@ -413,8 +291,16 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 -(void)beginEndCollisionBetweenPlayerAndFloor:(LHContactInfo*)contact{
 	if([contact contactType]) {
-
     } else {
+        
+        //[[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
+        //[self pauseLevelAtStart:YES];
+
+        [_player setLifes:[_player lifes] - 1];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"ouch.mp3"];
+        [self gameOverWithLevelPassed:NO];
+        
+        /*
         if([_player isDead]) {
             CCLOG(@"IF IF IF");
         } else {
@@ -424,6 +310,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             [_player setDead:YES];
             [self pauseLevelAtStart:YES];
         }
+        */
     }
 }
 
@@ -495,15 +382,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteTrampoline class]
                                                            forTag:TAG_TRAMPOLINE];
 
-    [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloon class]
-                                                           forTag:TAG_BALLOON_YELLOW];
-    
-    [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloonShake class]
-                                                           forTag:TAG_BALLOON_PURPLE];
-    
-    [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloonShake class]
-                                                           forTag:TAG_BALLOON_ORANGE];
-    
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloonShake class]
                                                            forTag:TAG_BALLOON_SHAKER];
     
@@ -542,6 +420,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [self setupBar];
     [self setupJoystick];
     [self setupLifes];
+    [self setupScore];
+    [self setupHighScore];
     [self setupRegisterForCollision];
     
     
@@ -553,39 +433,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spritePauseButton registerTouchBeganObserver:self selector:@selector(touchBeganPauseButton:)];
     
     [self pauseLevelAtStart:YES];
-    
-    
-    
-    
-    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    
-    /*
-    LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
-    if(balloon == nil) {
-        NSLog(@"BALLOON IS NIL");
-    } else {
-        NSLog(@"WE HAVE A BALLOON");
-    }
-    [balloon makeDynamic];
-    NSString* classInfo = [balloon userInfoClassName];
-    NSLog(@"classInfo %@", classInfo);
-    
-    QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
 
-    if(myInfo != nil){
-        //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
-        int score = [myInfo score];
-        int movingStartDelay = [myInfo movingStartDelay];
-        NSLog(@"score: %d", score);
-        NSLog(@"score: %d", movingStartDelay);
-    } else {
-        NSLog(@"don't work!");
-    }
-     */
-    
-    
-    //NSLog(@"LevelName: %@", [[GameManager sharedGameManager] levelToRun]);
-    
 }
 
 -(void)setupRegisterForCollision {
@@ -605,23 +453,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                                                    andTagB:TAG_PLAYER
                                                 idListener:self
                                                selListener:@selector(beginEndCollisionBetweenBalloonThreetimestoucherAndPlayer:)];
-    
-    [loader registerBeginOrEndCollisionCallbackBetweenTagA:TAG_BALLOON_YELLOW
-                                                   andTagB:TAG_PLAYER
-                                                idListener:self
-                                               selListener:@selector(beginEndCollisionBetweenBalloonYellowAndPlayer:)];
-    
-    [loader registerBeginOrEndCollisionCallbackBetweenTagA:TAG_BALLOON_PURPLE
-                                                   andTagB:TAG_PLAYER
-                                                idListener:self
-                                               selListener:@selector(beginEndCollisionBetweenBalloonPurpleAndPlayer:)];
-    
-    [loader registerBeginOrEndCollisionCallbackBetweenTagA:TAG_BALLOON_ORANGE
-                                                   andTagB:TAG_PLAYER
-                                                idListener:self
-                                               selListener:@selector(beginEndCollisionBetweenBalloonOrangeAndPlayer:)];
-    
-    
     
     [loader registerBeginOrEndCollisionCallbackBetweenTagA:TAG_MAX_HEIGHT
                                                    andTagB:TAG_PLAYER
@@ -649,26 +480,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                                                selListener:@selector(beginEndCollisionBetweenPlayerAndStar:)];
 }
 
--(void)setupLifes {
-    LHSprite* spriteLifes = [loaderJoystick spriteWithUniqueName:@"lifes"];
 
-    NSString* stringLifes = [NSString stringWithFormat:@"%d", [_player lifes]];
-    
-    _labelLifes = [CCLabelTTF labelWithString:stringLifes fontName:@"Marker Felt" fontSize:16];
-    [_labelLifes setColor:ccc3(0,0,0)];
-    [_labelLifes setPosition:[spriteLifes position]];
-    [self addChild:_labelLifes];
-}
-
--(void)updateLifes {
-    //[_labelLifes setString:[NSString stringWithFormat:@"%d", [_player lifes]]];
-    
-    //[_labelLifes setString:[NSString stringWithFormat:@"%d", _points]];
-}
-
--(void)updatePoints {
-    [_labelLifes setString:[NSString stringWithFormat:@"%d", _points]];
-}
 
 
 -(void)pauseLevelAtStart:(BOOL)pause_ {
@@ -755,13 +567,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 //layerPause
 -(void)touchBeganReloadButton:(LHTouchInfo*)info{
-    //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
     if(info.sprite) {
-        //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
         [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
         //_levelStarted = NO;
-        [self pauseLevelAtStart:YES];
-        [self pauseLevel:NO];
+        //[self pauseLevelAtStart:YES];
+        //[self pauseLevel:NO];
+        NSLog(@"--- Reload");
     }
 }
 
@@ -795,86 +606,51 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 #pragma mark setupXXX
 
--(void)setupEffect {
-    //Frühling
-    //Butterfly
-    //if([[GameManager sharedGameManager] effectRaining]) {
-    //    CCParticleSystemQuad *particleRain = [[CCParticleSystemQuad alloc] initWithFile:@"rain.plist"];
-    //    [self addChild:particleRain];
-    //}
-    
-    if([[GameManager sharedGameManager] effectFallingLeaves]) {
-        _particleLeave = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves.plist"];
-        [self addChild:_particleLeave];
-    }
-    
-    if([[GameManager sharedGameManager] effectSnowing]) {
+-(void)setupEffect {   
+    LHSprite* snow = [loader spriteWithUniqueName:@EFFECT_SNOW];
+    if(snow != nil) {
         _particleSnow = [[CCParticleSystemQuad alloc] initWithFile:@"snow.plist"];
         [self addChild:_particleSnow];
     }
     
-    if([[GameManager sharedGameManager] effectSunShining]) {
+    LHSprite* leaves = [loader spriteWithUniqueName:@EFFECT_LEAVES];
+    if(leaves != nil) {
+        _particleLeaves = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves.plist"];
+        [self addChild:_particleLeaves];
+    }
+    
+    LHSprite* sun = [loader spriteWithUniqueName:@EFFECT_SUN];
+    if(sun != nil) {
         _particleSun = [[CCParticleSystemQuad alloc] initWithFile:@"sun.plist"];
         [self addChild:_particleSun];
+    }
+    
+    LHSprite* rain = [loader spriteWithUniqueName:@EFFECT_RAIN];
+    if(rain != nil) {
+        _particleRain = [[CCParticleSystemQuad alloc] initWithFile:@"rain.plist"];
+        [self addChild:_particleRain];
     }
 }
 
 
 -(void)setupBalloon {
     NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
+    int movingStartDelay = 0;
     for(QQSpriteBalloonShake *balloon in balloonsShaker) {
-        //[balloon startMoving];
-        if(balloon == nil) {
-            NSLog(@"BALLOON IS NIL");
-        } else {
-            NSLog(@"WE HAVE A BALLOON");
+        if(balloon != nil) {
+            QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+            if(myInfo != nil){
+                //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+                movingStartDelay = [myInfo movingStartDelay];
+            } 
+            [balloon startMovingWithDelay:movingStartDelay];
         }
-        NSString* classInfo = [balloon userInfoClassName];
-        NSLog(@"classInfo %@", classInfo);
-        
-        QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
-        
-        int movingStartDelay;
-        if(myInfo != nil){
-            //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
-            int score = [myInfo score];
-            movingStartDelay = [myInfo movingStartDelay];
-            NSLog(@"");
-            NSLog(@"score: %d", score);
-            NSLog(@"movingStartDelay: %d", movingStartDelay);
-        } else {
-            NSLog(@"don't work!");
-        }
-        [balloon startMovingWithDelay:movingStartDelay];
     }
     
     NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
     for(QQSpriteBalloonSizechanger *balloon in balloonsSizechanger) {
-        [balloon start:0.05f];
+        [balloon startWithInterval:0.05f];
     }
-    
-    /*
-    LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
-    if(balloon == nil) {
-        NSLog(@"BALLOON IS NIL");
-    } else {
-        NSLog(@"WE HAVE A BALLOON");
-    }
-    NSString* classInfo = [balloon userInfoClassName];
-    NSLog(@"classInfo %@", classInfo);
-    
-    QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
-    
-    if(myInfo != nil){
-        //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
-        int score = [myInfo score];
-        int movingStartDelay = [myInfo movingStartDelay];
-        NSLog(@"score: %d", score);
-        NSLog(@"score: %d", movingStartDelay);
-    } else {
-        NSLog(@"don't work!");
-    }
-     */
 }
 
 
@@ -899,28 +675,25 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     LHSprite *beam1 = [loader spriteWithUniqueName:@"beam1"];
     LHSprite *beam2 = [loader spriteWithUniqueName:@"beam2"];
     
-    if(nil != beam1) {
+    if(nil != beam1 && nil != beam2) {
         //CCLOG(@"BEAM IS in the level");
         
-        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
+        _particleBeam1 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
         CGPoint particlePosition;
         particlePosition.x = [beam1 position].x;
         particlePosition.y = [beam1 position].y;
         //particlePosition.x = 40;
         //particlePosition.y = 320 - 60;
-        [_particle setPosition:particlePosition];
-        [self addChild:_particle];
+        [_particleBeam1 setPosition:particlePosition];
+        [self addChild:_particleBeam1];
         
-        _particle2 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
+        _particleBeam2 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
         CGPoint particlePosition2;
         particlePosition2.x = [beam2 position].x;
         particlePosition2.y = [beam2 position].y;
-        [_particle2 setPosition:particlePosition2];
-        [self addChild:_particle2];
-    } else {
-        //CCLOG(@"NO BEAM!!");
+        [_particleBeam2 setPosition:particlePosition2];
+        [self addChild:_particleBeam2];
     }
-
 }
 
 -(void)setupPlayer {
@@ -931,10 +704,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _earRight = [loader spriteWithUniqueName:@"bunny_ear_right"];
     _handLeft = [loader spriteWithUniqueName:@"hand_left"];
     _handRight = [loader spriteWithUniqueName:@"hand_right"];
-    //[_player prepareAnimationNamed:@"jumper" fromSHScene:@"objects"];
-    //[_player prepareAnimationNamed:@"moul" fromSHScene:@"objects"];
-    //[_player prepareAnimationNamed:@"bunny_jump_up" fromSHScene:@"objects"];
-    //[_player playAnimation];
+    
+    [_player setLifes:LIFES];
 }
 
 -(void)setupDebugDraw {
@@ -994,8 +765,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
 }
 
-
-
 ////////////////////////////////////////////////////////////////////////////////
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -1007,27 +776,123 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_trampoline setCurrentMoveState:MS_STOP];
 }
 
--(void)turnOffEffects {
-    [[GameManager sharedGameManager] setEffectFallingLeaves:FALSE];
-    [[GameManager sharedGameManager] setEffectRaining:FALSE];
-    [[GameManager sharedGameManager] setEffectSnowing:FALSE];
-    [[GameManager sharedGameManager] setEffectSunShining:FALSE];
+-(void)setupLifes {
+    LHSprite* spriteLifes = [loaderJoystick spriteWithUniqueName:@"lifes"];
+    
+    NSString* stringLifes = [NSString stringWithFormat:@"%d", [_player lifes]];
+    
+    //_labelLifes = [CCLabelTTF labelWithString:stringLifes fontName:@"Marker Felt" fontSize:16];
+    _labelLifes = [CCLabelTTF labelWithString:stringLifes
+                                   dimensions:CGSizeMake(50, 50)
+                                   hAlignment:kCCTextAlignmentRight
+                                     fontName:@"Marker Felt"
+                                     fontSize:16];
+    [_labelLifes setColor:ccc3(0,0,0)];
+    [_labelLifes setPosition:[spriteLifes position]];
+    [self addChild:_labelLifes];
+}
+
+-(void)setupScore {
+    LHSprite* spriteScore = [loaderJoystick spriteWithUniqueName:@"score"];
+    NSString* stringScore = [NSString stringWithFormat:@"%d", _score];
+    
+    //_labelScore = [CCLabelTTF labelWithString:stringScore fontName:@"Marker Felt" fontSize:16];
+    _labelScore = [CCLabelTTF labelWithString:stringScore
+                                       dimensions:CGSizeMake(50, 50)
+                                       hAlignment:kCCTextAlignmentRight
+                                         fontName:@"Marker Felt"
+                                         fontSize:16];
+    [_labelScore setColor:ccc3(0,0,0)];
+    [_labelScore setPosition:[spriteScore position]];
+    [self addChild:_labelScore];
+}
+
+-(void)setupHighScore {
+    //_highScore = [[[[GameState sharedInstance] tempHighScore] objectForKey:@"seasonWinter2012004"] intValue];
+    _highScore = [[[[GameState sharedInstance] tempHighScore] objectForKey:[[GameManager sharedGameManager] levelToRun]] intValue];
+
+    //_highScore = [[[GameState sharedInstance] tempHighScore] objectForKey:[[GameManager sharedGameManager] levelToRun]] intValue];
+    LHSprite* spriteScoreOld = [loaderJoystick spriteWithUniqueName:@"scoreOld"];
+    NSString* stringHighScore = [NSString stringWithFormat:@"%d", _highScore];
+    
+    //_labelHighScore = [CCLabelTTF labelWithString:stringScoreOld fontName:@"Marker Felt" fontSize:16];
+    _labelHighScore = [CCLabelTTF labelWithString:stringHighScore
+                                       dimensions:CGSizeMake(50, 50)
+                                       hAlignment:kCCTextAlignmentRight
+                                         fontName:@"Marker Felt"
+                                         fontSize:16];
+
+    [_labelHighScore setColor:ccc3(0,0,0)];
+    [_labelHighScore setPosition:[spriteScoreOld position]];
+    [self addChild:_labelHighScore];
+}
+
+-(void)saveHighScore {
+    //[[[GameState sharedInstance] tempHighScore] setObject:[NSNumber numberWithInt:_highScore] forKey:@"seasonWinter2012004"];
+    [[[GameState sharedInstance] tempHighScore] setObject:[NSNumber numberWithInt:_highScore] forKey:[[GameManager sharedGameManager] levelToRun]];
+    NSLog(@"- saveHighScore %@", [[GameState sharedInstance] tempHighScore]);
+}
+
+
+-(void)updateLifes {
+    [_labelLifes setString:[NSString stringWithFormat:@"%d", [_player lifes]]];
+}
+
+-(void)updateScore {
+    [_labelScore setString:[NSString stringWithFormat:@"%d", _score]];
+}
+
+-(void)updateHighScore {
+    if(_highScore < _score) {
+        _highScore = _score;
+        [_labelHighScore setString:[NSString stringWithFormat:@"%d", _highScore]];
+        [self saveHighScore];
+    } else {
+        [_labelHighScore setString:[NSString stringWithFormat:@"%d", _highScore]];
+    }
+}
+
+-(void)saveGameState {
+    
+    //save gameCenter
+    [GameState sharedInstance].completedSeasonSpring2012 = true;
+    [[GCHelper sharedInstance] reportAchievements:kAchievementSeasonSpring2012 percentComplete:100.0];
+    
+    //reset Achievements
+    //[[GCHelper sharedInstance] resetAchievements];
+    
+    int timeSoFar = 15;
+    [[GCHelper sharedInstance] reportScore:kLeaderBoard score:(int)timeSoFar];
+
+
+    [self saveHighScore];
+    
+    [[GameState sharedInstance] save];
+     
+
+}
+
+-(void)gameOver {
+    //save highScore
+    //save level as passed
+    //show gameOver Layer
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-    //[_player stopAnimation];
-
-    [self turnOffEffects];
-    if(nil != _particle) [_particle release];
-    if(nil != _particle2) [_particle2 release];
+    if(nil != _particleLeaves) [_particleLeaves release];
+    if(nil != _particleSnow) [_particleSnow release];
+    if(nil != _particleSun) [_particleSun release];
+    if(nil != _particleRain) [_particleRain release];
+    if(nil != _particleBeam1) [_particleBeam1 release];
+    if(nil != _particleBeam2) [_particleBeam2 release];
     
-    if(nil != _particle) [_particleLeave release];
-    if(nil != _particle2) [_particleSnow release];
-    if(nil != _particle2) [_particleSun release];
-
+    NSLog(@"Level::dealloc");
+    [self saveGameState];
+    //[_dictionaryHighScore release];
+     
     if(nil != loader) {
         //NSArray* allSprites = [loader allSprites];
         //for (LHSprite* aSprite in allSprites) {
@@ -1046,20 +911,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
   	delete m_debugDraw;
 
 	[super dealloc];    // don't forget to call "super dealloc"
-    
-    //save gameCenter
-    [GameState sharedInstance].completedSeasonSpring2012 = true;
-    [[GameState sharedInstance] save];
-    [[GCHelper sharedInstance] reportAchievements:kAchievementSeasonSpring2012 percentComplete:100.0];
-    
-    //reset Achievements
-    //[[GCHelper sharedInstance] resetAchievements];
-    
-    int timeSoFar = 15;
-    [[GCHelper sharedInstance] reportScore:kLeaderBoard score:(int)timeSoFar];
-    
-    [GameState sharedInstance].punkte = 22;
-    [[GameState sharedInstance] save];
+
 }
 @end
 ////////////////////////////////////////////////////////////////////////////////
@@ -1192,4 +1044,261 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 //[self addChild:_labelTimer];
 
 
+
+/*
+ LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
+ if(balloon == nil) {
+ NSLog(@"BALLOON IS NIL");
+ } else {
+ NSLog(@"WE HAVE A BALLOON");
+ }
+ NSString* classInfo = [balloon userInfoClassName];
+ NSLog(@"classInfo %@", classInfo);
+ 
+ QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+ 
+ if(myInfo != nil){
+ //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+ int score = [myInfo score];
+ int movingStartDelay = [myInfo movingStartDelay];
+ NSLog(@"score: %d", score);
+ NSLog(@"score: %d", movingStartDelay);
+ } else {
+ NSLog(@"don't work!");
+ }
+ */
+
+//Frühling
+//Butterfly
+//if([[GameManager sharedGameManager] effectRaining]) {
+//    CCParticleSystemQuad *particleRain = [[CCParticleSystemQuad alloc] initWithFile:@"rain.plist"];
+//    [self addChild:particleRain];
+//}
+
+/*
+ if([[GameManager sharedGameManager] effectFallingLeaves]) {
+ _particleLeave = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves.plist"];
+ [self addChild:_particleLeave];
+ }
+ 
+ if([[GameManager sharedGameManager] effectSnowing]) {
+ _particleSnow = [[CCParticleSystemQuad alloc] initWithFile:@"snow.plist"];
+ [self addChild:_particleSnow];
+ }
+ 
+ if([[GameManager sharedGameManager] effectSunShining]) {
+ _particleSun = [[CCParticleSystemQuad alloc] initWithFile:@"sun.plist"];
+ [self addChild:_particleSun];
+ }
+ */
+
+
+/*
+ -(void)beginEndCollisionBetweenBalloonYellowAndPlayer:(LHContactInfo*)contact{
+ if([contact contactType]) {
+ QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ } else {
+ }
+ }
+ */
+
+/*
+ -(void)beginEndCollisionBetweenBalloonYellowAndPlayer:(LHContactInfo*)contact{
+ if([contact contactType]) {
+ QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ 
+ alreadyFiredBallon = NO;
+ } else {
+ if(alreadyFiredBallon) {
+ CCLOG(@"YES BBB");
+ } else {
+ CCLOG(@"NO BBB");
+ 
+ QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [_player setBalloonTouched:TRUE];
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ 
+ _points += _countDown;
+ 
+ alreadyFiredBallon = YES;
+ }
+ }
+ }
+ */
+
+/*
+ -(void)beginEndCollisionBetweenBalloonPurpleAndPlayer:(LHContactInfo*)contact{
+ if([contact contactType]) {
+ QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [_player setBalloonTouched:TRUE];
+ 
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ 
+ _points += _countDown;
+ } else {
+ }
+ }
+ */
+
+
+
+
+
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+/*
+ LHSprite* balloon = [loader spriteWithUniqueName:@"balloonPurple"];
+ if(balloon == nil) {
+ NSLog(@"BALLOON IS NIL");
+ } else {
+ NSLog(@"WE HAVE A BALLOON");
+ }
+ [balloon makeDynamic];
+ NSString* classInfo = [balloon userInfoClassName];
+ NSLog(@"classInfo %@", classInfo);
+ 
+ QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+ 
+ if(myInfo != nil){
+ //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+ int score = [myInfo score];
+ int movingStartDelay = [myInfo movingStartDelay];
+ NSLog(@"score: %d", score);
+ NSLog(@"score: %d", movingStartDelay);
+ } else {
+ NSLog(@"don't work!");
+ }
+ */
+
+
+//NSLog(@"LevelName: %@", [[GameManager sharedGameManager] levelToRun]);
+
+
+
+/*
+ NSArray *balloonsYellow = [loader spritesWithTag:TAG_BALLOON_YELLOW];
+ for(QQSpriteBalloon *balloonYellow in balloonsYellow) {
+ [balloonYellow reactToTouch:balloonYellow withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ 
+ NSArray *balloonsPurple = [loader spritesWithTag:TAG_BALLOON_PURPLE];
+ for(QQSpriteBalloonShake *balloonPurple in balloonsPurple) {
+ [balloonPurple reactToTouch:balloonPurple withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ 
+ NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
+ for(QQSpriteBalloonShake *balloon in balloonsShaker) {
+ [balloon reactToTouch:balloon withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ 
+ NSArray *balloonsOrange = [loader spritesWithTag:TAG_BALLOON_ORANGE];
+ for(QQSpriteBalloonShake *balloonOrange in balloonsOrange) {
+ [balloonOrange reactToTouch:balloonOrange withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ 
+ NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
+ for(QQSpriteBalloonShake *balloon in balloonsSizechanger) {
+ [balloon reactToTouch:balloon withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ 
+ NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
+ for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
+ [balloon reactToTouch:balloon withWorld:_world withLayer:self];
+ balloonsLeft++;
+ }
+ */
+
+
+/*
+ -(void)beginEndCollisionBetweenBalloonOrangeAndPlayer:(LHContactInfo*)contact{
+ if([contact contactType]) {
+ alreadyFiredBallon = NO;
+ } else {
+ if(alreadyFiredBallon) {
+ CCLOG(@"YES BBB");
+ } else {
+ CCLOG(@"NO BBB");
+ 
+ QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [_player setBalloonTouched:TRUE];
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ 
+ alreadyFiredBallon = YES;
+ }
+ }
+ }
+ */
+
+/*
+ -(void)beginEndCollisionBetweenBalloonAndPlayer:(LHContactInfo*)contact{
+ if([contact contactType]) {
+ QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
+ [touchedBalloon setWasTouched:TRUE];
+ 
+ [_player setBalloonTouched:TRUE];
+ 
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ } else {
+ }
+ }
+ */
+
+
+//[_player prepareAnimationNamed:@"jumper" fromSHScene:@"objects"];
+//[_player prepareAnimationNamed:@"moul" fromSHScene:@"objects"];
+//[_player prepareAnimationNamed:@"bunny_jump_up" fromSHScene:@"objects"];
+//[_player playAnimation];
+
+
+/*
+ -(void)setupHighScore {
+ //setup High Score
+ _dictionaryHighScore = [NSMutableDictionary dictionaryWithDictionary:[[GameState sharedInstance] highScore]];
+ [_dictionaryHighScore retain];
+ _highScore = [[_dictionaryHighScore objectForKey:@"seasonWinter2012004"] intValue];
+ NSLog(@"--- setupHighScore: %@", [[GameManager sharedGameManager] levelToRun]);
+ NSLog(@"--- setupHighScore - _highScore: %d", _highScore);
+ //_highScore = [[_dictionaryHighScore objectForKey:[[GameManager sharedGameManager] levelToRun]] intValue];
+ 
+ 
+ NSLog(@"--- setupHighScore - retain Count: %d", [_dictionaryHighScore retainCount]);
+ 
+ LHSprite* spriteScoreOld = [loaderJoystick spriteWithUniqueName:@"scoreOld"];
+ NSString* stringScoreOld = [NSString stringWithFormat:@"%d", _highScore];
+ 
+ _labelHighScore = [CCLabelTTF labelWithString:stringScoreOld fontName:@"Marker Felt" fontSize:16];
+ [_labelHighScore setColor:ccc3(0,0,0)];
+ [_labelHighScore setPosition:[spriteScoreOld position]];
+ [self addChild:_labelHighScore];
+ }
+ 
+ -(void)saveHighScore {
+ NSLog(@"--- saveHighScore - retain Count: %d", [_dictionaryHighScore retainCount]);
+ [_dictionaryHighScore setObject:[NSNumber numberWithInt:_highScore] forKey:@"seasonWinter2012004"];
+ NSLog(@"--- saveHighScore: %@", [[GameManager sharedGameManager] levelToRun]);
+ //[_dictionaryHighScore setObject:[NSNumber numberWithInt:_highScore] forKey:[[GameManager sharedGameManager] levelToRun]];
+ 
+ //convert from NSMutableDictionary to NSDictionary used for GameState
+ NSDictionary *temporaryDictionary = [NSDictionary dictionaryWithDictionary:_dictionaryHighScore];
+ [[GameState sharedInstance] setHighScore: temporaryDictionary];
+ [_dictionaryHighScore release];
+ }
+ */
 

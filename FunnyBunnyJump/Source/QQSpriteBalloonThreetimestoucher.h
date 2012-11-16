@@ -17,5 +17,6 @@
 }
 
 @property BOOL reactToCollision;
+-(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer;
 
 @end

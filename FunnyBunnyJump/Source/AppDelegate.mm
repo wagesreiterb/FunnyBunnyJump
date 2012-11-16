@@ -17,8 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //GameCenter
     [[GCHelper sharedInstance] authenticateLocalUser];
-	// Create the main window
+	
+    
+    // Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	
@@ -77,11 +80,11 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 	
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	//[director_ pushScene: [IntroLayer scene]];
-    //[director_ pushScene: [QQLevel scene]];
+	[director_ pushScene: [IntroLayer scene]];
+
     
     //QueQue orig
-    [director_ runWithScene: [QQHomeScreen scene]];
+    //[director_ runWithScene: [QQHomeScreen scene]];
     
     //[[GameManager sharedGameManager] runSceneWithID:kLevel003];
     //[[CCDirector sharedDirector] runWithScene:[QQLevel scene]];
@@ -101,6 +104,10 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
+    //QueQue orig
+    //[director_ runWithScene: [QQHomeScreen scene]];
+    //[director_ pushScene: [QQHomeScreen scene]];
+    
 	return YES;
 }
 

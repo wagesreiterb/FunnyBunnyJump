@@ -686,7 +686,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -761,7 +761,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>15</integer>
+								<integer>12</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
@@ -836,7 +836,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>15</integer>
+								<integer>12</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
@@ -911,7 +911,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>15</integer>
+								<integer>12</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
@@ -986,7 +986,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>13</integer>
+								<integer>10</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SIZECHANGER</string>
 								<key>TextureOffset</key>
@@ -1061,7 +1061,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>15</integer>
+								<integer>12</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
@@ -1136,7 +1136,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>15</integer>
+								<integer>12</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
@@ -1211,7 +1211,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -2220,9 +2220,6 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
-			<string>TAG_BALLOON_YELLOW</string>
-			<string>TAG_BALLOON_ORANGE</string>
-			<string>TAG_BALLOON_PURPLE</string>
 			<string>TAG_BALLOON_SIZECHANGER</string>
 			<string>TAG_BALLOON_SHAKER</string>
 			<string>TAG_BALLOON_THREETIMESTOUCHER</string>

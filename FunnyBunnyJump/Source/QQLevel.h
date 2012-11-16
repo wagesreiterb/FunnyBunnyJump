@@ -42,7 +42,8 @@
     
     BOOL _explodeIt;
     NSInteger _starsCollected;
-    NSInteger _points;
+    NSInteger _score;
+
     float _countDown;
     
     
@@ -50,13 +51,14 @@
 	LevelHelperLoader* loader;
     LevelHelperLoader* loaderJoystick;
     LevelHelperLoader* loaderPause;
+    LevelHelperLoader* _loaderOverlayGameOver;
     
     LevelHelperLoader* loaderParallaxClouds;
     LHParallaxNode* parallaxClouds;
 
     //BOOL pause;
     BOOL _levelStarted;
-    BOOL _gameOver;
+    //BOOL _gameOver;
     BOOL _touchDown;
         
     //Sprites
@@ -76,17 +78,21 @@
     
     //NSArray *myColors;
     
-    CCParticleSystem *_particle;
-    CCParticleSystem *_particle2;
+    CCParticleSystem *_particleBeam1;
+    CCParticleSystem *_particleBeam2;
 
-    CCParticleSystemQuad *_particleLeave;
+    CCParticleSystemQuad *_particleLeaves;
     CCParticleSystemQuad *_particleSnow;
     CCParticleSystemQuad *_particleSun;
-
+    CCParticleSystemQuad *_particleRain;
     
     
     QQLabelTimer* _labelTimer;
     CCLabelTTF* _labelLifes;
+    CCLabelTTF* _labelScore;
+    int _highScore;
+    CCLabelTTF* _labelHighScore;
+    NSMutableDictionary* _dictionaryHighScore;
     
     LHSprite *_spritePauseButton;
     LHSprite *_spritePlayButton;

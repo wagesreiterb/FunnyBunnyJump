@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameState.h"
 
 id loadData(NSString *filename);
 void saveData(id theData, NSString *filename);

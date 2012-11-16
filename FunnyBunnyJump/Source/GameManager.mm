@@ -19,10 +19,6 @@ static GameManager* _sharedGameManager = nil;
 @synthesize season;
 @synthesize seasonName;
 @synthesize seasonPage;
-@synthesize effectSunShining;
-@synthesize effectSnowing;
-@synthesize effectRaining;
-@synthesize effectFallingLeaves;
 
 +(GameManager*)sharedGameManager {
     @synchronized([GameManager class]) {
@@ -50,12 +46,6 @@ static GameManager* _sharedGameManager = nil;
         CCLOG(@"Game Manager Singleton, init");
         musicOn = YES;
         soundEffectsOn = YES;
-        
-        //Effects
-        effectSunShining = NO;
-        effectSnowing = NO;
-        effectRaining = NO;
-        effectFallingLeaves = NO;
         
         currentScene = kNoSceneUninitialized;
     }

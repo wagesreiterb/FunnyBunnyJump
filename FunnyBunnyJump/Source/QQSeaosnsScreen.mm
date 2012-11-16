@@ -243,7 +243,6 @@ static CCScrollLayer *myScroller;
             [[GameManager sharedGameManager] setSeasonName:@"Spring"];
             [[GameManager sharedGameManager] setSeasonPage:spring];
             [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
-            [[GameManager sharedGameManager] setEffectRaining:YES];
             break;
             
         case 1:
@@ -251,14 +250,12 @@ static CCScrollLayer *myScroller;
             [[GameManager sharedGameManager] setSeasonName:@"Summer"];
             [[GameManager sharedGameManager] setSeasonPage:summer];
             [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
-            [[GameManager sharedGameManager] setEffectSunShining:YES];
             break;
             
         case 2:
             [[GameManager sharedGameManager] setSeason:fall];
             [[GameManager sharedGameManager] setSeasonName:@"Fall"];
             [[GameManager sharedGameManager] setSeasonPage:fall];
-            [[GameManager sharedGameManager] setEffectFallingLeaves:YES];
             [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
             break;
             
@@ -266,7 +263,6 @@ static CCScrollLayer *myScroller;
             [[GameManager sharedGameManager] setSeason:winter];
             [[GameManager sharedGameManager] setSeasonName:@"Winter"];
             [[GameManager sharedGameManager] setSeasonPage:winter];
-            [[GameManager sharedGameManager] setEffectSnowing:YES];
             [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
             break;
             

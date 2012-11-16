@@ -13,7 +13,7 @@
     int _count;
 }
 
--(void)start:(float)interval;
+-(void)startWithInterval:(float)interval;
 -(void)tick:(ccTime)dt;
 
 @end

@@ -19,6 +19,7 @@
 @synthesize shallBeam;
 @synthesize allowBeaming;
 @synthesize location;
+@synthesize shallResetPosition;
 
 
 -(void) dealloc{
@@ -80,23 +81,6 @@
         [self setAcceptForces:FALSE];
     }
 }
-
-/*
--(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight {
-    CGPoint oldLocation = _locationY;
-    _locationY = [self position];
-    
-    if(oldLocation.y < location.y) {
-        //CCLOG(@"------- UP");
-        [earLeft body]->SetGravityScale(3.0);
-        [earRight body]->SetGravityScale(3.0);
-    } else {
-        //CCLOG(@"------- DOWN");
-        [earLeft body]->SetGravityScale(0.3);
-        [earRight body]->SetGravityScale(0.3);
-    }
-}
- */
 
 -(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight
          withHandLeft:(LHSprite*)handLeft withHandRight:(LHSprite*)handRight {
@@ -166,6 +150,13 @@
 
 -(void)applyStartJumpAfterTick:(ccTime)dt {
     [self body]->ApplyLinearImpulse( b2Vec2(0.15,0.35), body->GetWorldCenter() );
+}
+
+-(void)resetPosition {
+    if(shallResetPosition) {
+        [self transformPosition:CGPointMake(240, 160)];
+        shallResetPosition = NO;
+    }
 }
 
 -(void)beamPlayer:(LHSprite*)beamContact fromBeamObject:(LHSprite*)beam1 toBeamObject:(LHSprite*)beam2 {

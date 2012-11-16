@@ -14,18 +14,26 @@
     BOOL completedSeasonFall2012;
     BOOL completedSeasonWinter2012;
     
-    int punkte;
+    NSDictionary *highScore;
+    NSMutableDictionary *tempHighScore;
 }
 
 +(GameState*)sharedInstance;
 -(void)save;
 //-(void)load;
+-(void)initDictionary;
+
+
+//-(int)getHighScoreForLevelWithKey:(NSString*)level;
+//-(void)setHighScoreForLevelWithKey:(NSString*)level withHighScore:(int)highScore_;
+
 
 @property (assign) BOOL completedSeasonSpring2012;
 @property (assign) BOOL completedSeasonSummer2012;
 @property (assign) BOOL completedSeasonFall2012;
 @property (assign) BOOL completedSeasonWinter2012;
 
-@property (assign) int punkte;
+@property (copy) NSDictionary *highScore;
+@property (retain) NSMutableDictionary *tempHighScore;
 
 @end

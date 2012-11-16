@@ -698,7 +698,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -785,7 +785,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -872,7 +872,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -959,7 +959,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1046,7 +1046,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1133,7 +1133,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1220,7 +1220,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1307,7 +1307,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1394,7 +1394,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1481,7 +1481,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1568,7 +1568,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1655,7 +1655,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1742,7 +1742,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1829,7 +1829,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -1916,7 +1916,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -2003,7 +2003,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -2090,7 +2090,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -2177,7 +2177,7 @@
 								<key>SpriteSize</key>
 								<string>{33, 45.5}</string>
 								<key>Tag</key>
-								<integer>14</integer>
+								<integer>11</integer>
 								<key>TagName</key>
 								<string>TAG_BALLOON_SHAKER</string>
 								<key>TextureOffset</key>
@@ -3045,6 +3045,81 @@
 							<key>UniqueName</key>
 							<string>stoneLeftWinter</string>
 						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>assets</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>assets</string>
+							<key>SHSpriteName</key>
+							<string>lifes</string>
+							<key>SheetImage</key>
+							<string>objects_assets.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{244, 97}, {16, 16}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{0, -57.5}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{16, 16}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0, 0}</string>
+								<key>UniqueName</key>
+								<string>snow</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>snow</string>
+						</dict>
 					</array>
 					<key>CustomClassInfo</key>
 					<dict>
@@ -3186,9 +3261,6 @@
 			<string>TAG_BAR</string>
 			<string>TAG_STAR</string>
 			<string>TAG_LEVELCHOOSER</string>
-			<string>TAG_BALLOON_YELLOW</string>
-			<string>TAG_BALLOON_ORANGE</string>
-			<string>TAG_BALLOON_PURPLE</string>
 			<string>TAG_BALLOON_SIZECHANGER</string>
 			<string>TAG_BALLOON_SHAKER</string>
 			<string>TAG_BALLOON_THREETIMESTOUCHER</string>

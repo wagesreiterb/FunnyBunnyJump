@@ -24,12 +24,6 @@
     NSString *seasonName;
     NSInteger seasonPage;
     NSString *levelToRun;
-    
-    //Effects
-    BOOL effectSunShining;
-    BOOL effectSnowing;
-    BOOL effectRaining;
-    BOOL effectFallingLeaves;
 }
 @property SceneTypes currentScene;
 @property (copy) NSString *seasonName;
@@ -38,10 +32,6 @@
 @property (getter=isSoundEffectsOn) BOOL soundEffectsOn;
 @property Seasons season;
 @property NSInteger seasonPage;
-@property BOOL effectSunShining;
-@property BOOL effectSnowing;
-@property BOOL effectRaining;
-@property BOOL effectFallingLeaves;
 
 +(GameManager*)sharedGameManager;
 -(void)runSceneWithID:(SceneTypes)sceneID;
