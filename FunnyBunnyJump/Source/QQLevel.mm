@@ -78,6 +78,9 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
 }
 
+
+// GAME OVER
+
 -(void)gameOverWithLevelPassed:(BOOL)levelPassed {
     if(levelPassed) {
         //TODO: save score
@@ -112,6 +115,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_loaderOverlayGameOver addSpritesToLayer:self];
     
 }
+
+//--- GAME OVER 
 
 /*
 -(void)levelCompleted {
@@ -502,85 +507,16 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
     if(info.sprite) {
         //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-        [self pauseLevel:YES];
-    }
-}
-
--(void)pauseLevel:(BOOL)pause_ {
-    [LevelHelperLoader setPaused:pause_];
-    if(pause_) {
-        [[CCDirector sharedDirector] pause];
-        [self setupPauseLayer];
-        _spritePlayButton = [loaderPause spriteWithUniqueName:@"buttonPlay"];
-        [_spritePlayButton registerTouchBeganObserver:self selector:@selector(touchBeganPlayButton:)];
+        //[self pauseLevel:YES];
+        NSLog(@"####### touchBeganPauseButton");
         
-        _spriteBackButton = [loaderPause spriteWithUniqueName:@"buttonBack"];
-        [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
-        _spriteReloadButton = [loaderPause spriteWithUniqueName:@"buttonReload"];
-        [_spriteReloadButton registerTouchBeganObserver:self selector:@selector(touchBeganReloadButton:)];
-        [_spritePauseButton setVisible:NO];
-        [_spritePauseButton setTouchesDisabled:YES];
-
-        [_joystickLeft setTouchesDisabled:YES];
-        [_joystickRight setTouchesDisabled:YES];
-    }
-    else {
-        [[CCDirector sharedDirector] resume];
-        if(nil != loaderPause) {
-            NSArray* allLayers = [loaderPause allLayers];
-            for(LHLayer* myLayer in allLayers)
-            {
-                [myLayer removeSelf];
-            }
-            [loaderPause release];
-        }
-    }
-}
-
--(void)enableJoystick:(ccTime)dt {
-    [_joystickLeft setTouchesDisabled:NO];
-    [_joystickRight setTouchesDisabled:NO];
-}
-
-//layerPause
--(void)touchBeganPlayButton:(LHTouchInfo*)info{
-    //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-    if(info.sprite) {
-        //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-        [_spritePauseButton setVisible:YES];
-        [_spritePauseButton setTouchesDisabled:NO];
-        [self pauseLevel:NO];
-        [self scheduleOnce:@selector(enableJoystick:) delay:0.1];
         
+        _pauseLayer = [[QQPauseLayer alloc] init];
+        [_pauseLayer pauseLevel:self];
+        [_pauseLayer disableTouchesWithLoader:loader];
     }
 }
 
-
--(void)touchBeganBackButton:(LHTouchInfo*)info{
-    //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-    if(info.sprite) {
-        //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-        [self pauseLevel:NO];
-        [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
-    }
-}
-
-//layerPause
--(void)touchBeganReloadButton:(LHTouchInfo*)info{
-    if(info.sprite) {
-        [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
-        //_levelStarted = NO;
-        //[self pauseLevelAtStart:YES];
-        //[self pauseLevel:NO];
-        NSLog(@"--- Reload");
-    }
-}
-
--(void)setupPauseLayer {
-    loaderPause = [[LevelHelperLoader alloc] initWithContentOfFile:@"pauseLayer"];
-    [loaderPause addSpritesToLayer:self];
-}
-//----- Pause
 
 #pragma mark Joystick
 -(void)setupJoystick {
@@ -888,6 +824,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(nil != _particleRain) [_particleRain release];
     if(nil != _particleBeam1) [_particleBeam1 release];
     if(nil != _particleBeam2) [_particleBeam2 release];
+    if(nil != _pauseLayer) [_pauseLayer release];
     
     NSLog(@"Level::dealloc");
     [self saveGameState];
@@ -915,6 +852,103 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 @end
 ////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+/*
+ -(void)pauseLevel:(BOOL)pause_ {
+ [LevelHelperLoader setPaused:pause_];
+ if(pause_) {
+ [[CCDirector sharedDirector] pause];
+ [self setupPauseLayer];
+ _spritePlayButton = [loaderPause spriteWithUniqueName:@"buttonPlay"];
+ [_spritePlayButton registerTouchBeganObserver:self selector:@selector(touchBeganPlayButton:)];
+ 
+ _spriteBackButton = [loaderPause spriteWithUniqueName:@"buttonBack"];
+ [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
+ 
+ _spriteReloadButton = [loaderPause spriteWithUniqueName:@"buttonReload"];
+ [_spriteReloadButton registerTouchBeganObserver:self selector:@selector(touchBeganReloadButton:)];
+ [_spritePauseButton setVisible:NO];
+ [_spritePauseButton setTouchesDisabled:YES];
+ 
+ [_joystickLeft setTouchesDisabled:YES];
+ [_joystickRight setTouchesDisabled:YES];
+ }
+ else {
+ [[CCDirector sharedDirector] resume];
+ if(nil != loaderPause) {
+ NSArray* allLayers = [loaderPause allLayers];
+ for(LHLayer* myLayer in allLayers)
+ {
+ [myLayer removeSelf];
+ }
+ [loaderPause release];
+ }
+ }
+ }
+ */
+
+/*
+ -(void)enableJoystick:(ccTime)dt {
+ [_joystickLeft setTouchesDisabled:NO];
+ [_joystickRight setTouchesDisabled:NO];
+ }
+ */
+
+/*
+ //layerPause
+ -(void)touchBeganPlayButton:(LHTouchInfo*)info{
+ //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+ if(info.sprite) {
+ //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+ [_spritePauseButton setVisible:YES];
+ [_spritePauseButton setTouchesDisabled:NO];
+ [self pauseLevel:NO];
+ [self scheduleOnce:@selector(enableJoystick:) delay:0.1];
+ 
+ }
+ }
+ */
+
+/*
+ -(void)touchBeganBackButton:(LHTouchInfo*)info{
+ //NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+ if(info.sprite) {
+ //NSLog(@"aa Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+ [self pauseLevel:NO];
+ [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
+ }
+ }
+ */
+
+/*
+ //layerPause
+ -(void)touchBeganReloadButton:(LHTouchInfo*)info{
+ if(info.sprite) {
+ [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
+ //_levelStarted = NO;
+ //[self pauseLevelAtStart:YES];
+ //[self pauseLevel:NO];
+ NSLog(@"--- Reload");
+ }
+ }
+ */
+
+/*
+ -(void)setupPauseLayer {
+ loaderPause = [[LevelHelperLoader alloc] initWithContentOfFile:@"pauseLayer"];
+ [loaderPause addSpritesToLayer:self];
+ }
+ */
+//----- Pause
+
+
+
+
+
 
 
 /*

@@ -29,12 +29,13 @@
 #import "GCHelper.h"
 
 #import "LHCustomClasses.h"
+#import "QQPauseLayer.h"
 
 
 
 
 // HelloWorld Layer
-@interface QQLevel : CCLayer
+@interface QQLevel : LHLayer
 {
 	b2World* _world;
 	GLESDebugDraw *m_debugDraw;
@@ -45,6 +46,13 @@
     NSInteger _score;
 
     float _countDown;
+    
+    enum levelStates {
+        levelRunning,
+        levelPaused,
+        levelGameOver};
+    
+    enum levelStates _levelState;
     
     
     //Layers
@@ -101,6 +109,8 @@
 
     BOOL alreadyFired;
     BOOL alreadyFiredBallon;
+    
+    QQPauseLayer *_pauseLayer;
 }
 
 //@property BOOL pause;
