@@ -73,8 +73,13 @@ enum LevelHelper_TAG
 	TAG_LEVELCHOOSER 			= 9,
 	TAG_BALLOON_SIZECHANGER 			= 10,
 	TAG_BALLOON_SHAKER 			= 11,
-	TAG_BALLOON_THREETIMESTOUCHER 			= 12,
-	NUMBER_OF_TAGS 	= 13
+	TAG_BALLOON_BLINKER 			= 12,
+	TAG_BALLOON_THREETIMESTOUCHER 			= 13,
+	TAG_TAP_SCREEN_BUTTON 			= 14,
+	TAG_BAR_SHAKER 			= 15,
+	TAG_MUSIC_BUTTON 			= 16,
+	TAG_LOCK 			= 17,
+	NUMBER_OF_TAGS 	= 18
 };
 
 CGSize  LHSizeFromString(NSString* val);
@@ -375,6 +380,7 @@ NSValue* LHValueWithCGPoint(CGPoint pt);
 +(void)removeTouchDispatcherFromObject:(id)object;
 ////////////////////////////////////////////////////////////////////////////////
 @end
+
 
 
 

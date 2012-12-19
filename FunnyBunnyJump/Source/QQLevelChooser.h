@@ -12,6 +12,7 @@
 #import "LevelHelperLoader.h"
 #import "SimpleAudioEngine.h"
 #import "GameManager.h"
+#import "GameState.h"
 
 
 //#import "QQLevel.h"

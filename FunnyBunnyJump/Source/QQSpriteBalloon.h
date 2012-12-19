@@ -8,6 +8,7 @@
 
 #import "LHSprite.h"
 #import "LHCuttingEngineMgr.h"
+#import "SimpleAudioEngine.h"
 
 @interface QQSpriteBalloon : LHSprite {
     BOOL wasTouched;
@@ -38,4 +39,5 @@
 //create your own custom methods here
 //-(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer;
 -(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer;
+//-(void)setToSensor:(BOOL)sensor;
 @end

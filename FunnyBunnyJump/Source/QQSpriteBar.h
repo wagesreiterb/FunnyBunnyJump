@@ -13,6 +13,7 @@
     BOOL blink;
     ccTime _dt;
     int _blinkDelay;
+    BOOL _active;
 }
 
 @property BOOL blink;
@@ -35,5 +36,6 @@
 //------------------------------------------------------------------------------
 //create your own custom methods here
 -(void)updateBar:(ccTime)dt;
+-(void)setToSensor:(BOOL)active;
 
 @end

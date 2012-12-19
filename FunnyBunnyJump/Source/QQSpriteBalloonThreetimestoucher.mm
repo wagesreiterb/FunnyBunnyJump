@@ -90,6 +90,10 @@
         }
         [self startInflateBalloon];
         
+        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+        [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+        [layer addChild:_particle];
+        [_particle release];
         [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
     }
 }

@@ -132,6 +132,8 @@ static int untitledBatchCount = 0;
         
         zOrder_ = [dictionary intForKey:@"ZOrder"];
         
+        [self setTag:[dictionary intForKey:@"Tag"]];
+        
         if(layer){
             [layer addChild:self z:[self zOrder]];
         }

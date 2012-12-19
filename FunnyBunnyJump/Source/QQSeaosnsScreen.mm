@@ -46,6 +46,7 @@ static CCScrollLayer *myScroller;
 ////////////////////////////////////////////////////////////////////////////////
 +(id) scene
 {
+    NSLog(@"####### QQSeasonsScreen Scroller");
     CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
     QQSeasonsScreen *layerSpring = [QQSeasonsScreen node];    // 'layer' is an autorelease object.
     [layerSpring setupLevelHelper:@"seasonSpring"];
@@ -97,7 +98,9 @@ static CCScrollLayer *myScroller;
     // finally add the scroller to your scene
     [scene addChild:scroller];
     
-    myScroller = scroller;
+    [scroller release];
+    
+    //myScroller = scroller;
 
 
     //[scene addChild: layer];    // add layer as a child to scene

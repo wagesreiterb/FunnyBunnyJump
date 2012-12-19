@@ -200,38 +200,45 @@
 	return newBodyId++;
 }
 
--(NSString*)imagePath:(NSString*)file 
+-(NSString*)imagePath:(NSString*)file
 {
     NSString* computedFile = file;
     if([self isIpad] && [self useHDOnIpad])
-    {   
+    {
         if(device != 1 && device != 3)//if ipad only then we dont need to apply transformations
         {
-            if(CC_CONTENT_SCALE_FACTOR() == 2)
-            {
+            //we use this - in case extension is "pvr.ccz"
+            //the normal cocoa method will give as false extension
+            
+            NSString* fileName = [file stringByDeletingPathExtension];
+            NSString* fileExtension = [file pathExtension];
+            NSRange extRange = [file rangeOfString:@"."];//find first dot
+            if(extRange.location != NSNotFound){
+                fileExtension = [file substringFromIndex:extRange.location];
+                fileName = [file substringToIndex:extRange.location];
+            }
+            
+            if(CC_CONTENT_SCALE_FACTOR() == 2){
                 //we have ipad retina
-                computedFile = [NSString stringWithFormat:@"%@%@.%@", [file stringByDeletingPathExtension], hd2xSuffix, [file pathExtension]];
-                
+                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hd2xSuffix, fileExtension];
             }
             else {
                 //we have normal ipad - lets use the HD image
-                computedFile = [NSString stringWithFormat:@"%@%@.%@", [file stringByDeletingPathExtension], hdSuffix, [file pathExtension]];
+                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hdSuffix, fileExtension];
             }
         }
-//computedFile = [computedFile lastPathComponent];
-        
         
 #if COCOS2D_VERSION >= 0x00020000
         NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
 #else
         NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
 #endif
-                        
+        
         if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
-            return fullpath;//[NSString stringWithFormat:@"%@%@",activeFolder, fullpath];
+            
+            return fullpath;
         }
     }
-    
     return [NSString stringWithFormat:@"%@%@",activeFolder, file];
 }
 

@@ -83,7 +83,11 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     self.isTouchEnabled = YES;
     //self.isAccelerometerEnabled = YES;
     //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
-    [self schedule: @selector(tick:) interval:1.0f/70.0f];    
+    [self schedule: @selector(tick:) interval:1.0f/70.0f];
+    
+    //TODO: brauch is des do unten überhaupts nu?
+    [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteStar class]
+                                                           forTag:TAG_STAR];
     
     loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"homeScreen"];
     [loader addObjectsToWorld:_world cocos2dLayer:self];
@@ -103,9 +107,18 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spritePlay registerTouchBeganObserver:self selector:@selector(touchBeganPlayButton:)];
     
     [self setupGameCenter];
-
-    [self setupAudio];
+    
+    //initialize GameState for the very first launch
+    //if(NO == [[GameState sharedInstance] gameOnceStarted]) {
+    //    [[GameState sharedInstance] createLevelLockedDictionary];
+    //    [[GameState sharedInstance] enableSoundAndMusic];
+    //}
+    
+    
+    
     [self setupMusic];
+    [self setupSound];
+    [self setupBalloonButtons];
     
     //CGSize size = [[CCDirector sharedDirector] winSize];
 
@@ -125,6 +138,11 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 }
 
+-(void)setupBalloonButtons {
+    //QQSpriteMusicButton* balloonMusic = [loader spriteWithUniqueName:@"balloonMusic"];
+    //[balloonBusic sho]
+
+}
 
 -(void)setupGameCenter {
     _spriteAchievements = [loader spriteWithUniqueName:@"achievementsButton"];
@@ -134,71 +152,100 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void)setupMusic {
-    _spriteMusicOn = [loader spriteWithUniqueName:@"buttonMusicOn"];
-    [_spriteMusicOn registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
-    [_spriteMusicOn registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
-    _spriteMusicOff = [loader spriteWithUniqueName:@"buttonMusicOff"];
-    [_spriteMusicOff registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
-    [_spriteMusicOff registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
-    
-    if([[GameManager sharedGameManager] isMusicOn]) {
-        [_spriteMusicOn setVisible:YES];
-        [_spriteMusicOn setTouchesDisabled:NO];
-        [_spriteMusicOff setVisible:NO];
-        [_spriteMusicOff setTouchesDisabled:YES];
+    LHSprite *musicButtonPlaceholder = [loader spriteWithUniqueName:@"musicButtonPlaceholder"];
+    if([[GameState sharedInstance] isMusicEnabled]) {
+        _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOn"
+                                        fromSheet:@"assets"
+                                           SHFile:@"objects"];
     } else {
-        [_spriteMusicOn setVisible:NO];
-        [_spriteMusicOn setTouchesDisabled:YES];
-        [_spriteMusicOff setVisible:YES];
-        [_spriteMusicOff setTouchesDisabled:NO];
+        _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOff"
+                                      fromSheet:@"assets"
+                                         SHFile:@"objects"];
     }
-}
-
--(void)touchBeganMusicButton:(LHTouchInfo*)info{
+    [_spriteMusic setPosition:[musicButtonPlaceholder position]];
+    [_spriteMusic registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
+    [_spriteMusic registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
+    [[GameManager sharedGameManager] playOrNotMusic];
+    [self addChild:_spriteMusic];
 }
 
 -(void)touchEndedMusicButton:(LHTouchInfo*)info{
     //toggle soundEffects (on/off)
     if(info.sprite) {
-        if([[GameManager sharedGameManager] isMusicOn]) {
-            [_spriteMusicOn setVisible:NO];
-            [_spriteMusicOn setTouchesDisabled:YES];
-            [_spriteMusicOff setVisible:YES];
-            [_spriteMusicOff setTouchesDisabled:NO];
-            [[GameManager sharedGameManager] toggleMusic];
+        [[GameManager sharedGameManager] toggleMusic];
+        [_spriteMusic removeSelf];
+        
+        
+        LHSprite *musicButtonPlaceholder = [loader spriteWithUniqueName:@"musicButtonPlaceholder"];
+        if([[GameState sharedInstance] isMusicEnabled]) {
+            _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOn"
+                                          fromSheet:@"assets"
+                                             SHFile:@"objects"];
         } else {
-            [_spriteMusicOn setVisible:YES];
-            [_spriteMusicOn setTouchesDisabled:NO];
-            [_spriteMusicOff setVisible:NO];
-            [_spriteMusicOff setTouchesDisabled:YES];
-            [[GameManager sharedGameManager] toggleMusic];
+            _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOff"
+                                          fromSheet:@"assets"
+                                             SHFile:@"objects"];
         }
+        
+        CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+        [particle setPosition:CGPointMake([musicButtonPlaceholder position].x, [musicButtonPlaceholder position].y)];
+        [self addChild:particle];
+        [particle release];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        
+        [_spriteMusic setPosition:[musicButtonPlaceholder position]];
+        [_spriteMusic registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
+        [_spriteMusic registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
+        [[GameManager sharedGameManager] playOrNotMusic];
+        [self addChild:_spriteMusic];
     }
 }
 
--(void)setupAudio {
-    _spriteSoundEffectsOn = [loader spriteWithUniqueName:@"buttonSoundeffectsOn"];
-    [_spriteSoundEffectsOn registerTouchBeganObserver:self selector:@selector(touchBeganSoundEffectsButton:)];
-    [_spriteSoundEffectsOn registerTouchEndedObserver:self selector:@selector(touchEndedSoundEffectsButton:)];
-    _spriteSoundEffectsOff = [loader spriteWithUniqueName:@"buttonSoundeffectsOff"];
-    [_spriteSoundEffectsOff registerTouchBeganObserver:self selector:@selector(touchBeganSoundEffectsButton:)];
-    [_spriteSoundEffectsOff registerTouchEndedObserver:self selector:@selector(touchEndedSoundEffectsButton:)];
-    
-    if([[GameManager sharedGameManager] isSoundEffectsOn]) {
-        CCLOG(@"YES YES");
-        [_spriteSoundEffectsOn setVisible:YES];
-        [_spriteSoundEffectsOn setTouchesDisabled:NO];
-        [_spriteSoundEffectsOff setVisible:NO];
-        [_spriteSoundEffectsOff setTouchesDisabled:YES];
+
+-(void)touchBeganMusicButton:(LHTouchInfo*)info{
+}
+
+-(void)setupSound {
+    LHSprite *soundButtonPlaceholder = [loader spriteWithUniqueName:@"soundButtonPlaceholder"];
+    if([[GameState sharedInstance] isSoundEnabled]) {
+        _spriteSound = [LHSprite spriteWithName:@"balloonMusicOn"
+                                      fromSheet:@"assets"
+                                         SHFile:@"objects"];
     } else {
-        CCLOG(@"NO NO");
-        [_spriteSoundEffectsOn setVisible:NO];
-        [_spriteSoundEffectsOn setTouchesDisabled:YES];
-        [_spriteSoundEffectsOff setVisible:YES];
-        [_spriteSoundEffectsOff setTouchesDisabled:NO];
+        _spriteSound = [LHSprite spriteWithName:@"balloonMusicOff"
+                                      fromSheet:@"assets"
+                                         SHFile:@"objects"];
     }
+    [_spriteSound setPosition:[soundButtonPlaceholder position]];
+    [_spriteSound registerTouchBeganObserver:self selector:@selector(touchBeganSoundButton:)];
+    [_spriteSound registerTouchEndedObserver:self selector:@selector(touchEndedSoundButton:)];
+    [[GameManager sharedGameManager] playOrNotSound];
+    [self addChild:_spriteSound];
 }
 
+-(void)touchEndedSoundButton:(LHTouchInfo*)info{
+    //toggle soundEffects (on/off)
+    if(info.sprite) {
+        [[GameManager sharedGameManager] toggleSound];
+        [_spriteSound removeSelf];
+        
+        LHSprite *soundButtonPlaceholder = [loader spriteWithUniqueName:@"soundButtonPlaceholder"];
+        if([[GameState sharedInstance] isSoundEnabled]) {
+            _spriteSound = [LHSprite spriteWithName:@"balloonMusicOn"
+                                          fromSheet:@"assets"
+                                             SHFile:@"objects"];
+        } else {
+            _spriteSound = [LHSprite spriteWithName:@"balloonMusicOff"
+                                          fromSheet:@"assets"
+                                             SHFile:@"objects"];
+        }
+        [_spriteSound setPosition:[soundButtonPlaceholder position]];
+        [_spriteSound registerTouchBeganObserver:self selector:@selector(touchBeganSoundButton:)];
+        [_spriteSound registerTouchEndedObserver:self selector:@selector(touchEndedSoundButton:)];
+        [[GameManager sharedGameManager] playOrNotSound];
+        [self addChild:_spriteSound];
+    }
+}
 
 #pragma mark GameKit delegate
 
@@ -243,26 +290,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 
 
--(void)touchBeganSoundEffectsButton:(LHTouchInfo*)info{
-}
-
--(void)touchEndedSoundEffectsButton:(LHTouchInfo*)info{
-    //toggle soundEffects (on/off)
-    if(info.sprite) {
-        if([[GameManager sharedGameManager] isSoundEffectsOn]) {
-            [_spriteSoundEffectsOn setVisible:NO];
-            [_spriteSoundEffectsOn setTouchesDisabled:YES];
-            [_spriteSoundEffectsOff setVisible:YES];
-            [_spriteSoundEffectsOff setTouchesDisabled:NO];
-            [[GameManager sharedGameManager] toggleSoundEffects];
-        } else {
-            [_spriteSoundEffectsOn setVisible:YES];
-            [_spriteSoundEffectsOn setTouchesDisabled:NO];
-            [_spriteSoundEffectsOff setVisible:NO];
-            [_spriteSoundEffectsOff setTouchesDisabled:YES];
-            [[GameManager sharedGameManager] toggleSoundEffects];
-        }
-    }
+-(void)touchBeganSoundButton:(LHTouchInfo*)info{
 }
 
 -(void)touchBeganPlayButton:(LHTouchInfo*)info{
@@ -410,3 +438,104 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 @end
 ////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+ -(void)setupMusic {
+ _spriteMusicOn = [loader spriteWithUniqueName:@"buttonMusicOn"];
+ [_spriteMusicOn registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
+ [_spriteMusicOn registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
+ _spriteMusicOff = [loader spriteWithUniqueName:@"buttonMusicOff"];
+ [_spriteMusicOff registerTouchBeganObserver:self selector:@selector(touchBeganMusicButton:)];
+ [_spriteMusicOff registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
+ 
+ //if([[GameManager sharedGameManager] isMusicOn]) {
+ if([[GameState sharedInstance] isMusicEnabled]) {
+ [_spriteMusicOn setVisible:YES];
+ [_spriteMusicOn setTouchesDisabled:NO];
+ [_spriteMusicOff setVisible:NO];
+ [_spriteMusicOff setTouchesDisabled:YES];
+ [[GameManager sharedGameManager] playOrNotMusic];
+ } else {
+ [_spriteMusicOn setVisible:NO];
+ [_spriteMusicOn setTouchesDisabled:YES];
+ [_spriteMusicOff setVisible:YES];
+ [_spriteMusicOff setTouchesDisabled:NO];
+ [[GameManager sharedGameManager] playOrNotMusic];
+ }
+ }
+ */
+
+
+/*
+ -(void)touchEndedMusicButton:(LHTouchInfo*)info{
+ //toggle soundEffects (on/off)
+ if(info.sprite) {
+ //if([[GameManager sharedGameManager] isMusicOn]) {
+ if([[GameState sharedInstance] isMusicEnabled]) {
+ [_spriteMusicOn setVisible:NO];
+ [_spriteMusicOn setTouchesDisabled:YES];
+ [_spriteMusicOff setVisible:YES];
+ [_spriteMusicOff setTouchesDisabled:NO];
+ [[GameManager sharedGameManager] toggleMusic];
+ } else {
+ [_spriteMusicOn setVisible:YES];
+ [_spriteMusicOn setTouchesDisabled:NO];
+ [_spriteMusicOff setVisible:NO];
+ [_spriteMusicOff setTouchesDisabled:YES];
+ [[GameManager sharedGameManager] toggleMusic];
+ }
+ }
+ }
+ */
+
+
+/*
+ -(void)setupSound {
+ _spriteSoundEffectsOn = [loader spriteWithUniqueName:@"buttonSoundeffectsOn"];
+ [_spriteSoundEffectsOn registerTouchBeganObserver:self selector:@selector(touchBeganSoundEffectsButton:)];
+ [_spriteSoundEffectsOn registerTouchEndedObserver:self selector:@selector(touchEndedSoundEffectsButton:)];
+ _spriteSoundEffectsOff = [loader spriteWithUniqueName:@"buttonSoundeffectsOff"];
+ [_spriteSoundEffectsOff registerTouchBeganObserver:self selector:@selector(touchBeganSoundEffectsButton:)];
+ [_spriteSoundEffectsOff registerTouchEndedObserver:self selector:@selector(touchEndedSoundEffectsButton:)];
+ 
+ //if([[GameManager sharedGameManager] isSoundEffectsOn]) {
+ if([[GameState sharedInstance] isSoundEnabled]) {
+ [_spriteSoundEffectsOn setVisible:YES];
+ [_spriteSoundEffectsOn setTouchesDisabled:NO];
+ [_spriteSoundEffectsOff setVisible:NO];
+ [_spriteSoundEffectsOff setTouchesDisabled:YES];
+ [[GameManager sharedGameManager] playOrNotSound];
+ } else {
+ [_spriteSoundEffectsOn setVisible:NO];
+ [_spriteSoundEffectsOn setTouchesDisabled:YES];
+ [_spriteSoundEffectsOff setVisible:YES];
+ [_spriteSoundEffectsOff setTouchesDisabled:NO];
+ [[GameManager sharedGameManager] playOrNotSound];
+ }
+ }
+ */
+
+
+/*
+ -(void)touchEndedSoundButton:(LHTouchInfo*)info{
+ //toggle soundEffects (on/off)
+ if(info.sprite) {
+ if([[GameState sharedInstance] isSoundEnabled]) {
+ //if([[GameManager sharedGameManager] isSoundEffectsOn]) {
+ [_spriteSoundEffectsOn setVisible:NO];
+ [_spriteSoundEffectsOn setTouchesDisabled:YES];
+ [_spriteSoundEffectsOff setVisible:YES];
+ [_spriteSoundEffectsOff setTouchesDisabled:NO];
+ [[GameManager sharedGameManager] toggleSoundEffects];
+ } else {
+ [_spriteSoundEffectsOn setVisible:YES];
+ [_spriteSoundEffectsOn setTouchesDisabled:NO];
+ [_spriteSoundEffectsOff setVisible:NO];
+ [_spriteSoundEffectsOff setTouchesDisabled:YES];
+ [[GameManager sharedGameManager] toggleSoundEffects];
+ }
+ }
+ }
+ */
+

@@ -2013,7 +2013,7 @@ static int untitledSpritesCount = 0;
         return NULL;
     
     b2ContactEdge* edge = body->GetContactList();
-    if(NULL != edge){
+    if(NULL == edge){
         return NULL;
     }
     
@@ -2042,7 +2042,7 @@ static int untitledSpritesCount = 0;
         return NULL;
     
     b2ContactEdge* edge = body->GetContactList();
-    if(NULL != edge){
+    if(NULL == edge){
         return NULL;
     }
     

@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82031AEC1680F0930053E49D /* QQGameOver.h in Headers */ = {isa = PBXBuildFile; fileRef = 82031AEA1680F0930053E49D /* QQGameOver.h */; };
+		82031AED1680F0930053E49D /* QQGameOver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82031AEB1680F0930053E49D /* QQGameOver.mm */; };
+		8205DB36166632FC00B962BB /* zippy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB35166632FC00B962BB /* zippy.mp3 */; };
+		8205DB3A1666480600B962BB /* hui_que.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB381666480600B962BB /* hui_que.mp3 */; };
+		8205DB3C1666480D00B962BB /* yippy_que.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB3B1666480D00B962BB /* yippy_que.mp3 */; };
+		8205DB3E1666985B00B962BB /* objects_backgrounds3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB3D1666985B00B962BB /* objects_backgrounds3.png */; };
+		8205DB411666986500B962BB /* objects_backgrounds3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB3F1666986500B962BB /* objects_backgrounds3-hd.png */; };
+		8205DB421666986500B962BB /* objects_backgrounds3-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */; };
 		82380A38163B09020018DF1A /* QQSpriteBalloonShake.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */; };
 		82380A4A163C8AE70018DF1A /* particleExplodingBalloon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */; };
 		82380A4C163C8C1E0018DF1A /* particleExplodingBalloonTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */; };
 		82380A52163D77A40018DF1A /* GameState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A51163D77A30018DF1A /* GameState.mm */; };
+		824248CA1668152F002F41AC /* ouch_que.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 824248C91668152F002F41AC /* ouch_que.mp3 */; };
 		8246F0311624B73F0091680F /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0261624AF9A00B5303B /* Constants.h */; };
 		8246F0321624B73F0091680F /* GameManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0271624AF9A00B5303B /* GameManager.h */; };
 		8246F0331624B73F0091680F /* GameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8282F0281624AF9A00B5303B /* GameManager.mm */; };
@@ -428,6 +437,12 @@
 		824E05FE164C4975000AAEA4 /* LICENSE_CocosDenshion.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824E04B9164C4974000AAEA4 /* LICENSE_CocosDenshion.txt */; };
 		824E05FF164C4975000AAEA4 /* LICENSE_Kazmath.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824E04BA164C4974000AAEA4 /* LICENSE_Kazmath.txt */; };
 		824E0601164EC105000AAEA4 /* overlayGameOver.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 824E0600164EC105000AAEA4 /* overlayGameOver.plhs */; };
+		825C174116623BD200ACDE91 /* QQSpriteTapScreenButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 825C173F16623BD100ACDE91 /* QQSpriteTapScreenButton.h */; };
+		825C174216623BD200ACDE91 /* QQSpriteTapScreenButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 825C174016623BD100ACDE91 /* QQSpriteTapScreenButton.mm */; };
+		825C17461662DDAC00ACDE91 /* particleHighscoreExplodingTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 825C17441662DDAC00ACDE91 /* particleHighscoreExplodingTexture.png */; };
+		825C17471662DDAC00ACDE91 /* particleHighscoreExploding.plist in Resources */ = {isa = PBXBuildFile; fileRef = 825C17451662DDAC00ACDE91 /* particleHighscoreExploding.plist */; };
+		825C174E1664C46000ACDE91 /* QQSpriteBalloonBlinker.h in Headers */ = {isa = PBXBuildFile; fileRef = 825C174C1664C43F00ACDE91 /* QQSpriteBalloonBlinker.h */; };
+		825C174F1664C46000ACDE91 /* QQSpriteBalloonBlinker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 825C174D1664C44600ACDE91 /* QQSpriteBalloonBlinker.mm */; };
 		825E17A516556B2C00900C12 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E17A416556B2C00900C12 /* Default-Landscape~ipad.png */; };
 		825E17AB16556DC400900C12 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E17AA16556DC400900C12 /* Default.png */; };
 		825E181E1656CE7D00900C12 /* QQPauseLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 825E181C1656CE7D00900C12 /* QQPauseLayer.h */; };
@@ -443,6 +458,11 @@
 		825E1833165D492100900C12 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E182A165D491C00900C12 /* Icon@2x.png */; };
 		825E1834165D492100900C12 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E182B165D492000900C12 /* iTunesArtwork.png */; };
 		825E1835165D492100900C12 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E182C165D492100900C12 /* iTunesArtwork@2x.png */; };
+		825F440F16650EC5003CF131 /* levelSpring2012002.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 825F440E16650EC5003CF131 /* levelSpring2012002.plhs */; };
+		825F441316653019003CF131 /* QQSpriteBarShaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 825F441116653019003CF131 /* QQSpriteBarShaker.h */; };
+		825F441416653019003CF131 /* QQSpriteBarShaker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 825F441216653019003CF131 /* QQSpriteBarShaker.mm */; };
+		825F441716654DBB003CF131 /* QQSpriteMusicButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 825F441516654DBB003CF131 /* QQSpriteMusicButton.h */; };
+		825F441816654DBB003CF131 /* QQSpriteMusicButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 825F441616654DBB003CF131 /* QQSpriteMusicButton.mm */; };
 		8282ED4B1624ADBD00B5303B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4A1624ADBD00B5303B /* QuartzCore.framework */; };
 		8282ED4D1624ADBD00B5303B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4C1624ADBD00B5303B /* OpenGLES.framework */; };
 		8282ED4F1624ADBD00B5303B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8282ED4E1624ADBD00B5303B /* OpenAL.framework */; };
@@ -478,11 +498,9 @@
 		8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */; };
 		8282F0081624AF4A00B5303B /* balloon.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE01624AF4A00B5303B /* balloon.wav */; };
 		8282F0091624AF4A00B5303B /* boink.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE11624AF4A00B5303B /* boink.wav */; };
-		8282F00A1624AF4A00B5303B /* crazyTraffic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */; };
 		8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */; };
 		8282F00C1624AF4A00B5303B /* heavyLaserBeam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */; };
 		8282F00D1624AF4A00B5303B /* ouch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE51624AF4A00B5303B /* ouch.mp3 */; };
-		8282F00E1624AF4A00B5303B /* zippy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE61624AF4A00B5303B /* zippy.mp3 */; };
 		8282F00F1624AF4A00B5303B /* fallingLeaves.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE81624AF4A00B5303B /* fallingLeaves.plist */; };
 		8282F0101624AF4A00B5303B /* fallingLeaves.png in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE91624AF4A00B5303B /* fallingLeaves.png */; };
 		8282F0121624AF4A00B5303B /* rain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFEB1624AF4A00B5303B /* rain.plist */; };
@@ -530,12 +548,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		82031AEA1680F0930053E49D /* QQGameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQGameOver.h; sourceTree = "<group>"; };
+		82031AEB1680F0930053E49D /* QQGameOver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQGameOver.mm; sourceTree = "<group>"; };
+		8205DB35166632FC00B962BB /* zippy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zippy.mp3; sourceTree = "<group>"; };
+		8205DB381666480600B962BB /* hui_que.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hui_que.mp3; sourceTree = "<group>"; };
+		8205DB3B1666480D00B962BB /* yippy_que.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yippy_que.mp3; sourceTree = "<group>"; };
+		8205DB3D1666985B00B962BB /* objects_backgrounds3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_backgrounds3.png; sourceTree = "<group>"; };
+		8205DB3F1666986500B962BB /* objects_backgrounds3-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds3-hd.png"; sourceTree = "<group>"; };
+		8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds3-ipadhd.png"; sourceTree = "<group>"; };
 		82380A36163B09010018DF1A /* QQSpriteBalloonShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonShake.h; sourceTree = "<group>"; };
 		82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonShake.mm; sourceTree = "<group>"; };
 		82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleExplodingBalloon.plist; sourceTree = "<group>"; };
 		82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleExplodingBalloonTexture.png; sourceTree = "<group>"; };
 		82380A50163D77A10018DF1A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		82380A51163D77A30018DF1A /* GameState.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameState.mm; sourceTree = "<group>"; };
+		824248C91668152F002F41AC /* ouch_que.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ouch_que.mp3; sourceTree = "<group>"; };
 		8246F04B1624B96D0091680F /* particleExplodingStar5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleExplodingStar5.plist; sourceTree = "<group>"; };
 		8246F04F1625FDC20091680F /* particleBeam.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleBeam.plist; sourceTree = "<group>"; };
 		8246F05F162F30850091680F /* objects.pshs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = objects.pshs; sourceTree = "<group>"; };
@@ -928,6 +955,12 @@
 		824E04B9164C4974000AAEA4 /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		824E04BA164C4974000AAEA4 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		824E0600164EC105000AAEA4 /* overlayGameOver.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = overlayGameOver.plhs; sourceTree = "<group>"; };
+		825C173F16623BD100ACDE91 /* QQSpriteTapScreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteTapScreenButton.h; sourceTree = "<group>"; };
+		825C174016623BD100ACDE91 /* QQSpriteTapScreenButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteTapScreenButton.mm; sourceTree = "<group>"; };
+		825C17441662DDAC00ACDE91 /* particleHighscoreExplodingTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particleHighscoreExplodingTexture.png; sourceTree = "<group>"; };
+		825C17451662DDAC00ACDE91 /* particleHighscoreExploding.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleHighscoreExploding.plist; sourceTree = "<group>"; };
+		825C174C1664C43F00ACDE91 /* QQSpriteBalloonBlinker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonBlinker.h; sourceTree = "<group>"; };
+		825C174D1664C44600ACDE91 /* QQSpriteBalloonBlinker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonBlinker.mm; sourceTree = "<group>"; };
 		825E17A416556B2C00900C12 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		825E17A616556B6E00900C12 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		825E17A816556C2B00900C12 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -945,6 +978,11 @@
 		825E182A165D491C00900C12 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		825E182B165D492000900C12 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		825E182C165D492100900C12 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		825F440E16650EC5003CF131 /* levelSpring2012002.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelSpring2012002.plhs; sourceTree = "<group>"; };
+		825F441116653019003CF131 /* QQSpriteBarShaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBarShaker.h; sourceTree = "<group>"; };
+		825F441216653019003CF131 /* QQSpriteBarShaker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBarShaker.mm; sourceTree = "<group>"; };
+		825F441516654DBB003CF131 /* QQSpriteMusicButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteMusicButton.h; sourceTree = "<group>"; };
+		825F441616654DBB003CF131 /* QQSpriteMusicButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteMusicButton.mm; sourceTree = "<group>"; };
 		8282ED461624ADBD00B5303B /* FunnyBunnyJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnyBunnyJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8282ED4A1624ADBD00B5303B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8282ED4C1624ADBD00B5303B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -986,11 +1024,9 @@
 		8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "95535__robinhood76__01633-cartoon-yuppie-shout.wav"; sourceTree = "<group>"; };
 		8282EFE01624AF4A00B5303B /* balloon.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = balloon.wav; sourceTree = "<group>"; };
 		8282EFE11624AF4A00B5303B /* boink.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boink.wav; sourceTree = "<group>"; };
-		8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crazyTraffic.mp3; sourceTree = "<group>"; };
 		8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = franticDataShimmer.mp3; sourceTree = "<group>"; };
 		8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heavyLaserBeam.mp3; sourceTree = "<group>"; };
 		8282EFE51624AF4A00B5303B /* ouch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ouch.mp3; sourceTree = "<group>"; };
-		8282EFE61624AF4A00B5303B /* zippy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zippy.mp3; sourceTree = "<group>"; };
 		8282EFE81624AF4A00B5303B /* fallingLeaves.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fallingLeaves.plist; sourceTree = "<group>"; };
 		8282EFE91624AF4A00B5303B /* fallingLeaves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fallingLeaves.png; sourceTree = "<group>"; };
 		8282EFEB1624AF4A00B5303B /* rain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rain.plist; sourceTree = "<group>"; };
@@ -1721,22 +1757,25 @@
 		8282EFC51624AF4A00B5303B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8246F05F162F30850091680F /* objects.pshs */,
 				8246F081163410FF0091680F /* objects_foregrounds.png */,
 				8246F082163410FF0091680F /* objects_foregrounds-hd.png */,
 				8246F083163410FF0091680F /* objects_foregrounds-ipadhd.png */,
-				8246F05F162F30850091680F /* objects.pshs */,
+				8246F062162F30850091680F /* objects_assets.png */,
 				8246F060162F30850091680F /* objects_assets-hd.png */,
 				8246F061162F30850091680F /* objects_assets-ipadhd.png */,
-				8246F062162F30850091680F /* objects_assets.png */,
+				8246F065162F30850091680F /* objects_UntitledSheet.png */,
 				8246F063162F30850091680F /* objects_UntitledSheet-hd.png */,
 				8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */,
-				8246F065162F30850091680F /* objects_UntitledSheet.png */,
+				8246F06F162F39A80091680F /* objects_backgrounds.png */,
 				8246F06D162F39A80091680F /* objects_backgrounds-hd.png */,
 				8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */,
-				8246F06F162F39A80091680F /* objects_backgrounds.png */,
+				8246F089163462BC0091680F /* objects_backgrounds2.png */,
 				8246F087163462BC0091680F /* objects_backgrounds2-hd.png */,
 				8246F088163462BC0091680F /* objects_backgrounds2-ipadhd.png */,
-				8246F089163462BC0091680F /* objects_backgrounds2.png */,
+				8205DB3D1666985B00B962BB /* objects_backgrounds3.png */,
+				8205DB3F1666986500B962BB /* objects_backgrounds3-hd.png */,
+				8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -1752,6 +1791,7 @@
 				8282EFCF1624AF4A00B5303B /* levelFall2012001.plhs */,
 				8282EFD01624AF4A00B5303B /* levelJoystick.plhs */,
 				8282EFD11624AF4A00B5303B /* levelSpring2012001.plhs */,
+				825F440E16650EC5003CF131 /* levelSpring2012002.plhs */,
 				8282EFD21624AF4A00B5303B /* levelSummer2012001.plhs */,
 				8282EFD31624AF4A00B5303B /* levelWinter2012001.plhs */,
 				82DC330216498DA9007E7416 /* levelWinter2012002.plhs */,
@@ -1770,17 +1810,19 @@
 		8282EFDB1624AF4A00B5303B /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				824248C91668152F002F41AC /* ouch_que.mp3 */,
+				8205DB381666480600B962BB /* hui_que.mp3 */,
+				8205DB3B1666480D00B962BB /* yippy_que.mp3 */,
+				8205DB35166632FC00B962BB /* zippy.mp3 */,
 				8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */,
 				8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */,
 				8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */,
 				8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */,
 				8282EFE01624AF4A00B5303B /* balloon.wav */,
 				8282EFE11624AF4A00B5303B /* boink.wav */,
-				8282EFE21624AF4A00B5303B /* crazyTraffic.mp3 */,
 				8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */,
 				8282EFE41624AF4A00B5303B /* heavyLaserBeam.mp3 */,
 				8282EFE51624AF4A00B5303B /* ouch.mp3 */,
-				8282EFE61624AF4A00B5303B /* zippy.mp3 */,
 			);
 			name = Sounds;
 			path = Resources/Sounds;
@@ -1789,6 +1831,8 @@
 		8282EFE71624AF4A00B5303B /* Particle */ = {
 			isa = PBXGroup;
 			children = (
+				825C17441662DDAC00ACDE91 /* particleHighscoreExplodingTexture.png */,
+				825C17451662DDAC00ACDE91 /* particleHighscoreExploding.plist */,
 				82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */,
 				82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */,
 				8246F04F1625FDC20091680F /* particleBeam.plist */,
@@ -1816,6 +1860,8 @@
 				8282F0281624AF9A00B5303B /* GameManager.mm */,
 				82380A50163D77A10018DF1A /* GameState.h */,
 				82380A51163D77A30018DF1A /* GameState.mm */,
+				828AEA7016499F4E005A248F /* GCHelper.mm */,
+				828AEA7116499F4E005A248F /* GCHelper.h */,
 				828AEA6F16499F30005A248F /* GCDatabase.h */,
 				828AEA6E16499F30005A248F /* GCDatabase.mm */,
 				8282F0181624AF9A00B5303B /* CCScrollLayer.h */,
@@ -1826,6 +1872,8 @@
 				825E181D1656CE7D00900C12 /* QQPauseLayer.mm */,
 				8282F0241624AF9A00B5303B /* QQLevel.h */,
 				8282F02C1624AF9A00B5303B /* QQLevel.mm */,
+				825F441516654DBB003CF131 /* QQSpriteMusicButton.h */,
+				825F441616654DBB003CF131 /* QQSpriteMusicButton.mm */,
 				8282F01C1624AF9A00B5303B /* QQSpriteTrampoline.h */,
 				8282F01F1624AF9A00B5303B /* QQSpriteTrampoline.mm */,
 				8282F0251624AF9A00B5303B /* QQSeasonsScreen.h */,
@@ -1834,6 +1882,8 @@
 				8282F02E1624B01300B5303B /* QQLevelChooser.mm */,
 				8282F01A1624AF9A00B5303B /* QQSpriteBar.h */,
 				8282F01B1624AF9A00B5303B /* QQSpriteBar.mm */,
+				825F441116653019003CF131 /* QQSpriteBarShaker.h */,
+				825F441216653019003CF131 /* QQSpriteBarShaker.mm */,
 				8282F01D1624AF9A00B5303B /* QQLabelTimer.h */,
 				8282F01E1624AF9A00B5303B /* QQLabelTimer.mm */,
 				8282F0201624AF9A00B5303B /* QQSpriteStar.h */,
@@ -1842,18 +1892,22 @@
 				8282F0231624AF9A00B5303B /* QQSpriteBalloon.mm */,
 				82380A36163B09010018DF1A /* QQSpriteBalloonShake.h */,
 				82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */,
+				825C174C1664C43F00ACDE91 /* QQSpriteBalloonBlinker.h */,
+				825C174D1664C44600ACDE91 /* QQSpriteBalloonBlinker.mm */,
 				828F2B9B1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.h */,
 				828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */,
 				828F2BA21646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.h */,
 				828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */,
+				825C173F16623BD100ACDE91 /* QQSpriteTapScreenButton.h */,
+				825C174016623BD100ACDE91 /* QQSpriteTapScreenButton.mm */,
 				8282F02A1624AF9A00B5303B /* QQSpritePlayer.h */,
 				8282F02B1624AF9A00B5303B /* QQSpritePlayer.mm */,
 				8282EF6D1624ADC000B5303B /* IntroLayer.h */,
 				8282EF6E1624ADC000B5303B /* IntroLayer.mm */,
-				828AEA7016499F4E005A248F /* GCHelper.mm */,
-				828AEA7116499F4E005A248F /* GCHelper.h */,
 				8282EF701624ADC000B5303B /* GLES-Render.h */,
 				8282EF711624ADC000B5303B /* GLES-Render.mm */,
+				82031AEA1680F0930053E49D /* QQGameOver.h */,
+				82031AEB1680F0930053E49D /* QQGameOver.mm */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2062,6 +2116,11 @@
 				824E05EB164C4975000AAEA4 /* vec3.h in Headers */,
 				824E05EC164C4975000AAEA4 /* vec4.h in Headers */,
 				825E181E1656CE7D00900C12 /* QQPauseLayer.h in Headers */,
+				825C174116623BD200ACDE91 /* QQSpriteTapScreenButton.h in Headers */,
+				825C174E1664C46000ACDE91 /* QQSpriteBalloonBlinker.h in Headers */,
+				825F441316653019003CF131 /* QQSpriteBarShaker.h in Headers */,
+				825F441716654DBB003CF131 /* QQSpriteMusicButton.h in Headers */,
+				82031AEC1680F0930053E49D /* QQGameOver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2141,11 +2200,9 @@
 				8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */,
 				8282F0081624AF4A00B5303B /* balloon.wav in Resources */,
 				8282F0091624AF4A00B5303B /* boink.wav in Resources */,
-				8282F00A1624AF4A00B5303B /* crazyTraffic.mp3 in Resources */,
 				8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */,
 				8282F00C1624AF4A00B5303B /* heavyLaserBeam.mp3 in Resources */,
 				8282F00D1624AF4A00B5303B /* ouch.mp3 in Resources */,
-				8282F00E1624AF4A00B5303B /* zippy.mp3 in Resources */,
 				8282F00F1624AF4A00B5303B /* fallingLeaves.plist in Resources */,
 				8282F0101624AF4A00B5303B /* fallingLeaves.png in Resources */,
 				8282F0121624AF4A00B5303B /* rain.plist in Resources */,
@@ -2200,6 +2257,16 @@
 				825E1833165D492100900C12 /* Icon@2x.png in Resources */,
 				825E1834165D492100900C12 /* iTunesArtwork.png in Resources */,
 				825E1835165D492100900C12 /* iTunesArtwork@2x.png in Resources */,
+				825C17461662DDAC00ACDE91 /* particleHighscoreExplodingTexture.png in Resources */,
+				825C17471662DDAC00ACDE91 /* particleHighscoreExploding.plist in Resources */,
+				825F440F16650EC5003CF131 /* levelSpring2012002.plhs in Resources */,
+				8205DB36166632FC00B962BB /* zippy.mp3 in Resources */,
+				8205DB3A1666480600B962BB /* hui_que.mp3 in Resources */,
+				8205DB3C1666480D00B962BB /* yippy_que.mp3 in Resources */,
+				8205DB3E1666985B00B962BB /* objects_backgrounds3.png in Resources */,
+				8205DB411666986500B962BB /* objects_backgrounds3-hd.png in Resources */,
+				8205DB421666986500B962BB /* objects_backgrounds3-ipadhd.png in Resources */,
+				824248CA1668152F002F41AC /* ouch_que.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2422,6 +2489,11 @@
 				824E05FA164C4975000AAEA4 /* vec3.c in Sources */,
 				824E05FB164C4975000AAEA4 /* vec4.c in Sources */,
 				825E181F1656CE7D00900C12 /* QQPauseLayer.mm in Sources */,
+				825C174216623BD200ACDE91 /* QQSpriteTapScreenButton.mm in Sources */,
+				825C174F1664C46000ACDE91 /* QQSpriteBalloonBlinker.mm in Sources */,
+				825F441416653019003CF131 /* QQSpriteBarShaker.mm in Sources */,
+				825F441816654DBB003CF131 /* QQSpriteMusicButton.mm in Sources */,
+				82031AED1680F0930053E49D /* QQGameOver.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2489,7 +2561,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"FunnyBunnyJump/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2515,7 +2587,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"FunnyBunnyJump/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

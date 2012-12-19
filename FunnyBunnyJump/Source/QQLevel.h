@@ -18,6 +18,9 @@
 #import "QQSpriteBalloonShake.h"
 #import "QQSpriteBalloonSizechanger.h"
 #import "QQSpriteBalloonThreetimestoucher.h"
+#import "QQSpriteBalloonBlinker.h"
+#import "QQSpriteBarShaker.h"
+#import "QQSpriteTapScreenButton.h"
 #import "QQSpriteBar.h"
 #import "QQSpriteStar.h"
 #import "CCScrollLayer.h"
@@ -30,6 +33,7 @@
 
 #import "LHCustomClasses.h"
 #import "QQPauseLayer.h"
+#import "QQGameOver.h"
 
 
 
@@ -48,11 +52,16 @@
     float _countDown;
     
     enum levelStates {
+        levelNotStarted,
         levelRunning,
         levelPaused,
+        levelPausedLifeLost,
         levelGameOver};
     
     enum levelStates _levelState;
+    BOOL _gameOverLevelPassed;
+    
+    BOOL _highScoreEffectAlreadyPlayed;
     
     
     //Layers
@@ -62,7 +71,7 @@
     LevelHelperLoader* _loaderOverlayGameOver;
     
     LevelHelperLoader* loaderParallaxClouds;
-    LHParallaxNode* parallaxClouds;
+    //LHParallaxNode* _parallaxClouds;
 
     //BOOL pause;
     BOOL _levelStarted;
@@ -73,12 +82,17 @@
     QQSpritePlayer* _player;
     QQSpriteTrampoline* _trampoline;
     QQSpriteBar* _bar;
+    LHSprite* _tapScreenButton;
+    BOOL _tapScreenButtonMakeDynamicRequired;
+    CGPoint _tapScreenButtonInitialPosition;
     LHSprite *_star;
     LHSprite *_joystickLeft;
     LHSprite *_joystickRight;
     
     LHSprite *_earLeft, *_earRight;
     LHSprite *_handLeft, *_handRight;
+    
+    LHSprite *_spriteWatch;
     
     //NSArray *_balloons;
     //NSArray *_stars;
@@ -96,7 +110,7 @@
     
     
     QQLabelTimer* _labelTimer;
-    CCLabelTTF* _labelLifes;
+    CCLabelTTF* _labelCountdown;
     CCLabelTTF* _labelScore;
     int _highScore;
     CCLabelTTF* _labelHighScore;
@@ -111,25 +125,27 @@
     BOOL alreadyFiredBallon;
     
     QQPauseLayer *_pauseLayer;
+    QQGameOver *_gameOverLayer;
+    //QQGameOver *_gameOverLayer;
 }
 
 //@property BOOL pause;
 
 // returns a Scene that contains the HelloWorld as the only child
 +(id)scene;
-+(id)scene:(NSString*)level;
--(void)setupLevelHelper;
--(void)setupDebugDraw;
--(void)setupWorld;
--(void)setupTrampoline;
--(void)setupPlayer;
--(void)setupBalloon;
--(void)setupBeam;
--(void)setupAudio;
--(void)setupBar;
--(void)setupStar;
--(void)setupJoystick;
--(void)pauseLevel:(BOOL)pause_;
--(void)pauseLevelAtStart:(BOOL)pause_;
+//+(id)scene:(NSString*)level;
+//-(void)setupLevelHelper;
+//-(void)setupDebugDraw;
+//-(void)setupWorld;
+//-(void)setupTrampoline;
+//-(void)setupPlayer;
+//-(void)setupBalloon;
+//-(void)setupBeam;
+//-(void)setupAudio;
+//-(void)setupBar;
+//-(void)setupStar;
+//-(void)setupJoystick;
+//-(void)pauseLevel:(BOOL)pause_;
+//-(void)pauseLevelAtStart:(BOOL)pause_;
 
 @end

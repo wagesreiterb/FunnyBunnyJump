@@ -13,12 +13,15 @@
 
 #import <Foundation/Foundation.h>
 
-#define COUNTDOWN 100
+#define COUNTDOWN 120
+
 #define LIFES 3
 #define EFFECT_SUN "sun"
 #define EFFECT_SNOW "snow"
 #define EFFECT_RAIN "rain"
 #define EFFECT_LEAVES "leaves"
+
+NSInteger const LAST_LEVEL = 2012022;
 
 @protocol Constants <NSObject>
 
@@ -28,10 +31,28 @@ typedef enum {
     kSeasonsScreen = 2,
     kLevelChooser = 3,
     
-    kLevel001 = 2012001,
-    kLevel002 = 2012002,
-    kLevel003 = 2012003
-    //kLevelSpring2012002 = 2012002
+    kLevel2012001 = 2012001,
+    kLevel2012002 = 2012002,
+    kLevel2012003 = 2012003,
+    kLevel2012004 = 2012004,
+    kLevel2012005 = 2012005,
+    kLevel2012006 = 2012006,
+    kLevel2012007 = 2012007,
+    kLevel2012008 = 2012008,
+    kLevel2012009 = 2012009,
+    kLevel2012010 = 2012010,
+    kLevel2012011 = 2012011,
+    kLevel2012012 = 2012012,
+    kLevel2012013 = 2012013,
+    kLevel2012014 = 2012014,
+    kLevel2012015 = 2012015,
+    kLevel2012016 = 2012016,
+    kLevel2012017 = 2012017,
+    kLevel2012018 = 2012018,
+    kLevel2012019 = 2012019,
+    kLevel2012020 = 2012020,
+    kLevel2012021 = 2012021,
+    kLevel2012022 = 2012022
     
     
 } SceneTypes;

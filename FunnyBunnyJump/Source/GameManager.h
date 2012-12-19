@@ -16,8 +16,8 @@
 #import "QQLevel.h"
 
 @interface GameManager : NSObject {
-    BOOL musicOn;
-    BOOL soundEffectsOn;
+    //BOOL musicOn;
+    //BOOL soundEffectsOn;
     
     SceneTypes currentScene;
     Seasons season;
@@ -28,14 +28,16 @@
 @property SceneTypes currentScene;
 @property (copy) NSString *seasonName;
 @property (copy) NSString *levelToRun;
-@property (getter=isMusicOn) BOOL musicOn;
-@property (getter=isSoundEffectsOn) BOOL soundEffectsOn;
+//@property (getter=isMusicOn) BOOL musicOn;
+//@property (getter=isSoundEffectsOn) BOOL soundEffectsOn;
 @property Seasons season;
 @property NSInteger seasonPage;
 
 +(GameManager*)sharedGameManager;
 -(void)runSceneWithID:(SceneTypes)sceneID;
+-(void)playOrNotMusic;
+-(void)playOrNotSound;
 -(void)toggleMusic;
--(void)toggleSoundEffects;
+-(void)toggleSound;
 
 @end

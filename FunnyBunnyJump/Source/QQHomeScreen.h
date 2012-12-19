@@ -13,6 +13,7 @@
 #import "LevelHelperLoader.h"
 #import "QQSpritePlayer.h"
 #import "QQSpriteTrampoline.h"
+#import "QQSpriteMusicButton.h"
 //#import "SimpleAudioEngine.h"
 #import "GameManager.h"
 #import "AppDelegate.h"
@@ -33,8 +34,10 @@
     QQSpritePlayer* _player;
     QQSpriteTrampoline* _trampoline;
 
-    LHSprite *_spriteSoundEffectsOn, *_spriteSoundEffectsOff;
-    LHSprite *_spriteMusicOn, *_spriteMusicOff;
+    //LHSprite *_spriteSoundEffectsOn, *_spriteSoundEffectsOff;
+    //LHSprite *_spriteMusicOn, *_spriteMusicOff;
+    LHSprite *_spriteMusic;
+    LHSprite *_spriteSound;
     LHSprite *_spritePlay;
     LHSprite *_spriteLeaderBoard;
     LHSprite *_spriteAchievements;
@@ -48,7 +51,6 @@
 -(void)setupWorld;
 -(void)setupTrampoline;
 -(void)setupPlayer;
--(void)setupAudio;
 
 
 @end

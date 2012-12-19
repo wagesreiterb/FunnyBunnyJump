@@ -50,8 +50,16 @@
 @class LHJoint;
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+
+#if COCOS2D_VERSION >= 0x00020100
+@interface LHSprite : CCSprite <CCTouchAllAtOnceDelegate, CCTouchOneByOneDelegate>
+#else
 @interface LHSprite : CCSprite <CCStandardTouchDelegate, CCTargetedTouchDelegate>
+#endif
+
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 @interface LHSprite : CCSprite <CCMouseEventDelegate>
 #endif

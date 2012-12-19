@@ -64,18 +64,40 @@
 }
 
 -(void)updateBar:(ccTime)dt {
-    _dt += dt;
-    if(_dt > _blinkDelay/2) {
-        blink = FALSE;
-    }else {
-        blink = TRUE;
-    }
-    if(_dt > _blinkDelay) _dt = 0;
+    if(_active) {
+        _dt += dt;
+        if(_dt > _blinkDelay/2) {
+            blink = FALSE;
+        }else {
+            blink = TRUE;
+        }
+        if(_dt > _blinkDelay) _dt = 0;
 
-    [self setVisible:blink];
-    //[self setUsePhysicsForTouches:blink];
-    //[self setTouchesDisabled:FALSE];
-    [self body]->GetFixtureList()->SetSensor(!blink);
+        [self setVisible:blink];
+        for (b2Fixture* f = [self body]->GetFixtureList(); f; f = f->GetNext()) {
+            f->SetSensor(!blink);
+        }
+    }
+
+}
+
+-(void)setToSensor:(BOOL)active {
+    //_active = active;
+    
+    NSLog(@"___ bar::setActive");
+    
+    for (b2Fixture* f = [self body]->GetFixtureList(); f; f = f->GetNext()) {
+        f->SetSensor(!active);
+    }
+    
+    //[self body]->GetFixtureList()->SetSensor(!active);
+    /*
+    if(active) {
+        [self body]->GetFixtureList()->SetSensor(false);
+    } else {
+        [self body]->GetFixtureList()->SetSensor(true);
+    }
+     */
 }
 
 @end

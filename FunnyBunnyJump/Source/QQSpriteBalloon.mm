@@ -71,34 +71,24 @@
         [_particle setPosition:CGPointMake([self position].x, [self position].y)];
         [layer addChild:_particle];
         [_particle release];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
                 
         wasTouched = FALSE;
-
         [self body]->SetActive(false);
+        
         [self removeSelf];
     }
 }
 
 /*
--(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer {
-    //CCLOG(@"reactToTouch");
-    if(wasTouched) {
-        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-        [_particle setPosition:CGPointMake([balloon position].x, [balloon position].y)];
-        [layer addChild:_particle];
-        [_particle release];
-        
-        wasTouched = FALSE;
-        
-        [balloon body]->SetActive(false);
-        [self removeSelf];
-        
-        return nil;
+-(void)setToSensor:(BOOL)sensor {
+    for (b2Fixture* f = [self body]->GetFixtureList(); f; f = f->GetNext()) {
+        f->SetSensor(sensor);
     }
-    return balloon;
 }
-*/
+ */
 
+//TODO: is this method required at all?
 -(id)removeMe {
     [self removeSelf];
     
@@ -108,6 +98,27 @@
 @end
 
 
+
+
+/*
+ -(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer {
+ //CCLOG(@"reactToTouch");
+ if(wasTouched) {
+ _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+ [_particle setPosition:CGPointMake([balloon position].x, [balloon position].y)];
+ [layer addChild:_particle];
+ [_particle release];
+ 
+ wasTouched = FALSE;
+ 
+ [balloon body]->SetActive(false);
+ [self removeSelf];
+ 
+ return nil;
+ }
+ return balloon;
+ }
+ */
 
 
 /*

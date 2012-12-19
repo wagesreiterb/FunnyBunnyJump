@@ -14,8 +14,8 @@ static GameManager* _sharedGameManager = nil;
 
 @synthesize levelToRun;
 @synthesize currentScene;
-@synthesize musicOn;
-@synthesize soundEffectsOn;
+//@synthesize musicOn;
+//@synthesize soundEffectsOn;
 @synthesize season;
 @synthesize seasonName;
 @synthesize seasonPage;
@@ -44,8 +44,8 @@ static GameManager* _sharedGameManager = nil;
     if(self != nil) {
         //Game Manager initialized
         CCLOG(@"Game Manager Singleton, init");
-        musicOn = YES;
-        soundEffectsOn = YES;
+        //musicOn = YES;
+        //soundEffectsOn = YES;
         
         currentScene = kNoSceneUninitialized;
     }
@@ -56,6 +56,10 @@ static GameManager* _sharedGameManager = nil;
     SceneTypes oldScene = currentScene;
     currentScene = sceneID;
     id sceneToRun = nil;
+    
+    NSString *fullLevelName = @"level";
+    if(seasonName == nil) seasonName = @"";
+    fullLevelName = [fullLevelName stringByAppendingString:seasonName];
     
     switch(sceneID) {
         case kHomeScreen:
@@ -68,39 +72,39 @@ static GameManager* _sharedGameManager = nil;
             sceneToRun =[QQLevelChooser scene];
             break;
             
-        case kLevel001: {
-            NSString *fullLevelName = @"level";
-            fullLevelName = [fullLevelName stringByAppendingString:seasonName];
+        case kLevel2012001: {
+            //NSString *fullLevelName = @"level";
+            //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012001"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
         }
             
-        case kLevel002: {
-            NSString *fullLevelName = @"level";
-            fullLevelName = [fullLevelName stringByAppendingString:seasonName];
+        case kLevel2012002: {
+            //NSString *fullLevelName = @"level";
+            //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012002"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
         }
             
-        case kLevel003: {
-            NSString *fullLevelName = @"level";
-            fullLevelName = [fullLevelName stringByAppendingString:seasonName];
+        case kLevel2012003: {
+            //NSString *fullLevelName = @"level";
+            //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012003"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
         }
-        
-            /*
-        case kLevelSpring2012002:
-            [[GameManager sharedGameManager] setLevelToRun:@"l2012002"];
+        case kLevel2012004: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012003"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
-            */
+        }
+
             
         default:
             CCLOG(@"GameManger: Unknown ID, cannot switch scenes");
@@ -127,6 +131,52 @@ static GameManager* _sharedGameManager = nil;
 }
 
 -(void)toggleMusic {
+    if([[GameState sharedInstance] isMusicEnabled]) {
+        [[GameState sharedInstance] setMusicEnabled:NO];
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    } else {
+        [[GameState sharedInstance] setMusicEnabled:YES];
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.2f];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
+    }
+    [[GameState sharedInstance] save];
+}
+
+-(void)playOrNotMusic {
+    if([[GameState sharedInstance] isMusicEnabled]) {
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.2f];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
+    } else {
+        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    }
+}
+
+-(void)playOrNotSound {
+    if([[GameState sharedInstance] isSoundEnabled]) {
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:1];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+    } else {
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:0];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+    }
+}
+
+-(void)toggleSound {
+    if([[GameState sharedInstance] isSoundEnabled]) {
+        [[GameState sharedInstance] setSoundEnabled:NO];
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:0];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+        
+    } else {
+        [[GameState sharedInstance] setSoundEnabled:YES];
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:1];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+    }
+    [[GameState sharedInstance] save];
+}
+
+/*
+-(void)toggleMusic {
     if(musicOn == YES) {
         musicOn = NO;
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
@@ -136,7 +186,9 @@ static GameManager* _sharedGameManager = nil;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
     }
 }
+ */
 
+/*
 -(void)toggleSoundEffects {
     if(soundEffectsOn == YES) {
         soundEffectsOn = NO;
@@ -147,8 +199,8 @@ static GameManager* _sharedGameManager = nil;
         soundEffectsOn = YES;
         [[SimpleAudioEngine sharedEngine] setEffectsVolume:1];
         [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
-
     }
 }
+ */
 
 @end

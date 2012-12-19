@@ -83,21 +83,93 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //_sprite = [loader spriteWithUniqueName:@"balloon_purple_0"];
     //[_sprite registerTouchBeginObserver:self selector:@selector(touchBegin:)];
     
+
+    
     _levelChooserIcons = [loader spritesWithTag:TAG_LEVELCHOOSER];
     for(LHSprite* mySprite in _levelChooserIcons)
     {
         [mySprite registerTouchBeganObserver:self selector:@selector(touchBegan:)];
     }
+    
+    LHSprite* background;
+    switch ([[GameManager sharedGameManager] season]) {
+        case spring:
+            background = [LHSprite spriteWithName:@"backgroundSpring"
+                                        fromSheet:@"backgrounds3"
+                                           SHFile:@"objects"];
+            break;
+        case summer:
+            background = [LHSprite spriteWithName:@"backgroundSummer"
+                                        fromSheet:@"backgrounds2"
+                                           SHFile:@"objects"];
+            break;
+            
+        case fall:
+            background = [LHSprite spriteWithName:@"backgroundFall"
+                                        fromSheet:@"backgrounds2"
+                                           SHFile:@"objects"];
+            break;
+            
+        case winter:
+            background = [LHSprite spriteWithName:@"backgroundWinter"
+                                        fromSheet:@"backgrounds3"
+                                           SHFile:@"objects"];
+            break;
+            
+        default:
+            NSLog(@"Something is wrong in QQLevelChosser::setupLevelHelper!");
+            break;
+    }
+    [self addChild:background];
 
-    //[self setupAudio];
+    [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                        [[CCDirector sharedDirector] winSize].height / 2)];
+    [background setZOrder:-1];
+    
+    [self initLocks];
 }
 
-/*
--(void)setupAudio {
-    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.2f];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
+-(void)initLocks {
+    NSArray *balloons = [loader spritesWithTag:TAG_LEVELCHOOSER];
+    for(LHSprite *balloon in balloons) {
+        if([balloon uniqueName].intValue < 1000) {
+            //draw locks
+            NSString* keyForLock = @"level";
+            keyForLock = [keyForLock stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+            keyForLock = [keyForLock stringByAppendingString:@"2012"];
+            keyForLock = [keyForLock stringByAppendingString:[balloon uniqueName]];
+            
+            if([[[[GameState sharedInstance] tempLevelLocked] objectForKey:keyForLock] boolValue] == YES) {
+                LHSprite* lock = [LHSprite spriteWithName:@"lock"
+                                                fromSheet:@"assets"
+                                                   SHFile:@"objects"];
+                CGPoint position;
+                position.x = [balloon position].x;
+                position.y = [balloon position].y + [balloon contentSize].height / 8;
+                [lock setPosition:position];
+                [lock setOpacity:180];
+                [self addChild:lock];
+            } else {
+                //draw numbers
+                NSString* numberString = @"number";
+                numberString = [numberString stringByAppendingString:[balloon uniqueName]];
+                LHSprite* number = [LHSprite spriteWithName:numberString
+                                                fromSheet:@"assets"
+                                                   SHFile:@"objects"];
+                CGPoint position;
+                position.x = [balloon position].x;
+                position.y = [balloon position].y + [balloon contentSize].height / 8;
+                [number setPosition:position];
+                [number setOpacity:180];
+                [self addChild:number];
+            }
+        }
+    }
 }
- */
+
+-(void)runSceneWithIDkLevel2012001:(ccTime)dt {
+    [[GameManager sharedGameManager] runSceneWithID:kLevel2012001];
+}
 
 -(void)touchBegan:(LHTouchInfo*)info{
     if(info.sprite) {
@@ -105,24 +177,106 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
         switch ([[info.sprite uniqueName] intValue]) {
             case 1: {
-                [[GameManager sharedGameManager] runSceneWithID:kLevel001];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012001]) {
+                    LHSprite* sprite = [loader spriteWithUniqueName:@"1"];
+                    [sprite removeSelf];
+                    LHSprite* number = [loader spriteWithUniqueName:@"number_1"];
+                    [number removeSelf];
+                    
+                    [[CCDirector sharedDirector] resume];
+                    
+                    CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                    [particle setPosition:CGPointMake([sprite position].x, [sprite position].y)];
+                    [self addChild:particle];
+                    [particle release];
+                    
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+                    
+                    [self scheduleOnce:@selector(runSceneWithIDkLevel2012001:) delay:0.5f];
+                }
                 break;
             }
             case 2:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel002];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012002]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012002];
+                }
                 break;
             case 3:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel003];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012003]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012003];
+                }
                 break;
-                
+            case 4:
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012004]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012004];
+                }
+                break;
+            case 5:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012005];
+                break;
+            case 6:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012006];
+                break;
+            case 7:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012007];
+                break;
+            case 8:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012008];
+                break;
+            case 9:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012009];
+                break;
+            case 10:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012010];
+                break;
+            case 11:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012011];
+                break;
+            case 12:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012012];
+                break;
+            case 13:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012013];
+                break;
+            case 14:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012014];
+                break;
+            case 15:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012015];
+                break;
+            case 16:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012016];
+                break;
+            case 17:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012017];
+                break;
+            case 18:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012018];
+                break;
+            case 19:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012019];
+                break;
+            case 20:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012020];
+                break;
+            case 21:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012021];
+                break;
+            case 22:
+                [[GameManager sharedGameManager] runSceneWithID:kLevel2012022];
+                break;
+
             case 1001:
-                NSLog(@"BACK BUTTON");
-                //[[CCDirector sharedDirector] replaceScene: [CCTransitionTurnOffTiles transitionWithDuration:0.3f
-                //scene:[QQLevelMainScreen scene]]];
+                //BackButton
                 [[GameManager sharedGameManager] runSceneWithID:kSeasonsScreen];
                 break;
                 
             default:
+                NSLog(@"Something is wrong in QQLevelChooser::touchBegan!");
                 break;
         }
     
@@ -217,6 +371,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+    //[self unschedule:@selector(runSceneWithIDkLevel2012001)];
+    
     if(nil != loader)
         [loader release];
     

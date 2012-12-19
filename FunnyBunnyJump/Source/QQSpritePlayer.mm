@@ -11,7 +11,6 @@
 @implementation QQSpritePlayer
 
 @synthesize dead;
-@synthesize lifes;
 @synthesize jumping;
 @synthesize acceptForces;
 @synthesize balloonTouched;
@@ -28,9 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownPlayerSpriteInit{
     //initialize your member variabled here
-    //life = 100;
-    //magic= 20;
-    lifes = 3;
+    _lifes = LIFES;
 }
 //------------------------------------------------------------------------------
 -(id) init{
@@ -77,6 +74,11 @@
 
 -(void)applyForce {
     if([self acceptForces] == TRUE) {
+        b2Vec2 velocity = [self body]->GetLinearVelocity();
+        //NSLog(@"..... applyForce, velocity: %f", velocity.y );
+        if(velocity.y > 6.3f) {
+            [[SimpleAudioEngine sharedEngine] playEffect:@"hui_que.mp3"];
+        }
         [self body]->ApplyForce(b2Vec2([self force],0), [self body]->GetWorldCenter());
         [self setAcceptForces:FALSE];
     }
@@ -102,14 +104,34 @@
     }
 }
 
--(void)whichDirection {
+-(void)upOrDownActionWithLoader:(LevelHelperLoader*)loader_ {
+    CGPoint oldLocation = _locationY;
+    _locationY = [self position];
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    
+    if(oldLocation.y < location.y) {
+        //CCLOG(@"------- UP");
+        if(earLeft!=nil) [earLeft body]->SetGravityScale(3.0);
+        if(earRight!=nil) [earRight body]->SetGravityScale(3.0);
+        if(handLeft!=nil) [handLeft body]->SetGravityScale(3.0);
+        if(handRight!=nil) [handRight body]->SetGravityScale(3.0);
+    } else {
+        //CCLOG(@"------- DOWN");
+        if(earLeft!=nil) [earLeft body]->SetGravityScale(0.3);
+        if(earRight!=nil) [earRight body]->SetGravityScale(0.3);
+        if(handLeft!=nil) [handLeft body]->SetGravityScale(0.3);
+        if(handRight!=nil) [handRight body]->SetGravityScale(0.3);
+    }
+}
+
+-(void)deflect {   //ablenken
     CGPoint oldLocation = location;
     location = [self position];
     
     if(balloonTouched) {
-        //CGPoint oldLocation = location;
-        //location = [self position];
-        
         float desiredVelocity = 0.8f;
         
         if(oldLocation.x < location.x) {
@@ -141,15 +163,21 @@
 }
 
 -(void)applyStartJump {
+    //NSLog(@"_____ applyStartupJump");
     if([self startJumpFinished] == FALSE) {
-        [self scheduleOnce:@selector(applyStartJumpAfterTick:) delay:2.0f];
-        //[self body]->ApplyLinearImpulse( b2Vec2(0.15,0.35), body->GetWorldCenter() );
+        [self scheduleOnce:@selector(applyStartJumpAfterTick:) delay:0.0f];
         [self setStartJumpFinished:TRUE];
+        [self scheduleOnce:@selector(playYippyWithDelay) delay:0.3f];
     }
 }
 
+-(void)playYippyWithDelay {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"yippy_que.mp3"];
+}
+
 -(void)applyStartJumpAfterTick:(ccTime)dt {
-    [self body]->ApplyLinearImpulse( b2Vec2(0.15,0.35), body->GetWorldCenter() );
+    //[self body]->ApplyLinearImpulse( b2Vec2(0.15,0.35), body->GetWorldCenter() );
+    [self body]->ApplyLinearImpulse( b2Vec2(0.15,0.25), body->GetWorldCenter() );
 }
 
 -(void)resetPosition {
@@ -185,6 +213,32 @@
     }
 }
 
+-(void)beamWithLoader:(LevelHelperLoader*)loader_ {
+    if(shallBeam) {
+        [self transformPosition:beamPosition];
+        LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+        [earLeft transformPosition:CGPointMake(beamPosition.x + 50.344, beamPosition.y - 66.02)];
+        //)[earLeft transformPosition:CGPointMake(50, 66)];
+        
+        LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+        [earRight transformPosition:beamPosition];
+        LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+        [handLeft transformPosition:beamPosition];
+        LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+        [handRight transformPosition:beamPosition];
+        
+        [self body]->SetLinearVelocity(b2Vec2(0,0));
+        shallBeam = FALSE;
+    }
+}
+
+-(void)stopPlayer {
+    if(_playerStopped) {
+        [self makeStatic];
+        _playerStopped = NO;
+    }
+}
+
 -(void)setPause:(BOOL)pause {
     if(pause == YES) {
         //[self pauseAnimation];
@@ -194,6 +248,77 @@
         [self makeDynamic];
     }
 }
+
+-(void)removeSelfWithLoader:(LevelHelperLoader*)loader_ {
+    [self removeSelf];
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    [earLeft removeSelf];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    [earRight removeSelf];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    [handLeft removeSelf];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    [handRight removeSelf];
+}
+
+-(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_ {
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    
+    _initialPositionBunny = [self position];
+    _initialPositionEarLeft = [earLeft position];
+    _initialPositionEarRight = [earRight position];
+    _initialPositionHandLeft = [handLeft position];
+    _initialPositionHandRight = [handRight position];
+}
+
+-(void)restoreInitialPosition:(LevelHelperLoader*)loader_ {
+
+    if(_restoreInitialPostitionRequired) {
+        NSLog(@"_______________ IF restoreInitialPosition");
+        LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+        LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+        LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+        LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+        
+        [self transformPosition:_initialPositionBunny];
+        [earLeft transformPosition:_initialPositionEarLeft];
+        [earRight transformPosition:_initialPositionEarRight];
+        [handLeft transformPosition:_initialPositionHandLeft];
+        [handRight transformPosition:_initialPositionHandRight];
+        _restoreInitialPostitionRequired = NO;
+        
+        _startJumpFinished = NO;
+    }
+}
+
+/*
+-(void)saveInitialSettingsWithLoader:(LevelHelperLoader*)loader_ {
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    _earLeftDensity = [earLeft body]->GetFixtureList()->GetDensity();
+    _earRightDensity = [earRight body]->GetFixtureList()->GetDensity();
+    _handLeftDensity = [handLeft body]->GetFixtureList()->GetDensity();
+    _handRightDensity = [handRight body]->GetFixtureList()->GetDensity();
+    _bunnyDensity = [self body]->GetFixtureList()->GetDensity();
+}
+
+-(void)setGravityToZeroWithLoader:(LevelHelperLoader*)loader_ {
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    [earLeft body]->SetGravityScale(0);
+    [earRight body]->SetGravityScale(0);
+    [handLeft body]->SetGravityScale(0);
+    [handRight body]->SetGravityScale(0);
+    [self body]->SetGravityScale(0);
+}
+*/
 
 @end
 
