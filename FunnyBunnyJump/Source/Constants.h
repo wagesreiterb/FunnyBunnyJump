@@ -61,6 +61,11 @@ typedef enum {
     spring, summer, fall, winter
 } Seasons;
 
+typedef enum {
+    kLinkTypeHomepage,
+    kLinkTypeFacebook,
+    kLinkTypeTwitter
+} LinkTypes;
 
 
 @end

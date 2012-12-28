@@ -1,33 +1,37 @@
-//
-//  CCScrollLayer.m
-//
-//  Copyright 2010 DK101
-//  http://dk101.net/2010/11/30/implementing-page-scrolling-in-cocos2d/
-//
-//  Copyright 2010 Giv Parvaneh.
-//  http://www.givp.org/blog/2010/12/30/scrolling-menus-in-cocos2d/
-//
-//  Copyright 2011 Stepan Generalov
-//  Copyright 2011 Jeff Keeme
-//  Copyright 2011 Brian Feller
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
+/*
+ * CCScrollLayer
+ *
+ * Cocos2D-iPhone-Extensions v0.2.1
+ * https://github.com/cocos2d/cocos2d-iphone-extensions
+ *
+ * Copyright 2010 DK101
+ * http://dk101.net/2010/11/30/implementing-page-scrolling-in-cocos2d/
+ *
+ * Copyright 2010 Giv Parvaneh.
+ * http://www.givp.org/blog/2010/12/30/scrolling-menus-in-cocos2d/
+ *
+ * Copyright 2011-2012 Stepan Generalov
+ * Copyright 2011 Brian Feller
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
 
 
 #import "CCScrollLayer.h"
@@ -42,13 +46,13 @@ enum
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 @interface CCTouchDispatcher (targetedHandlersGetter)
 
-- (NSMutableArray *) targetedHandlers;
+- (id<NSFastEnumeration>) targetedHandlers;
 
 @end
 
 @implementation CCTouchDispatcher (targetedHandlersGetter)
 
-- (NSMutableArray *) targetedHandlers
+- (id<NSFastEnumeration>) targetedHandlers
 {
 	return targetedHandlers;
 }
@@ -90,7 +94,6 @@ enum
 
 -(id) initWithLayers:(NSArray *)layers widthOffset: (int) widthOffset
 {
-    //CCLOG(@"winSize: %f", [[CCDirector sharedDirector] winSize].width);
 	if ( (self = [super init]) )
 	{
 		NSAssert([layers count], @"CCScrollLayer#initWithLayers:widthOffset: you must provide at least one layer!");
@@ -115,7 +118,7 @@ enum
 		self.pagesIndicatorPosition = ccp(0.5f * self.contentSize.width, ceilf ( self.contentSize.height / 8.0f ));
 		self.pagesIndicatorNormalColor = ccc4(0x96,0x96,0x96,0xFF);
         self.pagesIndicatorSelectedColor = ccc4(0xFF,0xFF,0xFF,0xFF);
-        
+
 		// Set up the starting variables
 		currentScreen_ = 0;	
 		
@@ -178,41 +181,55 @@ enum
 		}
 		
 		// Set GL Values
-		//glEnable(GL_POINT_SMOOTH);
-		GLboolean blendWasEnabled = glIsEnabled( GL_BLEND );
-		glEnable(GL_BLEND);
-		
-		// save the old blending functions
+#if COCOS2D_VERSION >= 0x00020000
+        ccGLEnable(CC_GL_BLEND);
+        ccPointSize( 6.0 * CC_CONTENT_SCALE_FACTOR() );
+#define DRAW_4B_FUNC ccDrawColor4B
+        
+#else
+        glEnable(GL_POINT_SMOOTH);
+        GLboolean blendWasEnabled = glIsEnabled( GL_BLEND );
+        glEnable(GL_BLEND);
+        
+        // save the old blending functions
         int blend_src = 0;
         int blend_dst = 0;
-        //glGetIntegerv( GL_BLEND_SRC, &blend_src );
-        //glGetIntegerv( GL_BLEND_DST, &blend_dst );
+        glGetIntegerv( GL_BLEND_SRC, &blend_src );
+        glGetIntegerv( GL_BLEND_DST, &blend_dst );
+        glPointSize( 6.0 * CC_CONTENT_SCALE_FACTOR() );
         
-		glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-		//glPointSize( 6.0 * CC_CONTENT_SCALE_FACTOR() );
-		
-		// Draw Gray Points
-		//glColor4ub(pagesIndicatorNormalColor_.r,
-        //           pagesIndicatorNormalColor_.g,
-        //           pagesIndicatorNormalColor_.b,
-        //           pagesIndicatorNormalColor_.a);
-		ccDrawPoints( points, totalScreens );
-		
-		// Draw White Point for Selected Page	
-		//glColor4ub(pagesIndicatorSelectedColor_.r,
-        //           pagesIndicatorSelectedColor_.g,
-        //           pagesIndicatorSelectedColor_.b,
-        //           pagesIndicatorSelectedColor_.a);
-		ccDrawPoint(points[currentScreen_]);
-		
-		// Restore GL Values
-		//glPointSize(1.0f);
-		//glDisable(GL_POINT_SMOOTH);
-		if (! blendWasEnabled)
-			glDisable(GL_BLEND);
+#define DRAW_4B_FUNC glColor4ub        
+
+#endif
+        glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+ 		
+ 		// Draw Gray Points
+        DRAW_4B_FUNC(pagesIndicatorNormalColor_.r,
+                     pagesIndicatorNormalColor_.g,
+                     pagesIndicatorNormalColor_.b,
+                     pagesIndicatorNormalColor_.a);
         
-		// always restore the blending functions too
+        ccDrawPoints( points, totalScreens );
+                           
+        // Draw White Point for Selected Page	
+        DRAW_4B_FUNC(pagesIndicatorSelectedColor_.r,
+                     pagesIndicatorSelectedColor_.g,
+                     pagesIndicatorSelectedColor_.b,
+                     pagesIndicatorSelectedColor_.a);
+        ccDrawPoint(points[currentScreen_]);
+                                               
+        // Restore GL Values
+#if COCOS2D_VERSION >= 0x00020000
+        ccPointSize(1.0f);
+#else
+        glPointSize(1.0f);
+        glDisable(GL_POINT_SMOOTH);
+        if (! blendWasEnabled)
+            glDisable(GL_BLEND);
+        
+        // always restore the blending functions too
         glBlendFunc( blend_src, blend_dst );
+#endif		
 	}
 }
 
@@ -242,7 +259,7 @@ enum
 	
 	return pageNumber;
 }
-
+	
 
 - (CGPoint) positionForPageWithNumber: (int) pageNumber
 {
@@ -255,12 +272,12 @@ enum
         CCLOGERROR(@"CCScrollLayer#moveToPage: %d - wrong page number, out of bounds. ", page);
 		return;
     }
-    
+
 	id changePage = [CCMoveTo actionWithDuration:0.3 position: [self positionForPageWithNumber: page]];
 	changePage = [CCSequence actions: changePage,[CCCallFunc actionWithTarget:self selector:@selector(moveToPageEnded)], nil];
     [self runAction:changePage];
     currentScreen_ = page;
-    
+
 }
 
 -(void) selectPage:(int)page
@@ -319,15 +336,29 @@ enum
 /** Register with more priority than CCMenu's but don't swallow touches. */
 -(void) registerWithTouchDispatcher
 {	
-	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:kCCMenuTouchPriority - 1 swallowsTouches:NO];
+#if COCOS2D_VERSION >= 0x00020000
+    CCTouchDispatcher *dispatcher = [[CCDirector sharedDirector] touchDispatcher];
+    int priority = kCCMenuHandlerPriority - 1;
+#else
+    CCTouchDispatcher *dispatcher = [CCTouchDispatcher sharedDispatcher];
+    int priority = kCCMenuTouchPriority - 1;
+#endif
+    
+	[dispatcher addTargetedDelegate:self priority: priority swallowsTouches:NO];    
 }
 
 /** Hackish stuff - stole touches from other CCTouchDispatcher targeted delegates. 
  Used to claim touch without receiving ccTouchBegan. */
 - (void) claimTouch: (UITouch *) aTouch
 {
+#if COCOS2D_VERSION >= 0x00020000
+    CCTouchDispatcher *dispatcher = [[CCDirector sharedDirector] touchDispatcher];
+#else
+    CCTouchDispatcher *dispatcher = [CCTouchDispatcher sharedDispatcher];
+#endif
+    
 	// Enumerate through all targeted handlers.
-	for ( CCTargetedTouchHandler *handler in [[CCTouchDispatcher sharedDispatcher] targetedHandlers] )
+	for ( CCTargetedTouchHandler *handler in [dispatcher targetedHandlers] )
 	{
 		// Only our handler should claim the touch.
 		if (handler.delegate == self)
@@ -336,34 +367,24 @@ enum
 			{
 				[handler.claimedTouches addObject: aTouch];
 			}
-			else 
-			{
-				CCLOGERROR(@"CCScrollLayer#claimTouch: %@ is already claimed!", aTouch);
-			}
-			return;
 		}
+        else 
+        {
+            // Steal touch from other targeted delegates, if they claimed it.
+            if ([handler.claimedTouches containsObject: aTouch])
+            {
+                if ([handler.delegate respondsToSelector:@selector(ccTouchCancelled:withEvent:)])
+                {
+                    [handler.delegate ccTouchCancelled: aTouch withEvent: nil];
+                }
+                [handler.claimedTouches removeObject: aTouch];
+            }
+        }
 	}
-}
-
-- (void) cancelAndStoleTouch:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // Throw Cancel message for everybody in TouchDispatcher and do not react on this.
-	stealingTouchInProgress_ = YES;
-    [[CCTouchDispatcher sharedDispatcher] touchesCancelled: [NSSet setWithObject: touch] withEvent:event];
-	stealingTouchInProgress_ = NO;
-	
-    //< after doing this touch is already removed from all targeted handlers
-	
-    // Squirrel away the touch
-    [self claimTouch: touch];
 }
 
 -(void)ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event 
 {
-    // Do not cancel touch, if this method is called from cancelAndStoleTouch:
-    if (stealingTouchInProgress_)
-		return;
-	
     if( scrollTouch_ == touch ) {
         scrollTouch_ = nil;
         [self selectPage: currentScreen_];
@@ -407,7 +428,9 @@ enum
 		startSwipe_ = touchPoint.x;
 		
 		if (self.stealTouches)
-			[self cancelAndStoleTouch: touch withEvent: event];
+        {
+			[self claimTouch: touch];
+        }
 		
 		if ([self.delegate respondsToSelector:@selector(scrollLayerScrollingStarted:)])
 		{
@@ -421,10 +444,7 @@ enum
 		int page = [self pageNumberForPosition:ccp(desiredX, 0)];
 		CGFloat offset = desiredX - [self positionForPageWithNumber:page].x; 
 		if ((page == 0 && offset > 0) || (page == [layers_ count] - 1 && offset < 0))
-		{
-            offset -= marginOffset_ * offset / [[CCDirector sharedDirector] winSize].width;
-
-        }
+			offset -= marginOffset_ * offset / [[CCDirector sharedDirector] winSize].width;
 		else
 			offset = 0;
 		self.position = ccp(desiredX - offset, 0);
@@ -463,7 +483,11 @@ enum
 
 - (NSInteger) mouseDelegatePriority
 {
+#if COCOS2D_VERSION >= 0x00020000
+    return kCCMenuHandlerPriority - 1;
+#else
 	return kCCMenuMousePriority - 1;
+#endif
 }
 
 -(BOOL) ccMouseDown:(NSEvent*)event

@@ -82,8 +82,6 @@ static GameManager* _sharedGameManager = nil;
         }
             
         case kLevel2012002: {
-            //NSString *fullLevelName = @"level";
-            //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012002"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
@@ -91,15 +89,13 @@ static GameManager* _sharedGameManager = nil;
         }
             
         case kLevel2012003: {
-            //NSString *fullLevelName = @"level";
-            //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
             fullLevelName = [fullLevelName stringByAppendingString:@"2012003"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
         }
         case kLevel2012004: {
-            fullLevelName = [fullLevelName stringByAppendingString:@"2012003"];
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012004"];
             [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
             sceneToRun =[QQLevel scene];
             break;
@@ -130,6 +126,27 @@ static GameManager* _sharedGameManager = nil;
     //                                                                                     scene:[QQLevel scene:@"level001"]]];
 }
 
+-(void)openSiteWithLinkType:(LinkTypes)linkTypeToOpen {
+    NSURL *urlToOpen = nil;
+    if (linkTypeToOpen == kLinkTypeHomepage) {
+        CCLOG(@"Opening Homepage");
+        urlToOpen = [NSURL URLWithString:@"http://www.querika.com"];
+    } else if (linkTypeToOpen == kLinkTypeFacebook) {
+        CCLOG(@"Opening Facebook");
+        urlToOpen = [NSURL URLWithString:@"http://www.facebook.com/querika.com"];
+    } else if (linkTypeToOpen == kLinkTypeTwitter) {
+        CCLOG(@"Opening Twitter");
+        urlToOpen = [NSURL URLWithString:@"http://www.twitter.com/querika_com"];
+    } else {
+        CCLOG(@"Defaulting to www.querika.com");
+        urlToOpen = [NSURL URLWithString:@"http://www.querika.com"];
+    }
+    if (![[UIApplication sharedApplication] openURL:urlToOpen]) {
+        CCLOG(@"%@%@",@"Failed to open url:",[urlToOpen description]);
+        [self runSceneWithID:kHomeScreen];
+    }
+}
+
 -(void)toggleMusic {
     if([[GameState sharedInstance] isMusicEnabled]) {
         [[GameState sharedInstance] setMusicEnabled:NO];
@@ -154,10 +171,10 @@ static GameManager* _sharedGameManager = nil;
 -(void)playOrNotSound {
     if([[GameState sharedInstance] isSoundEnabled]) {
         [[SimpleAudioEngine sharedEngine] setEffectsVolume:1];
-        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+        //[[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
     } else {
         [[SimpleAudioEngine sharedEngine] setEffectsVolume:0];
-        [[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
+        //[[SimpleAudioEngine sharedEngine] playEffect:@"heavyLaserBeam.mp3"];
     }
 }
 

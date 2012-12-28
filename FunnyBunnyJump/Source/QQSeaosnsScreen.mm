@@ -47,6 +47,8 @@ static CCScrollLayer *myScroller;
 +(id) scene
 {
     NSLog(@"####### QQSeasonsScreen Scroller");
+
+    
     CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
     QQSeasonsScreen *layerSpring = [QQSeasonsScreen node];    // 'layer' is an autorelease object.
     [layerSpring setupLevelHelper:@"seasonSpring"];
@@ -88,7 +90,7 @@ static CCScrollLayer *myScroller;
     }
     
     //scrollerOffset = 100 / 6;
-    scrollerOffset = 250;
+    scrollerOffset = 220;
     // now create the scroller and pass-in the pages (set widthOffset to 0 for fullscreen pages)
     CCScrollLayer *scroller = [[CCScrollLayer alloc] initWithLayers:[NSMutableArray arrayWithObjects: layerSpring, layerSummer, layerFall, layerWinter, nil]
                                                         widthOffset:scrollerOffset];
@@ -100,7 +102,7 @@ static CCScrollLayer *myScroller;
     
     [scroller release];
     
-    //myScroller = scroller;
+    myScroller = scroller;
 
 
     //[scene addChild: layer];    // add layer as a child to scene

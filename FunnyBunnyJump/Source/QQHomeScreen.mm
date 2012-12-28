@@ -60,6 +60,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [self setupLevelHelper];
         [self setupDebugDraw];
         self.isTouchEnabled = YES;  // Add at bottom of init
+        _repeat = 10;
+        _scaleFactor = 90;
 	}
 	return self;
 }
@@ -78,7 +80,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
 
     
-    //[LevelHelperLoader dontStretchArt];
+    [LevelHelperLoader dontStretchArt];
+    
     //[LevelHelperLoader useHDonIpad:YES];
     self.isTouchEnabled = YES;
     //self.isAccelerometerEnabled = YES;
@@ -105,6 +108,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     _spritePlay = [loader spriteWithUniqueName:@"playButton"];
     [_spritePlay registerTouchBeganObserver:self selector:@selector(touchBeganPlayButton:)];
+    
+    _spriteFacebookButton = [loader spriteWithUniqueName:@"facebookButton"];
+    [_spriteFacebookButton registerTouchBeganObserver:self selector:@selector(touchBeganFacebookButton:)];
+    [_spriteFacebookButton registerTouchEndedObserver:self selector:@selector(touchEndedFacebookButton:)];
+    
+    _spriteTwitterButton = [loader spriteWithUniqueName:@"twitterButton"];
+    [_spriteTwitterButton registerTouchBeganObserver:self selector:@selector(touchBeganTwitterButton:)];
+    [_spriteTwitterButton registerTouchEndedObserver:self selector:@selector(touchEndedTwitterButton:)];
     
     [self setupGameCenter];
     
@@ -135,6 +146,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [score setPosition:[spriteLifes position]];
     [self addChild:score];
      */
+    //LevelHelperLoader *tmpLoader = [[LevelHelperLoader alloc] initWithContentOfFile:@"seasonBackground"];
 
 }
 
@@ -151,14 +163,35 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spriteLeaderBoard registerTouchBeganObserver:self selector:@selector(touchBeganShowLeaderBoardButton:)];
 }
 
+-(void)touchBeganFacebookButton:(LHTouchInfo*)info{
+    NSLog(@"touchBeganFacebookButton");
+}
+
+-(void)touchEndedFacebookButton:(LHTouchInfo*)info{
+    //open Facebook Page
+    NSLog(@"touchEndedFacebookButton");
+    if(info.sprite) {
+        [[GameManager sharedGameManager] openSiteWithLinkType:kLinkTypeFacebook];
+    }
+}
+
+-(void)touchBeganTwitterButton:(LHTouchInfo*)info{}
+
+-(void)touchEndedTwitterButton:(LHTouchInfo*)info{
+    //open Twitter Page
+    if(info.sprite) {
+        [[GameManager sharedGameManager] openSiteWithLinkType:kLinkTypeTwitter];
+    }
+}
+
 -(void)setupMusic {
     LHSprite *musicButtonPlaceholder = [loader spriteWithUniqueName:@"musicButtonPlaceholder"];
     if([[GameState sharedInstance] isMusicEnabled]) {
-        _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOn"
+        _spriteMusic = [LHSprite spriteWithName:@"balloon_music_on"
                                         fromSheet:@"assets"
                                            SHFile:@"objects"];
     } else {
-        _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOff"
+        _spriteMusic = [LHSprite spriteWithName:@"balloon_music_off"
                                       fromSheet:@"assets"
                                          SHFile:@"objects"];
     }
@@ -169,6 +202,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [self addChild:_spriteMusic];
 }
 
+-(void)touchBeganMusicButton:(LHTouchInfo*)info{}
+
 -(void)touchEndedMusicButton:(LHTouchInfo*)info{
     //toggle soundEffects (on/off)
     if(info.sprite) {
@@ -178,15 +213,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         
         LHSprite *musicButtonPlaceholder = [loader spriteWithUniqueName:@"musicButtonPlaceholder"];
         if([[GameState sharedInstance] isMusicEnabled]) {
-            _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOn"
+            _spriteMusic = [LHSprite spriteWithName:@"balloon_music_on"
                                           fromSheet:@"assets"
                                              SHFile:@"objects"];
         } else {
-            _spriteMusic = [LHSprite spriteWithName:@"balloonMusicOff"
+            _spriteMusic = [LHSprite spriteWithName:@"balloon_music_off"
                                           fromSheet:@"assets"
                                              SHFile:@"objects"];
         }
-        
         CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
         [particle setPosition:CGPointMake([musicButtonPlaceholder position].x, [musicButtonPlaceholder position].y)];
         [self addChild:particle];
@@ -198,21 +232,31 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [_spriteMusic registerTouchEndedObserver:self selector:@selector(touchEndedMusicButton:)];
         [[GameManager sharedGameManager] playOrNotMusic];
         [self addChild:_spriteMusic];
+        for(int i = 0; i <= _repeat; i++) {
+            [_spriteMusic transformScale:[_spriteMusic scaleX] * _scaleFactor / 100];
+        }
+        [self startInflateWithSprite:_spriteMusic];
     }
 }
 
+-(void)startInflateWithSprite:(LHSprite*)sprite_ {
+    _spriteToScale = sprite_;
+    
+    [self schedule:@selector(tickInflate:) interval:0.05f repeat:_repeat delay:0];
+}
 
--(void)touchBeganMusicButton:(LHTouchInfo*)info{
+-(void)tickInflate:(ccTime)dt {
+    [_spriteToScale transformScale:[_spriteToScale scale] * 100 / _scaleFactor];
 }
 
 -(void)setupSound {
     LHSprite *soundButtonPlaceholder = [loader spriteWithUniqueName:@"soundButtonPlaceholder"];
     if([[GameState sharedInstance] isSoundEnabled]) {
-        _spriteSound = [LHSprite spriteWithName:@"balloonMusicOn"
+        _spriteSound = [LHSprite spriteWithName:@"balloon_sound_on"
                                       fromSheet:@"assets"
                                          SHFile:@"objects"];
     } else {
-        _spriteSound = [LHSprite spriteWithName:@"balloonMusicOff"
+        _spriteSound = [LHSprite spriteWithName:@"balloon_sound_off"
                                       fromSheet:@"assets"
                                          SHFile:@"objects"];
     }
@@ -231,19 +275,30 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         
         LHSprite *soundButtonPlaceholder = [loader spriteWithUniqueName:@"soundButtonPlaceholder"];
         if([[GameState sharedInstance] isSoundEnabled]) {
-            _spriteSound = [LHSprite spriteWithName:@"balloonMusicOn"
+            _spriteSound = [LHSprite spriteWithName:@"balloon_sound_on"
                                           fromSheet:@"assets"
                                              SHFile:@"objects"];
         } else {
-            _spriteSound = [LHSprite spriteWithName:@"balloonMusicOff"
+            _spriteSound = [LHSprite spriteWithName:@"balloon_sound_off"
                                           fromSheet:@"assets"
                                              SHFile:@"objects"];
         }
+        
+        CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+        [particle setPosition:CGPointMake([soundButtonPlaceholder position].x, [soundButtonPlaceholder position].y)];
+        [self addChild:particle];
+        [particle release];
+        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        
         [_spriteSound setPosition:[soundButtonPlaceholder position]];
         [_spriteSound registerTouchBeganObserver:self selector:@selector(touchBeganSoundButton:)];
         [_spriteSound registerTouchEndedObserver:self selector:@selector(touchEndedSoundButton:)];
         [[GameManager sharedGameManager] playOrNotSound];
         [self addChild:_spriteSound];
+        for(int i = 0; i <= _repeat; i++) {
+            [_spriteSound transformScale:[_spriteSound scaleX] * _scaleFactor / 100];
+        }
+        [self startInflateWithSprite:_spriteSound];
     }
 }
 

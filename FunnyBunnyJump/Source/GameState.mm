@@ -160,6 +160,56 @@ static GameState *sharedInstance = nil;
     [_tempLevelLocked setObject:[NSNumber numberWithBool:NO] forKey:nextLevelAsString];
 }
 
+/*
+-(NSString*)nextLevelAsString {
+    NSString* nextLevelAsString = @"";
+    if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+       && [[GameManager sharedGameManager] season] == spring) {
+        nextLevelAsString = @"levelSummer2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == summer) {
+        nextLevelAsString = @"levelFall2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == fall) {
+        nextLevelAsString = @"levelWinter2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == winter) {
+        //TODO: do nothing, or??
+    } else {
+        nextLevelAsString = @"level";
+        nextLevelAsString = [nextLevelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+        NSString *nextSceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene] + 1];
+        nextLevelAsString = [nextLevelAsString stringByAppendingString:nextSceneAsString];
+    }
+    
+    return nextLevelAsString;
+}
+ */
+
+-(BOOL)isNextLevelUnlocked {
+    NSString* nextLevelAsString = @"";
+    if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+       && [[GameManager sharedGameManager] season] == spring) {
+        nextLevelAsString = @"levelSummer2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == summer) {
+        nextLevelAsString = @"levelFall2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == fall) {
+        nextLevelAsString = @"levelWinter2012001";
+    } else if([[GameManager sharedGameManager] currentScene] == LAST_LEVEL
+              && [[GameManager sharedGameManager] season] == winter) {
+        //TODO: do nothing, or??
+    } else {
+        nextLevelAsString = @"level";
+        nextLevelAsString = [nextLevelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+        NSString *nextSceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene] + 1];
+        nextLevelAsString = [nextLevelAsString stringByAppendingString:nextSceneAsString];
+    }
+    
+    return ![[_tempLevelLocked objectForKey:nextLevelAsString] boolValue];
+}
+
 -(void)createLevelLockedDictionary {
     //if(_gameOnceStarted == NO) {
         //game is launched for the very first time
@@ -188,7 +238,7 @@ static GameState *sharedInstance = nil;
                        [NSNumber numberWithBool:YES], @"levelSpring2012021",
                        [NSNumber numberWithBool:YES], @"levelSpring2012022",
                        
-                       [NSNumber numberWithBool:YES], @"levelSummer2012001",
+                       [NSNumber numberWithBool:NO], @"levelSummer2012001",
                        [NSNumber numberWithBool:YES], @"levelSummer2012002",
                        [NSNumber numberWithBool:YES], @"levelSummer2012003",
                        [NSNumber numberWithBool:YES], @"levelSummer2012004",
@@ -234,7 +284,7 @@ static GameState *sharedInstance = nil;
                        [NSNumber numberWithBool:YES], @"levelFall2012021",
                        [NSNumber numberWithBool:YES], @"levelFall2012022",
                        
-                       [NSNumber numberWithBool:YES], @"levelWinter2012001",
+                       [NSNumber numberWithBool:NO], @"levelWinter2012001",
                        [NSNumber numberWithBool:YES], @"levelWinter2012002",
                        [NSNumber numberWithBool:YES], @"levelWinter2012003",
                        [NSNumber numberWithBool:YES], @"levelWinter2012004",

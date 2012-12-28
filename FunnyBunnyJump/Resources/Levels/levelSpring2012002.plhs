@@ -1618,7 +1618,7 @@
 								<key>Opacity</key>
 								<real>0.64999997615814209</real>
 								<key>Position</key>
-								<string>{239.99999999999994, 14.130861043930082}</string>
+								<string>{239.99999999999994, 7.1308610439300821}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -4291,7 +4291,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{158.46714199954499, 130.85516670577181}</string>
+								<string>{15.467141999544992, 203.85516670577181}</string>
 								<key>Scale</key>
 								<string>{1.3793103694915771, 1.3333333730697632}</string>
 								<key>SpriteSize</key>
@@ -4366,7 +4366,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{327.46951700622071, 131.15652641884935}</string>
+								<string>{466.46951700622071, 199.15652641884935}</string>
 								<key>Scale</key>
 								<string>{1.3793103694915771, 1.3333333730697632}</string>
 								<key>SpriteSize</key>

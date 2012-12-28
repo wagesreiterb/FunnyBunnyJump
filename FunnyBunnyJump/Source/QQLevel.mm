@@ -33,7 +33,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
     if(_countDown < 0) _countDown = 0;
     
-    //[self updateLabelLifes];
     [self updateLabelCountdown];
     [self updateLabelScore];
     [self updateLabelHighScore];
@@ -45,7 +44,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(_levelState == levelRunning) [_player applyStartJump];
     [_player restoreInitialPosition:loader];
     [_player stopPlayer];
-    [_player beam];
+    //[_player beam];
     [_player beamWithLoader:loader];
     //[_player upOrDownAction:_earLeft withEarRight:_earRight withHandLeft:_handLeft withHandRight:_handRight];
     [_player upOrDownActionWithLoader:loader];
@@ -60,6 +59,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
     
     NSInteger balloonsLeft = 0;
+    
+    NSArray *balloonsNormal = [loader spritesWithTag:TAG_BALLOON];
+    for(QQSpriteBalloon *balloon in balloonsNormal) {
+        [balloon reactToTouch:_world withLayer:self];
+        balloonsLeft++;
+    }
 
     NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
     for(QQSpriteBalloonShake *balloon in balloonsShaker) {
@@ -193,31 +198,32 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 //[self scheduleOnce:@selector(pauseLevelAtSchedule:) delay:0.3f];
                 NSLog(@"_______________ _gameOverLevelPassed");
                 
-
-                [[[GameState sharedInstance] tempLevelLocked] setObject:[NSNumber numberWithBool:NO] forKey:@"levelSpring2012002"];
-
+                //[[[GameState sharedInstance] tempLevelLocked] setObject:[NSNumber numberWithBool:NO] forKey:@"levelSpring2012002"];
+                
                 [[CCDirector sharedDirector] pause];
-                [_player removeSelfWithLoader:loader];
-                [self showOverlayGameOver];
+                [[GameState sharedInstance] unlockNextLevel];
+                
+                _gameOverLayer = [[QQGameOver alloc] init];
+                [_gameOverLayer pauseLevel:self];
+                
+                //[_player removeSelfWithLoader:loader];
+                //[self showOverlayGameOver];
                 [self saveGameState];
                 
             } else {
-                //TODO: pause
                 [[CCDirector sharedDirector] pause];
                 
                 //[_player removeSelfWithLoader:loader];
-                
                 //[self scheduleOnce:@selector(pauseLevelAtSchedule:) delay:0.3f];
-                
 
                 [self disableTouches];
                 
                 _gameOverLayer = [[QQGameOver alloc] init];
                 [_gameOverLayer pauseLevel:self];
                 
-                _levelStarted = NO;
-                [_player setShallResetPosition:YES];
-                [_player setVisible:NO];
+                //_levelStarted = NO;
+                //[_player setShallResetPosition:YES];
+                //[_player setVisible:NO];
                 //move player to original positiony
             }
             
@@ -350,7 +356,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
  */
 
 -(void)saveGameState {
-    
     //save gameCenter
     [GameState sharedInstance].completedSeasonSpring2012 = true;
     [[GCHelper sharedInstance] reportAchievements:kAchievementSeasonSpring2012 percentComplete:100.0];
@@ -358,8 +363,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //reset Achievements
     //[[GCHelper sharedInstance] resetAchievements];
     
-    int timeSoFar = 15;
-    [[GCHelper sharedInstance] reportScore:kLeaderBoard score:(int)timeSoFar];
+
     
     NSLog(@"____ _score: %d", _score);
     NSLog(@"____ _highScore: %d", _highScore);
@@ -373,7 +377,47 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     [[GameState sharedInstance] save];
     
+    [self saveLeaderboard];
+}
+
+-(void)saveLeaderboard {
+    //report Leaderboard to iTunes Connect
+
+    int sumHighscoreAllLevels = 0;
+    int sumHighscoreSpring2012 = 0;
+    int sumHighscoreSummer2012 = 0;
+    int sumHighscoreFall2012 = 0;
+    int sumHighscoreWinter2012 = 0;
+    for(id key in [[GameState sharedInstance] tempHighScore]) {
+        NSNumber *value = [[[GameState sharedInstance] tempHighScore] objectForKey:key];
+        sumHighscoreAllLevels += [value intValue];
+        //NSLog(@"value: %@", value);
+        NSLog(@"sumHighscoreAllLevels: %d", sumHighscoreAllLevels);
+        
+        //summer
+        if([key hasPrefix:@"levelSpring2012"]) {
+            sumHighscoreSpring2012 += [value intValue];
+        } else if ([key hasPrefix:@"levelSummer2012"]) {
+            sumHighscoreSummer2012 += [value intValue];
+        } else if ([key hasPrefix:@"levelFall2012"]) {
+            sumHighscoreFall2012 += [value intValue];
+        } else if ([key hasPrefix:@"levelWinter2012"]) {
+            sumHighscoreWinter2012 += [value intValue];
+        }
+    }
+    NSLog(@"sumHighscoreAllLevels: %d", sumHighscoreAllLevels);
+    NSLog(@"sumHighscoreSpring: %d", sumHighscoreSpring2012);
+    NSLog(@"sumHighscoreSummer: %d", sumHighscoreSummer2012);
+    NSLog(@"sumHighscoreFall: %d", sumHighscoreFall2012);
+    NSLog(@"sumHighscoreWinter: %d", sumHighscoreWinter2012);
     
+    //int scoreAllLevels = 20;
+    NSLog(@"-- QQLevel::saveLeaderboard");
+    [[GCHelper sharedInstance] reportScore:kLeaderBoard score:(int)sumHighscoreAllLevels];
+    [[GCHelper sharedInstance] reportScore:kLeaderBoardSpring2012 score:(int)sumHighscoreSpring2012];
+    [[GCHelper sharedInstance] reportScore:kLeaderBoardSummer2012 score:(int)sumHighscoreSummer2012];
+    [[GCHelper sharedInstance] reportScore:kLeaderBoardFall2012 score:(int)sumHighscoreFall2012];
+    [[GCHelper sharedInstance] reportScore:kLeaderBoardWinter2012 score:(int)sumHighscoreWinter2012];
 }
 
 -(void)pauseLevelAtSchedule:(ccTime)dt {
@@ -626,6 +670,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 #pragma mark setupLevelHelper
 -(void) setupLevelHelper {
     //[LevelHelperLoader dontStretchArt];
+    [[LHSettings sharedInstance] setStretchArt:YES];
     self.isTouchEnabled = YES;
     //TODO: remove all isAccelerometerEnabled
     //self.isAccelerometerEnabled = YES;
@@ -636,6 +681,9 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                                                            forTag:TAG_PLAYER];
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteTrampoline class]
                                                            forTag:TAG_TRAMPOLINE];
+    
+    [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloon class]
+                                                           forTag:TAG_BALLOON];
 
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteBalloonShake class]
                                                            forTag:TAG_BALLOON_SHAKER];
@@ -1099,7 +1147,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(nil != _pauseLayer) [_pauseLayer release];
     
     NSLog(@"Level::dealloc");
-    [self saveGameState];
+    //[self saveGameState];
     //[_dictionaryHighScore release];
      
     if(nil != loader) {
@@ -1118,6 +1166,10 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 	_world = NULL;
 	
   	delete m_debugDraw;
+    
+    //[_gameOverLayer release];
+    
+    [[CCDirector sharedDirector] resume];
 
 	[super dealloc];    // don't forget to call "super dealloc"
 

@@ -45,5 +45,6 @@
 -(void)initGameState;
 -(void)unlockNextLevel;
 -(BOOL)isLevelLockedWithSeason:(NSString*)season_ andLevel:(int)level_;
+-(BOOL)isNextLevelUnlocked;
 
 @end

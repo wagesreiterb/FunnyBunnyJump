@@ -32,7 +32,18 @@
 	return scene;
 }
 
-// 
+//
+
+/*
+-(void) onEnter
+{
+	[super onEnter];
+    
+    [self scheduleOnce:@selector(makeTransition:) delay:0];
+}
+*/
+
+
 -(void) onEnter
 {
 	[super onEnter];
@@ -41,15 +52,15 @@
 	CGSize size = [[CCDirector sharedDirector] winSize];
 	CCSprite *background;
     
-    /*
-	if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-		background = [CCSprite spriteWithFile:@"Default.png"];
-		background.rotation = 90;
-	} else {
-		//background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
-        background = [CCSprite spriteWithFile:@"splashScreen-ipad.png"];
-	}
-    */
+    
+//	if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
+//		background = [CCSprite spriteWithFile:@"Default.png"];
+//		background.rotation = 90;
+//	} else {
+//		//background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
+//        background = [CCSprite spriteWithFile:@"splashScreen-ipad.png"];
+//	}
+ 
     
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -59,13 +70,14 @@
         if (scale > 1.0)
         {
             //iPad retina screen
-            background = [CCSprite spriteWithFile:@"splashScreen-ipadhd.jpg"];
+            background = [CCSprite spriteWithFile:@"Default-Landscape@2x~ipad.png"];
             //NSLog(@"iPad retina screen");
             //[background setScale:2.0f];
         }
         else
         {
             //iPad screen
+            background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
             NSLog(@"iPad normal screen");
         }
     }
@@ -97,9 +109,33 @@
 	background.position = ccp(size.width/2, size.height/2);
 	[self addChild: background];
     
+    
+    /*
+    for(NSString *file in bundleContents) {
+		if([[file pathExtension] compare:@"png"] == NSOrderedSame) {
+			[CCTextureCache addImage: file];
+		}
+	}
+    */
+    
+
+    [self preloadTextures];
+    
     [self scheduleOnce:@selector(makeTransition:) delay:0];
     //[[CCDirector sharedDirector] runWithScene:[QQHomeScreen scene]];
 }
+
+-(void)preloadTextures {
+    //CCTexture2D *texture =
+    [[CCTextureCache sharedTextureCache] addImage:@"objects_foregrounds-hd.png"];
+    [[CCTextureCache sharedTextureCache] addImage:@"objects_assets-hd.png"];
+    [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds-hd.png"];
+    [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds2-hd.png"];
+    [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds3-hd.png"];
+    
+    
+}
+
 
 /*
 -(void) onEnter

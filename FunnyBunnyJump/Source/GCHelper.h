@@ -15,7 +15,10 @@
 #define kAchievementSeasonWinter2012 @"com.querika.funnybunnyjump.achievement.seasonwinter2012"
 
 #define kLeaderBoard @"com.querika.funnybunnyjump.leaderboard"
-
+#define kLeaderBoardSpring2012 @"com.querika.funnybunnyjump.leaderboardspring2012"
+#define kLeaderBoardSummer2012 @"com.querika.funnybunnyjump.leaderboardsummer2012"
+#define kLeaderBoardFall2012 @"com.querika.funnybunnyjump.leaderboardfall2012"
+#define kLeaderBoardWinter2012 @"com.querika.funnybunnyjump.leaderboardwinter2012"
 
 @interface GCHelper : NSObject <NSCoding> {
     BOOL gameCenterAvailable;

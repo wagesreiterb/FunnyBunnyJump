@@ -104,6 +104,7 @@ static GCHelper *sharedHelper = nil;
 }
 
 - (void)reportScore:(NSString *)identifier score:(int)rawScore {
+    NSLog(@"GCHelper::reportScore");
     GKScore *score = [[[GKScore alloc] initWithCategory:identifier] autorelease];
     
     score.value = rawScore;
@@ -125,7 +126,9 @@ static GCHelper *sharedHelper = nil;
 }
 
 //leaderBoard
+/*
 - (void)sendScore:(GKScore *)score {
+    NSLog(@"GCHelper::sendScore");
     [score reportScoreWithCompletionHandler:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             if (error == NULL) {
@@ -138,6 +141,39 @@ static GCHelper *sharedHelper = nil;
         });
     }];
 }
+ */
+
+//leaderBoard
+// BugFix for iOS6
+//http://www.cocos2d-iphone.org/forum/topic/41948
+- (void)sendScore:(GKScore *)score {
+    
+    // Pull the score value and category from the passed in score
+    int scoreValue = score.value;
+    NSString*scoreCategory = score.category;
+    
+    // Create a new temporary score with these values
+    GKScore *toReport = [[[GKScore alloc]
+                          initWithCategory:scoreCategory] autorelease];
+    toReport.value = scoreValue;
+    
+    // Report the temporary score, delete the original on success
+    [toReport reportScoreWithCompletionHandler:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+        {
+            if (error == NULL) {
+                NSLog(@"Successfully sent score!");
+                [scoresToReport removeObject:score];
+                [self save];
+            }
+            else {
+                NSLog(@"Score failed to send... will try again later. Reason: %@", error.localizedDescription);
+            }
+        });
+    }];
+}
+
+
 
 //achievements
 -(void)sendAchievemnet:(GKAchievement*)achievement {

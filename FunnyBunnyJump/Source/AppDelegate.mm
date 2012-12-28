@@ -18,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //GameCenter
+    NSLog(@"-- AppDelegate::application");
     [[GCHelper sharedInstance] authenticateLocalUser];
     [[GameState sharedInstance] initGameState];
 	
@@ -61,7 +62,8 @@
 	//	[director setProjection:kCCDirectorProjection3D];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director_ enableRetinaDisplay:YES] )
+	if( ! [director_ enableRetinaDisplay:YES] ) //Querika
+    //if( ! [director_ enableRetinaDisplay:NO] )
 		CCLOG(@"Retina Display Not supported");
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images

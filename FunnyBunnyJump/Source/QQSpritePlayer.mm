@@ -204,22 +204,34 @@
     shallBeam = TRUE;
 }
 
+/*
 -(void)beam {
     if(shallBeam) {
+        NSLog(@"IM LOADER!!!");
         [self transformPosition:beamPosition];
         
         [self body]->SetLinearVelocity(b2Vec2(0,0));
         shallBeam = FALSE;
     }
 }
+*/
 
 -(void)beamWithLoader:(LevelHelperLoader*)loader_ {
     if(shallBeam) {
-        [self transformPosition:beamPosition];
-        LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
-        [earLeft transformPosition:CGPointMake(beamPosition.x + 50.344, beamPosition.y - 66.02)];
+        //LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+        //float earLeftDiffX = self.position.x - earLeft.position.x;
+        //float earLeftDiffY = self.position.y - earLeft.position.y;
+        //NSLog(@"bunny x: %f, y: %f", self.position.x, self.position.x);
+        //NSLog(@"earLe x: %f, y: %f", earLeft.position.y, earLeft.position.y);
+        //[earLeft transformPosition:CGPointMake(beamPosition.x + 50.344, beamPosition.y - 66.02)];
+        //[earLeft transformPosition:CGPointMake(beamPosition.x - earLeftDiffX, beamPosition.y + earLeftDiffY)];
         //)[earLeft transformPosition:CGPointMake(50, 66)];
+        //NSLog(@"bunny x: %f, y: %f", self.position.x, self.position.x);
+        //NSLog(@"earLe x: %f, y: %f", earLeft.position.y, earLeft.position.y);
         
+        [self transformPosition:beamPosition];
+        LHSprite* leftRight = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+        [leftRight transformPosition:beamPosition];
         LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
         [earRight transformPosition:beamPosition];
         LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];

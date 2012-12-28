@@ -214,7 +214,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{312, 242}, {40, 69.5}}</string>
+								<string>{{354, 242}, {40, 69.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -514,7 +514,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{312, 242}, {40, 69.5}}</string>
+								<string>{{354, 242}, {40, 69.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -664,7 +664,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{354, 242}, {40, 69.5}}</string>
+								<string>{{312, 242}, {40, 69.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1414,7 +1414,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{312, 242}, {40, 69.5}}</string>
+								<string>{{354, 242}, {40, 69.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1489,7 +1489,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{354, 242}, {40, 69.5}}</string>
+								<string>{{312, 242}, {40, 69.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1700,7 +1700,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>ballonon_cyan_2x</string>
+							<string>buttonBackBalloon</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1714,7 +1714,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{270, 242}, {40, 70.75}}</string>
+								<string>{{125, 596}, {37.5, 50.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1726,11 +1726,11 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{39.525562443614263, 37.701686797054208}</string>
+								<string>{32, 38}</string>
 								<key>Scale</key>
-								<string>{1, 0.72402596473693848}</string>
+								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{40, 70.75}</string>
+								<string>{37.5, 50.5}</string>
 								<key>Tag</key>
 								<integer>9</integer>
 								<key>TagName</key>
@@ -1744,81 +1744,6 @@
 							</dict>
 							<key>UniqueName</key>
 							<string>1001</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>levelChooserBackButton</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{438, 313}, {35.75, 17.75}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<false/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>0.5</real>
-								<key>Position</key>
-								<string>{39.525562443614263, 30.717479882152475}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{35.25, 17.75}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>levelChooserBackButton</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>levelChooserBackButton</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>

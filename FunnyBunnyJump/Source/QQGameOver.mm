@@ -36,22 +36,26 @@ LHSprite *_spriteNextButton;
     [_spriteReloadButton registerTouchBeganObserver:self selector:@selector(touchBeganReloadButton:)];
     
     _spriteNextButton = [_loaderGameOver spriteWithUniqueName:@"buttonNextBalloon"];
-    [_spriteNextButton registerTouchBeganObserver:self selector:@selector(touchBeganNextButton:)];
+    if([[GameState sharedInstance] isNextLevelUnlocked] || [[GameManager sharedGameManager] currentScene] != LAST_LEVEL) {
+    //if([[GameManager sharedGameManager] currentScene] != LAST_LEVEL) {
+        [_spriteNextButton registerTouchBeganObserver:self selector:@selector(touchBeganNextButton:)];
+    } else {
+        [_spriteNextButton removeSelf];
+    }
     
     [LevelHelperLoader setPaused:YES];
     [[CCDirector sharedDirector] pause];
     
     //NSLog(@"xxx --- %d", [[GameManager sharedGameManager] currentScene]);
     //NSLog(@"xxx --- %@", [[GameManager sharedGameManager] seasonName]);
-    [[GameState sharedInstance] unlockNextLevel];
-    
+    //[[GameState sharedInstance] unlockNextLevel];
 
 }
 
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
         NSLog(@"***** touchBeganBackButton");
+        [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
         [self release];
     }
 }
@@ -67,6 +71,13 @@ LHSprite *_spriteNextButton;
 -(void)touchBeganNextButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"***** touchBeganNextButton");
+        
+        //NSString *nextSceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene] + 1];
+        
+        SceneTypes nextLevel = [[GameManager sharedGameManager] currentScene];
+        nextLevel++;
+        
+        [[GameManager sharedGameManager] runSceneWithID:nextLevel];
         [self release];
     }
 }

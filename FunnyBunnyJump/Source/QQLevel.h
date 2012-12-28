@@ -32,6 +32,7 @@
 #import "GCHelper.h"
 
 #import "LHCustomClasses.h"
+#import "LHSettings.h"
 #import "QQPauseLayer.h"
 #import "QQGameOver.h"
 

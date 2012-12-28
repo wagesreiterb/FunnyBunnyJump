@@ -179,21 +179,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             case 1: {
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012001]) {
-                    LHSprite* sprite = [loader spriteWithUniqueName:@"1"];
-                    [sprite removeSelf];
-                    LHSprite* number = [loader spriteWithUniqueName:@"number_1"];
-                    [number removeSelf];
-                    
-                    [[CCDirector sharedDirector] resume];
-                    
-                    CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-                    [particle setPosition:CGPointMake([sprite position].x, [sprite position].y)];
-                    [self addChild:particle];
-                    [particle release];
-                    
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012001];
                     [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-                    
-                    [self scheduleOnce:@selector(runSceneWithIDkLevel2012001:) delay:0.5f];
                 }
                 break;
             }
@@ -386,3 +373,26 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 @end
 ////////////////////////////////////////////////////////////////////////////////
 
+/*
+ case 1: {
+ if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+ andLevel:2012001]) {
+ LHSprite* sprite = [loader spriteWithUniqueName:@"1"];
+ [sprite removeSelf];
+ LHSprite* number = [loader spriteWithUniqueName:@"number_1"];
+ [number removeSelf];
+ 
+ [[CCDirector sharedDirector] resume];
+ 
+ CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+ [particle setPosition:CGPointMake([sprite position].x, [sprite position].y)];
+ [self addChild:particle];
+ [particle release];
+ 
+ [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+ 
+ [self scheduleOnce:@selector(runSceneWithIDkLevel2012001:) delay:0.5f];
+ }
+ break;
+ }
+ */

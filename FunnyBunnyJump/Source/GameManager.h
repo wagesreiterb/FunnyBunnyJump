@@ -35,6 +35,7 @@
 
 +(GameManager*)sharedGameManager;
 -(void)runSceneWithID:(SceneTypes)sceneID;
+-(void)openSiteWithLinkType:(LinkTypes)linkTypeToOpen;
 -(void)playOrNotMusic;
 -(void)playOrNotSound;
 -(void)toggleMusic;

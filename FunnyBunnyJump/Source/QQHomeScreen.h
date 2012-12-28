@@ -41,6 +41,12 @@
     LHSprite *_spritePlay;
     LHSprite *_spriteLeaderBoard;
     LHSprite *_spriteAchievements;
+    LHSprite *_spriteFacebookButton, *_spriteTwitterButton;
+    
+    LHSprite *_spriteToScale;
+    
+    int _repeat;
+    float _scaleFactor;
 }
 
 // returns a Scene that contains the HelloWorld as the only child
