@@ -19,8 +19,6 @@
 		8205DB411666986500B962BB /* objects_backgrounds3-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB3F1666986500B962BB /* objects_backgrounds3-hd.png */; };
 		8205DB421666986500B962BB /* objects_backgrounds3-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */; };
 		822606B21688A6250032848C /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 825E17A616556B6E00900C12 /* Default-Landscape@2x~ipad.png */; };
-		822606BA168E051F0032848C /* LoadingScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 822606B8168E051E0032848C /* LoadingScene.h */; };
-		822606BB168E051F0032848C /* LoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 822606B9168E051E0032848C /* LoadingScene.m */; };
 		82380A38163B09020018DF1A /* QQSpriteBalloonShake.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */; };
 		82380A4A163C8AE70018DF1A /* particleExplodingBalloon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */; };
 		82380A4C163C8C1E0018DF1A /* particleExplodingBalloonTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 82380A4B163C8C1D0018DF1A /* particleExplodingBalloonTexture.png */; };
@@ -496,10 +494,6 @@
 		8282F0011624AF4A00B5303B /* seasonSpring.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD81624AF4A00B5303B /* seasonSpring.plhs */; };
 		8282F0021624AF4A00B5303B /* seasonSummer.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFD91624AF4A00B5303B /* seasonSummer.plhs */; };
 		8282F0031624AF4A00B5303B /* seasonWinter.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDA1624AF4A00B5303B /* seasonWinter.plhs */; };
-		8282F0041624AF4A00B5303B /* 008973519_prev.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */; };
-		8282F0051624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */; };
-		8282F0061624AF4A00B5303B /* 9193__melack__salt-3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */; };
-		8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */; };
 		8282F0081624AF4A00B5303B /* balloon.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE01624AF4A00B5303B /* balloon.wav */; };
 		8282F0091624AF4A00B5303B /* boink.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE11624AF4A00B5303B /* boink.wav */; };
 		8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */; };
@@ -563,8 +557,6 @@
 		8205DB3D1666985B00B962BB /* objects_backgrounds3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_backgrounds3.png; sourceTree = "<group>"; };
 		8205DB3F1666986500B962BB /* objects_backgrounds3-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds3-hd.png"; sourceTree = "<group>"; };
 		8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds3-ipadhd.png"; sourceTree = "<group>"; };
-		822606B8168E051E0032848C /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
-		822606B9168E051E0032848C /* LoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScene.m; sourceTree = "<group>"; };
 		82380A36163B09010018DF1A /* QQSpriteBalloonShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonShake.h; sourceTree = "<group>"; };
 		82380A37163B09010018DF1A /* QQSpriteBalloonShake.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonShake.mm; sourceTree = "<group>"; };
 		82380A49163C8AE70018DF1A /* particleExplodingBalloon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = particleExplodingBalloon.plist; sourceTree = "<group>"; };
@@ -1027,10 +1019,6 @@
 		8282EFD81624AF4A00B5303B /* seasonSpring.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonSpring.plhs; sourceTree = "<group>"; };
 		8282EFD91624AF4A00B5303B /* seasonSummer.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonSummer.plhs; sourceTree = "<group>"; };
 		8282EFDA1624AF4A00B5303B /* seasonWinter.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = seasonWinter.plhs; sourceTree = "<group>"; };
-		8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 008973519_prev.mp3; sourceTree = "<group>"; };
-		8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "19261__martian__jumps-from-reason-3-rev.wav"; sourceTree = "<group>"; };
-		8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "9193__melack__salt-3.wav"; sourceTree = "<group>"; };
-		8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "95535__robinhood76__01633-cartoon-yuppie-shout.wav"; sourceTree = "<group>"; };
 		8282EFE01624AF4A00B5303B /* balloon.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = balloon.wav; sourceTree = "<group>"; };
 		8282EFE11624AF4A00B5303B /* boink.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boink.wav; sourceTree = "<group>"; };
 		8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = franticDataShimmer.mp3; sourceTree = "<group>"; };
@@ -1822,10 +1810,6 @@
 				8205DB381666480600B962BB /* hui_que.mp3 */,
 				8205DB3B1666480D00B962BB /* yippy_que.mp3 */,
 				8205DB35166632FC00B962BB /* zippy.mp3 */,
-				8282EFDC1624AF4A00B5303B /* 008973519_prev.mp3 */,
-				8282EFDD1624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav */,
-				8282EFDE1624AF4A00B5303B /* 9193__melack__salt-3.wav */,
-				8282EFDF1624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav */,
 				8282EFE01624AF4A00B5303B /* balloon.wav */,
 				8282EFE11624AF4A00B5303B /* boink.wav */,
 				8282EFE31624AF4A00B5303B /* franticDataShimmer.mp3 */,
@@ -1916,8 +1900,6 @@
 				8282EF711624ADC000B5303B /* GLES-Render.mm */,
 				82031AEA1680F0930053E49D /* QQGameOver.h */,
 				82031AEB1680F0930053E49D /* QQGameOver.mm */,
-				822606B8168E051E0032848C /* LoadingScene.h */,
-				822606B9168E051E0032848C /* LoadingScene.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2132,7 +2114,6 @@
 				825F441716654DBB003CF131 /* QQSpriteMusicButton.h in Headers */,
 				82031AEC1680F0930053E49D /* QQGameOver.h in Headers */,
 				82031AF1168246AB0053E49D /* CCScrollLayer.h in Headers */,
-				822606BA168E051F0032848C /* LoadingScene.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2206,10 +2187,6 @@
 				8282F0011624AF4A00B5303B /* seasonSpring.plhs in Resources */,
 				8282F0021624AF4A00B5303B /* seasonSummer.plhs in Resources */,
 				8282F0031624AF4A00B5303B /* seasonWinter.plhs in Resources */,
-				8282F0041624AF4A00B5303B /* 008973519_prev.mp3 in Resources */,
-				8282F0051624AF4A00B5303B /* 19261__martian__jumps-from-reason-3-rev.wav in Resources */,
-				8282F0061624AF4A00B5303B /* 9193__melack__salt-3.wav in Resources */,
-				8282F0071624AF4A00B5303B /* 95535__robinhood76__01633-cartoon-yuppie-shout.wav in Resources */,
 				8282F0081624AF4A00B5303B /* balloon.wav in Resources */,
 				8282F0091624AF4A00B5303B /* boink.wav in Resources */,
 				8282F00B1624AF4A00B5303B /* franticDataShimmer.mp3 in Resources */,
@@ -2507,7 +2484,6 @@
 				825F441816654DBB003CF131 /* QQSpriteMusicButton.mm in Sources */,
 				82031AED1680F0930053E49D /* QQGameOver.mm in Sources */,
 				82031AF0168246AB0053E49D /* CCScrollLayer.m in Sources */,
-				822606BB168E051F0032848C /* LoadingScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

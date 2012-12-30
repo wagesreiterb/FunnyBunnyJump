@@ -69,6 +69,12 @@ static GameState *sharedInstance = nil;
     //is level Locked
     _levelLocked = [NSDictionary dictionaryWithDictionary:_tempLevelLocked];
     [encoder encodeObject:_levelLocked forKey:@"levelLocked"];
+    
+    _levelPassed = [NSDictionary dictionaryWithDictionary:_tempLevelPassed];
+    [encoder encodeObject:_levelPassed forKey:@"levelPassed"];
+    
+    _levelPassedInTime = [NSDictionary dictionaryWithDictionary:_tempLevelPassedInTime];
+    [encoder encodeObject:_levelPassedInTime forKey:@"levelPassedInTime"];
 }
 
 -(id)initWithCoder:(NSCoder *)decoder {
@@ -96,15 +102,16 @@ static GameState *sharedInstance = nil;
         
         _levelLocked = [decoder decodeObjectForKey:@"levelLocked"];
         NSLog(@"---- READ _levelLocked:%@", _levelLocked);
-        //if(_tempLevelLocked == nil) {
-        //    NSLog(@"----READ _tempLevelLocked im IF");
-        //    _tempLevelLocked = [NSMutableDictionary dictionaryWithDictionary:_levelLocked];
-        //    [_tempLevelLocked retain];
-        //}
-        //[_levelLocked retain];
-        
         _tempLevelLocked = [NSMutableDictionary dictionaryWithDictionary:_levelLocked];
         [_tempLevelLocked retain];
+        
+        
+        _levelPassed = [decoder decodeObjectForKey:@"levelPassed"];
+        _tempLevelPassed = [NSMutableDictionary dictionaryWithDictionary:_levelPassed];
+        [_tempLevelPassed retain];
+        _levelPassedInTime = [decoder decodeObjectForKey:@"levelPassedInTime"];
+        _tempLevelPassedInTime = [NSMutableDictionary dictionaryWithDictionary:_levelPassedInTime];
+        [_tempLevelPassedInTime retain];
     }
     return self;
 }
@@ -128,6 +135,47 @@ static GameState *sharedInstance = nil;
     levelAsString = [levelAsString stringByAppendingString:level];
 
     return [[_tempLevelLocked objectForKey:levelAsString] boolValue];
+}
+
+-(BOOL)isLevelPassed {
+    NSString* levelAsString = @"level";
+    levelAsString = [levelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+    NSString *sceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene]];
+    levelAsString = [levelAsString stringByAppendingString:sceneAsString];
+    
+    NSLog(@"__ xxx : %@", levelAsString);
+    
+    return [[_tempLevelPassed objectForKey:levelAsString] boolValue];
+}
+
+-(void)setLevelPassed {
+    NSString* levelAsString = @"level";
+    levelAsString = [levelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+    NSString *sceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene]];
+    levelAsString = [levelAsString stringByAppendingString:sceneAsString];
+    
+    
+    [_tempLevelPassed setObject:[NSNumber numberWithBool:YES] forKey:levelAsString];
+    
+    NSLog(@"__ xxx : %@", levelAsString);
+}
+
+-(BOOL)isLevelPassedInTime {
+    NSString* levelAsString = @"level";
+    levelAsString = [levelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+    NSString *sceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene]];
+    levelAsString = [levelAsString stringByAppendingString:sceneAsString];
+
+    return [[_tempLevelPassedInTime objectForKey:levelAsString] boolValue];
+}
+
+-(void)setLevelPassedInTime {
+    NSString* levelAsString = @"level";
+    levelAsString = [levelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+    NSString *sceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene]];
+    levelAsString = [levelAsString stringByAppendingString:sceneAsString];
+    
+    [_tempLevelPassedInTime setObject:[NSNumber numberWithBool:YES] forKey:levelAsString];
 }
 
 -(void)unlockNextLevel {
@@ -321,8 +369,210 @@ static GameState *sharedInstance = nil;
     NSLog(@"+++ createLevelLockedDictionary %@", _tempLevelLocked);
 }
 
+-(void)createLevelPassedDictionary {
+    _levelPassed = [NSDictionary dictionaryWithObjectsAndKeys:
+                    [NSNumber numberWithBool:NO], @"levelSpring2012001",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012002",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012003",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012004",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012005",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012006",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012007",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012008",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012009",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012010",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012011",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012012",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012013",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012014",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012015",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012016",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012017",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012018",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012019",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012020",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012021",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelSummer2012001",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012002",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012003",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012004",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012005",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012006",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012007",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012008",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012009",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012010",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012011",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012012",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012013",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012014",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012015",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012016",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012017",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012018",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012019",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012020",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012021",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelFall2012001",
+                    [NSNumber numberWithBool:NO], @"levelFall2012002",
+                    [NSNumber numberWithBool:NO], @"levelFall2012003",
+                    [NSNumber numberWithBool:NO], @"levelFall2012004",
+                    [NSNumber numberWithBool:NO], @"levelFall2012005",
+                    [NSNumber numberWithBool:NO], @"levelFall2012006",
+                    [NSNumber numberWithBool:NO], @"levelFall2012007",
+                    [NSNumber numberWithBool:NO], @"levelFall2012008",
+                    [NSNumber numberWithBool:NO], @"levelFall2012009",
+                    [NSNumber numberWithBool:NO], @"levelFall2012010",
+                    [NSNumber numberWithBool:NO], @"levelFall2012011",
+                    [NSNumber numberWithBool:NO], @"levelFall2012012",
+                    [NSNumber numberWithBool:NO], @"levelFall2012013",
+                    [NSNumber numberWithBool:NO], @"levelFall2012014",
+                    [NSNumber numberWithBool:NO], @"levelFall2012015",
+                    [NSNumber numberWithBool:NO], @"levelFall2012016",
+                    [NSNumber numberWithBool:NO], @"levelFall2012017",
+                    [NSNumber numberWithBool:NO], @"levelFall2012018",
+                    [NSNumber numberWithBool:NO], @"levelFall2012019",
+                    [NSNumber numberWithBool:NO], @"levelFall2012020",
+                    [NSNumber numberWithBool:NO], @"levelFall2012021",
+                    [NSNumber numberWithBool:NO], @"levelFall2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelWinter2012001",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012002",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012003",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012004",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012005",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012006",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012007",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012008",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012009",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012010",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012011",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012012",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012013",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012014",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012015",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012016",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012017",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012018",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012019",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012020",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012021",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012022",
+                
+                    nil];
+
+    _tempLevelPassed = [NSMutableDictionary dictionaryWithDictionary:_levelPassed];
+    [_tempLevelPassed retain];
+}
+
+-(void)createLevelPassedInTimeDictionary {
+    _levelPassedInTime = [NSDictionary dictionaryWithObjectsAndKeys:
+                    [NSNumber numberWithBool:NO], @"levelSpring2012001",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012002",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012003",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012004",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012005",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012006",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012007",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012008",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012009",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012010",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012011",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012012",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012013",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012014",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012015",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012016",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012017",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012018",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012019",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012020",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012021",
+                    [NSNumber numberWithBool:NO], @"levelSpring2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelSummer2012001",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012002",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012003",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012004",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012005",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012006",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012007",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012008",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012009",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012010",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012011",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012012",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012013",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012014",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012015",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012016",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012017",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012018",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012019",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012020",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012021",
+                    [NSNumber numberWithBool:NO], @"levelSummer2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelFall2012001",
+                    [NSNumber numberWithBool:NO], @"levelFall2012002",
+                    [NSNumber numberWithBool:NO], @"levelFall2012003",
+                    [NSNumber numberWithBool:NO], @"levelFall2012004",
+                    [NSNumber numberWithBool:NO], @"levelFall2012005",
+                    [NSNumber numberWithBool:NO], @"levelFall2012006",
+                    [NSNumber numberWithBool:NO], @"levelFall2012007",
+                    [NSNumber numberWithBool:NO], @"levelFall2012008",
+                    [NSNumber numberWithBool:NO], @"levelFall2012009",
+                    [NSNumber numberWithBool:NO], @"levelFall2012010",
+                    [NSNumber numberWithBool:NO], @"levelFall2012011",
+                    [NSNumber numberWithBool:NO], @"levelFall2012012",
+                    [NSNumber numberWithBool:NO], @"levelFall2012013",
+                    [NSNumber numberWithBool:NO], @"levelFall2012014",
+                    [NSNumber numberWithBool:NO], @"levelFall2012015",
+                    [NSNumber numberWithBool:NO], @"levelFall2012016",
+                    [NSNumber numberWithBool:NO], @"levelFall2012017",
+                    [NSNumber numberWithBool:NO], @"levelFall2012018",
+                    [NSNumber numberWithBool:NO], @"levelFall2012019",
+                    [NSNumber numberWithBool:NO], @"levelFall2012020",
+                    [NSNumber numberWithBool:NO], @"levelFall2012021",
+                    [NSNumber numberWithBool:NO], @"levelFall2012022",
+                    
+                    [NSNumber numberWithBool:NO], @"levelWinter2012001",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012002",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012003",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012004",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012005",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012006",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012007",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012008",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012009",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012010",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012011",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012012",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012013",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012014",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012015",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012016",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012017",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012018",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012019",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012020",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012021",
+                    [NSNumber numberWithBool:NO], @"levelWinter2012022",
+                    
+                    nil];
+    
+    _tempLevelPassedInTime = [NSMutableDictionary dictionaryWithDictionary:_levelPassedInTime];
+    [_tempLevelPassedInTime retain];
+}
+
+
 -(void)dealloc {
     [_tempLevelLocked release];
+    [_tempLevelPassed release];
     [tempHighScore release];
     [super dealloc];
 }

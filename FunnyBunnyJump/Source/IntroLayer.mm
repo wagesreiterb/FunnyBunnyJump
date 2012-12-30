@@ -120,20 +120,29 @@
     
 
     [self preloadTextures];
+    [self preloadSoundEffects];
     
     [self scheduleOnce:@selector(makeTransition:) delay:0];
     //[[CCDirector sharedDirector] runWithScene:[QQHomeScreen scene]];
 }
 
+-(void)preloadSoundEffects {
+    //TODO: are all sounds preloaded, what about music?
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"ouch_que.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"hui_que.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"yippy_que.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"balloon.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"boink.wav"];
+}
+
 -(void)preloadTextures {
     //CCTexture2D *texture =
+    //TODO: what about other devices?!?!
     [[CCTextureCache sharedTextureCache] addImage:@"objects_foregrounds-hd.png"];
     [[CCTextureCache sharedTextureCache] addImage:@"objects_assets-hd.png"];
     [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds-hd.png"];
     [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds2-hd.png"];
     [[CCTextureCache sharedTextureCache] addImage:@"objects_backgrounds3-hd.png"];
-    
-    
 }
 
 
@@ -168,17 +177,28 @@
 	//[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[QQHomeScreen scene] withColor:ccWHITE]];
     //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.3f
     //                                                                                     scene:[QQHomeScreen scene]]];
-    NSLog(@"+++ InroLayer - 1");
-    
+
     if([[GameState sharedInstance] tempHighScore] == nil) {
         NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
         [[GameState sharedInstance] setTempHighScore:tmpDict];
         [tmpDict release];
-        NSLog(@"+++ IntroLayer - IF");
-    } else {
-        NSLog(@"+++ IntroLayer - ELSE");
     }
-    NSLog(@"+++ InroLayer - 2");
+    
+    if([[GameState sharedInstance] tempLevelPassed] == nil) {
+        NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
+        [[GameState sharedInstance] setTempLevelPassed:tmpDict];
+        [tmpDict release];
+    }
+    
+    if([[GameState sharedInstance] tempLevelPassedInTime] == nil) {
+        NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
+        [[GameState sharedInstance] setTempLevelPassedInTime:tmpDict];
+        [tmpDict release];
+    }
+    
+    //TODO: tempLevelPassedNoLifesLost
+    
+    
     [[CCDirector sharedDirector] replaceScene:[QQHomeScreen scene]];
 }
 

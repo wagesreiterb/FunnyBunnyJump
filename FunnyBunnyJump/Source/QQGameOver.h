@@ -11,6 +11,9 @@
 
 @interface QQGameOver : LHLayer
 
--(void)pauseLevel:(LHLayer*)mainLayer;
+//-(void)pauseLevel:(LHLayer*)mainLayer;
+-(void)showGameOverLayer:(LHLayer*)mainLayer
+         withLevelPassed:(BOOL)levelPassed_
+   withLevelPassedInTime:(BOOL)levelPassedInTime_;
 
 @end

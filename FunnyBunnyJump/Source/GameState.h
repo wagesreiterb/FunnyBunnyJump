@@ -33,6 +33,11 @@
 @property (copy) NSDictionary *levelLocked;
 @property (retain) NSMutableDictionary *tempLevelLocked;
 
+@property (copy) NSDictionary *levelPassed;
+@property (retain) NSMutableDictionary *tempLevelPassed;
+@property (copy) NSDictionary *levelPassedInTime;
+@property (retain) NSMutableDictionary *tempLevelPassedInTime;
+
 @property (getter = isSoundEnabled) BOOL soundEnabled;
 @property (getter = isMusicEnabled) BOOL musicEnabled;
 @property BOOL gameOnceStarted;
@@ -45,6 +50,10 @@
 -(void)initGameState;
 -(void)unlockNextLevel;
 -(BOOL)isLevelLockedWithSeason:(NSString*)season_ andLevel:(int)level_;
+-(BOOL)isLevelPassed;
+-(void)setLevelPassed;
+-(BOOL)isLevelPassedInTime;
+-(void)setLevelPassedInTime;
 -(BOOL)isNextLevelUnlocked;
 
 @end

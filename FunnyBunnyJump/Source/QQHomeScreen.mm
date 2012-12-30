@@ -80,7 +80,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
 
     
-    [LevelHelperLoader dontStretchArt];
+    //[LevelHelperLoader dontStretchArt];
     
     //[LevelHelperLoader useHDonIpad:YES];
     self.isTouchEnabled = YES;
@@ -102,10 +102,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //  [lh createGravity:world];
     //TODO: set Gravity from LH
     
-    
-    //[self setupPlayer];
-    //[self setupTrampoline];
-    
     _spritePlay = [loader spriteWithUniqueName:@"playButton"];
     [_spritePlay registerTouchBeganObserver:self selector:@selector(touchBeganPlayButton:)];
     
@@ -124,36 +120,9 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //    [[GameState sharedInstance] createLevelLockedDictionary];
     //    [[GameState sharedInstance] enableSoundAndMusic];
     //}
-    
-    
-    
+
     [self setupMusic];
     [self setupSound];
-    [self setupBalloonButtons];
-    
-    //CGSize size = [[CCDirector sharedDirector] winSize];
-
-    //self.position = ccp(size.width/2, size.height/2);
-    //[self setPosition:CGPointMake(0, -160)];
-
-    /*
-     Que Que for teset the score
-    NSString* stringPukte = [NSString stringWithFormat:@"%d", [GameState sharedInstance].punkte];
-    CCLOG(@"---Punkte: %d", [GameState sharedInstance].punkte);
-    LHSprite* spriteLifes = [loader spriteWithUniqueName:@"lifes"];
-    CCLabelTTF *score = [CCLabelTTF labelWithString:stringPukte fontName:@"Verdana" fontSize:20.0];
-    [score setColor:ccc3(0,0,0)];
-    [score setPosition:[spriteLifes position]];
-    [self addChild:score];
-     */
-    //LevelHelperLoader *tmpLoader = [[LevelHelperLoader alloc] initWithContentOfFile:@"seasonBackground"];
-
-}
-
--(void)setupBalloonButtons {
-    //QQSpriteMusicButton* balloonMusic = [loader spriteWithUniqueName:@"balloonMusic"];
-    //[balloonBusic sho]
-
 }
 
 -(void)setupGameCenter {

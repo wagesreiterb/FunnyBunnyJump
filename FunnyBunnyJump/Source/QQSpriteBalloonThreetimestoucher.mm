@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownSpriteBalloonThreetimestoucherInit{
     //initialize your member variabled here
-    _touchCount = 3;
+    _touchCount = 2;
     _scaleFactor = 90;
     _repeat = 20;
 }
