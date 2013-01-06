@@ -126,6 +126,7 @@
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application
 {
+    NSLog(@"AppDelegate::applicationWillResignActive");
 	if( [navController_ visibleViewController] == director_ )
 		[director_ pause];
 }
@@ -133,18 +134,28 @@
 // call got rejected
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
-	if( [navController_ visibleViewController] == director_ )
-		[director_ resume];
+    NSLog(@"AppDelegate::applicationDidBecomeActive");
+    
+	if( [navController_ visibleViewController] == director_) {
+       //&& [[GameState sharedInstance] gamePausedGameOver] == NO) {
+        [director_ resume];
+    }
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
-	if( [navController_ visibleViewController] == director_ )
-		[director_ stopAnimation];
+    NSLog(@"AppDelegate::applicationDidEnterBackground");
+	if( [navController_ visibleViewController] == director_ ) {
+            [director_ stopAnimation];
+        if([[GameState sharedInstance] currnetSceneIsLevel]) {
+            [[GameState sharedInstance] setGamePausedByTurnOff:YES];
+        }
+    }
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
+    NSLog(@"AppDelegate::applicationWillEnterForeground");
 	if( [navController_ visibleViewController] == director_ )
 		[director_ startAnimation];
 }

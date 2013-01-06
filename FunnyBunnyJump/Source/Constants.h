@@ -21,7 +21,8 @@
 #define EFFECT_RAIN "rain"
 #define EFFECT_LEAVES "leaves"
 
-NSInteger const LAST_LEVEL = 2012022;
+NSInteger const LAST_LEVEL = 2012026;
+float const volumeBackgroundMusic = 0.2f;
 
 @protocol Constants <NSObject>
 
@@ -52,8 +53,11 @@ typedef enum {
     kLevel2012019 = 2012019,
     kLevel2012020 = 2012020,
     kLevel2012021 = 2012021,
-    kLevel2012022 = 2012022
-    
+    kLevel2012022 = 2012022,
+    kLevel2012023 = 2012023,
+    kLevel2012024 = 2012024,
+    kLevel2012025 = 2012025,
+    kLevel2012026 = 2012026
     
 } SceneTypes;
 

@@ -261,6 +261,19 @@
     }
 }
 
+-(void)makeInvisibleAndStaitc:(LevelHelperLoader*)loader_ {
+    [self makeStatic];
+    [self setOpacity:0];
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    [earLeft setOpacity:0];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    [earRight setOpacity:0];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    [handLeft setOpacity:0];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    [handRight setOpacity:0];
+}
+
 -(void)removeSelfWithLoader:(LevelHelperLoader*)loader_ {
     [self removeSelf];
     LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];

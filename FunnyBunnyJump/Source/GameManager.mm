@@ -100,6 +100,138 @@ static GameManager* _sharedGameManager = nil;
             sceneToRun =[QQLevel scene];
             break;
         }
+        case kLevel2012005: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012005"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012006: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012006"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        } 
+        case kLevel2012007: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012007"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012008: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012008"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012009: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012009"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012010: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012010"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012011: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012011"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012012: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012012"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012013: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012013"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012014: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012014"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012015: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012015"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012016: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012016"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012017: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012017"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012018: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012018"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012019: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012019"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012020: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012020"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012021: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012021"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012022: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012022"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012023: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012023"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012024: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012024"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012025: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012025"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
+        case kLevel2012026: {
+            fullLevelName = [fullLevelName stringByAppendingString:@"2012026"];
+            [[GameManager sharedGameManager] setLevelToRun:fullLevelName];
+            sceneToRun =[QQLevel scene];
+            break;
+        }
 
             
         default:
@@ -153,7 +285,7 @@ static GameManager* _sharedGameManager = nil;
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
     } else {
         [[GameState sharedInstance] setMusicEnabled:YES];
-        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.2f];
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volumeBackgroundMusic];
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
     }
     [[GameState sharedInstance] save];
@@ -161,7 +293,7 @@ static GameManager* _sharedGameManager = nil;
 
 -(void)playOrNotMusic {
     if([[GameState sharedInstance] isMusicEnabled]) {
-        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.2f];
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volumeBackgroundMusic];
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
     } else {
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];

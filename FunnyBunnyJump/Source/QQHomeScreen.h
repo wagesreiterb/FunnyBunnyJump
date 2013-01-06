@@ -43,7 +43,13 @@
     LHSprite *_spriteAchievements;
     LHSprite *_spriteFacebookButton, *_spriteTwitterButton;
     
-    LHSprite *_spriteToScale;
+    LHSprite *_spriteToScaleMusicButton;
+    BOOL _balloonMusicButtonCompletelyInflated;
+    
+    LHSprite *_spriteToScaleSoundButton;
+    BOOL _balloonSoundButtonCompletelyInflated;
+
+    //LHSprite *_spriteToScale;
     
     int _repeat;
     float _scaleFactor;

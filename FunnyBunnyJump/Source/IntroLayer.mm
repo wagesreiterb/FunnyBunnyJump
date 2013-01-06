@@ -133,6 +133,8 @@
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"yippy_que.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"balloon.wav"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"boink.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"jubilant-fanfare-3.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"explosive-orchestra.mp3"];
 }
 
 -(void)preloadTextures {
@@ -196,7 +198,11 @@
         [tmpDict release];
     }
     
-    //TODO: tempLevelPassedNoLifesLost
+    if([[GameState sharedInstance] tempLevelPassedNoLivesLost] == nil) {
+        NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
+        [[GameState sharedInstance] setTempLevelPassedNoLivesLost:tmpDict];
+        [tmpDict release];
+    }
     
     
     [[CCDirector sharedDirector] replaceScene:[QQHomeScreen scene]];

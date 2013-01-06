@@ -19,6 +19,8 @@
     NSDictionary *highScore;
     NSMutableDictionary *tempHighScore;
     
+    NSDictionary *_countDown;
+    
     //NSDictionary *levelLocked;
 }
 
@@ -37,10 +39,16 @@
 @property (retain) NSMutableDictionary *tempLevelPassed;
 @property (copy) NSDictionary *levelPassedInTime;
 @property (retain) NSMutableDictionary *tempLevelPassedInTime;
+@property (copy) NSDictionary *levelPassedNoLivesLost;
+@property (retain) NSMutableDictionary *tempLevelPassedNoLivesLost;
 
 @property (getter = isSoundEnabled) BOOL soundEnabled;
 @property (getter = isMusicEnabled) BOOL musicEnabled;
 @property BOOL gameOnceStarted;
+
+@property BOOL gamePausedByTurnOff;
+@property BOOL gamePausedGameOver;
+@property BOOL currnetSceneIsLevel;
 
 +(GameState*)sharedInstance;
 -(void)save;
@@ -51,9 +59,15 @@
 -(void)unlockNextLevel;
 -(BOOL)isLevelLockedWithSeason:(NSString*)season_ andLevel:(int)level_;
 -(BOOL)isLevelPassed;
+-(BOOL)isLevelPassed:(NSString*)levelName_;
 -(void)setLevelPassed;
 -(BOOL)isLevelPassedInTime;
+-(BOOL)isLevelPassedInTime:(NSString*)levelName_;
 -(void)setLevelPassedInTime;
+-(BOOL)isLevelPassedWithNoLivesLost;
+-(BOOL)isLevelPassedWithNoLivesLost:(NSString*)levelName_;
+-(void)setLevelPassedWithNoLivesLost;
 -(BOOL)isNextLevelUnlocked;
+-(int)countDown;
 
 @end

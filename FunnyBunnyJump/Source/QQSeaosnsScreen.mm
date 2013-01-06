@@ -103,7 +103,9 @@ static CCScrollLayer *myScroller;
     [scroller release];
     
     myScroller = scroller;
-
+    
+    //[[CCDirector sharedDirector] resume];
+    [LevelHelperLoader setPaused:NO];
 
     //[scene addChild: layer];    // add layer as a child to scene
 	return scene; 	// return the scene

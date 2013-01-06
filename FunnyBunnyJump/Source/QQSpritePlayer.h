@@ -89,5 +89,6 @@
 -(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_;
 -(void)restoreInitialPosition:(LevelHelperLoader*)loader_;
 -(void)stopPlayer;
+-(void)makeInvisibleAndStaitc:(LevelHelperLoader*)loader_;
 
 @end

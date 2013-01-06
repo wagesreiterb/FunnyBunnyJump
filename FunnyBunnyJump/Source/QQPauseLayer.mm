@@ -12,6 +12,9 @@
 @implementation QQPauseLayer
 
 -(void)pauseLevel:(LHLayer*)mainLayer {
+    [[GameState sharedInstance] setGamePausedByTurnOff:YES];
+    [[GameState sharedInstance] setGamePausedGameOver:YES];
+    
     _loaderPause = [[LevelHelperLoader alloc] initWithContentOfFile:@"pauseLayer1"];
     [_loaderPause addSpritesToLayer:mainLayer];
     
@@ -51,14 +54,19 @@
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"***** touchBeganBackButton");
+        [[GameState sharedInstance] setGamePausedGameOver:NO];
+        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [LevelHelperLoader setPaused:NO];
         [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
+        [self release];
     }
 }
 
 -(void)touchBeganResumeButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"***** touchBeganResumeButton");
+        [[GameState sharedInstance] setGamePausedGameOver:NO];
+        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [LevelHelperLoader setPaused:NO];
         [[CCDirector sharedDirector] resume];
         [self release];
@@ -67,8 +75,11 @@
 
 -(void)touchBeganReloadButton:(LHTouchInfo*)info{
     if(info.sprite) {
+        [[GameState sharedInstance] setGamePausedGameOver:NO];
+        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
         NSLog(@"***** touchBeganReloadButton");
+        [self release];
     }
 }
 
@@ -84,6 +95,7 @@
 
 -(void)dealloc {
     NSLog(@"--- dealloc");
+    [[GameState sharedInstance] setGamePausedByTurnOff:NO];
     [self enableTouchesForAllLoaders];
     [_loaderPause release];
     _loaderPause = nil;

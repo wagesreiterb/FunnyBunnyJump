@@ -11,6 +11,7 @@
 @implementation QQSpriteBalloonThreetimestoucher
 
 @synthesize reactToCollision;
+@synthesize _balloonCompletelyInflated;
 
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownSpriteBalloonThreetimestoucherInit{
@@ -18,6 +19,7 @@
     _touchCount = 2;
     _scaleFactor = 90;
     _repeat = 20;
+    _balloonCompletelyInflated = YES;
 }
 //------------------------------------------------------------------------------
 -(id) init{
@@ -64,52 +66,99 @@
 
 -(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer {
     
+    if(reactToCollision == NO) {
+        [self body]->SetActive(false);
+    } else if(_balloonCompletelyInflated == YES && reactToCollision == YES) {
+        [self body]->SetActive(true);
+        if(wasTouched && _touchCount == 0) {
+            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:_particle];
+            [_particle release];
+            
+            wasTouched = FALSE;
+            
+            [self body]->SetActive(false);
+            [self removeSelf];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        } else if (wasTouched) {
+            [self setReactToCollision:NO];
+            wasTouched = FALSE;
+            _touchCount--;
+            for(int i = 0; i <= _repeat; i++) {
+                [self transformScale:[self scale] * _scaleFactor / 100];
+            }
+            [self startInflateBalloon];
+            
+            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:_particle];
+            [_particle release];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        }
+    }
+}
+
+-(void)startInflateBalloon {
+    //[self schedule: @selector(tick:) interval:0.05 repeat:20];
+    _balloonCompletelyInflated = NO;
+    [self schedule:@selector(tick:) interval:0.05f repeat:_repeat delay:0];
+}
+
+-(void)tick:(ccTime)dt {
+    [self transformScale:[self scale] * 100 / _scaleFactor];
+
+    if([self scale] >= 0.999f) {
+        _balloonCompletelyInflated = YES;
+        reactToCollision = YES;
+        //NSLog(@"__ IF");
+    } else {
+        //NSLog(@"__ ELSE");
+    }
+    //NSLog(@"__ balloon scale: %f, %d", [self scale], _balloonCompletelyInflated);
+}
+
+
+/*
+-(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer {
+    
+    //if(reactToCollision == YES) {
     if(reactToCollision == YES) {
         [self body]->SetActive(true);
     } else {
         [self body]->SetActive(false);
     }
     
-    if(wasTouched && _touchCount == 0) {
-        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-        [_particle setPosition:CGPointMake([self position].x, [self position].y)];
-        [layer addChild:_particle];
-        [_particle release];
-        
-        wasTouched = FALSE;
-        
-        [self body]->SetActive(false);
-        [self removeSelf];
-        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-    } else if (wasTouched) {
-        [self setReactToCollision:NO];
-        wasTouched = FALSE;
-        _touchCount--;
-        for(int i = 0; i <= _repeat; i++) {
-            [self transformScale:[self scale] * _scaleFactor / 100];
+    if(_balloonCompletelyInflated == YES) {
+        if(wasTouched && _touchCount == 0) {
+            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:_particle];
+            [_particle release];
+            
+            wasTouched = FALSE;
+            
+            [self body]->SetActive(false);
+            [self removeSelf];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+        } else if (wasTouched) {
+            [self setReactToCollision:NO];
+            wasTouched = FALSE;
+            _touchCount--;
+            for(int i = 0; i <= _repeat; i++) {
+                [self transformScale:[self scale] * _scaleFactor / 100];
+            }
+            [self startInflateBalloon];
+            
+            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:_particle];
+            [_particle release];
+            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
         }
-        [self startInflateBalloon];
-        
-        _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-        [_particle setPosition:CGPointMake([self position].x, [self position].y)];
-        [layer addChild:_particle];
-        [_particle release];
-        [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
     }
 }
-
--(void)startInflateBalloon {
-    //[self schedule: @selector(tick:) interval:0.05 repeat:20];
-    [self schedule:@selector(tick:) interval:0.05f repeat:_repeat delay:0];
-}
-
--(void)tick:(ccTime)dt {    
-    [self transformScale:[self scale] * 100 / _scaleFactor];
-    //if(_repeat == 0) {
-    //    [self setTouchesDisabled:NO];
-    //    _repeat--;
-    //}
-}
+*/
 
 /*
 -(QQSpriteBalloonThreetimestoucher*)reactToTouch:(QQSpriteBalloonThreetimestoucher*)balloon

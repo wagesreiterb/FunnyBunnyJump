@@ -7,7 +7,7 @@
 	<key>CreatedWith</key>
 	<string>LevelHelper</string>
 	<key>Gravity</key>
-	<string>{0, -5}</string>
+	<string>{0, -3}</string>
 	<key>JOINTS_INFO</key>
 	<array>
 		<dict>
@@ -222,7 +222,7 @@
 		</dict>
 	</array>
 	<key>LHVersion</key>
-	<string>1.4.967</string>
+	<string>1.4.976</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -560,7 +560,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 0}, {512, 191.5}}</string>
+								<string>{{0, 388}, {512, 191.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -665,7 +665,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{310, 232}, {50, 7.5}}</string>
+								<string>{{302, 497}, {50, 7.5}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -740,7 +740,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{271, 364}, {159.75, 12.75}}</string>
+								<string>{{125, 524}, {159.75, 12.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -815,7 +815,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{375, 130}, {60.75, 95.75}}</string>
+								<string>{{372, 102}, {60.75, 95.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -890,7 +890,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{437, 130}, {58.5, 95.75}}</string>
+								<string>{{310, 122}, {58.5, 95.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -965,7 +965,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{169, 364}, {100, 20}}</string>
+								<string>{{261, 460}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1040,7 +1040,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 242}, {512, 36.75}}</string>
+								<string>{{0, 390}, {512, 36.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1115,7 +1115,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{480, 274}, {18.75, 29}}</string>
+								<string>{{480, 347}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1190,7 +1190,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{375, 228}, {17.5, 8.75}}</string>
+								<string>{{406, 232}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1265,7 +1265,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{375, 228}, {17.5, 8.75}}</string>
+								<string>{{406, 232}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1340,7 +1340,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{478, 121}, {5.5, 6.5}}</string>
+								<string>{{504, 17}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1415,7 +1415,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{478, 121}, {5.5, 6.5}}</string>
+								<string>{{504, 17}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1502,7 +1502,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{186, 316}, {21.75, 30}}</string>
+								<string>{{481, 102}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1589,7 +1589,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{186, 316}, {21.75, 30}}</string>
+								<string>{{481, 102}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1664,7 +1664,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{270, 315}, {21.75, 30}}</string>
+								<string>{{480, 274}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1739,7 +1739,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{228, 316}, {21.75, 30}}</string>
+								<string>{{481, 204}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1814,7 +1814,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 313}, {21.75, 30}}</string>
+								<string>{{480, 315}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1889,7 +1889,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{354, 314}, {21.75, 30}}</string>
+								<string>{{481, 172}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>

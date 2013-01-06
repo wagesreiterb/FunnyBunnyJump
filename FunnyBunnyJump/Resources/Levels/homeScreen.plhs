@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.967</string>
+	<string>1.4.976</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -169,7 +169,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{439, 102}, {45, 68}}</string>
+								<string>{{260, 242}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -244,7 +244,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{307, 242}, {45, 67.75}}</string>
+								<string>{{307, 312}, {45, 67.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -319,7 +319,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{213, 242}, {45, 68}}</string>
+								<string>{{213, 312}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -394,7 +394,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{213, 312}, {45, 68}}</string>
+								<string>{{213, 242}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -418,12 +418,12 @@
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_achievements</string>
+								<string>achievementsButton</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_achievements</string>
+							<string>achievementsButton</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -544,7 +544,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{260, 242}, {45, 68}}</string>
+								<string>{{434, 102}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -619,7 +619,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{310, 0}, {65.75, 117}}</string>
+								<string>{{372, 0}, {65.75, 100}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -633,9 +633,9 @@
 								<key>Position</key>
 								<string>{307.21806365251541, 162.56568670272827}</string>
 								<key>Scale</key>
-								<string>{1, 0.85000002384185791}</string>
+								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{65.75, 117}</string>
+								<string>{65.75, 100}</string>
 								<key>Tag</key>
 								<integer>10</integer>
 								<key>TagName</key>

@@ -145,10 +145,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                                                    SHFile:@"objects"];
                 CGPoint position;
                 position.x = [balloon position].x;
-                position.y = [balloon position].y + [balloon contentSize].height / 8;
+                position.y = [balloon position].y + [balloon contentSize].height / 7;
                 [lock setPosition:position];
                 [lock setOpacity:180];
                 [self addChild:lock];
+                
+
             } else {
                 //draw numbers
                 NSString* numberString = @"number";
@@ -158,12 +160,101 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                                                    SHFile:@"objects"];
                 CGPoint position;
                 position.x = [balloon position].x;
-                position.y = [balloon position].y + [balloon contentSize].height / 8;
+                position.y = [balloon position].y + [balloon contentSize].height / 6;
                 [number setPosition:position];
                 [number setOpacity:180];
                 [self addChild:number];
+                
+                [self drawEmptyStarsWithBalloon:balloon];
+                [self drawStarsWithBalloon:balloon];
             }
+
         }
+    }
+}
+
+-(void)drawEmptyStarsWithBalloon:(LHSprite*)balloon_ {
+    //draw left star
+    LHSprite* starEmptyLeft = [LHSprite spriteWithName:@"starEmptyLevelChooser"
+                                         fromSheet:@"assets"
+                                            SHFile:@"objects"];
+    CGPoint positionStarEmptyLeft;
+    positionStarEmptyLeft.x = [balloon_ position].x - [balloon_ contentSize].width / 3.5f;
+    positionStarEmptyLeft.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+    [starEmptyLeft setPosition:positionStarEmptyLeft];
+    //[starEmptyLeft setScale:0.2f];
+    [self addChild:starEmptyLeft];
+    
+    //draw middle star
+    LHSprite* starEmpty = [LHSprite spriteWithName:@"starEmptyLevelChooser"
+                                         fromSheet:@"assets"
+                                            SHFile:@"objects"];
+    CGPoint positionStarEmpty;
+    positionStarEmpty.x = [balloon_ position].x;
+    positionStarEmpty.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+    [starEmpty setPosition:positionStarEmpty];
+    //[starEmpty setScale:0.2f];
+    [self addChild:starEmpty];
+    
+    //draw right star
+    LHSprite* starEmptyRight = [LHSprite spriteWithName:@"starEmptyLevelChooser"
+                                             fromSheet:@"assets"
+                                                SHFile:@"objects"];
+    CGPoint positionStarEmptyRight;
+    positionStarEmptyRight.x = [balloon_ position].x + [balloon_ contentSize].width / 3.5f;
+    positionStarEmptyRight.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+    [starEmptyRight setPosition:positionStarEmptyRight];
+    //[starEmptyRight setScale:0.2f];
+    [self addChild:starEmptyRight];
+}
+
+-(void)drawStarsWithBalloon:(LHSprite*)balloon_ {
+
+    NSString* levelAsString = @"level";
+    levelAsString = [levelAsString stringByAppendingString:[[GameManager sharedGameManager] seasonName]];
+    levelAsString = [levelAsString stringByAppendingString:@"2012"];
+    levelAsString = [levelAsString stringByAppendingString:[balloon_ uniqueName]];
+    
+    NSLog(@"_-_-_ balloon: %@", levelAsString);
+    
+    
+    //draw left star - level Passed
+    if([[GameState sharedInstance] isLevelPassed:levelAsString]) {
+        LHSprite* starEmptyLeft = [LHSprite spriteWithName:@"starLevelChooser"
+                                                 fromSheet:@"assets"
+                                                    SHFile:@"objects"];
+        CGPoint positionStarEmptyLeft;
+        positionStarEmptyLeft.x = [balloon_ position].x - [balloon_ contentSize].width / 3.5f;
+        positionStarEmptyLeft.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+        [starEmptyLeft setPosition:positionStarEmptyLeft];
+        //[starEmptyLeft setScale:0.2f];
+        [self addChild:starEmptyLeft];
+    }
+    
+    //draw middle star - level passed in time
+    if([[GameState sharedInstance] isLevelPassedInTime:levelAsString]) {
+        LHSprite* starEmpty = [LHSprite spriteWithName:@"starLevelChooser"
+                                             fromSheet:@"assets"
+                                                SHFile:@"objects"];
+        CGPoint positionStarEmpty;
+        positionStarEmpty.x = [balloon_ position].x;
+        positionStarEmpty.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+        [starEmpty setPosition:positionStarEmpty];
+        //[starEmpty setScale:0.2f];
+        [self addChild:starEmpty];
+    }
+    
+    //draw right star - level passed no lives lost
+    if([[GameState sharedInstance] isLevelPassedWithNoLivesLost:levelAsString]) {
+        LHSprite* starEmptyRight = [LHSprite spriteWithName:@"starLevelChooser"
+                                                  fromSheet:@"assets"
+                                                     SHFile:@"objects"];
+        CGPoint positionStarEmptyRight;
+        positionStarEmptyRight.x = [balloon_ position].x + [balloon_ contentSize].width / 3.5f;
+        positionStarEmptyRight.y = [balloon_ position].y - [balloon_ contentSize].height / 2.55f;
+        [starEmptyRight setPosition:positionStarEmptyRight];
+        //[starEmptyRight setScale:0.2f];
+        [self addChild:starEmptyRight];
     }
 }
 
@@ -180,7 +271,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012001]) {
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012001];
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
                 }
                 break;
             }
@@ -203,58 +293,136 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 }
                 break;
             case 5:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012005];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012005]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012005];
+                }
                 break;
             case 6:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012006];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012006]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012006];
+                }
                 break;
             case 7:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012007];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012007]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012007];
+                }
                 break;
             case 8:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012008];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012008]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012008];
+                }
                 break;
             case 9:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012009];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012009]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012009];
+                }
                 break;
             case 10:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012010];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012010]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012010];
+                }
                 break;
             case 11:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012011];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012011]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012011];
+                }
                 break;
             case 12:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012012];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012012]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012012];
+                }
                 break;
             case 13:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012013];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012013]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012013];
+                }
                 break;
             case 14:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012014];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012014]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012014];
+                }
                 break;
             case 15:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012015];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012015]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012015];
+                }
                 break;
             case 16:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012016];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012016]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012016];
+                }
                 break;
             case 17:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012017];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012017]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012017];
+                }
                 break;
             case 18:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012018];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012018]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012018];
+                }
                 break;
             case 19:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012019];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012019]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012019];
+                }
                 break;
             case 20:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012020];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012020]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012020];
+                }
                 break;
             case 21:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012021];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012021]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012021];
+                }
                 break;
             case 22:
-                [[GameManager sharedGameManager] runSceneWithID:kLevel2012022];
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012022]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012022];
+                }
+                break;
+            case 23:
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012023]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012023];
+                }
+                break;
+            case 24:
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012024]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012024];
+                }
+                break;
+            case 25:
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012025]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012025];
+                }
+                break;
+            case 26:
+                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+                                                               andLevel:2012026]) {
+                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012026];
+                }
                 break;
 
             case 1001:
