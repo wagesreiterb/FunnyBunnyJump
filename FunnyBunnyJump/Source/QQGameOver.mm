@@ -33,7 +33,7 @@ LHSprite *_spriteNextButton;
 -(void)showGameOverLayer:(LHLayer*)mainLayer
          withLevelPassed:(BOOL)levelPassed_
    withLevelPassedInTime:(BOOL)levelPassedInTime_
-withPlayerLives:(int)playerLives_
+         withPlayerLives:(int)playerLives_
                withScore:(int)score_
            withHighScore:(int)highScore_ {
     
@@ -44,7 +44,7 @@ withPlayerLives:(int)playerLives_
     _delayOfStarMove = 0.4f;
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0];
     
-    [[GameState sharedInstance] setGamePausedGameOver:YES];
+    //[[GameState sharedInstance] setGamePausedGameOver:YES];
     
     _loaderGameOver = [[LevelHelperLoader alloc] initWithContentOfFile:@"overlayGameOver"];
     [_loaderGameOver addSpritesToLayer:mainLayer];
@@ -98,6 +98,7 @@ withPlayerLives:(int)playerLives_
     //level Passed
     //show star for levelPassed
     if(levelPassed_ == YES) {
+        NSLog(@"************************************ levelPassed");
         //[[CCDirector sharedDirector] resume];
         //[LevelHelperLoader setPaused:NO];
         //[[CCDirector sharedDirector] startAnimation];
@@ -106,7 +107,7 @@ withPlayerLives:(int)playerLives_
         
         LHSprite* starLevelPassed = [_loaderGameOver spriteWithUniqueName:@"starLevelPassed"];
         LHSprite* levelPassed = [_loaderGameOver spriteWithUniqueName:@"levelPassed"];
-        [starLevelPassed setOpacity:255];
+        [starLevelPassed setVisible:YES];
         _levelPassedPosition = [levelPassed position];
 
         
@@ -134,7 +135,7 @@ withPlayerLives:(int)playerLives_
     //show star for levelPassed
     if(levelPassedInTime_ == YES) {
         LHSprite* starLevelPassedInTime = [_loaderGameOver spriteWithUniqueName:@"starLevelPassedInTime"];
-        [starLevelPassedInTime setOpacity:255];
+        [starLevelPassedInTime setVisible:YES];
         LHSprite* levelPassedInTime = [_loaderGameOver spriteWithUniqueName:@"passedWithinTime"];
         _levelPassedInTimePosition = [levelPassedInTime position];
         //[self performSelector:@selector(tickLevelPassedInTimeMoveStar:) withObject:nil afterDelay:_delayOfStarMove];
@@ -146,7 +147,7 @@ withPlayerLives:(int)playerLives_
     //No Lives Lost
     if(playerLives_ == LIFES) {
         LHSprite* starLevelPassedWithNoLivesLost = [_loaderGameOver spriteWithUniqueName:@"starLevelPassedWithNoLivesLost"];
-        [starLevelPassedWithNoLivesLost setOpacity:255];
+        [starLevelPassedWithNoLivesLost setVisible:YES];
         LHSprite* levelPassedWithNoLivesLost = [_loaderGameOver spriteWithUniqueName:@"passedWithNoLivesLost"];
         _levelPassedNoLivesLostPosition = [levelPassedWithNoLivesLost position];
         //[self performSelector:@selector(tickLevelPassedNoLivesLostMoveStar:) withObject:nil afterDelay:_delayOfStarMove * 2];
@@ -306,8 +307,9 @@ withPlayerLives:(int)playerLives_
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
         //NSLog(@"***** touchBeganBackButton");
-        [[GameState sharedInstance] setGamePausedGameOver:NO];
-        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
+        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        //[[GameState sharedInstance] setGamePausedGameOver:NO];
+        //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
         [self release];
     }
@@ -316,8 +318,9 @@ withPlayerLives:(int)playerLives_
 -(void)touchBeganReloadButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"***** touchBeganReloadButton");
-        [[GameState sharedInstance] setGamePausedGameOver:NO];
-        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
+        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        //[[GameState sharedInstance] setGamePausedGameOver:NO];
+        //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
         [self release];
     }
@@ -325,12 +328,9 @@ withPlayerLives:(int)playerLives_
 
 -(void)touchBeganNextButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        //NSLog(@"***** touchBeganNextButton");
-        
-        //NSString *nextSceneAsString = [NSString stringWithFormat:@"%d", [[GameManager sharedGameManager] currentScene] + 1];
-        
-        [[GameState sharedInstance] setGamePausedGameOver:NO];
-        [[GameState sharedInstance] setGamePausedByTurnOff:NO];
+        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        //[[GameState sharedInstance] setGamePausedGameOver:NO];
+        //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         SceneTypes nextLevel = [[GameManager sharedGameManager] currentScene];
         nextLevel++;
         
@@ -341,8 +341,6 @@ withPlayerLives:(int)playerLives_
 
 -(void)dealloc {
     NSLog(@"__GameOver::dealloc");
-    //[self.scheduler scheduleSelector:@selector(tickNewHighScore:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 6];
-    [self.scheduler unscheduleAllSelectors];
     
     [_loaderGameOver release];
     _loaderGameOver = nil;
@@ -356,32 +354,3 @@ withPlayerLives:(int)playerLives_
 @end
 
 
-
-/*
- -(void)pauseLevel:(LHLayer*)mainLayer {
- _loaderGameOver = [[LevelHelperLoader alloc] initWithContentOfFile:@"overlayGameOver"];
- [_loaderGameOver addSpritesToLayer:mainLayer];
- 
- _spriteBackButton = [_loaderGameOver spriteWithUniqueName:@"buttonBackBalloon"];
- [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
- 
- _spriteReloadButton = [_loaderGameOver spriteWithUniqueName:@"buttonReloadBalloon"];
- [_spriteReloadButton registerTouchBeganObserver:self selector:@selector(touchBeganReloadButton:)];
- 
- _spriteNextButton = [_loaderGameOver spriteWithUniqueName:@"buttonNextBalloon"];
- if([[GameState sharedInstance] isNextLevelUnlocked] || [[GameManager sharedGameManager] currentScene] != LAST_LEVEL) {
- //if([[GameManager sharedGameManager] currentScene] != LAST_LEVEL) {
- [_spriteNextButton registerTouchBeganObserver:self selector:@selector(touchBeganNextButton:)];
- } else {
- [_spriteNextButton removeSelf];
- }
- 
- [LevelHelperLoader setPaused:YES];
- [[CCDirector sharedDirector] pause];
- 
- //NSLog(@"xxx --- %d", [[GameManager sharedGameManager] currentScene]);
- //NSLog(@"xxx --- %@", [[GameManager sharedGameManager] seasonName]);
- //[[GameState sharedInstance] unlockNextLevel];
- 
- }
- */

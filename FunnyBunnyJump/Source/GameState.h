@@ -46,9 +46,9 @@
 @property (getter = isMusicEnabled) BOOL musicEnabled;
 @property BOOL gameOnceStarted;
 
-@property BOOL gamePausedByTurnOff;
-@property BOOL gamePausedGameOver;
-@property BOOL currnetSceneIsLevel;
+//@property BOOL gamePausedByTurnOff;
+//@property BOOL gamePausedGameOver;
+//@property BOOL currnetSceneIsLevel;
 
 +(GameState*)sharedInstance;
 -(void)save;

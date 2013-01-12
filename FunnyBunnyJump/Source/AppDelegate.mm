@@ -44,8 +44,8 @@
 	director_.wantsFullScreenLayout = YES;
 	
 	// Display FSP and SPF
-	[director_ setDisplayStats:YES];
-    //[director_ setDisplayStats:NO];
+	//[director_ setDisplayStats:YES];
+    [director_ setDisplayStats:NO];
 
 	
 	// set FPS at 60
@@ -138,7 +138,9 @@
     
 	if( [navController_ visibleViewController] == director_) {
        //&& [[GameState sharedInstance] gamePausedGameOver] == NO) {
+        NSLog(@"||||||||||   AppDelegate::applicationDidBecomeActive");
         [director_ resume];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
     }
 }
 
@@ -147,17 +149,19 @@
     NSLog(@"AppDelegate::applicationDidEnterBackground");
 	if( [navController_ visibleViewController] == director_ ) {
             [director_ stopAnimation];
-        if([[GameState sharedInstance] currnetSceneIsLevel]) {
-            [[GameState sharedInstance] setGamePausedByTurnOff:YES];
-        }
+        //if([[GameState sharedInstance] currnetSceneIsLevel]) {
+        //    [[GameState sharedInstance] setGamePausedByTurnOff:YES];
+        //}
     }
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
     NSLog(@"AppDelegate::applicationWillEnterForeground");
-	if( [navController_ visibleViewController] == director_ )
+	if( [navController_ visibleViewController] == director_ ) {
 		[director_ startAnimation];
+        
+    }
 }
 
 // application will be killed

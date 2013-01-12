@@ -41,9 +41,18 @@
 			<key>ClassRepresentation</key>
 			<dict>
 				<key>movingStartDelay</key>
-				<real>1</real>
+				<real>2</real>
 				<key>score</key>
 				<real>5</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>ClassName</key>
+			<string>QQLevelClass</string>
+			<key>ClassRepresentation</key>
+			<dict>
+				<key>gravity</key>
+				<real>2.5</real>
 			</dict>
 		</dict>
 	</array>
@@ -56,7 +65,7 @@
 	<key>HDSuffix</key>
 	<string>-hd</string>
 	<key>LastLevelLoaded</key>
-	<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump/Resources/Levels/overlayGameOver.plhs</string>
+	<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump/Resources/Levels/help.plhs</string>
 	<key>Orientation</key>
 	<integer>1</integer>
 	<key>ProjectName</key>

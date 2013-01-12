@@ -42,6 +42,7 @@
     LHSprite *_spriteLeaderBoard;
     LHSprite *_spriteAchievements;
     LHSprite *_spriteFacebookButton, *_spriteTwitterButton;
+    LHSprite *_creditsButton, *_helpButton;
     
     LHSprite *_spriteToScaleMusicButton;
     BOOL _balloonMusicButtonCompletelyInflated;

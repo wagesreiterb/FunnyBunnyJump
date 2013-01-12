@@ -72,6 +72,14 @@ static GameManager* _sharedGameManager = nil;
             sceneToRun =[QQLevelChooser scene];
             break;
             
+        case kCreditsScreen:
+            sceneToRun =[QQCreditsScene scene];
+            break;
+            
+        case kHelpScreen:
+            sceneToRun =[QQHelp scene];
+            break;
+            
         case kLevel2012001: {
             //NSString *fullLevelName = @"level";
             //fullLevelName = [fullLevelName stringByAppendingString:seasonName];

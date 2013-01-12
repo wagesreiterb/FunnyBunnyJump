@@ -36,6 +36,12 @@
 -(void)setTagTouchMovedObserver:(LHObserverPair*)pair;
 -(void)setTagTouchEndedObserver:(LHObserverPair*)pair;
 -(bool)pathDefaultStartAtLaunch;
+
+-(void)setAnimPauseStateOnLevelPause;
+-(bool)animPauseStateOnLevelPause;
+
+-(void)setPathPauseStateOnLevelPause;
+-(bool)pathPauseStateOnLevelPause;
 @end
 @implementation LHSprite (LH_SPRITE_LOADER_PARENT)
 -(void)setTagTouchBeginObserver:(LHObserverPair*)pair{
@@ -50,9 +56,19 @@
 -(bool)pathDefaultStartAtLaunch{
     return pathStartAtLaunch;
 }
-//-(void) removeFromCocos2dParentNode:(BOOL)cleanup{
-//    [super removeFromParentAndCleanup:cleanup];
-//}
+-(void)setAnimPauseStateOnLevelPause{
+    animPauseStateOnLevelPause = animAtStart;
+}
+-(bool)animPauseStateOnLevelPause{
+    return animPauseStateOnLevelPause;
+}
+
+-(void)setPathPauseStateOnLevelPause{
+    pathPauseStateOnLevelPause = pathStartAtLaunch;
+}
+-(bool)pathPauseStateOnLevelPause{
+    return pathPauseStateOnLevelPause;
+}
 @end
 
 //------------------------------------------------------------------------------
@@ -323,6 +339,9 @@ CGSize  LHSizeFromString(NSString* val){
     if(paused){
         for(LHSprite* spr in allSprites)
         {
+            [spr setAnimPauseStateOnLevelPause];
+            [spr setPathPauseStateOnLevelPause];
+            
             [spr pausePathMovement];
             [spr pauseAnimation];
         }
@@ -330,8 +349,11 @@ CGSize  LHSizeFromString(NSString* val){
     else{
         for(LHSprite* spr in allSprites)
         {
-            [spr startPathMovement];
-            [spr playAnimation];
+            if([spr pathPauseStateOnLevelPause])
+                [spr startPathMovement];
+            
+            if([spr animPauseStateOnLevelPause])
+                [spr playAnimation];
         }
     }
     
@@ -787,7 +809,7 @@ CGSize  LHSizeFromString(NSString* val){
 //------------------------------------------------------------------------------
 -(void) dealloc{  
     
-   NSLog(@"LH DEALLOC %p", self);
+//   NSLog(@"LH DEALLOC %p", self);
 
 #ifdef LH_USE_BOX2D
     [[LHCuttingEngineMgr sharedInstance] destroyAllPrevioslyCutSprites];
@@ -798,7 +820,7 @@ CGSize  LHSizeFromString(NSString* val){
     {
         LHParallaxNode* node = [parallaxesInLevel objectForKey:key];
         
-        NSLog(@"SHOULD REMOVE PARALLAX %@", [node uniqueName]);
+//        NSLog(@"SHOULD REMOVE PARALLAX %@", [node uniqueName]);
         
         [node removeFromParentAndCleanup:YES];
         node = nil;
@@ -1022,6 +1044,17 @@ CGSize  LHSizeFromString(NSString* val){
     CGRect rect = [wb rectForKey:@"WBRect"];    
     CGSize winSize = [[CCDirector sharedDirector] winSize];
 	
+    //ios 5.1 and old cocos2d bug - inverse sides if landscape
+    if([[LHSettings sharedInstance] orientation] == 1) //landscape
+    {
+        if(winSize.width < winSize.height)//we need to inverse values
+        {
+            float w = winSize.width;
+            winSize.width = winSize.height;
+            winSize.height = w;
+        }
+    }
+    
     float ptm = [[LHSettings sharedInstance] lhPtmRatio];
     
     #ifndef LH_SCENE_TESTER
@@ -1486,19 +1519,34 @@ CGSize  LHSizeFromString(NSString* val){
     [[LHSettings sharedInstance] setHDSuffix:[scenePref stringForKey:@"HDSuffix"]];
     [[LHSettings sharedInstance] setHD2xSuffix:[scenePref stringForKey:@"2HDSuffix"]];
     [[LHSettings sharedInstance] setDevice:[scenePref intForKey:@"Device"]];
+    [[LHSettings sharedInstance] setOrientation:[scenePref intForKey:@"Orientation"]];
     
 	CGRect color = [scenePref rectForKey:@"BackgroundColor"];
 	glClearColor(color.origin.x, color.origin.y, color.size.width, 1);
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
 
+    //ios 5.1 and old cocos2d bug - inverse sides if landscape
+    if([scenePref intForKey:@"Orientation"] == 1) //landscape
+    {
+        if(winSize.width < winSize.height)//we need to inverse values
+        {
+            float w = winSize.width;
+            winSize.width = winSize.height;
+            winSize.height = w;
+        }
+    }
+    
+    //WIN SIZE 1024.000000 768.000000
+    //SAFE FRAME 480.000000 320.000000
+    
+    NSLog(@"WIN SIZE %f %f", winSize.width, winSize.height);
+    NSLog(@"SAFE FRAME %f %f", safeFrame.x, safeFrame.y);
+    
     if(safeFrame.x == 0 || safeFrame.y == 0)
         safeFrame = CGPointMake(winSize.width, winSize.height);
 
     [[LHSettings sharedInstance] setSafeFrame:CGSizeMake(safeFrame.x, safeFrame.y)];
-//    bool usesCustomSize = false;
-//    if(4 == [[scenePref objectForKey:@"ScreenSize"] intValue])
-//        usesCustomSize = true;
     
     [[LHSettings sharedInstance] setConvertRatio:CGPointMake(winSize.width/safeFrame.x, 
                                                              winSize.height/safeFrame.y)];

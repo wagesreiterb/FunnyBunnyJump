@@ -47,7 +47,8 @@
 	CGPoint convertRatio;
     CGPoint realConvertRatio;
 	bool convertLevel;
-	
+	int orientation;
+    
     bool stretchArt;
     CGPoint possitionOffset;
     bool levelPaused;
@@ -65,9 +66,10 @@
     NSMutableArray* allLHMainLayers;
     
     NSMutableString* activeFolder;
-    CGSize saveFrame;//used by the touch handler to conver touches
+    CGSize safeFrame;//used by the touch handler to convert touches
     CGPoint userOffset;
 }
+@property int orientation;
 @property bool useHDOnIpad;
 @property float lhPtmRatio;
 @property float customAlpha;

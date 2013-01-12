@@ -46,6 +46,7 @@
 @synthesize device;
 @synthesize safeFrame;
 @synthesize userOffset;
+@synthesize orientation;
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 + (LHSettings*)sharedInstance{
@@ -94,6 +95,7 @@
 		//imagesFolder = [[NSMutableString alloc] init];
         isCoronaUser = false;
         preloadBatchNodes = false;
+        orientation = 0;
         
         [self setSafeFrame:CGSizeMake(480, 320)]; //universal
         CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -200,46 +202,133 @@
 	return newBodyId++;
 }
 
+//-(NSString*)imagePath:(NSString*)file
+//{
+//    NSString* computedFile = file;
+//    if([self isIpad] && [self useHDOnIpad])
+//    {
+//        if(device != 1 && device != 3)//if ipad only then we dont need to apply transformations
+//        {
+//            //we use this - in case extension is "pvr.ccz"
+//            //the normal cocoa method will give as false extension
+//            
+//            NSString* fileName = [file stringByDeletingPathExtension];
+//            NSString* fileExtension = [file pathExtension];
+//            NSRange extRange = [file rangeOfString:@"."];//find first dot
+//            if(extRange.location != NSNotFound){
+//                fileExtension = [file substringFromIndex:extRange.location];
+//                fileName = [file substringToIndex:extRange.location];
+//            }
+//            
+//            if(CC_CONTENT_SCALE_FACTOR() == 2){
+//                //we have ipad retina
+//                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hd2xSuffix, fileExtension];
+//            }
+//            else {
+//                //we have normal ipad - lets use the HD image
+//                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hdSuffix, fileExtension];
+//            }
+//        }
+//        
+//#if COCOS2D_VERSION >= 0x00020000
+//        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
+//#else
+//        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
+//#endif
+//        
+//        if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
+//            
+//            return fullpath;
+//        }
+//    }
+//    return [NSString stringWithFormat:@"%@%@",activeFolder, file];
+//}
+
+
 -(NSString*)imagePath:(NSString*)file
+
 {
+    
     NSString* computedFile = file;
+    
     if([self isIpad] && [self useHDOnIpad])
+        
     {
+        
         if(device != 1 && device != 3)//if ipad only then we dont need to apply transformations
+            
         {
+            
             //we use this - in case extension is "pvr.ccz"
+            
             //the normal cocoa method will give as false extension
             
+            
+            
             NSString* fileName = [file stringByDeletingPathExtension];
+            
             NSString* fileExtension = [file pathExtension];
+            
             NSRange extRange = [file rangeOfString:@"."];//find first dot
+            
             if(extRange.location != NSNotFound){
+                
                 fileExtension = [file substringFromIndex:extRange.location];
+                
                 fileName = [file substringToIndex:extRange.location];
+                
             }
+            
+            
             
             if(CC_CONTENT_SCALE_FACTOR() == 2){
+                
                 //we have ipad retina
+                
                 computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hd2xSuffix, fileExtension];
+                
             }
-            else {
-                //we have normal ipad - lets use the HD image
-                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hdSuffix, fileExtension];
-            }
-        }
-        
-#if COCOS2D_VERSION >= 0x00020000
-        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
-#else
-        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
-#endif
-        
-        if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
             
-            return fullpath;
+            else {
+                
+                //we have normal ipad - lets use the HD image
+                
+                computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hdSuffix, fileExtension];
+                
+            }
+            
         }
+        
+        
+        
+        //#if COCOS2D_VERSION >= 0x00020000
+        
+        //        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
+        
+        //#else
+        
+        //        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
+        
+        //#endif
+        
+        
+        
+        //        if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
+        
+        
+        
+//        NSLog(@"file - %@ computed - %@", file, computedFile);
+        
+        return computedFile;
+        
+        //        }
+        
     }
-    return [NSString stringWithFormat:@"%@%@",activeFolder, file];
+    
+    return file;
+    
+    //    return [NSString stringWithFormat:@"%@%@",activeFolder, file];
+    
 }
 
 -(CGPoint) transformedScalePointToCocos2d:(CGPoint)point{
@@ -257,6 +346,17 @@
 -(CGPoint) transformedPointToCocos2d:(CGPoint)point{
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
+    //ios 5.1 and old cocos2d bug - inverse sides if landscape
+    if(orientation == 1) //landscape
+    {
+        if(winSize.width < winSize.height)//we need to inverse values
+        {
+            float w = winSize.width;
+            winSize.width = winSize.height;
+            winSize.height = w;
+        }
+    }
     
     CGPoint pos_offset = [self possitionOffset];
     CGPoint user_offset = [self userOffset];

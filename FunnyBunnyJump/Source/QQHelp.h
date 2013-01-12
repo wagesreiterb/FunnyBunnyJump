@@ -11,7 +11,6 @@
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "LevelHelperLoader.h"
-//#import "LHSpritePlayer.h"
 #import "QQSpritePlayer.h"
 #import "QQSpriteTrampoline.h"
 #import "QQSpriteBalloon.h"
@@ -24,7 +23,6 @@
 #import "QQSpriteBar.h"
 #import "QQSpriteStar.h"
 #import "CCScrollLayer.h"
-//#import "SimpleAudioEngine.h"
 #import "QQLabelTimer.h"
 #import "QQLevelChooser.h"
 
@@ -40,7 +38,7 @@
 
 
 // HelloWorld Layer
-@interface QQLevel : LHLayer
+@interface QQHelp : LHLayer
 {
 	b2World* _world;
 	GLESDebugDraw *m_debugDraw;
@@ -52,14 +50,6 @@
 
     float _countDown;
     
-    enum levelStates {
-        levelNotStarted,
-        levelRunning,
-        levelPaused,
-        levelPausedLifeLost,
-        levelGameOver};
-    
-    enum levelStates _levelState;
     BOOL _gameOverLevelPassed;
     
     BOOL _highScoreEffectAlreadyPlayed;
@@ -83,9 +73,6 @@
     QQSpritePlayer* _player;
     QQSpriteTrampoline* _trampoline;
     QQSpriteBar* _bar;
-    LHSprite* _tapScreenButton;
-    BOOL _tapScreenButtonMakeDynamicRequired;
-    CGPoint _tapScreenButtonInitialPosition;
     LHSprite *_star;
     LHSprite *_joystickLeft, *_joystickLeftGlow;
     LHSprite *_joystickRight, *_joystickRightGlow;

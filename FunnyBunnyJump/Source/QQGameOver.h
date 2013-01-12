@@ -16,6 +16,7 @@
     CGPoint _levelPassedNoLivesLostPosition;
     float _durationOfStarMove;
     float _delayOfStarMove;
+
 }
 
 //-(void)pauseLevel:(LHLayer*)mainLayer;

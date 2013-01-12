@@ -59,9 +59,6 @@
 		8246F067162F30850091680F /* objects_assets-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F060162F30850091680F /* objects_assets-hd.png */; };
 		8246F068162F30850091680F /* objects_assets-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F061162F30850091680F /* objects_assets-ipadhd.png */; };
 		8246F069162F30850091680F /* objects_assets.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F062162F30850091680F /* objects_assets.png */; };
-		8246F06A162F30850091680F /* objects_UntitledSheet-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F063162F30850091680F /* objects_UntitledSheet-hd.png */; };
-		8246F06B162F30850091680F /* objects_UntitledSheet-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */; };
-		8246F06C162F30850091680F /* objects_UntitledSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F065162F30850091680F /* objects_UntitledSheet.png */; };
 		8246F070162F39A80091680F /* objects_backgrounds-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06D162F39A80091680F /* objects_backgrounds-hd.png */; };
 		8246F071162F39A80091680F /* objects_backgrounds-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */; };
 		8246F072162F39A80091680F /* objects_backgrounds.png in Resources */ = {isa = PBXBuildFile; fileRef = 8246F06F162F39A80091680F /* objects_backgrounds.png */; };
@@ -527,7 +524,16 @@
 		828AEA80164AE6C4005A248F /* levelWinter2012003.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 828AEA7F164AE6C4005A248F /* levelWinter2012003.plhs */; };
 		828F2B9D1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */; };
 		828F2BA41646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */; };
+		82AF65FC169DE6FF003D7ED5 /* credits.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 82AF65FB169DE6FF003D7ED5 /* credits.plhs */; };
+		82AF6600169DE93F003D7ED5 /* QQCreditsScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 82AF65FE169DE93E003D7ED5 /* QQCreditsScene.h */; };
+		82AF6601169DE93F003D7ED5 /* QQCreditsScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82AF65FF169DE93F003D7ED5 /* QQCreditsScene.mm */; };
 		82DC330316498DA9007E7416 /* levelWinter2012002.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 82DC330216498DA9007E7416 /* levelWinter2012002.plhs */; };
+		82DC540B16A1CEDB009EF3B0 /* QQBalloonClass.h in Sources */ = {isa = PBXBuildFile; fileRef = 824E0301164C487F000AAEA4 /* QQBalloonClass.h */; };
+		82DC541116A1D8B7009EF3B0 /* QQLevelClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82DC540F16A1D8B7009EF3B0 /* QQLevelClass.mm */; };
+		82DC541216A1D8B7009EF3B0 /* QQLevelClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 82DC541016A1D8B7009EF3B0 /* QQLevelClass.h */; };
+		82DC541916A1F44D009EF3B0 /* QQHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 82DC541716A1F44D009EF3B0 /* QQHelp.mm */; };
+		82DC541A16A1F44D009EF3B0 /* QQHelp.h in Headers */ = {isa = PBXBuildFile; fileRef = 82DC541816A1F44D009EF3B0 /* QQHelp.h */; };
+		82DC541C16A1F5C9009EF3B0 /* help.plhs in Resources */ = {isa = PBXBuildFile; fileRef = 82DC541B16A1F5C9009EF3B0 /* help.plhs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -582,9 +588,6 @@
 		8246F060162F30850091680F /* objects_assets-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_assets-hd.png"; sourceTree = "<group>"; };
 		8246F061162F30850091680F /* objects_assets-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_assets-ipadhd.png"; sourceTree = "<group>"; };
 		8246F062162F30850091680F /* objects_assets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_assets.png; sourceTree = "<group>"; };
-		8246F063162F30850091680F /* objects_UntitledSheet-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_UntitledSheet-hd.png"; sourceTree = "<group>"; };
-		8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_UntitledSheet-ipadhd.png"; sourceTree = "<group>"; };
-		8246F065162F30850091680F /* objects_UntitledSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_UntitledSheet.png; sourceTree = "<group>"; };
 		8246F06D162F39A80091680F /* objects_backgrounds-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds-hd.png"; sourceTree = "<group>"; };
 		8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds-ipadhd.png"; sourceTree = "<group>"; };
 		8246F06F162F39A80091680F /* objects_backgrounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = objects_backgrounds.png; sourceTree = "<group>"; };
@@ -1076,7 +1079,15 @@
 		828F2B9C1646C9CC00A0E589 /* QQSpriteBalloonSizechanger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonSizechanger.mm; sourceTree = "<group>"; };
 		828F2BA21646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQSpriteBalloonThreetimestoucher.h; sourceTree = "<group>"; };
 		828F2BA31646E8C300A0E589 /* QQSpriteBalloonThreetimestoucher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQSpriteBalloonThreetimestoucher.mm; sourceTree = "<group>"; };
+		82AF65FB169DE6FF003D7ED5 /* credits.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = credits.plhs; sourceTree = "<group>"; };
+		82AF65FE169DE93E003D7ED5 /* QQCreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQCreditsScene.h; sourceTree = "<group>"; };
+		82AF65FF169DE93F003D7ED5 /* QQCreditsScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQCreditsScene.mm; sourceTree = "<group>"; };
 		82DC330216498DA9007E7416 /* levelWinter2012002.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = levelWinter2012002.plhs; sourceTree = "<group>"; };
+		82DC540F16A1D8B7009EF3B0 /* QQLevelClass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQLevelClass.mm; sourceTree = "<group>"; };
+		82DC541016A1D8B7009EF3B0 /* QQLevelClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQLevelClass.h; sourceTree = "<group>"; };
+		82DC541716A1F44D009EF3B0 /* QQHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QQHelp.mm; sourceTree = "<group>"; };
+		82DC541816A1F44D009EF3B0 /* QQHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQHelp.h; sourceTree = "<group>"; };
+		82DC541B16A1F5C9009EF3B0 /* help.plhs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = help.plhs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1120,6 +1131,8 @@
 				824E0300164C487F000AAEA4 /* LHCustomClasses.h */,
 				824E0301164C487F000AAEA4 /* QQBalloonClass.h */,
 				824E0302164C487F000AAEA4 /* QQBalloonClass.mm */,
+				82DC540F16A1D8B7009EF3B0 /* QQLevelClass.mm */,
+				82DC541016A1D8B7009EF3B0 /* QQLevelClass.h */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -1771,9 +1784,6 @@
 				8246F062162F30850091680F /* objects_assets.png */,
 				8246F060162F30850091680F /* objects_assets-hd.png */,
 				8246F061162F30850091680F /* objects_assets-ipadhd.png */,
-				8246F065162F30850091680F /* objects_UntitledSheet.png */,
-				8246F063162F30850091680F /* objects_UntitledSheet-hd.png */,
-				8246F064162F30850091680F /* objects_UntitledSheet-ipadhd.png */,
 				8246F06F162F39A80091680F /* objects_backgrounds.png */,
 				8246F06D162F39A80091680F /* objects_backgrounds-hd.png */,
 				8246F06E162F39A80091680F /* objects_backgrounds-ipadhd.png */,
@@ -1791,6 +1801,8 @@
 		8282EFCA1624AF4A00B5303B /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				82AF65FB169DE6FF003D7ED5 /* credits.plhs */,
+				82DC541B16A1F5C9009EF3B0 /* help.plhs */,
 				8246F07F16330DC00091680F /* pauseLayer.plhs */,
 				825E18201656D33100900C12 /* pauseLayer1.plhs */,
 				8282EFCB1624AF4A00B5303B /* homeScreen.plhs */,
@@ -1918,6 +1930,10 @@
 				825E181D1656CE7D00900C12 /* QQPauseLayer.mm */,
 				82031AEA1680F0930053E49D /* QQGameOver.h */,
 				82031AEB1680F0930053E49D /* QQGameOver.mm */,
+				82AF65FE169DE93E003D7ED5 /* QQCreditsScene.h */,
+				82AF65FF169DE93F003D7ED5 /* QQCreditsScene.mm */,
+				82DC541716A1F44D009EF3B0 /* QQHelp.mm */,
+				82DC541816A1F44D009EF3B0 /* QQHelp.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2132,6 +2148,9 @@
 				825F441716654DBB003CF131 /* QQSpriteMusicButton.h in Headers */,
 				82031AEC1680F0930053E49D /* QQGameOver.h in Headers */,
 				82031AF1168246AB0053E49D /* CCScrollLayer.h in Headers */,
+				82AF6600169DE93F003D7ED5 /* QQCreditsScene.h in Headers */,
+				82DC541216A1D8B7009EF3B0 /* QQLevelClass.h in Headers */,
+				82DC541A16A1F44D009EF3B0 /* QQHelp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2224,9 +2243,6 @@
 				8246F067162F30850091680F /* objects_assets-hd.png in Resources */,
 				8246F068162F30850091680F /* objects_assets-ipadhd.png in Resources */,
 				8246F069162F30850091680F /* objects_assets.png in Resources */,
-				8246F06A162F30850091680F /* objects_UntitledSheet-hd.png in Resources */,
-				8246F06B162F30850091680F /* objects_UntitledSheet-ipadhd.png in Resources */,
-				8246F06C162F30850091680F /* objects_UntitledSheet.png in Resources */,
 				8246F070162F39A80091680F /* objects_backgrounds-hd.png in Resources */,
 				8246F071162F39A80091680F /* objects_backgrounds-ipadhd.png in Resources */,
 				8246F072162F39A80091680F /* objects_backgrounds.png in Resources */,
@@ -2282,6 +2298,8 @@
 				821B0726169999FA00098FD2 /* explosive-orchestra.mp3 in Resources */,
 				821B0727169999FA00098FD2 /* jubilant-fanfare-3.mp3 in Resources */,
 				821B072916999FEC00098FD2 /* cartoonFailure2.mp3 in Resources */,
+				82AF65FC169DE6FF003D7ED5 /* credits.plhs in Resources */,
+				82DC541C16A1F5C9009EF3B0 /* help.plhs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2292,6 +2310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DC540B16A1CEDB009EF3B0 /* QQBalloonClass.h in Sources */,
 				828AEA741649A24E005A248F /* AppDelegate.h in Sources */,
 				828AEA751649A24E005A248F /* GameState.h in Sources */,
 				828AEA761649A24E005A248F /* QQSpriteBalloonThreetimestoucher.h in Sources */,
@@ -2508,6 +2527,9 @@
 				825F441816654DBB003CF131 /* QQSpriteMusicButton.mm in Sources */,
 				82031AED1680F0930053E49D /* QQGameOver.mm in Sources */,
 				82031AF0168246AB0053E49D /* CCScrollLayer.m in Sources */,
+				82AF6601169DE93F003D7ED5 /* QQCreditsScene.mm in Sources */,
+				82DC541116A1D8B7009EF3B0 /* QQLevelClass.mm in Sources */,
+				82DC541916A1F44D009EF3B0 /* QQHelp.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

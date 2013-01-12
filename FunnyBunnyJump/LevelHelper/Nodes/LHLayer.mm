@@ -50,11 +50,23 @@ static int untitledLayersCount = 0;
     
     if(!customClass) return;
     
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     userCustomInfo = [customClass performSelector:@selector(customClassInstance)];
+#pragma clang diagnostic pop
+    
 #ifndef LH_ARC_ENABLED
     [userCustomInfo retain];
 #endif
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     [userCustomInfo performSelector:@selector(setPropertiesFromDictionary:) withObject:[dictionary objectForKey:@"ClassRepresentation"]];
+#pragma clang diagnostic pop
+
+    
+    
 }
 -(NSString*)userInfoClassName{
     if(userCustomInfo)

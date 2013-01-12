@@ -31,6 +31,8 @@ typedef enum {
     kHomeScreen = 1,
     kSeasonsScreen = 2,
     kLevelChooser = 3,
+    kCreditsScreen = 4,
+    kHelpScreen = 5,
     
     kLevel2012001 = 2012001,
     kLevel2012002 = 2012002,

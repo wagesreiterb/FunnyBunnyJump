@@ -48,7 +48,9 @@ static int untitledBatchCount = 0;
 ////////////////////////////////////////////////////////////////////////////////
 -(void) dealloc{		
     
-  //  CCLOG(@"LH Batch Dealloc %@", uniqueName);
+//    CCLOG(@"LH Batch Dealloc %@", uniqueName);
+  
+//    [[CCTextureCache sharedTextureCache] removeTexture:[self texture]];
     
 #ifndef LH_ARC_ENABLED
     [uniqueName release];
@@ -89,11 +91,22 @@ static int untitledBatchCount = 0;
     
     if(!customClass) return;
     
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     userCustomInfo = [customClass performSelector:@selector(customClassInstance)];
+#pragma clang diagnostic pop
+    
 #ifndef LH_ARC_ENABLED
     [userCustomInfo retain];
 #endif
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     [userCustomInfo performSelector:@selector(setPropertiesFromDictionary:) withObject:[dictionary objectForKey:@"ClassRepresentation"]];
+#pragma clang diagnostic pop
+
+    
 }
 -(NSString*)userInfoClassName{
     if(userCustomInfo)

@@ -17,7 +17,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 //static NSString* _level;
 
-@implementation QQLevel
+@implementation QQHelp
 
 //@synthesize pause;
 
@@ -80,27 +80,11 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
     [self makeObjectsInvisibleAndStatic];
 
-    //if(nil == _pauseLayer && [[GameState sharedInstance] gamePausedByTurnOff] == YES) {
-    //    NSLog(@"************************ here I am!");
-    //    _pauseLayer = [[QQPauseLayer alloc] init];
-    //    [_pauseLayer disableTouchesWithLoader:loader];
-    //}
-    
-    
-    if(_levelState == levelRunning && _countDown > 0) {
-        _countDown -= dt;
-    }
-    if(_countDown < 0) _countDown = 0;
-    
-    [self updateLabelCountdown];
-    [self updateLabelScore];
-    [self updateLabelHighScore];
-    //[self updateEffectHighScore];
        
     [_player applyForce];
     [_player deflect];   //give the bunny a force when a balloon is touched
     [_player resetPosition];
-    if(_levelState == levelRunning) [_player applyStartJump];
+    [_player applyStartJump];
     [_player restoreInitialPosition:loader];
     [_player stopPlayer];
     //[_player beam];
@@ -165,7 +149,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //if(balloonsLeft == 0) {
         NSLog(@"___ balloonsLeft==0");
         _gameOverLevelPassed = YES;
-        [self changeLevelStatus:levelGameOver];
     }
 }
 
@@ -198,152 +181,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(info.sprite) {
     }
 }
-
--(void)changeLevelStatus:(levelStates)levelStatus_ {
-    switch (levelStatus_) {
-        case levelNotStarted: {
-            //level has not started unit now
-            _levelState = levelNotStarted;
-
-            NSLog(@"_______ levelNotStarted: %@", self);
-
-            
-            //QQQ[[CCDirector sharedDirector] resume];
-            _gameOverLevelPassed = NO;
-            _highScore = [[[[GameState sharedInstance] tempHighScore] objectForKey:[[GameManager sharedGameManager] levelToRun]] intValue];
-            break;
-        }
-            
-        case levelRunning: {
-            //the level is currently running
-            NSLog(@"################### isRunning level: %d", [self isRunning]);
-            //[_spritePauseButton setVisible:YES];
-            //[_spritePauseButton setTouchesDisabled:NO];
-            
-            //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
-            //[LevelHelperLoader setPaused:NO];
-            [_player makeDynamic];
-            _levelState = levelRunning;
-
-            [_tapScreenButton setTouchesDisabled:YES];
-            [_tapScreenButton makeStatic];
-            [_tapScreenButton setVisible:NO];
-            [_tapScreenButton body]->GetFixtureList()->SetSensor(true);
-            LHSprite* tapScreenBorder = [loaderJoystick spriteWithUniqueName:@"tapScreenBorder"];
-            [tapScreenBorder body]->GetFixtureList()->SetSensor(true);
-            
-            //[_bar setActive:YES];
-            NSArray *barsShaker = [loader spritesWithTag:TAG_BAR_SHAKER];
-            for(QQSpriteBarShaker *bar in barsShaker) {
-                [bar setToSensor:NO];
-            }
-            
-            break;
-        }
-            
-        case levelGameOver: {
-            //player has finished the game
-            //ether he won or he lost
-            
-            _levelState = levelGameOver;
-            if(_gameOverLevelPassed) {
-                NSLog(@"_______ _gameOverLevelPassed: %@", self);
-                
-                //[[CCDirector sharedDirector] pause];
-                [[GameState sharedInstance] unlockNextLevel];
-                
-                BOOL levelPassedInTime;
-                if(_countDown > 0) {
-                    levelPassedInTime = YES;
-                } else {
-                    levelPassedInTime = NO;
-                }
-                
-                [self disableTouches];
-                //[_player makeStatic];
-                //[_player setOpacity:0];
-                [_player makeInvisibleAndStaitc:loader];
-                
-                _levelState = levelNotStarted;
-                
-                _gameOverLayer = [[QQGameOver alloc] init];
-                [_gameOverLayer showGameOverLayer:self
-                                  withLevelPassed:YES
-                            withLevelPassedInTime:levelPassedInTime
-                                  withPlayerLives:_player.lifes
-                                        withScore:_score
-                                    withHighScore:_highScore];
-                
-                _shallObejctsBeRemoved = YES;
-                [self saveGameState];
-                
-            } else {
-                //[[CCDirector sharedDirector] pause];
-
-                [self disableTouches];
-                
-                _gameOverLayer = [[QQGameOver alloc] init];
-                [_gameOverLayer showGameOverLayer:self
-                                  withLevelPassed:NO
-                            withLevelPassedInTime:NO
-                                  withPlayerLives:_player.lifes
-                                        withScore:_score
-                                    withHighScore:_highScore];
-                
-                //[_player makeInvisibleAndStaitc:loader];
-                _shallObejctsBeRemoved = YES;
-                
-            }
-            [self removeLife];
-            
-            break;
-        }
-            
-        case levelPausedLifeLost: {
-            NSLog(@"_______________ levelPausedLifeLost");
-            //[_spritePauseButton setVisible:NO];
-            //[_spritePauseButton setTouchesDisabled:YES];
-
-            _levelState = levelPausedLifeLost;
-            [_player setRestoreInitialPostitionRequired:YES];
-            [_player setPlayerStopped:YES];
-            
-            //LHSprite* tapScreenButton = [loaderJoystick spriteWithUniqueName:@"tapScreenButton"];
-            [_tapScreenButton setTouchesDisabled:NO];
-            [_tapScreenButton setVisible:YES];
-            _tapScreenButtonMakeDynamicRequired = YES;
-            [_tapScreenButton body]->GetFixtureList()->SetSensor(false);
-            LHSprite* tapScreenBorder = [loaderJoystick spriteWithUniqueName:@"tapScreenBorder"];
-            [tapScreenBorder body]->GetFixtureList()->SetSensor(false);
-            
-            //[_bar setActive:NO];
-            NSArray *barsShaker = [loader spritesWithTag:TAG_BAR_SHAKER];
-            for(QQSpriteBarShaker *bar in barsShaker) {
-                [bar setToSensor:YES];
-            }
-
-            
-            [self removeLife];
-            
-        }
-            break;
-            
-        case levelPaused:
-            //level is pause, what else?
-            _levelState = levelPaused;
-            break;
-            
-        default:
-            break;
-    }
-}
-
-/*
--(void)disableTouches {
-    [_tapScreenButton setTouchesDisabled:YES];
-    [_spritePauseButton setTouchesDisabled:YES];
-}
- */
 
 -(void)disableTouches {
     //workaround because self.isTouchEnabled = NO; doesn't work for cocos2d 2.0
@@ -415,7 +252,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         //[self changeLevelStatus:levelRunning];
         //}
     }
-    [self changeLevelStatus:levelRunning];
     
     CCParticleSystemQuad* particle1 = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
     [particle1 setPosition:CGPointMake([_tapScreenButton position].x - _tapScreenButton.contentSize.width/2, [_tapScreenButton position].y)];
@@ -568,7 +404,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 +(id)scene
 {
     CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
-    QQLevel *layer = [QQLevel node];    // 'layer' is an autorelease object.
+    QQHelp *layer = [QQHelp node];    // 'layer' is an autorelease object.
     [scene addChild: layer];    // add layer as a child to scene
 
 	return scene; 	// return the scene
@@ -577,6 +413,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 // initialize your instance here
 -(id)init
 {
+    NSLog(@"--- init");
 	if( (self=[super init])) {
         [self setupWorld];
         [self setupLevelHelper];
@@ -749,54 +586,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         if([_player lifes] == 0) {
             NSLog(@"___ if");
             _gameOverLevelPassed = NO;
-            [self changeLevelStatus:levelGameOver];
 
         } else {
             NSLog(@"___ else");
-            [self changeLevelStatus:levelPausedLifeLost];
+
         }
     }
 }
 
--(void)beginEndCollisionBetweenPlayerAndStar:(LHContactInfo*)contact{
-	if([contact contactType]) {
-
-        [[SimpleAudioEngine sharedEngine] playEffect:@"franticDataShimmer.mp3"];
-        
-        QQSpriteStar *touchedStar = (QQSpriteStar*)[contact bodyB]->GetUserData();
-        [touchedStar setWasTouched:TRUE];
-        
-        LHSprite *star;
-        CGPoint destination;
-        switch (_starsCollected) {
-            case 0: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_0"];
-                CCLOG(@"############ STAR 1");
-                break;
-            }
-            case 1: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_1"];
-                CCLOG(@"############ STAR 2");
-                break;
-            }
-            case 2: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_2"];
-                CCLOG(@"############ STAR 3");
-                break;
-            }
-            default: {
-                CCLOG(@"beginEndCollisionBetweenPlayerAndStar: something is wrong!");
-                break;
-            }
-        }
-        destination.x = [star position].x;
-        destination.y = [star position].y;
-        [touchedStar setStarDestination:destination];
-        _starsCollected++;
-        
-    } else {
-    }
-}
 
 #pragma mark setupLevelHelper
 -(void) setupLevelHelper {
@@ -837,37 +634,18 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[LHCustomSpriteMgr sharedInstance] registerCustomSpriteClass:[QQSpriteStar class]
                                                            forTag:TAG_STAR];
     
-    //loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelWinter2012003"];
-    loader = [[LevelHelperLoader alloc] initWithContentOfFile:[[GameManager sharedGameManager] levelToRun]];
-        
-
+    loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"help"];
     [loader addObjectsToWorld:_world cocos2dLayer:self]; //creating the objects
     
     if([loader hasPhysicBoundaries])
         [loader createPhysicBoundaries:_world];
-    
-    //if(![loader isGravityZero]) {
-    //    [loader createGravity:_world];
-    //}
-    //TODO: set Gravity from LH
 
-    [self changeLevelStatus:levelNotStarted];
 
     [self setupBalloon];
-    //[self setupStar];
-    //[self setupAudio];
     [self setupPlayer];
-
-    
-    
-    [self setupEffect];
     [self setupTrampoline];
-    [self setupBeam];
     [self setupBarShaker];
     [self setupJoystick];
-    [self setupLabelCountdown];
-    [self setupLabelScore];
-    [self setupLabelHighScore];
     [self setupRegisterForCollision];
     
     // Add an observer that will respond to loginComplete
@@ -1002,60 +780,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
 }
 
-#pragma mark setupXXX
 
--(void)setupEffect {   
-    LHSprite* snow = [loader spriteWithUniqueName:@EFFECT_SNOW];
-    if(snow != nil) {
-        _particleSnow = [[CCParticleSystemQuad alloc] initWithFile:@"snow.plist"];
-        
-        //[_particleSnow setStartSize:6.0f];  //original 12
-        //[_particleSnow setEndSize:6.0f];      //original 20
-        //NSLog(@"+++ emissionRate: %f", [_particleSnow emissionRate]);
-        
-        //[_particleSnow setEmissionRate:50];    //original 133
-        //NSLog(@"+++ life: %f", [_particleSnow life]);
-        
-        //[_particleSnow setLife:2.5f];
-        //NSLog(@"+++ lifeVar: %f", [_particleSnow lifeVar]);
-        
-        //[_particleSnow setLifeVar:0];
-        
-        //iPhone 4S
-        //[_particleSnow setSourcePosition:CGPointMake(0, -300)];
-        
-        //original
-        //sourcePositionX: 413
-        //sourcePositionY: 832
-        //sourcePositionVariancex: 557
-        //sourcePositionVariancey: -64
-        //paritcleLifespan: 3.75
-        //paritcleLifespanVariance: 9
-        //finishParticleSize: 20
-        //finishParticleSizeVariance: 0
-        
-        
-        [self addChild:_particleSnow];
-    }
-    
-    LHSprite* leaves = [loader spriteWithUniqueName:@EFFECT_LEAVES];
-    if(leaves != nil) {
-        _particleLeaves = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves.plist"];
-        [self addChild:_particleLeaves];
-    }
-    
-    LHSprite* sun = [loader spriteWithUniqueName:@EFFECT_SUN];
-    if(sun != nil) {
-        _particleSun = [[CCParticleSystemQuad alloc] initWithFile:@"sun.plist"];
-        [self addChild:_particleSun];
-    }
-    
-    LHSprite* rain = [loader spriteWithUniqueName:@EFFECT_RAIN];
-    if(rain != nil) {
-        _particleRain = [[CCParticleSystemQuad alloc] initWithFile:@"rain.plist"];
-        [self addChild:_particleRain];
-    }
-}
 
 
 -(void)setupBalloon {
@@ -1106,31 +831,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     for(QQSpriteBarShaker *bar in barsShaker) {
         [bar startMovingWithDelay:1];
         [bar setToSensor:YES];
-    }
-}
-
--(void)setupBeam {
-    LHSprite *beam1 = [loader spriteWithUniqueName:@"beam1"];
-    LHSprite *beam2 = [loader spriteWithUniqueName:@"beam2"];
-    
-    if(nil != beam1 && nil != beam2) {
-        //CCLOG(@"BEAM IS in the level");
-        
-        _particleBeam1 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
-        CGPoint particlePosition;
-        particlePosition.x = [beam1 position].x;
-        particlePosition.y = [beam1 position].y;
-        //particlePosition.x = 40;
-        //particlePosition.y = 320 - 60;
-        [_particleBeam1 setPosition:particlePosition];
-        [self addChild:_particleBeam1];
-        
-        _particleBeam2 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
-        CGPoint particlePosition2;
-        particlePosition2.x = [beam2 position].x;
-        particlePosition2.y = [beam2 position].y;
-        [_particleBeam2 setPosition:particlePosition2];
-        [self addChild:_particleBeam2];
     }
 }
 
@@ -1222,85 +922,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_trampoline setCurrentMoveState:MS_STOP];
 }
 
--(void)setupLabelCountdown {
-    LHSprite* spriteCountdown = [loaderJoystick spriteWithUniqueName:@"countDown"];
-    _spriteWatch = [loaderJoystick spriteWithUniqueName:@"stopWatch"];
-    
-    double countdown = COUNTDOWN;
-    NSString* stringCountdown = [NSString stringWithFormat:@"%0.1f", countdown];
 
-    _labelCountdown = [CCLabelTTF labelWithString:stringCountdown
-                                   dimensions:CGSizeMake(50, 50)
-                                   hAlignment:kCCTextAlignmentRight
-                                   vAlignment:kCCVerticalTextAlignmentCenter
-                                     fontName:@"Marker Felt"
-                                     fontSize:16];
-    [_labelCountdown setColor:ccc3(0,0,0)];
-    [_labelCountdown setPosition:spriteCountdown.position];
-    [_labelCountdown setOpacity:200];
-    [_spriteWatch setOpacity:200];
-    [self addChild:_labelCountdown];
-}
-
--(void)updateLabelCountdown {
-    //[_spriteWatch setPosition:[_labelLifes position]];
-    //[_spriteWatch setPosition:CGPointMake([_labelCountdown position].x - _labelCountdown.contentSize.width/2, [_labelCountdown position].y)];
-    
-    CGFloat positionWidth;
-    if(_countDown > 100) { positionWidth = 3 * 16; }
-    else if (_countDown > 10) { positionWidth = 2 * 16; }
-    else { positionWidth = 1 * 16; }
-    
-    [_spriteWatch setPosition:CGPointMake([_labelCountdown position].x - positionWidth / 2, [_labelCountdown position].y)];
-    [_labelCountdown setString:[NSString stringWithFormat:@"%0.1f", _countDown]];
-}
-
--(void)setupLabelScore {
-    LHSprite* spriteScore = [loaderJoystick spriteWithUniqueName:@"score"];
-    NSString* stringScore = [NSString stringWithFormat:@"%d", _score];
-    
-    //_labelScore = [CCLabelTTF labelWithString:stringScore fontName:@"Marker Felt" fontSize:16];
-    _labelScore = [CCLabelTTF labelWithString:stringScore
-                                   dimensions:CGSizeMake(50, 50)
-                                   hAlignment:kCCTextAlignmentRight
-                                   vAlignment:kCCVerticalTextAlignmentCenter
-                                     fontName:@"Marker Felt"
-                                     fontSize:16];
-    [_labelScore setColor:ccc3(0,0,0)];
-    [_labelScore setPosition:[spriteScore position]];
-    [_labelScore setOpacity:200];
-    [self addChild:_labelScore];
-}
-
--(void)setupLabelHighScore {
-    //_highScore = [[[[GameState sharedInstance] tempHighScore] objectForKey:[[GameManager sharedGameManager] levelToRun]] intValue];
-    
-    LHSprite* spriteScoreOld = [loaderJoystick spriteWithUniqueName:@"scoreOld"];
-    NSString* stringHighScore = [NSString stringWithFormat:@"%d", _highScore];
-    _labelHighScore = [CCLabelTTF labelWithString:stringHighScore
-                                       dimensions:CGSizeMake(50, 50)
-                                       hAlignment:kCCTextAlignmentRight
-                                       vAlignment:kCCVerticalTextAlignmentCenter
-                                         fontName:@"Marker Felt"
-                                         fontSize:16];
-    [_labelHighScore setColor:ccc3(0,0,0)];
-    [_labelHighScore setPosition:[spriteScoreOld position]];
-    [self addChild:_labelHighScore];
-}
-
--(void)updateLabelScore {
-    [_labelScore setString:[NSString stringWithFormat:@"%d", _score]];
-}
-
--(void)updateLabelHighScore {
-    if(_highScore < _score) {
-        //_highScore = _score;
-        [_labelHighScore setString:[NSString stringWithFormat:@"%d", _highScore]];
-        //[self saveHighScore];
-    } else {
-        [_labelHighScore setString:[NSString stringWithFormat:@"%d", _highScore]];
-    }
-}
 
 
 

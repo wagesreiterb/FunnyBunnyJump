@@ -98,6 +98,7 @@ static int untitledSpritesCount = 0;
     {
         [self removeTouchObserver];
     }
+    [super onExit];
 }
 -(void)setPrepareAnimInProgress:(NSNumber*)val{
     
@@ -106,9 +107,14 @@ static int untitledSpritesCount = 0;
 
 -(void) dealloc{
 
-    [self stopAnimation];
+    //    NSLog(@"LH Sprite Dealloc %@ - %p", uniqueName, self);
+    
+#ifndef LH_ARC_ENABLED
+    [animation release];
+#endif
+    animation = nil;
+
     [self stopPathMovement];
-//    [self removeTouchObserver];//this is called in onExit
     
     [self unscheduleAllSelectors];
     
@@ -116,8 +122,7 @@ static int untitledSpritesCount = 0;
     [self removeBodyFromWorld];
 #endif
   
-//    NSLog(@"LH Sprite Dealloc %@ - %p", uniqueName, self);
-    
+
     if(NULL != parallaxFollowingThisSprite)
         [parallaxFollowingThisSprite followSprite:NULL 
                                 changePositionOnX:false 
@@ -130,6 +135,8 @@ static int untitledSpritesCount = 0;
                 
 #ifndef LH_ARC_ENABLED   
 
+    [preloadedAnimations release];
+    
     if(fixturesInfo){
         [fixturesInfo release];
         fixturesInfo = nil;
@@ -157,25 +164,16 @@ static int untitledSpritesCount = 0;
     [shSheetName release];
     [shSpriteName release];
     
-    
-    
-
-    
-//    if(touchBeginObserver)
-//        [touchBeginObserver release];
-//    if(touchMovedObserver)
-//        [touchMovedObserver release];
-//    if(touchEndedObserver)
-//        [touchEndedObserver release];
-    
     if(imageFile)
         [imageFile release];
         
     [uniqueName release];
 #endif    
-//    touchBeginObserver = nil;
-//    touchMovedObserver = nil;
-//    touchEndedObserver = nil;
+    
+    preloadedAnimations = nil;
+    touchBeginObserver = nil;
+    touchMovedObserver = nil;
+    touchEndedObserver = nil;
 
 #ifndef LH_ARC_ENABLED   
 	[super dealloc];
@@ -191,11 +189,20 @@ static int untitledSpritesCount = 0;
 
     if(!customClass) return;
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     userCustomInfo = [customClass performSelector:@selector(customClassInstance)];
+#pragma clang diagnostic pop
+    
 #ifndef LH_ARC_ENABLED
     [userCustomInfo retain];
 #endif
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     [userCustomInfo performSelector:@selector(setPropertiesFromDictionary:) withObject:[dictionary objectForKey:@"ClassRepresentation"]];
+#pragma clang diagnostic pop
+
 }
 //------------------------------------------------------------------------------
 #ifdef LH_USE_BOX2D
@@ -325,6 +332,9 @@ static int untitledSpritesCount = 0;
     
     if(!animation) return;//something has gone wrong with animation loading
     
+    [preloadedAnimations addObject:animation];
+    
+    animAtStart = [dictionary boolForKey:@"AnimAtStart"];
     if([dictionary boolForKey:@"AnimAtStart"])//we should pause the animation
         [animation play];
     
@@ -332,6 +342,30 @@ static int untitledSpritesCount = 0;
     [animation setRepetitions:[dictionary intForKey:@"AnimRepetitions"]];
     [animation setRestoreOriginalFrame:[dictionary boolForKey:@"AnimRestoreOriginalFrame"]];
     [animation setDelayPerUnit:[dictionary floatForKey:@"AnimSpeed"]];
+    
+    
+    
+    NSArray* otherAnims = [dictionary objectForKey:@"OtherAnimations"];
+    
+    for(NSDictionary* otherAnimDict in otherAnims)
+    {
+        NSString* animName = [otherAnimDict objectForKey:@"AnimName"];
+        NSString* animScene = [otherAnimDict objectForKey:@"SHScene"];
+        
+        NSDictionary* shAnimInfo = [[SHDocumentLoader sharedInstance] dictionaryForAnimationNamed:animName
+                                                                                       inDocument:animScene];
+
+        LHAnimationNode* otherAn =  [LHAnimationNode animationWithDictionary:shAnimInfo
+                                                                    onSprite:self
+                                                                   sceneName:animScene];
+        
+        [otherAn setLoop:[otherAnimDict boolForKey:@"AnimLoop"]];
+        [otherAn setRepetitions:[otherAnimDict intForKey:@"AnimRepetitions"]];
+        [otherAn setRestoreOriginalFrame:[otherAnimDict boolForKey:@"AnimRestoreOriginalFrame"]];
+        [otherAn setDelayPerUnit:[otherAnimDict floatForKey:@"AnimSpeed"]];
+        
+        [preloadedAnimations addObject:otherAn];
+    }
 }
 
 -(void)loadPathMovementFromDictionary:(NSDictionary*)dictionary{
@@ -377,6 +411,7 @@ static int untitledSpritesCount = 0;
     NSDictionary* texDict = [dictionary objectForKey:@"TextureProperties"];
     
 
+    preloadedAnimations = [[NSMutableArray alloc] init];
     
     NSDictionary* shTexDict = texDict;
     if(![dictionary objectForKey:@"IsSHSprite"])//we may be loading directly from a sh dictionary
@@ -830,27 +865,52 @@ static int untitledSpritesCount = 0;
             [animation setFrame:0];
             return;
         }
-            
     }
-    NSDictionary* animDict = [[SHDocumentLoader sharedInstance] dictionaryForAnimationNamed:animName
-                                                                                 inDocument:shScene];
-         
-    if(!animDict) {
-        NSLog(@"ERROR: SpriteHelper document %@ for animation %@ needs to be updated. Animation is canceled.", shScene, animName);
-        return;
-    }
-    
+
     [self stopAnimation];
     //very important that prepareAnimInProgress is after stopAnimation or else touches will be removed
     prepareAnimInProgress = true;
 
+    for(LHAnimationNode* anim in preloadedAnimations)
+    {
+        if([[anim uniqueName] isEqualToString:animName] &&
+           [[[anim shSceneName] stringByDeletingPathExtension] isEqualToString:shScene])
+        {
+            #ifndef LH_ARC_ENABLED
+            animation = [anim retain];
+            #else
+            animation = anim;
+            #endif
+            break;
+        }
+    }
     
-    NSString* textureFile = [animDict stringForKey:@"SheetImage"];
-    NSString* animSheet = [animDict stringForKey:@"SheetName"];
+    NSString* textureFile = nil;
+    NSString* animSheet = nil;
 
-    animation = [[LHAnimationNode alloc] initWithDictionary:animDict 
-                                                   onSprite:self
-                                                  sceneName:shScene];
+    if(!animation)
+    {
+        NSDictionary* animDict = [[SHDocumentLoader sharedInstance] dictionaryForAnimationNamed:animName
+                                                                                     inDocument:shScene];
+             
+        if(!animDict) {
+            NSLog(@"ERROR: SpriteHelper document %@ for animation %@ needs to be updated. Animation is canceled.", shScene, animName);
+            return;
+        }
+//        NSLog(@"NOT PRELOADED");
+        
+        textureFile = [animDict stringForKey:@"SheetImage"];
+        animSheet = [animDict stringForKey:@"SheetName"];
+
+        animation = [[LHAnimationNode alloc] initWithDictionary:animDict 
+                                                       onSprite:self
+                                                      sceneName:shScene];
+    }
+    else{
+//        NSLog(@"PRELOAD 2");
+        textureFile = [animation sheetImage];
+        animSheet = [animation sheetName];
+    }
     
 //    if(![shSheetName isEqualToString:animSheet]){//causing a bug were if you prepare an animation from another image a second time it will use the initial texture of the sprite
     if(nil != textureFile){
@@ -993,7 +1053,11 @@ static int untitledSpritesCount = 0;
                                                   object:nil];
 }
 //------------------------------------------------------------------------------
--(void) playAnimation{ if(animation) [animation play];}
+-(void) playAnimation{ if(animation) {
+    [animation play];
+    animAtStart = true; //we use animAtStart to track the anim state when we pause and unpause a level
+    }
+}
 //------------------------------------------------------------------------------
 -(void) pauseAnimation{ if(animation)[animation setPaused:YES];}
 //------------------------------------------------------------------------------
@@ -1232,9 +1296,16 @@ static int untitledSpritesCount = 0;
 
 -(void) startPathMovement{
     if(pathNode)[pathNode setPaused:NO];
+    pathStartAtLaunch = true; //we are doing this true now because we use this
+    //variable to track if we should start this path movement when a level gets unpaused.
 }
 -(void) pausePathMovement{
     if(pathNode)[pathNode setPaused:YES];
+}
+-(bool) isPathPaused{
+    if(pathNode)
+        return [pathNode paused];
+    return false;
 }
 -(void) restartPathMovement{
     if(pathNode)[pathNode restart];

@@ -364,16 +364,10 @@
                                   height:spriteContentSize.height//*2.0f
                                    angle:rotation];
 
-//    CGSize contentSize = [self getBounds:spriteContentSize.width*2.0f
-//                                  height:spriteContentSize.height*2.0f
-//                                   angle:rotation];
-        
 	switch (direction) {
 		case 1: //right to left
 		{
             if(spritePosition.x + contentSize.width/2.0f*scaleX <= 0)
-                            
-//			if(spritePosition.x + contentSize.width*scaleX <= 0)
 			{
                 if(nil != point.ccsprite){
                     float difX = spritePosition.x;
@@ -542,16 +536,31 @@
             
             if(isContinuous)
             {
-                [spr transformPosition:CGPointMake((float)(oldPos.x - i*point.ratio.x*speed*frameTime),
-                                                   (float)(oldPos.y - i*point.ratio.y*speed*frameTime))];
-            
+                if(point.isLHSprite)
+                {
+                    [spr transformPosition:CGPointMake((float)(oldPos.x - i*point.ratio.x*speed*frameTime),
+                                                       (float)(oldPos.y - i*point.ratio.y*speed*frameTime))];
+                }
+                else{
+                    //maybe its a normal ccnode
+                    [spr setPosition:CGPointMake((float)(oldPos.x - i*point.ratio.x*speed*frameTime),
+                                                 (float)(oldPos.y - i*point.ratio.y*speed*frameTime))];
+                    
+                }
                 [self repositionPoint:point frameTime:frameTime];
             }
             else {
                 
-                [spr transformPosition:CGPointMake(oldPos.x + point.ratio.x*deltaPos.x/*2.0f*frameTime*/,
-                                                   oldPos.y + point.ratio.y*deltaPos.y/*2.0f*frameTime*/)];
-                
+                if(point.isLHSprite)
+                {
+                    [spr transformPosition:CGPointMake(oldPos.x + point.ratio.x*deltaPos.x,
+                                                       oldPos.y + point.ratio.y*deltaPos.y)];
+                }
+                else{
+                    [spr setPosition:CGPointMake(oldPos.x + point.ratio.x*deltaPos.x,
+                                                 oldPos.y + point.ratio.y*deltaPos.y)];
+                    
+                }
                 
             }
 		}

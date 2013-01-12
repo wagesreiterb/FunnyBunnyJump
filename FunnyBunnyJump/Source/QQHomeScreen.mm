@@ -109,6 +109,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spriteTwitterButton registerTouchBeganObserver:self selector:@selector(touchBeganTwitterButton:)];
     [_spriteTwitterButton registerTouchEndedObserver:self selector:@selector(touchEndedTwitterButton:)];
     
+    _creditsButton = [loader spriteWithUniqueName:@"creditsButton"];
+    [_creditsButton registerTouchBeganObserver:self selector:@selector(touchBeganCreditsButton:)];
+    [_creditsButton registerTouchEndedObserver:self selector:@selector(touchEndedCreditsButton:)];
+
+    _helpButton = [loader spriteWithUniqueName:@"helpButton"];
+    [_helpButton registerTouchBeganObserver:self selector:@selector(touchBeganHelpButton:)];
+    [_helpButton registerTouchEndedObserver:self selector:@selector(touchEndedHelpButton:)];
+    
     [self setupGameCenter];
     
     //initialize GameState for the very first launch
@@ -126,6 +134,30 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spriteAchievements registerTouchBeganObserver:self selector:@selector(touchBeganShowAchievementsButton:)];
     _spriteLeaderBoard = [loader spriteWithUniqueName:@"leaderBoardButton"];
     [_spriteLeaderBoard registerTouchBeganObserver:self selector:@selector(touchBeganShowLeaderBoardButton:)];
+}
+
+-(void)touchBeganHelpButton:(LHTouchInfo*)info{
+    NSLog(@"touchBeganHelpButton");
+}
+
+-(void)touchEndedHelpButton:(LHTouchInfo*)info{
+    //open Facebook Page
+    NSLog(@"touchEndedHelpButton");
+    if(info.sprite) {
+        [[GameManager sharedGameManager] runSceneWithID:kHelpScreen];
+    }
+}
+
+-(void)touchBeganCreditsButton:(LHTouchInfo*)info{
+    NSLog(@"touchBeganCreditsButton");
+}
+
+-(void)touchEndedCreditsButton:(LHTouchInfo*)info{
+    //open Facebook Page
+    NSLog(@"touchEndedCreditskButton");
+    if(info.sprite) {
+        [[GameManager sharedGameManager] runSceneWithID:kCreditsScreen];
+    }
 }
 
 -(void)touchBeganFacebookButton:(LHTouchInfo*)info{
@@ -327,14 +359,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 	[achivementViewController release];
 }
 
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
+-(void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
     CCLOG(@"Ende achievements!");
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+-(void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
     CCLOG(@"Ende LeaderBoard!");
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];

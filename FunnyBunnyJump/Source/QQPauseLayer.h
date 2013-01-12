@@ -9,7 +9,6 @@
 #import "CCLayer.h"
 #import "LevelHelperLoader.h"
 
-
 @interface QQPauseLayer : LHLayer {
     LevelHelperLoader *_loaderPause;
     
@@ -19,7 +18,9 @@
     NSMutableArray *_arrayLoaders;
 }
 
--(void)pauseLevel:(LHLayer*)mainLayer;
++(NSUInteger)numberOfInstances;
+
+-(void)pauseLevel:(LHLayer*)mainLayer withLevel:(id)level_;
 -(void)disableTouchesWithLoader:(LevelHelperLoader*)loader;
 
 
