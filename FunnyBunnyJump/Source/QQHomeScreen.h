@@ -19,6 +19,7 @@
 #import "AppDelegate.h"
 #import <GameKit/GameKit.h>
 #import "GameState.h"
+#import "CCFBProfilePicture.h"
 
 
 // HelloWorld Layer

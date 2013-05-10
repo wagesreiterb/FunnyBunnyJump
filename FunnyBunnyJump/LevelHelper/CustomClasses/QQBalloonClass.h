@@ -7,8 +7,12 @@
 {
 
 
-	float score;
+	float blinkInterval;
+	float blinkDelay;
+	float explodingEffect;
+	float blinkModulo;
 	float movingStartDelay;
+	float scoreMultiplier;
 
 
 #if __has_feature(objc_arc) && __clang_major__ >= 3
@@ -19,8 +23,12 @@
 #endif // __has_feature(objc_arc)
 
 }
-@property float score;
+@property float blinkInterval;
+@property float blinkDelay;
+@property float explodingEffect;
+@property float blinkModulo;
 @property float movingStartDelay;
+@property float scoreMultiplier;
 
 +(QQBalloonClass*) customClassInstance;
 

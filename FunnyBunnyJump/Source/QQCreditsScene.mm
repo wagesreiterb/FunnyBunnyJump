@@ -91,8 +91,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
     [self schedule: @selector(tick:) interval:1.0f/70.0f];
 
-    
-    _loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"credits"];
+    if([[LHSettings sharedInstance] isIphone5]) {
+        _loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"credits_iPhone5"];
+    } else if ([[LHSettings sharedInstance] isIpad]) {
+        _loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"credits"];
+    } else {
+        _loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"credits"];
+    }
+    //_loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"credits"];
     [_loader addObjectsToWorld:_world cocos2dLayer:self];
     
     _parallaxCredits = [_loader parallaxNodeWithUniqueName:@"parallaxCredits"];
@@ -119,9 +125,18 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //}
 }
 
+
 -(void)touchEndedBackButton:(LHTouchInfo*)info {
     //NSLog(@"Touch Ended on sprite %@", [info.sprite uniqueName]);
     if(info.sprite) {
+        LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                         fromSheet:@"assets"
+                                            SHFile:@"objects"];
+        CGSize size = [[CCDirector sharedDirector] winSize];
+        [shade setPosition:ccp(size.width/2, size.height/2)];
+        [shade setOpacity:OPACITY_OF_SHADE];
+        [shade setScale:SCALE_OF_SHADE];
+        [self addChild:shade];
         [[GameManager sharedGameManager] runSceneWithID:kHomeScreen];
     }
 }

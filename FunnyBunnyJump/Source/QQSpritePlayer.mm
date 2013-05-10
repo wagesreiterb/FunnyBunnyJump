@@ -28,6 +28,7 @@
 -(void) ownPlayerSpriteInit{
     //initialize your member variabled here
     _lifes = LIFES;
+    allowBeaming = YES;
 }
 //------------------------------------------------------------------------------
 -(id) init{
@@ -75,8 +76,9 @@
 -(void)applyForce {
     if([self acceptForces] == TRUE) {
         b2Vec2 velocity = [self body]->GetLinearVelocity();
-        //NSLog(@"..... applyForce, velocity: %f", velocity.y );
-        if(velocity.y > 6.3f) {
+        NSLog(@"..... applyForce, velocity: %f", velocity.y );
+        //if(velocity.y > 6.3f) {
+        if(velocity.y > 5.3f) {
             [[SimpleAudioEngine sharedEngine] playEffect:@"hui_que.mp3"];
         }
         [self body]->ApplyForce(b2Vec2([self force],0), [self body]->GetWorldCenter());
@@ -135,35 +137,18 @@
         float desiredVelocity = 0.8f;
         
         if(oldLocation.x < location.x) {
-            //CCLOG(@"right");
             desiredVelocity *= -1;
-        } else {
-            //CCLOG(@"left");
         }
-        
-        //reduce velocity to 0
-        //b2Vec2 velocity = [self body]->GetLinearVelocity();
+
         float impulse = [self body]->GetMass() * desiredVelocity;
         [self body]->ApplyLinearImpulse(b2Vec2(impulse, 0), [self body]->GetWorldCenter());
-        //[self body]->SetLinearDamping(1);
         
-        //CCLOG(@"%f %f", velocity.x, velocity.y);
         balloonTouched = NO;
     }
-    
-    /*
-    if(oldLocation.y < location.y) {
-        CCLOG(@"------- UP");
-    } else {
-        CCLOG(@"------- DOWN");
-        [_leftEar body]->SetGravityScale(3.0);
-        [_rightEar body]->SetGravityScale(3.0);
-    }
-     */
 }
 
+/*
 -(void)applyStartJump {
-    //NSLog(@"_____ applyStartupJump");
     if([self startJumpFinished] == FALSE) {
         [self scheduleOnce:@selector(applyStartJumpAfterTick:) delay:0.0f];
         [self setStartJumpFinished:TRUE];
@@ -171,15 +156,55 @@
     }
 }
 
+-(void)applyStartJumpWithGravity:(b2Vec2)gravity_ {
+    _gravity = gravity_;
+    if([self startJumpFinished] == FALSE) {
+        [self scheduleOnce:@selector(applyStartJumpAfterTick:) delay:0.0f];
+        [self setStartJumpFinished:TRUE];
+        [self scheduleOnce:@selector(playYippyWithDelay) delay:0.3f];
+    }
+}
+*/
+
+-(void)applyStartJumpWithImpulseX:(double)impulseX_ withImpulseY:(double)impulseY_ {
+    _startImpulseX = impulseX_;
+    _startImpulseY = impulseY_;
+    if([self startJumpFinished] == FALSE) {
+        [self scheduleOnce:@selector(applyStartJumpAfterTick:) delay:0.0f];
+        [self setStartJumpFinished:TRUE];
+        [self scheduleOnce:@selector(playYippyWithDelay) delay:0.3f];
+    }
+}
+
+-(void)applyStartJumpAfterTick:(ccTime)dt {
+    [self body]->ApplyLinearImpulse( b2Vec2(_startImpulseX, _startImpulseY), body->GetWorldCenter() );
+    
+}
+ 
 -(void)playYippyWithDelay {
     [[SimpleAudioEngine sharedEngine] playEffect:@"yippy_que.mp3"];
 }
 
+/*
 -(void)applyStartJumpAfterTick:(ccTime)dt {
-    //[self body]->ApplyLinearImpulse( b2Vec2(0.15,0.35), body->GetWorldCenter() );
-    [self body]->ApplyLinearImpulse( b2Vec2(0.15,0.25), body->GetWorldCenter() );
-}
+    [self body]->ApplyLinearImpulse( b2Vec2(0.12,0.18), body->GetWorldCenter() );
 
+}
+*/
+
+/*
+-(void)applyStartJumpAfterTick:(ccTime)dt {
+    //[self body]->ApplyLinearImpulse( b2Vec2(0.15,0.25), body->GetWorldCenter() );
+    NSLog(@"GRAVITY: %f", _gravity.y);
+    if(_gravity.y == -1.75) {
+        [self body]->ApplyLinearImpulse( b2Vec2(0.12,0.18), body->GetWorldCenter() );
+    } else if (_gravity.y == -2.5) {
+        [self body]->ApplyLinearImpulse( b2Vec2(0.15,0.25), body->GetWorldCenter() );
+    }
+}
+*/
+
+/*
 -(void)resetPosition {
     if(shallResetPosition) {
         [self transformPosition:CGPointMake(240, 160)];
@@ -187,6 +212,20 @@
     }
 }
 
+-(void)resetPosition:(LHLayer*)layer {
+    if(shallResetPosition) {
+        [self transformPosition:CGPointMake(240, 160)];
+        shallResetPosition = NO;
+        
+        NSLog(@"------------- resetPosition");
+        CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
+        [particle setPosition:CGPointMake([self position].x, [self position].y)];
+        [layer addChild:particle];
+        [particle release];
+    }
+}
+*/
+ 
 -(void)beamPlayer:(LHSprite*)beamContact fromBeamObject:(LHSprite*)beam1 toBeamObject:(LHSprite*)beam2 {
     CGPoint beam1Position;
     beam1Position.x = [beam1 position].x;
@@ -286,6 +325,38 @@
     [handRight removeSelf];
 }
 
+-(void)setPositionWithLoader:(LevelHelperLoader*)loader_ position:(CGPoint)position__{
+    NSLog(@"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+    _initialPositionBunny.x = position__.x;
+    _initialPositionBunny.y = position__.y;
+    
+    _initialPositionBunny = position__;
+    //_initialPositionEarLeft = position_;
+    //_initialPositionEarRight = position_;
+    //_initialPositionHandLeft = [handLeft position];
+    //_initialPositionHandRight = [handRight position];
+}
+
+-(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_ withLayer:(LHLayer*)layer {
+    LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+    LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+    LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+    LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+    
+    _initialPositionBunny = [self position];
+    _initialPositionEarLeft = [earLeft position];
+    _initialPositionEarRight = [earRight position];
+    _initialPositionHandLeft = [handLeft position];
+    _initialPositionHandRight = [handRight position];
+    
+    CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
+    [particle setPosition:CGPointMake([self position].x, [self position].y)];
+    [layer addChild:particle];
+    [particle release];
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"twinkle.wav"];
+}
+
 -(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_ {
     LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
     LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
@@ -300,6 +371,28 @@
 }
 
 -(void)restoreInitialPosition:(LevelHelperLoader*)loader_ {
+    
+    if(_restoreInitialPostitionRequired) {
+        NSLog(@"+++++++++++++++  IF restoreInitialPosition");
+        LHSprite* earLeft = [loader_ spriteWithUniqueName:@"bunny_ear_left"];
+        LHSprite* earRight = [loader_ spriteWithUniqueName:@"bunny_ear_right"];
+        LHSprite* handLeft = [loader_ spriteWithUniqueName:@"bunny_hand_left"];
+        LHSprite* handRight = [loader_ spriteWithUniqueName:@"bunny_hand_right"];
+        
+        [self transformPosition:_initialPositionBunny];
+        [earLeft transformPosition:_initialPositionEarLeft];
+        [earRight transformPosition:_initialPositionEarRight];
+        [handLeft transformPosition:_initialPositionHandLeft];
+        [handRight transformPosition:_initialPositionHandRight];
+        _restoreInitialPostitionRequired = NO;
+        
+        [self body]->SetLinearVelocity(b2Vec2(0,0));
+        
+        _startJumpFinished = NO;
+    }
+}
+
+-(void)restoreInitialPosition:(LevelHelperLoader*)loader_ withLayer:(LHLayer*)layer {
 
     if(_restoreInitialPostitionRequired) {
         NSLog(@"_______________ IF restoreInitialPosition");
@@ -315,9 +408,29 @@
         [handRight transformPosition:_initialPositionHandRight];
         _restoreInitialPostitionRequired = NO;
         
+        [self body]->SetLinearVelocity(b2Vec2(0,0));
+        
         _startJumpFinished = NO;
+        
+        _layer = layer;
+        //[self scheduleOnce:@selector(bunnyAppearsAfterTick:) delay:0.3f];
+
+        CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
+        [particle setPosition:CGPointMake([self position].x, [self position].y)];
+        [layer addChild:particle];
+        [particle release];
+        
+        [[SimpleAudioEngine sharedEngine] playEffect:@"twinkle.wav"];
+
     }
 }
+
+//-(void)bunnyAppearsAfterTick:(ccTime)dt {
+//        CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
+//        [particle setPosition:CGPointMake([self position].x, [self position].y)];
+//        [_layer addChild:particle];
+//        [particle release];
+//}
 
 /*
 -(void)saveInitialSettingsWithLoader:(LevelHelperLoader*)loader_ {

@@ -34,12 +34,16 @@
 #endif
 #import "LHPathNode.h"
 
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+#ifdef __CC_PLATFORM_IOS
 #import <UIKit/UIKit.h>					// Needed for UIAccelerometerDelegate
-#import "CCTouchDelegateProtocol.h"		// Touches only supported on iOS
-#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+#import "CCTouchDelegateProtocol.h"
+
+#elif defined __CC_PLATFORM_MAC
+
 #import "CCEventDispatcher.h"
+
 #endif
+
 
 @class LHBatch;
 @class LHAnimationNode;
@@ -48,6 +52,7 @@
 @class LHBezier;
 @class LHObserverPair;
 @class LHJoint;
+@class LHFixture;
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
@@ -65,6 +70,7 @@
 #endif
 {
 #ifdef LH_USE_BOX2D
+    b2World* box2dWorld;
 	b2Body* body; //week ptr
     
     bool bDefaultFixRotation;
@@ -254,6 +260,7 @@
 -(void) pauseAnimation;
 -(void) restartAnimation;
 -(void) stopAnimation; //removes the animation entirely
+-(void) stopAnimationAndRestoreOriginalFrame:(BOOL)restore;
 
 -(bool) isAnimationPaused;
 
@@ -430,6 +437,10 @@
 -(void)setSensor:(bool)val fixturesWithID:(int)fixID; //makes all the fixtures with the id sensors
 -(void)setSensor:(bool)val; //makes the entire body a sensor
 
+-(LHFixture*)fixtureWithName:(NSString*)name;
+-(LHFixture*)fixtureWithID:(int)fixId;//returns first fixture with this id
+-(NSArray*)fixturesWithID:(int)fixId;//returns all fixtures with this id - maybe be 1 or more
+
 -(bool)hasContacts;
 //this methods return NULL if no contacts are found
 -(NSArray*)contactSprites;//will return only the LHSprites objects with which this sprite is in contact
@@ -437,6 +448,51 @@
 //Note: even if contactSprites and/or contactBeziers return an empty array, the sprite might still be in contact
 //with something else, like the physics boundaries or a box2d body created by your own code.
 //Use hasContacts to see if the sprite is in contact with anything
+
+//this will return the fixture of the other sprite that is in contact with the current sprite that has the specified tag
+//if no fixture with the specified tag is in contact with current sprite it will return NULL
+-(LHFixture*)lhFixtureOfContactingSpriteWithTag:(int)otherTag;
+
+//this will return the fixture of the other sprite that is in contact with the current sprite that has the specified name
+//if no fixture with the specified name is in contact with current sprite it will return NULL
+-(LHFixture*)lhFixtureOfContactingSpriteWithName:(NSString*)name;
+
+//this will return true if another sprite with tag is in contact with the current sprite
+//and the fixture id of the other sprite is equal with otherFixtureID
+-(bool) isInContactWithOtherSpriteOfTag:(int)otherTag
+                        atFixtureWithID:(int)otherFixtureID;
+
+//this will return true if another sprite with tag is in contact with the current sprite
+//and the fixture name of the other sprite is equal with otherFixtureName
+-(bool) isInContactWithOtherSpriteOfTag:(int)otherTag
+                      atFixtureWithName:(NSString*)otherFixtureName;
+
+//this will return true if another sprite with tag is in contact with the current sprite
+//and the fixture with id of the other sprite is in contact with the fixture with id (thisFixId) on the current sprite
+-(bool) fixtureWithID:(int)thisFixId isInContactWithOtherSpriteOfTag:(int)otherTag
+      atFixtureWithID:(int)otherFixtureID;
+
+//this will return true if another sprite with tag is in contact with the current sprite
+//and the fixture with name of the other sprite is in contact with the fixture with name (thisFixName) on the current sprite
+-(bool) fixtureWithName:(NSString*)thisFixName isInContactWithOtherSpriteOfTag:(int)otherTag
+      atFixtureWithName:(NSString*)otherFixtureName;
+
+-(bool)fixtureWithID:(int)thisFixId isInContactWithOtherSpriteOfTag:(int)otherSpriteTag;
+
+-(LHFixture*)lhFixtureInContactWithBezierOfTag:(int)otherBezierTag;
+
+-(LHFixture*)lhFixtureInContactWithSpriteOfTag:(int)otherSpriteTag;
+
+//EXAMPLE PROJECT FOR THIS METHODS AVAILABLE HERE
+//http://www.gamedevhelper.com/tutorialsFiles/Cocos2d-CheckIsInContactMethods.zip
+//check update function
+
+//for bezier collision we cannot test for a fixture tag on the currect sprite because collisions with chain shapes
+//in box2d is done based on aabb and it this will not give realisting simulation.
+//you should enable aabb in your debug drawing. Even so - this will return true if the sprite is in the vecinity of the
+//bezier (in its aabb) - it may not even touch the bezier - so this method is not to be trusted but added for convenince
+-(bool)isInContactWithOtherBezierOfTag:(int)bezierTag;
+
 #endif
 
 @end	

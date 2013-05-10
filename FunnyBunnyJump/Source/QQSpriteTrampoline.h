@@ -27,6 +27,7 @@
 @property moveState currentMoveState;
 @property float restitution;
 @property (setter=shallChangeRestitution:) BOOL changeRestitution;
+@property BOOL redTrampolineActive;
 //@property direction currentDirection;
 
 //------------------------------------------------------------------------------

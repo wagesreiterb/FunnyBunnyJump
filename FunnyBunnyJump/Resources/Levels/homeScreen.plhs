@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.976</string>
+	<string>1.4.987</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -50,7 +50,7 @@
 							<key>SHSheetName</key>
 							<string>foregrounds</string>
 							<key>SHSpriteName</key>
-							<string>homeScreen</string>
+							<string>homeScreen_iPad_noBunny</string>
 							<key>SheetImage</key>
 							<string>objects_foregrounds.png</string>
 							<key>TextureProperties</key>
@@ -64,7 +64,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 0}, {512, 384}}</string>
+								<string>{{8, 8}, {568, 384}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -72,7 +72,7 @@
 								<key>IsRotated</key>
 								<false/>
 								<key>Locked</key>
-								<true/>
+								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
@@ -80,7 +80,7 @@
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{512, 384}</string>
+								<string>{568, 384}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>TagName</key>
@@ -88,12 +88,162 @@
 								<key>TextureOffset</key>
 								<string>{0, -0}</string>
 								<key>UniqueName</key>
-								<string>homeScreen</string>
+								<string>homeScreen_iPad_noBunny</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>homeScreen</string>
+							<string>homeScreen_iPad_noBunny</string>
+						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>foregrounds</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>foregrounds</string>
+							<key>SHSpriteName</key>
+							<string>homeScreen_funnyBunny</string>
+							<key>SheetImage</key>
+							<string>objects_foregrounds.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{584, 584}, {200.75, 235.5}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{85, 202.25}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{200.25, 235.5}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0.25, -0}</string>
+								<key>UniqueName</key>
+								<string>homeScreen_funnyBunny</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>homeScreen_funnyBunny</string>
+						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>foregrounds</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>foregrounds</string>
+							<key>SHSpriteName</key>
+							<string>gameTitle</string>
+							<key>SheetImage</key>
+							<string>objects_foregrounds.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{793, 584}, {406.5, 87.75}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<true/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{240, 53.687249976177554}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{406.5, 87.75}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0, -0}</string>
+								<key>UniqueName</key>
+								<string>gameTitle</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>gameTitle</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -169,7 +319,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{372, 492}, {45, 68}}</string>
+								<string>{{924, 299}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -244,7 +394,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{311, 659}, {45, 67.75}}</string>
+								<string>{{569, 424}, {45, 67.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -319,13 +469,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{47, 914}, {45, 68}}</string>
+								<string>{{697, 248}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -394,7 +544,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{419, 492}, {45, 68}}</string>
+								<string>{{471, 440}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -469,13 +619,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{358, 589}, {45, 68}}</string>
+								<string>{{833, 248}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -544,7 +694,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{0, 914}, {45, 68}}</string>
+								<string>{{520, 440}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -619,13 +769,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{399, 242}, {84, 80.75}}</string>
+								<string>{{839, 299}, {84, 80.75}}</string>
 								<key>IsDrawable</key>
-								<true/>
+								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -694,7 +844,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{311, 589}, {45, 68}}</string>
+								<string>{{949, 227}, {45, 68}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -769,13 +919,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{311, 390}, {65.75, 100}}</string>
+								<string>{{520, 311}, {65.75, 100}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -866,6 +1016,12 @@
 				<string>QQBalloonClass</string>
 				<key>ClassRepresentation</key>
 				<dict>
+					<key>blinkDelay</key>
+					<real>2</real>
+					<key>blinkInterval</key>
+					<real>2</real>
+					<key>blinkModulo</key>
+					<real>0.0</real>
 					<key>movingStartDelay</key>
 					<real>2</real>
 					<key>score</key>
@@ -877,8 +1033,14 @@
 				<string>QQLevelClass</string>
 				<key>ClassRepresentation</key>
 				<dict>
+					<key>countdown</key>
+					<real>120</real>
 					<key>gravity</key>
-					<real>2.5</real>
+					<real>-2.5</real>
+					<key>startImpulseX</key>
+					<real>0.15000000596046448</real>
+					<key>startImpulseY</key>
+					<real>0.25</real>
 				</dict>
 			</dict>
 		</array>
@@ -918,6 +1080,9 @@
 			<string>TAG_BAR_SHAKER</string>
 			<string>TAG_MUSIC_BUTTON</string>
 			<string>TAG_LOCK</string>
+			<string>TAG_DOTS</string>
+			<string>TAG_TRAMPOLINE_SENSOR</string>
+			<string>TAG_OBSTACLE</string>
 		</array>
 		<key>ZoomValue</key>
 		<real>0.0</real>

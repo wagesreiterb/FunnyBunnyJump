@@ -40,10 +40,18 @@
 			<string>QQBalloonClass</string>
 			<key>ClassRepresentation</key>
 			<dict>
+				<key>blinkDelay</key>
+				<real>2</real>
+				<key>blinkInterval</key>
+				<real>2</real>
+				<key>blinkModulo</key>
+				<real>0.0</real>
+				<key>explodingEffect</key>
+				<real>0.0</real>
 				<key>movingStartDelay</key>
 				<real>2</real>
-				<key>score</key>
-				<real>5</real>
+				<key>scoreMultiplier</key>
+				<real>1</real>
 			</dict>
 		</dict>
 		<dict>
@@ -51,8 +59,14 @@
 			<string>QQLevelClass</string>
 			<key>ClassRepresentation</key>
 			<dict>
+				<key>countdown</key>
+				<real>120</real>
 				<key>gravity</key>
-				<real>2.5</real>
+				<real>-2.5</real>
+				<key>startImpulseX</key>
+				<real>0.15000000596046448</real>
+				<key>startImpulseY</key>
+				<real>0.25</real>
 			</dict>
 		</dict>
 	</array>
@@ -65,7 +79,7 @@
 	<key>HDSuffix</key>
 	<string>-hd</string>
 	<key>LastLevelLoaded</key>
-	<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump/Resources/Levels/help.plhs</string>
+	<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump/Resources/Levels/levelWinter2012010.plhs</string>
 	<key>Orientation</key>
 	<integer>1</integer>
 	<key>ProjectName</key>
@@ -109,6 +123,9 @@
 		<string>TAG_BAR_SHAKER</string>
 		<string>TAG_MUSIC_BUTTON</string>
 		<string>TAG_LOCK</string>
+		<string>TAG_DOTS</string>
+		<string>TAG_TRAMPOLINE_SENSOR</string>
+		<string>TAG_OBSTACLE</string>
 	</array>
 </dict>
 </plist>

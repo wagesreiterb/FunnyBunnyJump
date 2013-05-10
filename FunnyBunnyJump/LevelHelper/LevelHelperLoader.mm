@@ -198,6 +198,32 @@ CGSize  LHSizeFromString(NSString* val){
 	
 	return self;
 }
+
+-(id) initWithContentOfFile:(NSString*)levelFile
+               imgSubfolder:(NSString*)imgFolder
+{
+    [self initObjects];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:levelFile ofType:@"plhs" inDirectory:@""];
+	
+    NSAssert(nil!=path, @"Invalid level file. Please add the LevelHelper scene file to Resource folder. Please do not add extension in the given string.");
+    
+    
+	[self initObjects];
+    NSDictionary* levelDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+	[self loadLevelHelperSceneFromDictionary:levelDictionary imgSubfolder:imgFolder];
+	return self;
+}
+
+-(id) initWithContentOfFile:(NSString*)levelFile
+               imgSubfolder:(NSString*)imgFolder
+              decryptionKey:(NSString*)key{
+    
+    [[LHSettings sharedInstance] setDecryptionKey:key];
+    return [self initWithContentOfFile:levelFile imgSubfolder:imgFolder];
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 -(id) initWithContentOfFileFromInternet:(NSString*)webAddress
 {
@@ -247,6 +273,19 @@ CGSize  LHSizeFromString(NSString* val){
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
+-(id)initWithFileInDocumentDirectory:(NSString*)file
+     imagesFolderInDocumentDirectory:(NSString*)imgFolder
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString* levelPath = [documentsDirectory stringByAppendingPathComponent:file];
+        
+    return [self initWithContentOfFileAtURL:[NSURL fileURLWithPath:levelPath]
+                                                        imagesPath:imgFolder];
+}
 -(id) initWithContentOfFileAtURL:(NSURL*)levelURL imagesPath:(NSString*)imgFolder
 {
     NSAssert(nil!=levelURL, @"Invalid URL given to LevelHelperLoader");
@@ -397,9 +436,6 @@ CGSize  LHSizeFromString(NSString* val){
 -(LHBezier*)bezierWithUniqueName:(NSString*)name{
     return [mainLHLayer bezierWithUniqueName:name];
 }
--(LHJoint*) jointWithUniqueName:(NSString*)name{
-    return [jointsInLevel objectForKey:name];
-}
 //------------------------------------------------------------------------------
 -(NSArray*)allLayers{
     NSMutableArray* array = [NSMutableArray array];
@@ -415,9 +451,6 @@ CGSize  LHSizeFromString(NSString* val){
 }
 -(NSArray*)allBeziers{
     return [mainLHLayer allBeziers];
-}
--(NSArray*) allJoints{
-    return [jointsInLevel allValues];
 }
 //------------------------------------------------------------------------------
 -(NSArray*)layersWithTag:(enum LevelHelper_TAG)tag{
@@ -436,6 +469,16 @@ CGSize  LHSizeFromString(NSString* val){
 -(NSArray*)beziersWithTag:(enum LevelHelper_TAG)tag{
     return [mainLHLayer beziersWithTag:tag];
 }
+
+#ifdef LH_USE_BOX2D
+-(LHJoint*) jointWithUniqueName:(NSString*)name{
+    return [jointsInLevel objectForKey:name];
+}
+
+-(NSArray*) allJoints{
+    return [jointsInLevel allValues];
+}
+
 -(NSArray*) jointsWithTag:(enum LevelHelper_TAG)tag{
     NSMutableArray* jointsWithTag = [NSMutableArray array];
 	NSArray* joints = [jointsInLevel allValues];
@@ -446,6 +489,7 @@ CGSize  LHSizeFromString(NSString* val){
 	}
     return jointsWithTag;
 }
+#endif
 
 -(void)removeAllPhysics{
 
@@ -815,30 +859,25 @@ CGSize  LHSizeFromString(NSString* val){
     [[LHCuttingEngineMgr sharedInstance] destroyAllPrevioslyCutSprites];
 #endif
 
+    
+    [[LHTouchMgr sharedInstance] removeTouchBeginObserver:cocosLayer];
+    [[LHSettings sharedInstance] removeLHMainLayer:mainLHLayer];
+
+    cocosLayer = nil;
+    
     NSArray* keys = [parallaxesInLevel allKeys];
     for(NSString* key in keys)
     {
-        LHParallaxNode* node = [parallaxesInLevel objectForKey:key];
-        
-//        NSLog(@"SHOULD REMOVE PARALLAX %@", [node uniqueName]);
-        
+        LHParallaxNode* node = [parallaxesInLevel objectForKey:key];        
         [node removeFromParentAndCleanup:YES];
         node = nil;
     }
     [parallaxesInLevel removeAllObjects];
-
-    
-    [[LHTouchMgr sharedInstance] removeTouchBeginObserver:cocosLayer];
-    
-    [[LHSettings sharedInstance] removeLHMainLayer:mainLHLayer];
-    
-    
     
     [jointsInLevel removeAllObjects];
     [physicBoundariesInLevel removeAllObjects];
     
     [mainLHLayer removeAllChildrenWithCleanup:YES];
-    
     [mainLHLayer removeSelf];
     mainLHLayer = nil;
     
@@ -846,6 +885,8 @@ CGSize  LHSizeFromString(NSString* val){
     if(nil != contactNode){
         [contactNode removeFromParentAndCleanup:YES];
     }
+    contactNode = nil;
+    box2dWorld = NULL;
 #endif
     
 #ifndef LH_ARC_ENABLED
@@ -858,8 +899,22 @@ CGSize  LHSizeFromString(NSString* val){
     
     [physicBoundariesInLevel release];
     [imageFolder release];
+#endif
+    
+    lhNodes = nil;
+    lhJoints = nil;
+    lhParallax = nil;
+    
+    jointsInLevel = nil;
+    parallaxesInLevel = nil;
+    
+    wb = nil;
+    physicBoundariesInLevel = nil;
+    
+#ifndef LH_ARC_ENABLED
     [super dealloc];
 #endif
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 //GRAVITY
@@ -1536,12 +1591,6 @@ CGSize  LHSizeFromString(NSString* val){
             winSize.height = w;
         }
     }
-    
-    //WIN SIZE 1024.000000 768.000000
-    //SAFE FRAME 480.000000 320.000000
-    
-    NSLog(@"WIN SIZE %f %f", winSize.width, winSize.height);
-    NSLog(@"SAFE FRAME %f %f", safeFrame.x, safeFrame.y);
     
     if(safeFrame.x == 0 || safeFrame.y == 0)
         safeFrame = CGPointMake(winSize.width, winSize.height);

@@ -341,6 +341,15 @@ LHSprite *_spriteNextButton;
 
 -(void)dealloc {
     NSLog(@"__GameOver::dealloc");
+    LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                     fromSheet:@"assets"
+                                        SHFile:@"objects"];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [shade setPosition:ccp(size.width/2, size.height/2)];
+    [shade setOpacity:OPACITY_OF_SHADE];
+    [shade setScale:SCALE_OF_SHADE];
+    [_mainLayer addChild:shade];
+    
     
     [_loaderGameOver release];
     _loaderGameOver = nil;

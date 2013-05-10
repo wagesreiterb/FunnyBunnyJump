@@ -266,5 +266,22 @@
     }
     return false;
 }
+
++(LHFixture*) fixtureForb2Fixture:(b2Fixture*)fix
+{
+    if(0 == fix)
+        return nil;
+#ifndef LH_ARC_ENABLED
+    id lhFIX = (id)fix->GetUserData();
+#else
+    id lhFIX = (__bridge id)fix->GetUserData();
+#endif
+    
+    if([LHFixture isLHFixture:lhFIX])
+        return lhFIX;
+    
+    return nil;
+}
+//------------------------------------------------------------------------------
 @end
 #endif

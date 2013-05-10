@@ -79,6 +79,7 @@
 	CGRect lineColor;
 	bool isClosed;
 	bool isTile;
+    bool isChain;
 	bool isVisible;
     bool drawBorder;
 	bool isLine;
@@ -118,6 +119,7 @@
 }
 @property (readonly) bool isClosed;
 @property (readonly) bool isTile;
+@property (readonly) bool isChain;
 @property (readonly) bool isVisible;
 @property (readonly) bool isLine;
 @property (readwrite) bool swallowTouches;
@@ -135,6 +137,9 @@
 
 -(void) setBlendFunction:(ccBlendFunc)blendFuncIn;
 -(ccBlendFunc) blendFunction;
+
+-(void) setTexture:(CCTexture2D *) texture2D;
+-(CCTexture2D *) texture;
 
 
 //CLASS METHODS
@@ -186,4 +191,10 @@
 -(NSString*)userInfoClassName;
 -(id)userInfo;
 
+
+//this methods are added here for kobold2d 2.0.4 collision handling class
+//that class does not test for the node type and its asserting because it calls
+//setColor without testing for it.
+-(ccColor3B) color;
+-(void) setColor:(ccColor3B)color3;
 @end	

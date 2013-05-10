@@ -8,6 +8,9 @@
 @implementation QQLevelClass
 
 
+@synthesize startImpulseX;
+@synthesize startImpulseY;
+@synthesize countdown;
 @synthesize gravity;
 
 
@@ -35,6 +38,15 @@ return NSStringFromClass([self class]);
 }
 -(void) setPropertiesFromDictionary:(NSDictionary*)dictionary
 {
+
+	if([dictionary objectForKey:@"startImpulseX"])
+		[self setStartImpulseX:[[dictionary objectForKey:@"startImpulseX"] floatValue]];
+
+	if([dictionary objectForKey:@"startImpulseY"])
+		[self setStartImpulseY:[[dictionary objectForKey:@"startImpulseY"] floatValue]];
+
+	if([dictionary objectForKey:@"countdown"])
+		[self setCountdown:[[dictionary objectForKey:@"countdown"] floatValue]];
 
 	if([dictionary objectForKey:@"gravity"])
 		[self setGravity:[[dictionary objectForKey:@"gravity"] floatValue]];

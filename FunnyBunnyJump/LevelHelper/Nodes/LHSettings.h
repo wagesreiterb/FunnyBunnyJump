@@ -68,6 +68,8 @@
     NSMutableString* activeFolder;
     CGSize safeFrame;//used by the touch handler to convert touches
     CGPoint userOffset;
+    
+    NSMutableString* decryptionkey;
 }
 @property int orientation;
 @property bool useHDOnIpad;
@@ -87,6 +89,10 @@
 -(void)setActiveFolder:(NSString*)folder;
 -(NSString*)activeFolder;
 
+-(void)setDecryptionKey:(NSString*)key;
+-(NSData*)decryptionKey;
+
+
 -(void)addLHMainLayer:(LHLayer*)layer;
 -(void)removeLHMainLayer:(LHLayer*)layer;
 -(NSArray*)allLHMainLayers;
@@ -104,11 +110,15 @@
 
 -(void) markSpriteForRemoval:(LHSprite*)sprite;
 -(void) markBezierForRemoval:(LHBezier*) node; 
--(void) markJointForRemoval:(LHJoint*)jt;
+
 
 -(void) removeMarkedSprites;
 -(void) removeMarkedBeziers;
+
+#ifdef LH_USE_BOX2D
+-(void) markJointForRemoval:(LHJoint*)jt;
 -(void) removeMarkedJoints;
+#endif
 
 
 
@@ -121,6 +131,8 @@
 -(CGSize)transformedSize:(CGSize)size forImage:(NSString*)image;
 
 -(NSString*)imagePath:(NSString*)file;//will return -hd image when appropriate
+
+-(NSString*)pathForSpriteHelperDocument:(NSString*)sceneFile;
 
 
 -(bool)isHDImage:(NSString*)image;

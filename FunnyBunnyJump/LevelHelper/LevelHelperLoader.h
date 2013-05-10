@@ -44,6 +44,8 @@
 #import "LHSprite.h"
 #import "LHBezier.h"
 #import "LHJoint.h"
+#import "LHAsset.h"
+#import "LHFixture.h"
 
 #import "LHAnimationNode.h"
 #import "LHPathNode.h"
@@ -79,7 +81,10 @@ enum LevelHelper_TAG
 	TAG_BAR_SHAKER 			= 15,
 	TAG_MUSIC_BUTTON 			= 16,
 	TAG_LOCK 			= 17,
-	NUMBER_OF_TAGS 	= 18
+	TAG_DOTS 			= 18,
+	TAG_TRAMPOLINE_SENSOR 			= 19,
+	TAG_OBSTACLE 			= 20,
+	NUMBER_OF_TAGS 	= 21
 };
 
 CGSize  LHSizeFromString(NSString* val);
@@ -114,7 +119,7 @@ NSValue* LHValueWithCGPoint(CGPoint pt);
     SEL loadingProgressSel;
     
     bool paused;
-	CCLayer* cocosLayer; //weak ptr
+	__unsafe_unretained CCLayer* cocosLayer; //weak ptr
 #ifdef LH_USE_BOX2D
     b2World* box2dWorld; //weak ptr
 
@@ -125,11 +130,20 @@ NSValue* LHValueWithCGPoint(CGPoint pt);
 }
 //------------------------------------------------------------------------------
 -(id) initWithContentOfFile:(NSString*)levelFile;
+-(id) initWithContentOfFile:(NSString*)levelFile
+               imgSubfolder:(NSString*)imgFolder;
+-(id) initWithContentOfFile:(NSString*)levelFile
+               imgSubfolder:(NSString*)imgFolder
+              decryptionKey:(NSString*)key;
+
 -(id) initWithContentOfFileFromInternet:(NSString*)webAddress;
 //url can be a web address / imgFolder needs to be local
 -(id) initWithContentOfFileAtURL:(NSURL*)levelURL imagesPath:(NSString*)imgFolder;
 -(id) initWithContentOfFile:(NSString*)levelFile 
 			 levelSubfolder:(NSString*)levelFolder;
+
+-(id)initWithFileInDocumentDirectory:(NSString*)file
+     imagesFolderInDocumentDirectory:(NSString*)imgFolder;
 //------------------------------------------------------------------------------
 
 //will call this selector during loading the level (addObjectsToWorld or addSpritesToLayer)
@@ -176,22 +190,25 @@ NSValue* LHValueWithCGPoint(CGPoint pt);
 -(LHBatch*)  batchWithUniqueName:(NSString*)name;
 -(LHSprite*) spriteWithUniqueName:(NSString*)name;
 -(LHBezier*) bezierWithUniqueName:(NSString*)name;
--(LHJoint*)  jointWithUniqueName:(NSString*)name;
 -(LHParallaxNode*) parallaxNodeWithUniqueName:(NSString*)uniqueName;
 
 -(NSArray*) allLayers;
 -(NSArray*) allBatches;
 -(NSArray*) allSprites;
 -(NSArray*) allBeziers;
--(NSArray*) allJoints;
 -(NSArray*) allParallaxes;
 
 -(NSArray*) layersWithTag:(enum LevelHelper_TAG)tag;
 -(NSArray*) batchesWithTag:(enum LevelHelper_TAG)tag;
 -(NSArray*) spritesWithTag:(enum LevelHelper_TAG)tag;
 -(NSArray*) beziersWithTag:(enum LevelHelper_TAG)tag;
--(NSArray*) jointsWithTag:(enum LevelHelper_TAG)tag;
 
+
+#ifdef LH_USE_BOX2D
+-(LHJoint*) jointWithUniqueName:(NSString*)name;
+-(NSArray*) allJoints;
+-(NSArray*) jointsWithTag:(enum LevelHelper_TAG)tag;
+#endif
 
 /*
  to remove any of the LHLayer, LHBatch, LHSprite, LHBezier, LHJoint objects call
@@ -380,6 +397,14 @@ NSValue* LHValueWithCGPoint(CGPoint pt);
 +(void)removeTouchDispatcherFromObject:(id)object;
 ////////////////////////////////////////////////////////////////////////////////
 @end
+
+
+
+
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@
 	<key>JOINTS_INFO</key>
 	<array/>
 	<key>LHVersion</key>
-	<string>1.4.976</string>
+	<string>1.4.987</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -64,13 +64,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{402, 488}, {32, 24.75}}</string>
+								<string>{{825, 949}, {32, 24.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -78,7 +78,7 @@
 								<key>Position</key>
 								<string>{245.75, 153}</string>
 								<key>Scale</key>
-								<string>{18.065202713012695, 16.904541015625}</string>
+								<string>{23.503391265869141, 23.503391265869141}</string>
 								<key>SpriteSize</key>
 								<string>{32, 24.75}</string>
 								<key>Tag</key>
@@ -139,13 +139,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{363, 460}, {37.5, 50.5}}</string>
+								<string>{{70, 533}, {37.5, 50.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -214,7 +214,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{167, 390}, {42, 60.5}}</string>
+								<string>{{459, 949}, {42, 60.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -289,13 +289,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{125, 460}, {36.75, 61.75}}</string>
+								<string>{{4, 533}, {36.75, 61.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -386,10 +386,31 @@
 				<string>QQBalloonClass</string>
 				<key>ClassRepresentation</key>
 				<dict>
+					<key>blinkDelay</key>
+					<real>2</real>
+					<key>blinkInterval</key>
+					<real>2</real>
+					<key>blinkModulo</key>
+					<real>0.0</real>
 					<key>movingStartDelay</key>
-					<real>1</real>
+					<real>2</real>
 					<key>score</key>
 					<real>5</real>
+				</dict>
+			</dict>
+			<dict>
+				<key>ClassName</key>
+				<string>QQLevelClass</string>
+				<key>ClassRepresentation</key>
+				<dict>
+					<key>countdown</key>
+					<real>120</real>
+					<key>gravity</key>
+					<real>-2.5</real>
+					<key>startImpulseX</key>
+					<real>0.15000000596046448</real>
+					<key>startImpulseY</key>
+					<real>0.25</real>
 				</dict>
 			</dict>
 		</array>
@@ -429,6 +450,9 @@
 			<string>TAG_BAR_SHAKER</string>
 			<string>TAG_MUSIC_BUTTON</string>
 			<string>TAG_LOCK</string>
+			<string>TAG_DOTS</string>
+			<string>TAG_TRAMPOLINE_SENSOR</string>
+			<string>TAG_OBSTACLE</string>
 		</array>
 		<key>ZoomValue</key>
 		<real>0.0</real>

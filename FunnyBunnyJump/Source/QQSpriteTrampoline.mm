@@ -15,7 +15,7 @@
 @synthesize currentMoveState;
 @synthesize restitution;
 @synthesize changeRestitution;
-//@synthesize currentDirection;
+@synthesize redTrampolineActive;
 
 -(void) dealloc{
 	[super dealloc];

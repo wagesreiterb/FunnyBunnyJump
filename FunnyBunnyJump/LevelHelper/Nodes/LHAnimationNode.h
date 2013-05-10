@@ -54,21 +54,24 @@
     int             repetitionsPerformed;
     bool            restoreOriginalFrame;
     
-    LHSprite*       sprite;//the sprite on which this animation obj is assigned to
+    __unsafe_unretained LHSprite*       sprite;//the sprite on which this animation obj is assigned to
     
     int             currentFrame;
     float           elapsedFrameTime;
-    LHAnimationFrameInfo* activeFrame;
+    __unsafe_unretained LHAnimationFrameInfo* activeFrame;
     
     bool            paused;
     
-    LHBatch*        oldBatch;
+    __unsafe_unretained LHBatch*        oldBatch;
     CCTexture2D*    oldTexture;
     CGRect          oldRect;
     
     CCSpriteFrame*  oldSpriteFrame;
     
     bool frameChanged;
+    
+    bool endedNotif;
+    bool endedRep;
 }
 @property (readonly) NSString* uniqueName;
 @property (readonly) NSString* sheetName;
@@ -104,6 +107,7 @@
 -(void)update:(ccTime)dt;
 
 -(void)restoreFrame;//only restore the sprites frame if restoreOriginaFrame is set
+-(void)forceRestoreFrame;
 ////////////////////////////////////////////////////////////////////////////////
 
 -(void)setOldBatch:(LHBatch*)b;

@@ -27,4 +27,11 @@
 -(void)setBody:(b2Body*)body;
 -(b2Body*)body;
 #endif
+
+//this methods are added here for kobold2d 2.0.4 collision handling class
+//that class does not test for the node type and its asserting because it calls
+//setColor without testing for it.
+-(ccColor3B) color;
+-(void) setColor:(ccColor3B)color3;
+
 @end

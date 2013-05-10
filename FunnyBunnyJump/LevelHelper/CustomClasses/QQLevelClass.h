@@ -7,6 +7,9 @@
 {
 
 
+	float startImpulseX;
+	float startImpulseY;
+	float countdown;
 	float gravity;
 
 
@@ -18,6 +21,9 @@
 #endif // __has_feature(objc_arc)
 
 }
+@property float startImpulseX;
+@property float startImpulseY;
+@property float countdown;
 @property float gravity;
 
 +(QQLevelClass*) customClassInstance;

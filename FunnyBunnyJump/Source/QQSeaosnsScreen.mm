@@ -46,9 +46,6 @@ static CCScrollLayer *myScroller;
 ////////////////////////////////////////////////////////////////////////////////
 +(id) scene
 {
-    NSLog(@"####### QQSeasonsScreen Scroller");
-
-    
     CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
     QQSeasonsScreen *layerSpring = [QQSeasonsScreen node];    // 'layer' is an autorelease object.
     [layerSpring setupLevelHelper:@"seasonSpring"];
@@ -62,9 +59,22 @@ static CCScrollLayer *myScroller;
     QQSeasonsScreen *layerWinter = [QQSeasonsScreen node];
     [layerWinter setupLevelHelper:@"seasonWinter"];
     
+//    QQSeasonsScreen *layerBackground = [QQSeasonsScreen node];
+//    [layerBackground setupLevelHelper:@"seasonBackground"];
+//    [scene addChild:layerBackground];
+    
     QQSeasonsScreen *layerBackground = [QQSeasonsScreen node];
-    [layerBackground setupLevelHelper:@"seasonBackground"];
+    if([[LHSettings sharedInstance] isIphone5]) {
+        [layerBackground setupLevelHelper:@"seasonBackground_iPhone5"];
+    } else if ([[LHSettings sharedInstance] isIpad]) {
+        [layerBackground setupLevelHelper:@"seasonBackground"];
+    } else {
+        [layerBackground setupLevelHelper:@"seasonBackground"];
+    }
     [scene addChild:layerBackground];
+    
+    
+    
     
     
     //QQLevel *layerBackground = [QQLevel node];
@@ -168,6 +178,7 @@ static CCScrollLayer *myScroller;
 -(void)touchEndedBackButton:(LHTouchInfo*)info {
     //NSLog(@"Touch Ended on sprite %@", [info.sprite uniqueName]);
     if(info.sprite) {
+        [self showShadeForTransition];
         [[GameManager sharedGameManager] runSceneWithID:kHomeScreen];
     }
 }
@@ -238,12 +249,24 @@ static CCScrollLayer *myScroller;
 //FIX TIME STEPT<<<<<<<<<<<<<<<----------------------
 ////////////////////////////////////////////////////////////////////////////////
 
+-(void)showShadeForTransition {
+    LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                     fromSheet:@"assets"
+                                        SHFile:@"objects"];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [shade setPosition:ccp(size.width/2, size.height/2)];
+    [shade setOpacity:OPACITY_OF_SHADE];
+    [shade setScale:SCALE_OF_SHADE];
+    [self addChild:shade];
+}
+
 -(void)touchBeganEmptySeason:(LHTouchInfo*)info{
     //if(info.sprite)
     //    NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
 }
 
 -(void)touchEndedEmptySeason:(LHTouchInfo*)info{
+    [self showShadeForTransition];
     switch ([myScroller currentScreen]) {
         case 0:
             [[GameManager sharedGameManager] setSeason:spring];

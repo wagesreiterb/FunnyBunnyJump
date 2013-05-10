@@ -33,6 +33,8 @@
 #import "LHSettings.h"
 #import "LevelHelperLoader.h"
 
+#import "UIImage+LHAES256.h"
+
 #import "LHSettings.h"
 
 static int untitledBatchCount = 0;
@@ -61,9 +63,17 @@ static int untitledBatchCount = 0;
         [userCustomInfo release];
         userCustomInfo = nil;
     }
+#endif
 
+    uniqueName = nil;
+    imagePath = nil;
+    shFile = nil;
+    userCustomInfo = nil;
+    
+#ifndef LH_ARC_ENABLED
 	[super dealloc];
 #endif
+
 }
 //------------------------------------------------------------------------------
 -(NSString*)shFile{
@@ -113,14 +123,54 @@ static int untitledBatchCount = 0;
         return NSStringFromClass([userCustomInfo class]);
     return @"No Class";
 }
+// used internally to alter the zOrder variable. DON'T call this method manually
+-(void) _setZOrder:(NSInteger) z
+{
+#if COCOS2D_VERSION > 0x00020100 || COCOS2D_VERSION == 0x00020000 || COCOS2D_VERSION == 0x00010100 || COCOS2D_VERSION == 0x00010001 || COCOS2D_VERSION == 0x00010000
+    zOrder_ = z;
+#else
+    zOrder_ = z;
+#endif
+}
+
 //------------------------------------------------------------------------------
 -(id) initWithDictionary:(NSDictionary*)dictionary layer:(LHLayer*)layer{
     
     NSString* imgPath = [[LHSettings sharedInstance] imagePath:[dictionary stringForKey:@"SheetImage"]];
-    
-    NSAssert(imgPath!=nil, @"Image path must not be nil");
         
-    self = [super initWithFile:imgPath capacity:29]; //29 is the default capacity
+    NSData* decryptKey = [[LHSettings sharedInstance] decryptionKey];
+    
+    CCTexture2D* texture = nil;
+    if(decryptKey){
+#if COCOS2D_VERSION >= 0x00020000
+        ccResolutionType resolution;
+        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:imgPath resolutionType:&resolution];
+#else
+        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:imgPath];
+#endif
+        
+        
+        UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
+                                                           withKey:decryptKey];
+        
+        if(image){
+            NSString* path = [fullpath stringByStandardizingPath];
+            CGImageRef ref = image.CGImage;
+            if(ref){
+                texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+            }
+        }
+    }
+    NSAssert(imgPath!=nil, @"Image path must not be nil");
+    
+        
+    if(texture == nil){
+        self = [super initWithFile:[imgPath lastPathComponent] capacity:29]; //29 is the default capacity
+    }
+    else{
+        self = [super initWithTexture:texture capacity:29];
+    }
+    
     if (self != nil)
     {
         NSString* uName = [dictionary objectForKey:@"UniqueName"];
@@ -141,9 +191,16 @@ static int untitledBatchCount = 0;
         if([dictionary objectForKey:@"SHScene"])
             shFile = [[NSString alloc] initWithString:[dictionary stringForKey:@"SHScene"]];
         
-        imagePath = [[NSString alloc] initWithString:imgPath];
+        imagePath = [[NSString alloc] initWithString:[imgPath lastPathComponent]];
         
-        zOrder_ = [dictionary intForKey:@"ZOrder"];
+        
+        
+#if COCOS2D_VERSION >= 0x00020000
+        self.zOrder = [dictionary intForKey:@"ZOrder"];
+#else
+        [self _setZOrder:[dictionary intForKey:@"ZOrder"]];
+#endif
+
         
         [self setTag:[dictionary intForKey:@"Tag"]];
         
@@ -231,7 +288,7 @@ static int untitledBatchCount = 0;
 //------------------------------------------------------------------------------
 -(LHSprite*)spriteWithUniqueName:(NSString*)name{
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]]){
             if([[(LHSprite*)node uniqueName] isEqualToString:name]){
                 return node;
@@ -245,7 +302,7 @@ static int untitledBatchCount = 0;
 -(NSArray*)allSprites{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]]){
             [array addObject:node];    
         }
@@ -257,7 +314,7 @@ static int untitledBatchCount = 0;
 -(NSArray*)spritesWithTag:(int)tag{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]]){
             if([(CCNode*)node tag] == tag)
                 [array addObject:node];    

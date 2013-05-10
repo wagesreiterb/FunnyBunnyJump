@@ -338,11 +338,13 @@ public:
 	if (self != nil) {
         spritesPreviouslyCut = [[NSMutableSet alloc] init];
         
-#if COCOS2D_VERSION >= 0x00020000
+#if COCOS2D_VERSION >= 0x00020100
+        mShaderProgram = [[CCShaderCache sharedShaderCache] programForKey:kCCShader_PositionTexture];
+        mColorLocation = glGetUniformLocation( mShaderProgram.program, "u_color");
+#elif COCOS2D_VERSION >= 0x00020000
         mShaderProgram = [[CCShaderCache sharedShaderCache] programForKey:kCCShader_PositionTexture];
         mColorLocation = glGetUniformLocation( mShaderProgram->program_, "u_color");
 #endif
-
         
 	}
 	return self;
@@ -381,7 +383,17 @@ public:
 
     CGRect oldRect = [oldSprite originalRect];
     
-    CCTexture2D* oldTexture = [[CCTextureCache sharedTextureCache] addImage:[oldSprite imageFile]];
+#if COCOS2D_VERSION >= 0x00020000
+    ccResolutionType resolution;
+    NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[oldSprite imageFile] resolutionType:&resolution];
+#else
+    NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[oldSprite imageFile]];
+#endif
+    
+    
+//    CCTexture2D* oldTexture = [[CCTextureCache sharedTextureCache] addImage:[oldSprite imageFile]];
+
+    CCTexture2D* oldTexture = [[CCTextureCache sharedTextureCache] addImage:fullpath];
     
     CCSprite* tempOrigSprite = [CCSprite spriteWithTexture:oldTexture rect:oldRect];
     
@@ -402,7 +414,7 @@ public:
     
 #if COCOS2D_VERSION >= 0x00020000 
     
-    ccGLEnable( glServerState_ );	
+    ccGLEnable( self.glServerState );
     [mShaderProgram use];
     
 #if COCOS2D_VERSION >= 0x00020100

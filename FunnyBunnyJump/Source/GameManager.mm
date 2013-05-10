@@ -257,14 +257,33 @@ static GameManager* _sharedGameManager = nil;
     if([[CCDirector sharedDirector] runningScene] == nil) {
         [[CCDirector sharedDirector] runWithScene:sceneToRun];
     } else {
-        [[CCDirector sharedDirector] replaceScene:sceneToRun];
+        //[[CCDirector sharedDirector] replaceScene:sceneToRun];
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.3f
         //                                                                                     scene:sceneToRun]];
+
+        //[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.75f
+        //                                                                                     scene:sceneToRun]];
+        
+        
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f
+                                                                                     scene:sceneToRun]];
+        
+        
+        
+        
+        //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.75f
+        //                                                                               scene:sceneToRun]];
+        
     }
     
     //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.3f
     //                                                                                     scene:[QQLevel scene:@"level001"]]];
 }
+
+-(void)switchScene:(id)sceneToRun_ {
+    [[CCDirector sharedDirector] replaceScene:sceneToRun_];
+}
+
 
 -(void)openSiteWithLinkType:(LinkTypes)linkTypeToOpen {
     NSURL *urlToOpen = nil;
@@ -300,11 +319,13 @@ static GameManager* _sharedGameManager = nil;
 }
 
 -(void)playOrNotMusic {
-    if([[GameState sharedInstance] isMusicEnabled]) {
-        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volumeBackgroundMusic];
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
-    } else {
-        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+    if(![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) {
+        if([[GameState sharedInstance] isMusicEnabled]) {
+            [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volumeBackgroundMusic];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"zippy.mp3"];
+        } else {
+            [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        }
     }
 }
 

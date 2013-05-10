@@ -34,6 +34,8 @@
 #import "LHCustomClasses.h"
 #import "LHDictionaryExt.h"
 
+#import "UIImage+LHAES256.h"
+
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 #import <OpenGLES/EAGL.h>
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
@@ -51,6 +53,7 @@
 @implementation LHBezier
 @synthesize isClosed;
 @synthesize isTile;
+@synthesize isChain;
 @synthesize isVisible;
 @synthesize isLine;
 @synthesize swallowTouches;
@@ -153,7 +156,8 @@
         glLineWidth(lineWidth*CC_CONTENT_SCALE_FACTOR());
         
         
-        ccGLEnable( glServerState_ );
+
+        ccGLEnable(self.glServerState );
         [lineShaderProgram use];
         
 #if COCOS2D_VERSION >= 0x00020100
@@ -287,7 +291,7 @@
 
 -(void) dealloc{
     
-    //    NSLog(@"LHBezier Dealloc %@", uniqueName);
+//    NSLog(@"LHBezier Dealloc %@", uniqueName);
     
     [LevelHelperLoader removeTouchDispatcherFromObject:self];
     
@@ -317,11 +321,20 @@
     
 	[uniqueName release];
 	[pathPoints release];
-    
-	[super dealloc];
 #endif
     
     tile_texture = nil;
+    userCustomInfo = nil;
+    touchBeginObserver = nil;
+    touchMovedObserver = nil;
+    touchEndedObserver = nil;
+    uniqueName = nil;
+    pathPoints = nil;
+    
+#ifndef LH_ARC_ENABLED
+	[super dealloc];
+#endif
+
 }
 
 -(void)removeBodyFromWorld{
@@ -490,44 +503,47 @@
 	body = world->CreateBody(&bodyDef);
 	float ptm = [[LHSettings sharedInstance] lhPtmRatio];
     
-    
-    NSArray* fixtures = [dictionary objectForKey:@"TileVertices"];
- 	for(NSArray* fix in fixtures)
+    bool createdTileShape = false;
+    if(!isChain)
     {
-        int size = (int)[fix count];
-        b2Vec2 *verts = new b2Vec2[size];
-        int i = 0;
-        
-        for(int j = (int)[fix count]-1; j >=0; --j)
+        NSArray* fixtures = [dictionary objectForKey:@"TileVertices"];
+        for(NSArray* fix in fixtures)
         {
-            CGPoint point = LHPointFromString([fix objectAtIndex:j]);
-            point = [[LHSettings sharedInstance] transformedPointToCocos2d:point];
+            int size = (int)[fix count];
+            b2Vec2 *verts = new b2Vec2[size];
+            int i = 0;
             
-            verts[i].x = point.x/ptm;
-            verts[i].y = point.y/ptm;
-            ++i;
+            for(int j = (int)[fix count]-1; j >=0; --j)
+            {
+                CGPoint point = LHPointFromString([fix objectAtIndex:j]);
+                point = [[LHSettings sharedInstance] transformedPointToCocos2d:point];
+                
+                verts[i].x = point.x/ptm;
+                verts[i].y = point.y/ptm;
+                ++i;
+            }
+            
+            b2PolygonShape shape;
+            shape.Set(verts, size);
+            
+            b2FixtureDef fixture;
+            
+            fixture.density = [dictionary floatForKey:@"Density"];
+            fixture.friction = [dictionary floatForKey:@"Friction"];
+            fixture.restitution = [dictionary floatForKey:@"Restitution"];
+            
+            fixture.filter.categoryBits = (uint16)[dictionary intForKey:@"Category"];
+            fixture.filter.maskBits = (uint16)[dictionary intForKey:@"Mask"];
+            fixture.filter.groupIndex = (int16)[dictionary intForKey:@"Group"];
+            
+            fixture.isSensor = [dictionary boolForKey:@"IsSensor"];
+            
+            fixture.shape = &shape;
+            body->CreateFixture(&fixture);
+            createdTileShape = true;
+            delete[] verts;
         }
-        
-        b2PolygonShape shape;
-        shape.Set(verts, size);
-        
-        b2FixtureDef fixture;
-        
-        fixture.density = [dictionary floatForKey:@"Density"];
-		fixture.friction = [dictionary floatForKey:@"Friction"];
-		fixture.restitution = [dictionary floatForKey:@"Restitution"];
-		
-		fixture.filter.categoryBits = (uint16)[dictionary intForKey:@"Category"];
-		fixture.filter.maskBits = (uint16)[dictionary intForKey:@"Mask"];
-		fixture.filter.groupIndex = (int16)[dictionary intForKey:@"Group"];
-		
-		fixture.isSensor = [dictionary boolForKey:@"IsSensor"];
-        
-        fixture.shape = &shape;
-        body->CreateFixture(&fixture);
-        delete[] verts;
-	}
-    
+    }
     
     //we test for the version of box2d here
 #ifdef B2_CHAIN_SHAPE_H
@@ -562,7 +578,9 @@
         fixture.isSensor = [dictionary boolForKey:@"IsSensor"];
         
         fixture.shape = &shape;
-        body-> CreateFixture (& fixture);
+        if(!createdTileShape)
+            body-> CreateFixture (& fixture);
+        
         delete [] verts;
     }
     
@@ -683,6 +701,11 @@
         
 		isClosed	= [textureDict boolForKey:@"IsClosed"];
 		isTile		= [textureDict boolForKey:@"IsTile"];
+        
+        isChain = NO;
+        if([textureDict objectForKey:@"IsChain"])
+            isChain     = [textureDict boolForKey:@"IsChain"];
+        
 		isVisible	= [textureDict boolForKey:@"IsDrawable"];
 		isLine		= [textureDict boolForKey:@"IsSimpleLine"];
 		isPath		= [textureDict boolForKey:@"IsPath"];
@@ -711,7 +734,37 @@
         NSString* img = [textureDict stringForKey:@"ImageFile"];
 		if(![img isEqualToString:@""] && ![img isEqualToString:@"No Image"]){
             NSString* path = [[LHSettings sharedInstance] imagePath:img];
-			[self setTexture:[[CCTextureCache sharedTextureCache] addImage:path]];
+            
+            
+            NSData* decryptKey = [[LHSettings sharedInstance] decryptionKey];
+            
+            CCTexture2D* texture = nil;
+            if(decryptKey){
+                
+#if COCOS2D_VERSION >= 0x00020000
+                ccResolutionType resolution;
+                NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:path resolutionType:&resolution];
+#else
+                NSString *fullpath = [CCFileUtils fullPathFromRelativePath:path];
+#endif
+                
+                UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
+                                                                   withKey:decryptKey];
+                
+                if(image){
+                    NSString* path = [fullpath stringByStandardizingPath];
+                    CGImageRef ref = image.CGImage;
+                    if(ref){
+                        texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+                    }
+                }
+            }
+            if(texture == nil){
+                [self setTexture:[[CCTextureCache sharedTextureCache] addImage:[path lastPathComponent]]];
+            }
+            else{
+                [self setTexture:texture];
+            }
 		}
 		
         NSDictionary* physicsDict = [dictionary objectForKey:@"PhysicsProperties"];
@@ -1197,5 +1250,12 @@
 //------------------------------------------------------------------------------
 -(id)userInfo{
     return userCustomInfo;
+}
+
+- (ccColor3B) color{
+	return ccWHITE;
+}
+
+-(void) setColor:(ccColor3B)color3{
 }
 @end

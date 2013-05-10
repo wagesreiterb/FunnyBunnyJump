@@ -9,6 +9,8 @@
 #import "LHSprite.h"
 #import "LHCuttingEngineMgr.h"
 #import "SimpleAudioEngine.h"
+#import "NSNotificationCenter+Utils.h"
+#import "QQBalloonClass.h"
 
 @interface QQSpriteBalloon : LHSprite {
     BOOL wasTouched;
@@ -16,6 +18,8 @@
     enum whatToDo currentToDo;
     CCParticleSystem *_particle;
 }
+
++(NSUInteger)numberOfInstances;
 
 @property BOOL wasTouched;
 @property enum whatToDo currentToDo;
@@ -38,6 +42,7 @@
 //------------------------------------------------------------------------------
 //create your own custom methods here
 //-(QQSpriteBalloon*)reactToTouch:(QQSpriteBalloon*)balloon withWorld:(b2World*)world withLayer:(CCLayer*)layer;
--(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer;
+//-(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer;
+-(NSInteger)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer withScore:(NSInteger)score_ withCountdown:(float)countdown_;
 //-(void)setToSensor:(BOOL)sensor;
 @end

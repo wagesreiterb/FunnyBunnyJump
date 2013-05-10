@@ -63,6 +63,7 @@
     [hdSuffix release];
     [hd2xSuffix release];
     
+    [decryptionkey release];
     [markedSprites release];
     [markedBeziers release];
     [markedJoints release];
@@ -109,6 +110,8 @@
         hdSuffix = [[NSMutableString alloc] initWithString:@"-hd"];
         hd2xSuffix = [[NSMutableString alloc] initWithString:@"-ipadhd"];
         
+        decryptionkey = [[NSMutableString alloc] init];
+        
         [self setDevice:2];//universal
 	}
 	return self;
@@ -120,6 +123,16 @@
 }
 -(NSString*)activeFolder{
     return activeFolder;
+}
+
+-(void)setDecryptionKey:(NSString*)key{
+    [decryptionkey setString:key];
+}
+-(NSData*)decryptionKey{
+    if(decryptionkey.length == 0)
+        return nil;
+    
+    return [decryptionkey dataUsingEncoding:NSISOLatin1StringEncoding];
 }
 
 -(void)addLHMainLayer:(LHLayer*)layer{
@@ -169,11 +182,8 @@
     [markedBeziers addObject:node];    
 }
 //------------------------------------------------------------------------------
--(void) markJointForRemoval:(LHJoint*)jt{
-    if(jt != NULL) [markedJoints addObject:jt];
-}
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
+
 -(void) removeMarkedSprites{
     for(LHSprite* spr in markedSprites){
         [spr removeSelf];
@@ -188,12 +198,18 @@
     [markedBeziers removeAllObjects];   
 }
 //------------------------------------------------------------------------------
+#ifdef LH_USE_BOX2D
+-(void) markJointForRemoval:(LHJoint*)jt{
+    if(jt != NULL) [markedJoints addObject:jt];
+}
+//------------------------------------------------------------------------------
 -(void) removeMarkedJoints{
     for(LHJoint* jt in markedJoints){
         [jt removeSelf];
     }
     [markedJoints removeAllObjects];
 }
+#endif
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 
@@ -201,6 +217,64 @@
 -(int)newBodyId{
 	return newBodyId++;
 }
+
+-(NSString*)pathForSpriteHelperDocument:(NSString*)sceneFile
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:[sceneFile stringByDeletingPathExtension] ofType:@"pshs"
+                                                inDirectory:[[LHSettings sharedInstance] activeFolder]];
+    
+    if(nil == path){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString* imagesPath = [documentsDirectory stringByAppendingPathComponent:[[LHSettings sharedInstance] activeFolder]];
+        
+        //in case scene file does not have an extension add it
+        NSString* docPath = [imagesPath stringByAppendingPathComponent:[[sceneFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"pshs"]];
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:docPath])
+            return docPath;
+    }
+    
+    return path;
+}
+
+
+
+-(NSString*)diskPathForImage:(NSString*)img
+{
+    return [NSString stringWithFormat:@"%@/%@",[self activeFolder], img];
+    
+    
+    //new version of cocos2d does not like this 
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:[img stringByDeletingPathExtension] ofType:[img pathExtension]
+                                                inDirectory:[[LHSettings sharedInstance] activeFolder]];
+    
+    if(nil == path){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString* imagesPath = [documentsDirectory stringByAppendingPathComponent:[[LHSettings sharedInstance] activeFolder]];
+        
+        //in case scene file does not have an extension add it
+        NSString* docPath = [imagesPath stringByAppendingPathComponent:img];
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:docPath])
+        {
+            //only return different path if we are in the document folder
+            return docPath;
+        }
+    }
+    
+    if(path)
+        return path;
+    
+    //in case we did not find it in the bundle under a folder return same image
+    return img;
+}
+
+
 
 //-(NSString*)imagePath:(NSString*)file
 //{
@@ -235,7 +309,7 @@
 //#else
 //        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
 //#endif
-//        
+//
 //        if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
 //            
 //            return fullpath;
@@ -248,22 +322,15 @@
 -(NSString*)imagePath:(NSString*)file
 
 {
-    
     NSString* computedFile = file;
-    
     if([self isIpad] && [self useHDOnIpad])
         
     {
-        
         if(device != 1 && device != 3)//if ipad only then we dont need to apply transformations
             
         {
-            
             //we use this - in case extension is "pvr.ccz"
-            
             //the normal cocoa method will give as false extension
-            
-            
             
             NSString* fileName = [file stringByDeletingPathExtension];
             
@@ -279,57 +346,25 @@
                 
             }
             
-            
-            
             if(CC_CONTENT_SCALE_FACTOR() == 2){
-                
                 //we have ipad retina
-                
                 computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hd2xSuffix, fileExtension];
                 
             }
             
             else {
-                
                 //we have normal ipad - lets use the HD image
-                
                 computedFile = [NSString stringWithFormat:@"%@%@%@", fileName, hdSuffix, fileExtension];
                 
             }
-            
         }
-        
-        
-        
-        //#if COCOS2D_VERSION >= 0x00020000
-        
-        //        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
-        
-        //#else
-        
-        //        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:[NSString stringWithFormat:@"%@%@",activeFolder, computedFile]];
-        
-        //#endif
-        
-        
-        
-        //        if([[NSFileManager defaultManager] fileExistsAtPath:fullpath]){
-        
-        
-        
-//        NSLog(@"file - %@ computed - %@", file, computedFile);
-        
-        return computedFile;
-        
-        //        }
-        
+        return [self diskPathForImage:computedFile];
     }
-    
-    return file;
-    
-    //    return [NSString stringWithFormat:@"%@%@",activeFolder, file];
-    
+    return [self diskPathForImage:file];
 }
+
+
+
 
 -(CGPoint) transformedScalePointToCocos2d:(CGPoint)point{
     

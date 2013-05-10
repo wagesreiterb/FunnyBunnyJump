@@ -30,7 +30,7 @@
 #import "LevelHelperLoader.h"
 #import "LHSprite.h"
 #import "LHDictionaryExt.h"
-
+#import "LHAsset.h"
 
 
 @interface LHRopePoint : NSObject {
@@ -43,7 +43,7 @@
 -(CGPoint)position;
 
 -(void)update;
--(void)applyGravity:(float)dt;
+-(void)applyGravity:(float)dt world:(b2World*)boxWorld;
 
 @end
 
@@ -70,12 +70,10 @@
     position.y += position.y - oldPosition.y;
     oldPosition = tempPos;
 }
--(void)applyGravity:(float)dt {
+-(void)applyGravity:(float)dt world:(b2World*)boxWorld{
     
-    b2World* world = [[LHSettings sharedInstance] activeBox2dWorld];
-    
-    if(world){
-        b2Vec2 grav = world->GetGravity();
+    if(boxWorld){
+        b2Vec2 grav = boxWorld->GetGravity();
         
         position.x += grav.x*2.0f*dt;
         position.y += grav.y*2.0f*dt;
@@ -199,8 +197,37 @@
 }
 @end
 
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@interface LHAsset (LH_JOINT_PRIVATE)
+-(void)removeJoint:(LHJoint*)jt;
+-(void)addJoint:(LHJoint*)jt;
+@end
+
+@implementation LHAsset (LH_JOINT_PRIVATE)
+-(void)removeJoint:(LHJoint*)jt{
+    // NSLog(@"REMOVE JOINT %@", [jt uniqueName]);
+    if(!jt)return;
+    [jointsInAsset removeObjectForKey:[jt uniqueName]];
+}
+-(void)addJoint:(LHJoint*)jt{
+    if(jt){
+        [jointsInAsset setObject:jt forKey:[jt uniqueName]];
+    }
+}
+@end
+
+
+
 @interface LHJoint (Private)
 -(void) createBox2dJointFromDictionary:(NSDictionary*)dictionary;
+
+#ifdef B2_ROPE_JOINT_H
+-(void)createRopeJointRepresentation;
+-(void)prepareRopeJointsWithDictionary:(NSDictionary*)dictionary;
+-(void)resetWithPoints:(CGPoint)pointA pointB:(CGPoint)pointB;
+#endif
 @end
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -224,18 +251,22 @@
 	[rope_sticks release];
     [rope_textureName release];
     [uniqueName release];
-	[super dealloc];
 #endif
     rope_textureName = nil;
     uniqueName = nil;
     rope_points = nil;
 	rope_sprites= nil;
 	rope_sticks= nil;
+    
+#ifndef LH_ARC_ENABLED
+    [super dealloc];
+#endif
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(id) initWithDictionary:(NSDictionary*)dictionary 
-                   world:(b2World*)box2d 
-                  loader:(LevelHelperLoader*)pLoader{
+                   world:(b2World*)box2d
+                  loader:(NSObject*)pLoader{
     
     self = [super init];
     if (self != nil)
@@ -257,7 +288,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 +(id) jointWithDictionary:(NSDictionary*)dictionary 
                     world:(b2World*)box2d 
-                   loader:(LevelHelperLoader*)pLoader{
+                   loader:(NSObject*)pLoader{
 
     if(!dictionary || !box2d || !pLoader) return nil;
     
@@ -361,7 +392,12 @@
 -(void)removeSelf{
     if(parentLoader){
         if(!boxWorld->IsLocked()){
-            [parentLoader removeJoint:self];
+            if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+                [(LevelHelperLoader*)parentLoader removeJoint:self];
+            }
+            else if([parentLoader isKindOfClass:[LHAsset class]]){
+                [(LHAsset*)parentLoader removeJoint:self];
+            }
         }
         else {
             [[LHSettings sharedInstance] markJointForRemoval:self];
@@ -376,11 +412,29 @@
 	if(nil == dictionary)return;
 	if(boxWorld == 0)return;
     
+    if(parentLoader == nil)
+        return;
     
-    LHSprite* sprA  = [parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectA"]];
+    LHSprite* sprA = nil;
+    
+    //i should probably need to make LHAsset a sublass of LHAsset and remove this ugly code
+    if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+        sprA = [(LevelHelperLoader*)parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectA"]];
+    }
+    else if([parentLoader isKindOfClass:[LHAsset class]]){
+        sprA = [(LHAsset*)parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectA"]];
+    }
+    
     b2Body* bodyA   = [sprA body];
 	
-    LHSprite* sprB  = [parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectB"]];
+    LHSprite* sprB = nil;
+    
+    if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+        sprB = [(LevelHelperLoader*)parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectB"]];
+    }
+    else if([parentLoader isKindOfClass:[LHAsset class]]){
+        sprB = [(LHAsset*)parentLoader spriteWithUniqueName:[dictionary stringForKey:@"ObjectB"]];
+    }
     b2Body* bodyB   = [sprB body];
 	
     CGPoint sprPosA = [sprA position];
@@ -529,10 +583,26 @@
 				if(bodyB == 0)
 					return;
 				
-                LHJoint* jointAObj  = [parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointA"]];
+                LHJoint* jointAObj = nil;
+                
+                if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+                    jointAObj = [(LevelHelperLoader*)parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointA"]];
+                }
+                else if([parentLoader isKindOfClass:[LHAsset class]]){
+                    jointAObj = [(LHAsset*)parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointA"]];
+                }
                 b2Joint* jointA     = [jointAObj joint];
                 
-                LHJoint* jointBObj  = [parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointB"]];
+                
+                
+                LHJoint* jointBObj = nil;
+                
+                if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+                    jointBObj = [(LevelHelperLoader*)parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointB"]];
+                }
+                else if([parentLoader isKindOfClass:[LHAsset class]]){
+                    jointBObj = [(LHAsset*)parentLoader jointWithUniqueName:[dictionary stringForKey:@"JointB"]];
+                }
                 b2Joint* jointB     = [jointBObj joint];
                 
 				if(jointA == 0)
@@ -686,7 +756,16 @@
             rope_spriteSheet = [CCSpriteBatchNode batchNodeWithFile:texture];
             
             if(rope_spriteSheet){
-                LHLayer* layer  = [parentLoader layerWithUniqueName:@"MAIN_LAYER"];
+                
+                LHLayer* layer = nil;
+                
+                if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+                    layer  = [(LevelHelperLoader*)parentLoader layerWithUniqueName:@"MAIN_LAYER"];
+                }
+                else if([parentLoader isKindOfClass:[LHAsset class]]){
+                    layer  = [(LHAsset*)parentLoader layerWithUniqueName:@"MAIN_LAYER"];
+                }
+                
                 if(layer){
                     if([dictionary objectForKey:@"RepresentationZ"]){
                         rope_z = [dictionary intForKey:@"RepresentationZ"];
@@ -722,7 +801,7 @@
         [(LHRopePoint*)[rope_points objectAtIndex:rope_numPoints-1] setPosition:pointB];
 	
         for(int i=1; i<rope_numPoints-1; ++i) {
-            [(LHRopePoint*)[rope_points objectAtIndex:i] applyGravity:dt];
+            [(LHRopePoint*)[rope_points objectAtIndex:i] applyGravity:dt world:boxWorld];
             [(LHRopePoint*)[rope_points objectAtIndex:i] update];
         }
 	
@@ -971,7 +1050,12 @@
                                                     loader:parentLoader];
     if(newLhJoint){
         [newLhJoint setTag:tag];
-        [parentLoader addJoint:newLhJoint];
+        if([parentLoader isKindOfClass:[LevelHelperLoader class]]){
+            [(LevelHelperLoader*)parentLoader addJoint:newLhJoint];
+        }
+        else if([parentLoader isKindOfClass:[LHAsset class]]){
+            [(LHAsset*)parentLoader addJoint:newLhJoint];
+        }
     }
 
     

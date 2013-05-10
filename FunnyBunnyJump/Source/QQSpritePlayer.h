@@ -20,6 +20,8 @@
     enum state {jumping_up, jumping_down, on_seesaw};
     BOOL acceptForces;
     BOOL balloonTouched;
+    //b2Vec2 _gravity;
+    double _startImpulseX, _startImpulseY;
     
     CGPoint beamPosition;
     BOOL shallBeam;
@@ -38,6 +40,9 @@
     CGPoint _initialPositionEarRight;
     CGPoint _initialPositionHandLeft;
     CGPoint _initialPositionHandRight;
+    
+    LHLayer* _layer;
+    LevelHelperLoader* _loader;
 }
 //add your own properties here
 @property BOOL shallResetPosition;
@@ -53,6 +58,7 @@
 @property int lifes;
 @property BOOL restoreInitialPostitionRequired;
 @property BOOL playerStopped;
+-(void)setPositionWithLoader:(LevelHelperLoader*)loader_ position:(CGPoint)position_;
 
 //add your own properties here
 
@@ -73,10 +79,13 @@
 
 //------------------------------------------------------------------------------
 //create your own custom methods here
--(void)resetPosition;
+//-(void)resetPosition;
+//-(void)resetPosition:(LHLayer*)layer;
 -(void)deflect;
 -(void)applyForce;
--(void)applyStartJump;
+-(void)applyStartJumpWithImpulseX:(double)impulseX withImpulseY:(double)impulseY;
+//-(void)applyStartJump;
+//-(void)applyStartJumpWithGravity:(b2Vec2)gravity_;
 -(void)applyStartJumpAfterTick:(ccTime)dt;
 -(void)beamPlayer:(LHSprite*)beamContact fromBeamObject:(LHSprite*)beam1 toBeamObject:(LHSprite*)beam2;
 -(void)beam;
@@ -87,7 +96,9 @@
 -(void)upOrDownActionWithLoader:(LevelHelperLoader*)loader_;
 -(void)removeSelfWithLoader:(LevelHelperLoader*)loader_;
 -(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_;
+-(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_ withLayer:(LHLayer*)layer;
 -(void)restoreInitialPosition:(LevelHelperLoader*)loader_;
+-(void)restoreInitialPosition:(LevelHelperLoader*)loader_ withLayer:(LHLayer*)layer;
 -(void)stopPlayer;
 -(void)makeInvisibleAndStaitc:(LevelHelperLoader*)loader_;
 

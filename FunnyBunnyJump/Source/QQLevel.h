@@ -35,7 +35,7 @@
 #import "LHSettings.h"
 #import "QQPauseLayer.h"
 #import "QQGameOver.h"
-
+#import "QQAdmob.h"
 
 
 
@@ -44,11 +44,18 @@
 {
 	b2World* _world;
 	GLESDebugDraw *m_debugDraw;
+    BOOL _noMoreCollisionHandling;
+    int _balloonsDestroyed;
+    
+    BOOL _backLevel;
+    BOOL _reloadLevel;
     
     
     BOOL _explodeIt;
     NSInteger _starsCollected;
     NSInteger _score;
+    b2Vec2 _gravity;
+    double _startImpulseX, _startImpulseY;
 
     float _countDown;
     
@@ -72,6 +79,8 @@
     LevelHelperLoader* _loaderOverlayGameOver;
     
     LevelHelperLoader* loaderParallaxClouds;
+    LevelHelperLoader* _loaderHelpLabel;
+    LHSprite* _helpLabel;
     //LHParallaxNode* _parallaxClouds;
 
     //BOOL pause;
@@ -89,6 +98,7 @@
     LHSprite *_star;
     LHSprite *_joystickLeft, *_joystickLeftGlow;
     LHSprite *_joystickRight, *_joystickRightGlow;
+    LHSprite *_redTrampolineButton;
     
     LHSprite *_earLeft, *_earRight;
     LHSprite *_handLeft, *_handRight;
@@ -104,11 +114,13 @@
     CCParticleSystem *_particleBeam1;
     CCParticleSystem *_particleBeam2;
 
+    CCParticleSystemQuad *_particleSpring;
     CCParticleSystemQuad *_particleLeaves;
     CCParticleSystemQuad *_particleSnow;
     CCParticleSystemQuad *_particleSun;
     CCParticleSystemQuad *_particleRain;
-    
+    CCParticleSystemQuad *_particleFireBar;
+
     
     QQLabelTimer* _labelTimer;
     CCLabelTTF* _labelCountdown;
@@ -131,10 +143,12 @@
     
     BOOL _shallObejctsBeRemoved;
     BOOL _levelPaused;
-
+    
+    QQAdmob *_myAdmob;
+    BOOL redTrampolineActive;
 }
 
-//@property BOOL pause;
+
 
 // returns a Scene that contains the HelloWorld as the only child
 +(id)scene;

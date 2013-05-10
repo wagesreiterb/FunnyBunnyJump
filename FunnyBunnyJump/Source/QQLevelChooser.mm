@@ -69,12 +69,21 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 -(void) setupLevelHelper {
     self.isTouchEnabled = YES;
-    self.isAccelerometerEnabled = YES;
+    //self.isAccelerometerEnabled = YES;
     //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
     //[self schedule: @selector(tick:) interval:1.0f/70.0f];
  
     //[LevelHelperLoader dontStretchArtOnIpad];
-    loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelChooser"];
+    
+    if([[LHSettings sharedInstance] isIphone5]) {
+        loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelChooser_iPhone5"];
+    } else if ([[LHSettings sharedInstance] isIpad]) {
+        loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelChooser"];
+    } else {
+        loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelChooser"];
+    }
+    
+    
     [loader addObjectsToWorld:_world cocos2dLayer:self]; //creating the objects
 
     if([loader hasPhysicBoundaries])
@@ -91,40 +100,129 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [mySprite registerTouchBeganObserver:self selector:@selector(touchBegan:)];
     }
     
-    LHSprite* background;
+    LHSprite *background, *clouds, *foreground;
     switch ([[GameManager sharedGameManager] season]) {
+            //case spring:
+            //    background = [LHSprite spriteWithName:@"backgroundSpring_iPhone5"
+            //                                fromSheet:@"backgrounds3"
+            //                                   SHFile:@"objects"];
+            //    break;
+            
         case spring:
-            background = [LHSprite spriteWithName:@"backgroundSpring"
-                                        fromSheet:@"backgrounds3"
-                                           SHFile:@"objects"];
-            break;
-        case summer:
-            background = [LHSprite spriteWithName:@"backgroundSummer"
+            background = [LHSprite spriteWithName:@"backgroundSpringBackground"
                                         fromSheet:@"backgrounds2"
                                            SHFile:@"objects"];
+            clouds = [LHSprite spriteWithName:@"clouds"
+                                    fromSheet:@"backgrounds"
+                                       SHFile:@"objects"];
+            foreground = [LHSprite spriteWithName:@"backgroundSpringForeground"
+                                        fromSheet:@"foregrounds"
+                                           SHFile:@"objects"];
+            
+            [self addChild:background];
+            [self addChild:clouds];
+            [self addChild:foreground];
+            
+            [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [clouds setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                            [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [foreground setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            [background setZOrder:-30];
+            [clouds setZOrder:-20];
+            [foreground setZOrder:-10];
+            
+            break;
+            
+            
+            
+        case summer:
+            background = [LHSprite spriteWithName:@"backgroundSummerBackground"
+                                        fromSheet:@"backgrounds"
+                                           SHFile:@"objects"];
+
+            foreground = [LHSprite spriteWithName:@"backgroundSummerForeground"
+                                        fromSheet:@"foregrounds"
+                                           SHFile:@"objects"];
+            
+            [self addChild:background];
+            [self addChild:foreground];
+            
+            [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [foreground setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            [background setZOrder:-30];
+            [foreground setZOrder:-10];
+            
             break;
             
         case fall:
-            background = [LHSprite spriteWithName:@"backgroundFall"
-                                        fromSheet:@"backgrounds2"
+            background = [LHSprite spriteWithName:@"backgroundFallBackground"
+                                        fromSheet:@"backgrounds"
                                            SHFile:@"objects"];
+            clouds = [LHSprite spriteWithName:@"clouds_fall"
+                                    fromSheet:@"backgrounds2"
+                                       SHFile:@"objects"];
+            foreground = [LHSprite spriteWithName:@"backgroundFallForeground"
+                                        fromSheet:@"foregrounds"
+                                           SHFile:@"objects"];
+            
+            [self addChild:background];
+            [self addChild:clouds];
+            [self addChild:foreground];
+            
+            [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [clouds setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                            [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [foreground setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            [background setZOrder:-30];
+            [clouds setZOrder:-20];
+            [foreground setZOrder:-10];
+            
             break;
             
         case winter:
-            background = [LHSprite spriteWithName:@"backgroundWinter"
-                                        fromSheet:@"backgrounds3"
+            background = [LHSprite spriteWithName:@"backgroundWinterBackground"
+                                        fromSheet:@"backgrounds"
                                            SHFile:@"objects"];
+            clouds = [LHSprite spriteWithName:@"clouds"
+                                    fromSheet:@"backgrounds"
+                                       SHFile:@"objects"];
+            foreground = [LHSprite spriteWithName:@"backgroundWinterForeground"
+                                        fromSheet:@"foregrounds"
+                                           SHFile:@"objects"];
+            [self addChild:background];
+            [self addChild:clouds];
+            [self addChild:foreground];
+            
+            [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [clouds setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                            [[CCDirector sharedDirector] winSize].height / 2)];
+            
+            [foreground setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
+                                                [[CCDirector sharedDirector] winSize].height / 2)];
+            [background setZOrder:-30];
+            [clouds setZOrder:-20];
+            [foreground setZOrder:-10];
+            
             break;
             
         default:
             NSLog(@"Something is wrong in QQLevelChosser::setupLevelHelper!");
             break;
     }
-    [self addChild:background];
 
-    [background setPosition:CGPointMake([[CCDirector sharedDirector] winSize].width / 2,
-                                        [[CCDirector sharedDirector] winSize].height / 2)];
-    [background setZOrder:-1];
     
     [self initLocks];
 }
@@ -265,6 +363,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 -(void)touchBegan:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+        LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                         fromSheet:@"assets"
+                                            SHFile:@"objects"];
+        CGSize size = [[CCDirector sharedDirector] winSize];
+        [shade setPosition:ccp(size.width/2, size.height/2)];
+        [shade setOpacity:OPACITY_OF_SHADE];
+        [shade setScale:SCALE_OF_SHADE];
+        [self addChild:shade];
     
         switch ([[info.sprite uniqueName] intValue]) {
             case 1: {

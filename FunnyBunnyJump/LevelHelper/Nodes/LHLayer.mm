@@ -13,6 +13,7 @@
 #import "LHDictionaryExt.h"
 #import "LHSettings.h"
 #import "LevelHelperLoader.h"
+#import "lhConfig.h"
 static int untitledLayersCount = 0;
 
 
@@ -27,7 +28,7 @@ static int untitledLayersCount = 0;
 //------------------------------------------------------------------------------
 -(void)dealloc{
     
-   // CCLOG(@"LH Layer Dealloc %@", uniqueName);
+//    CCLOG(@"LH Layer Dealloc %@", uniqueName);
 
 #ifndef LH_ARC_ENABLED
     [uniqueName release];
@@ -36,9 +37,15 @@ static int untitledLayersCount = 0;
         [userCustomInfo release];
         userCustomInfo = nil;
     }
-
+#endif
+    uniqueName = nil;
+    parentLoader = nil;
+    userCustomInfo = nil;
+    
+#ifndef LH_ARC_ENABLED
 	[super dealloc];
 #endif
+
 }
 //------------------------------------------------------------------------------
 -(void) loadUserCustomInfoFromDictionary:(NSDictionary*)dictionary{
@@ -73,6 +80,15 @@ static int untitledLayersCount = 0;
         return NSStringFromClass([userCustomInfo class]);
     return @"No Class";
 }
+// used internally to alter the zOrder variable. DON'T call this method manually
+-(void) _setZOrder:(NSInteger) z
+{
+#if COCOS2D_VERSION > 0x00020100 || COCOS2D_VERSION == 0x00020000 || COCOS2D_VERSION == 0x00010100 || COCOS2D_VERSION == 0x00010001 || COCOS2D_VERSION == 0x00010000
+    zOrder_ = z;
+#else
+    zOrder_ = z;
+#endif
+}
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{
   
@@ -87,8 +103,12 @@ static int untitledLayersCount = 0;
             uniqueName = [[NSString alloc] initWithFormat:@"UntitledLayer_%d", untitledLayersCount];
             ++untitledLayersCount;
         }
-                
-        zOrder_ = [dictionary intForKey:@"ZOrder"];
+                        
+#if COCOS2D_VERSION >= 0x00020000
+        self.zOrder = [dictionary intForKey:@"ZOrder"];
+#else
+        [self _setZOrder:[dictionary intForKey:@"ZOrder"]];
+#endif
         
         [self setTag:[dictionary intForKey:@"Tag"]];
         
@@ -112,6 +132,7 @@ static int untitledLayersCount = 0;
 //------------------------------------------------------------------------------
 -(void) removeSelf{
     [self removeFromParentAndCleanup:YES];
+    parentLoader = nil;
 }
 
 -(LevelHelperLoader*)parentLoader{
@@ -125,7 +146,10 @@ static int untitledLayersCount = 0;
     
     if(isMainLayer)
     {
+        #ifdef LH_USE_BOX2D
         [[LHSettings sharedInstance] removeMarkedJoints];
+        #endif
+        
         [[LHSettings sharedInstance] removeMarkedSprites];
         [[LHSettings sharedInstance] removeMarkedBeziers];
     }
@@ -169,7 +193,7 @@ static int untitledLayersCount = 0;
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 -(LHLayer*)layerWithUniqueName:(NSString*)name{
-    for(id layer in children_){
+    for(id layer in self.children){
         if([layer isKindOfClass:[LHLayer class]]){
             if([[(LHLayer*)layer uniqueName] isEqualToString:name])
                 return layer;
@@ -180,7 +204,7 @@ static int untitledLayersCount = 0;
 }
 //------------------------------------------------------------------------------
 -(LHBatch*)batchWithUniqueName:(NSString*)name{
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBatch class]]){
             if([[(LHBatch*)node uniqueName] isEqualToString:name])
                 return node;
@@ -197,7 +221,7 @@ static int untitledLayersCount = 0;
 //------------------------------------------------------------------------------
 -(LHSprite*)spriteWithUniqueName:(NSString*)name{
 
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]])
         {
             if([[(LHSprite*)node uniqueName] isEqualToString:name])
@@ -219,7 +243,7 @@ static int untitledLayersCount = 0;
 }
 //------------------------------------------------------------------------------
 -(LHBezier*)bezierWithUniqueName:(NSString*)name{
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBezier class]]){
             if([[node uniqueName] isEqualToString:name])
                 return node;
@@ -239,7 +263,7 @@ static int untitledLayersCount = 0;
 -(NSArray*)allLayers{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id layer in children_){
+    for(id layer in self.children){
         if([layer isKindOfClass:[LHLayer class]]){
             [array addObject:layer];
         }
@@ -251,7 +275,7 @@ static int untitledLayersCount = 0;
     
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBatch class]]){
             [array addObject:node];
         }
@@ -267,7 +291,7 @@ static int untitledLayersCount = 0;
 
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]]){
             [array addObject:node];
         }
@@ -285,7 +309,7 @@ static int untitledLayersCount = 0;
 
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBezier class]]){
             [array addObject:node];
         }
@@ -302,7 +326,7 @@ static int untitledLayersCount = 0;
    
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id layer in children_){
+    for(id layer in self.children){
         if([layer isKindOfClass:[LHLayer class]]){
             if([(CCNode*)layer tag] == tag)
                 [array addObject:layer];
@@ -314,7 +338,7 @@ static int untitledLayersCount = 0;
 -(NSArray*)batchesWithTag:(int)tag{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBatch class]]){
             if([(CCNode*)node tag] == tag)
                 [array addObject:node];
@@ -329,7 +353,7 @@ static int untitledLayersCount = 0;
 -(NSArray*)spritesWithTag:(int)tag{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHSprite class]]){
             if([(CCNode*)node tag] == tag)
                 [array addObject:node];
@@ -346,7 +370,7 @@ static int untitledLayersCount = 0;
 -(NSArray*)beziersWithTag:(int)tag{
     NSMutableArray* array = [NSMutableArray array];
     
-    for(id node in children_){
+    for(id node in self.children){
         if([node isKindOfClass:[LHBezier class]]){
             if([(CCNode*)node tag] == tag)
                 [array addObject:node];

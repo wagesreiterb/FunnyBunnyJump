@@ -16,10 +16,16 @@
 #define COUNTDOWN 120
 
 #define LIFES 3
+#define EFFECT_SPRING "spring"
 #define EFFECT_SUN "sun"
 #define EFFECT_SNOW "snow"
 #define EFFECT_RAIN "rain"
 #define EFFECT_LEAVES "leaves"
+#define EFFECT_FIREBAR "fireBar"
+
+//shade for transitions between levels
+#define SCALE_OF_SHADE 20
+#define OPACITY_OF_SHADE 191
 
 NSInteger const LAST_LEVEL = 2012026;
 float const volumeBackgroundMusic = 0.2f;

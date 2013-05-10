@@ -8,8 +8,12 @@
 @implementation QQBalloonClass
 
 
-@synthesize score;
+@synthesize blinkInterval;
+@synthesize blinkDelay;
+@synthesize explodingEffect;
+@synthesize blinkModulo;
 @synthesize movingStartDelay;
+@synthesize scoreMultiplier;
 
 
 -(void) dealloc{
@@ -37,11 +41,23 @@ return NSStringFromClass([self class]);
 -(void) setPropertiesFromDictionary:(NSDictionary*)dictionary
 {
 
-	if([dictionary objectForKey:@"score"])
-		[self setScore:[[dictionary objectForKey:@"score"] floatValue]];
+	if([dictionary objectForKey:@"blinkInterval"])
+		[self setBlinkInterval:[[dictionary objectForKey:@"blinkInterval"] floatValue]];
+
+	if([dictionary objectForKey:@"blinkDelay"])
+		[self setBlinkDelay:[[dictionary objectForKey:@"blinkDelay"] floatValue]];
+
+	if([dictionary objectForKey:@"explodingEffect"])
+		[self setExplodingEffect:[[dictionary objectForKey:@"explodingEffect"] floatValue]];
+
+	if([dictionary objectForKey:@"blinkModulo"])
+		[self setBlinkModulo:[[dictionary objectForKey:@"blinkModulo"] floatValue]];
 
 	if([dictionary objectForKey:@"movingStartDelay"])
 		[self setMovingStartDelay:[[dictionary objectForKey:@"movingStartDelay"] floatValue]];
+
+	if([dictionary objectForKey:@"scoreMultiplier"])
+		[self setScoreMultiplier:[[dictionary objectForKey:@"scoreMultiplier"] floatValue]];
 
 }
 

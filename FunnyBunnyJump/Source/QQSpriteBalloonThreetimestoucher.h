@@ -21,5 +21,6 @@
 @property BOOL _balloonCompletelyInflated;
 
 -(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer;
+-(NSInteger)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer withScore:(NSInteger)score_ withCountdown:(float)countdown_;
 
 @end

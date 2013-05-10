@@ -19,13 +19,14 @@
     int fixtureID;
 }
 @property (readonly) NSString* fixtureName;
-@property (readonly) int fixtureID;
+@property (readwrite) int fixtureID;
 
 +(id)fixtureWithDictionary:(NSDictionary*)dictionary 
                       body:(b2Body*)body 
                     sprite:(LHSprite*)sprite;
 
 +(bool) isLHFixture:(id)object;//in order to test if the user data from a b2Fixture object is really a LHFixture;
++(LHFixture*) fixtureForb2Fixture:(b2Fixture*)fix;
 
 //this class is added as userData to b2Fixture object - it is removed when the body is removed from the sprite (on sprite dealloc or or specific body destroy)
 //it should not be removed in any other way

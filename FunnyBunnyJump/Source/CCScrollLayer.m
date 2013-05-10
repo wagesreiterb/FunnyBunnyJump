@@ -182,7 +182,7 @@ enum
 		
 		// Set GL Values
 #if COCOS2D_VERSION >= 0x00020000
-        ccGLEnable(CC_GL_BLEND);
+//        ccGLEnable(CC_GL_BLEND);  //Querika
         ccPointSize( 6.0 * CC_CONTENT_SCALE_FACTOR() );
 #define DRAW_4B_FUNC ccDrawColor4B
         

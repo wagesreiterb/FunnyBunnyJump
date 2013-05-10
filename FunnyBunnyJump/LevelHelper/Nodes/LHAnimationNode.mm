@@ -82,23 +82,19 @@
         delayPerUnit = [dictionary floatForKey:@"delayPerUnit"];
         offset = [dictionary pointForKey:@"offset"];
         
+        offset.x *= CC_CONTENT_SCALE_FACTOR();
+        offset.y *= CC_CONTENT_SCALE_FACTOR();
+        
         notifications= [[NSDictionary alloc] initWithDictionary:[dictionary objectForKey:@"notifications"]];
         
         spriteframeName= [[NSString alloc] initWithString:[dictionary objectForKey:@"spriteframe"]];
 
-//        NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-//        NSLog(@"SPRITE FRAME NAME %@", spriteframeName);
-//
-//        
         rect = [dictionary rectForKey:@"Frame"];
         rect = CC_RECT_POINTS_TO_PIXELS(rect);
-        
-//        NSLog(@"IMAGE FILE %@", [sprite imageFile]);
         
         rect = [[LHSettings sharedInstance] transformedTextureRect:rect
                                                           forImage:[sprite imageFile]];
         
-//        NSLog(@"RECT %f %f %f %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
         spriteFrameOffset = [dictionary pointForKey:@"TextureOffset"];
 
         spriteFrameOffset.x *= CC_CONTENT_SCALE_FACTOR();
@@ -109,18 +105,11 @@
             spriteFrameOffset.y *= 2.0f;
         }
 
-//        spriteFrameOffset = [[LHSettings sharedInstance] transformedPoint:spriteFrameOffset
-//                                                                 forImage:[sprite imageFile]];
-        
         CGPoint tempOffset = spriteFrameOffset;
         
         tempOffset.x += offset.x;
         tempOffset.y -= offset.y;
 
-//        if(![[LHSettings sharedInstance] isHDImage:[sprite imageFile]]){
-//            tempOffset.x /= 2.0f;
-//            tempOffset.y /= 2.0f;
-//        }
         offset = tempOffset;
         
         
@@ -169,6 +158,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 -(void) dealloc{
 	
+    endedNotif = false;
+    endedRep = false;
     frameChanged = false;
     paused = true;
 //    NSLog(@"LH Animation Dealloc %@ %p", uniqueName, self);
@@ -180,8 +171,18 @@
     [frames release];
     [oldSpriteFrame release];
     sprite = nil;
+#endif
+
+    shSceneName = nil;
+    uniqueName = nil;
+    sheetName = nil;
+    sheetImage = nil;
+    frames = nil;
+    oldSpriteFrame = nil;
+#ifndef LH_ARC_ENABLED
 	[super dealloc];
 #endif
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(id) initWithDictionary:(NSDictionary*)dictionary
@@ -279,12 +280,10 @@
     if(paused || [[LHSettings sharedInstance] levelPaused])
         return;
     
-//    NSLog(@"FRAME %d - %@", currentFrame, uniqueName);
-        
     elapsedFrameTime += dt;
     
-    bool endedNotif = false;
-    bool endedRep = false;
+    endedNotif = false;
+    endedRep = false;
     frameChanged = false;
     
     if([activeFrame delayPerUnit]*delayPerUnit <= elapsedFrameTime){
@@ -462,6 +461,10 @@
         return;
     }
     
+    [self forceRestoreFrame];
+}
+-(void)forceRestoreFrame
+{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     //we do this so that we dont lose touches

@@ -116,7 +116,7 @@
 
 -(void) dealloc{	
 
-    NSLog(@"LHParallaxNode DEALLOC %p", self);
+//    NSLog(@"LHParallaxNode DEALLOC %p", self);
     lhLoader = nil;
     
     for(LHParallaxPointObject* pt in sprites){
@@ -139,8 +139,15 @@
 #ifndef LH_ARC_ENABLED
     [uniqueName release];
 	[sprites release];
+#endif
+
+    uniqueName = nil;
+    sprites = nil;
+    
+#ifndef LH_ARC_ENABLED
 	[super dealloc];
 #endif
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 -(id) initWithDictionary:(NSDictionary*)parallaxDict loader:(LevelHelperLoader*)loader;

@@ -75,7 +75,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void) setupLevelHelper {
-    //[LevelHelperLoader dontStretchArt];
+    [LevelHelperLoader dontStretchArt];
     
     //[LevelHelperLoader useHDonIpad:YES];
     self.isTouchEnabled = YES;
@@ -127,6 +127,27 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
     [self setupMusic];
     [self setupSound];
+    
+    //geht
+    //TODO: stürzt am Emulator ab
+//    Facebook *facebook = [[Facebook alloc] init];
+//    CCSprite *fbSprite = [facebook showFBPicture];
+//    ccBlendFunc bf={GL_ONE,GL_ZERO};
+//    [fbSprite setBlendFunc:bf];
+//    [self addChild:fbSprite];
+//    [fbSprite setPosition:CGPointMake(150, 150)];
+    //---geht
+    
+    
+//    CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:path];
+//    CCSpriteFrame *temp = [CCSpriteFrame frameWithTexture:texture rect:CGRectMake(0, 0, 100, 100)];
+//    CCFBProfilePicture *pic = [CCFBProfilePicture profilePictureWithId:@"bernhard.wagesreiter"
+//                                                           accessToken:@"476517252421701"
+//                                                           contentSize:CGSizeMake(100, 100)
+//                                                                cached:YES
+//                                                           placeholder:temp];
+//    [self addChild:pic];
+    
 }
 
 -(void)setupGameCenter {
@@ -144,8 +165,20 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //open Facebook Page
     NSLog(@"touchEndedHelpButton");
     if(info.sprite) {
+        [self showShadeForTransition];
         [[GameManager sharedGameManager] runSceneWithID:kHelpScreen];
     }
+}
+
+-(void)showShadeForTransition {
+    LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                     fromSheet:@"assets"
+                                        SHFile:@"objects"];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [shade setPosition:ccp(size.width/2, size.height/2)];
+    [shade setOpacity:OPACITY_OF_SHADE];
+    [shade setScale:SCALE_OF_SHADE];
+    [self addChild:shade];
 }
 
 -(void)touchBeganCreditsButton:(LHTouchInfo*)info{
@@ -156,6 +189,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //open Facebook Page
     NSLog(@"touchEndedCreditskButton");
     if(info.sprite) {
+        [self showShadeForTransition];
         [[GameManager sharedGameManager] runSceneWithID:kCreditsScreen];
     }
 }
@@ -337,26 +371,29 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 -(void)touchBeganShowLeaderBoardButton:(LHTouchInfo*)info {
     // Leaderboard Menu Item using blocks
-    GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-    leaderboardViewController.leaderboardDelegate = self;
-		
-    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-    [[app navController] presentModalViewController:leaderboardViewController animated:YES];
-    [leaderboardViewController release];
+
+        GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
+        leaderboardViewController.leaderboardDelegate = self;
+            
+        AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+            
+        [[app navController] presentModalViewController:leaderboardViewController animated:YES];
+        [leaderboardViewController release];
+
 
 }
 
 -(void)touchBeganShowAchievementsButton:(LHTouchInfo*)info {
 	// Achievement Menu Item using blocks
+
+        GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
+        achivementViewController.achievementDelegate = self;
 		
-    GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-	achivementViewController.achievementDelegate = self;
+        AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 		
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-	[[app navController] presentModalViewController:achivementViewController animated:YES];
-	[achivementViewController release];
+        [[app navController] presentModalViewController:achivementViewController animated:YES];
+        [achivementViewController release];
+
 }
 
 -(void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
@@ -381,15 +418,13 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 -(void)touchBeganPlayButton:(LHTouchInfo*)info{
     if(info.sprite) {
+        [self showShadeForTransition];
         [[GameManager sharedGameManager] runSceneWithID:kSeasonsScreen];
-        //[_spritePlay setScale:1.33f];
     }
 }
 
 -(void)touchEndedPlayButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        //[_spritePlay setScale:1.00f];
-        //[[GameManager sharedGameManager] runSceneWithID:kSeasonsScreen];
     }
 }
 

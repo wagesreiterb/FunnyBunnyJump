@@ -41,7 +41,7 @@
 #import "LHDictionaryExt.h"
 
 #import "LHCustomClasses.h"
-
+#import "UIImage+LHAES256.h"
 
 static int untitledSpritesCount = 0;
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@ static int untitledSpritesCount = 0;
 
 -(void) dealloc{
 
-    //    NSLog(@"LH Sprite Dealloc %@ - %p", uniqueName, self);
+   // NSLog(@"LH Sprite Dealloc %@ - %p", uniqueName, self);
     
 #ifndef LH_ARC_ENABLED
     [animation release];
@@ -253,12 +253,10 @@ static int untitledSpritesCount = 0;
     bodyDef.userData = (__bridge void*)self;
 #endif
     
-    b2World* world = [[LHSettings sharedInstance] activeBox2dWorld];
-    
-    if(world == NULL)
+    if(box2dWorld == NULL)
         return;
     
-    body = world->CreateBody(&bodyDef);
+    body = box2dWorld->CreateBody(&bodyDef);
 	body->SetFixedRotation(bDefaultFixRotation);
     
     //we use this define to figure out which version of Box2d the user has
@@ -283,11 +281,8 @@ static int untitledSpritesCount = 0;
     if(nil == dictionary)
         return;
     
-    b2World* world = [[LHSettings sharedInstance] activeBox2dWorld];
-
-    if(world == NULL)
+    if(box2dWorld == NULL)
         return;
-//    NSAssert(world!=nil, @"Box2d World must not be nil");
     
     bDefaultFixRotation =[dictionary boolForKey:@"FixedRot"];
     bDefaultGravityScale = [dictionary floatForKey:@"GravityScale"];
@@ -386,6 +381,16 @@ static int untitledSpritesCount = 0;
     pathDefaultSpeed = [dictionary floatForKey:@"PathSpeed"];
     pathStartAtLaunch= [dictionary boolForKey:@"PathStartAtLaunch"];
     pathDefaultStartPoint = [dictionary intForKey:@"PathStartPoint"];
+}
+
+// used internally to alter the zOrder variable. DON'T call this method manually
+-(void) _setZOrder:(NSInteger) z
+{
+#if COCOS2D_VERSION > 0x00020100 || COCOS2D_VERSION == 0x00020000 || COCOS2D_VERSION == 0x00010100 || COCOS2D_VERSION == 0x00010001 || COCOS2D_VERSION == 0x00010000
+    zOrder_ = z;
+#else
+    zOrder_ = z;
+#endif
 }
 
 -(void) loadInformationFromDictionary:(NSDictionary*)dictionary{
@@ -506,7 +511,12 @@ static int untitledSpritesCount = 0;
     [self setVisible:[texDict boolForKey:@"IsDrawable"]];
     [self setOpacity:(GLubyte)([texDict floatForKey:@"Opacity"]*255.0f)];
     [self setTag:[texDict intForKey:@"Tag"]];
-    zOrder_ = [texDict intForKey:@"ZOrder"];
+    
+#if COCOS2D_VERSION >= 0x00020000
+    self.zOrder = [texDict intForKey:@"ZOrder"];
+#else
+    [self _setZOrder:[texDict intForKey:@"ZOrder"]];
+#endif
     
     NSDictionary* phyDict = [dictionary objectForKey:@"PhysicProperties"];
     if([phyDict boolForKey:@"HandledBySH"] && ![dictionary objectForKey:@"IsSHSprite"])
@@ -519,12 +529,13 @@ static int untitledSpritesCount = 0;
     
      //we do this because we need the batch to contain the sprite before loading any animation
     if([self batchNode]){
-        [[self batchNode] addChild:self z:zOrder_];
+        [[self batchNode] addChild:self z:self.zOrder];
     }
 
     originalRect = self.textureRect;
 
 #ifdef LH_USE_BOX2D
+    box2dWorld = [[LHSettings sharedInstance] activeBox2dWorld];
     [self loadPhysicalInformationFromDictionary:phyDict];
 #endif
     [self loadAnimationsInformationFromDictionary:[dictionary objectForKey:@"AnimationsProperties"]];
@@ -622,7 +633,39 @@ static int untitledSpritesCount = 0;
     if(![sheetImg isEqualToString:sheetImgHD])
         rect = [[LHSettings sharedInstance] transformedTextureRect:rect forImage:imgPath];
     
-    self = [super initWithFile:imgPath rect:rect];    
+    
+    NSData* decryptKey = [[LHSettings sharedInstance] decryptionKey];
+    
+    CCTexture2D* texture = nil;
+    if(decryptKey){
+        
+#if COCOS2D_VERSION >= 0x00020000
+        ccResolutionType resolution;
+        NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:imgPath resolutionType:&resolution];
+#else
+        NSString *fullpath = [CCFileUtils fullPathFromRelativePath:imgPath];
+#endif
+        
+        UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
+                                                           withKey:decryptKey];
+        
+        if(image){
+            NSString* path = [fullpath stringByStandardizingPath];
+            CGImageRef ref = image.CGImage;
+            if(ref){
+                texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+            }
+        }
+    }
+    NSAssert(imgPath!=nil, @"Image path must not be nil");
+    
+    if(texture == nil){
+        self = [super initWithFile:[imgPath lastPathComponent] rect:rect];
+    }
+    else{
+        self = [super initWithTexture:texture rect:rect];
+    }
+    
     if (self != nil){
         [self setImageFile:imgPath];
         [self loadInformationFromDictionary:dictionary];
@@ -735,10 +778,11 @@ static int untitledSpritesCount = 0;
 -(void)setImageFile:(NSString*)img{
     
 #ifndef LH_ARC_ENABLED
-    if(imageFile)
+    if(imageFile){
         [imageFile release];
+        imageFile = nil;
+    }
 #endif
-    
     imageFile = [[NSString alloc] initWithString:img];
 }
 //------------------------------------------------------------------------------
@@ -919,7 +963,42 @@ static int untitledSpritesCount = 0;
         
         NSString* filePath = [[LHSettings sharedInstance] imagePath:textureFile];
         if(filePath){
-            CCTexture2D* newTexture = [[CCTextureCache sharedTextureCache] addImage:filePath];
+            
+            
+            NSData* decryptKey = [[LHSettings sharedInstance] decryptionKey];
+            
+            CCTexture2D* texture = nil;
+            if(decryptKey){
+#if COCOS2D_VERSION >= 0x00020000
+                ccResolutionType resolution;
+                NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:filePath
+                                                                              resolutionType:&resolution];
+#else
+                NSString *fullpath = [CCFileUtils fullPathFromRelativePath:filePath];
+#endif
+                
+                UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
+                                                                   withKey:decryptKey];
+                
+                if(image){
+                    NSString* path = [fullpath stringByStandardizingPath];
+                    CGImageRef ref = image.CGImage;
+                    if(ref){
+                        texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+                    }
+                }
+            }
+            
+            CCTexture2D* newTexture = nil;
+            if(texture == nil){
+                newTexture = [[CCTextureCache sharedTextureCache] addImage:[filePath lastPathComponent]];
+            }
+            else{
+                newTexture = texture;
+            }
+
+            
+//            CCTexture2D* newTexture = [[CCTextureCache sharedTextureCache] addImage:filePath];
             
             if(newTexture && newTexture.name != self.texture.name){
                 //if sprite is render by a batch node we need to remove if from the batch and 
@@ -1068,18 +1147,24 @@ static int untitledSpritesCount = 0;
 }
 //------------------------------------------------------------------------------
 -(void) stopAnimation{
+    [self stopAnimationAndRestoreOriginalFrame:NO];
+}
+-(void)stopAnimationAndRestoreOriginalFrame:(BOOL)restore
+{
     if(!animation)return;
-
+    
     [animation setPaused:YES];
-    [animation restoreFrame];
-
+    if(restore)
+        [animation forceRestoreFrame];
+    
     [self removeAnimationHasChangedFrameObserver];
     [self removeAnimationHasEndedAllRepetitionsObserver];
     [self removeAnimationHasEndedObserver];
-    #ifndef LH_ARC_ENABLED
+#ifndef LH_ARC_ENABLED
     [animation release];
-    #endif
+#endif
     animation = nil;
+
 }
 //------------------------------------------------------------------------------
 -(NSString*) animationName{ if(animation) return [animation uniqueName];
@@ -2067,6 +2152,81 @@ static int untitledSpritesCount = 0;
     }
 }
 
+-(LHFixture*)fixtureWithName:(NSString*)name{
+
+    if(body == nil)return nil;
+    
+    b2Fixture* fix = body->GetFixtureList();
+    
+    while (fix) {
+        
+#ifndef LH_ARC_ENABLED
+        LHFixture* lhFix = (LHFixture*)(fix->GetUserData());
+#else
+        LHFixture* lhFix = (__bridge LHFixture*)(fix->GetUserData());
+#endif
+        
+        if([LHFixture isLHFixture:lhFix])
+        {
+            if([[lhFix fixtureName] isEqualToString:name]){
+                return lhFix;
+            }
+        }
+        fix = fix->GetNext();
+    }
+    return nil;
+}
+-(LHFixture*)fixtureWithID:(int)fixId{
+    if(body == nil)return nil;
+    
+    b2Fixture* fix = body->GetFixtureList();
+    
+    while (fix) {
+        
+#ifndef LH_ARC_ENABLED
+        LHFixture* lhFix = (LHFixture*)(fix->GetUserData());
+#else
+        LHFixture* lhFix = (__bridge LHFixture*)(fix->GetUserData());
+#endif
+        
+        if([LHFixture isLHFixture:lhFix])
+        {
+            if([lhFix fixtureID] == fixId){
+                return lhFix;
+            }
+        }
+        fix = fix->GetNext();
+    }
+    return nil;
+}
+-(NSArray*)fixturesWithID:(int)fixId{
+
+    if(body == nil)return nil;
+
+    NSMutableArray* array = [NSMutableArray array];
+    b2Fixture* fix = body->GetFixtureList();
+    
+    while (fix) {
+        
+#ifndef LH_ARC_ENABLED
+        LHFixture* lhFix = (LHFixture*)(fix->GetUserData());
+#else
+        LHFixture* lhFix = (__bridge LHFixture*)(fix->GetUserData());
+#endif
+        
+        if([LHFixture isLHFixture:lhFix])
+        {
+            if([lhFix fixtureID] == fixId){
+                [array addObject:lhFix];
+            }
+        }
+        fix = fix->GetNext();
+    }
+    
+    return array;
+}
+
+
 -(bool)hasContacts{
     if(body == nil)
         return false;
@@ -2134,6 +2294,507 @@ static int untitledSpritesCount = 0;
     }
     
     return array;
+}
+
+-(LHFixture*)lhFixtureOfContactingSpriteWithTag:(int)otherTag{
+    
+    if(body == NULL)
+        return NULL;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return nil;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixA];
+                    return lhFix;
+                    
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixB];
+                    return lhFix;
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return nil;
+}
+-(LHFixture*)lhFixtureOfContactingSpriteWithName:(NSString*)name{
+
+    if(name == nil)
+        return nil;
+    
+    if(body == NULL)
+        return NULL;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return nil;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [[spr uniqueName] isEqualToString:name])
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixA];
+                    return lhFix;
+                    
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixB];
+                    return lhFix;
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return nil;
+}
+
+
+-(bool) isInContactWithOtherSpriteOfTag:(int)otherTag atFixtureWithID:(int)otherFixtureID
+{
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixA];
+                    if(lhFix && [lhFix fixtureID] == otherFixtureID){
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixB];
+                    if(lhFix && [lhFix fixtureID] == otherFixtureID){
+                        return true;
+                    }
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
+}
+
+-(bool) isInContactWithOtherSpriteOfTag:(int)otherTag
+                      atFixtureWithName:(NSString*)otherFixtureName{
+    
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixA];
+                    if(lhFix && [[lhFix fixtureName] isEqualToString:otherFixtureName]){
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFix = [LHFixture fixtureForb2Fixture:fixB];
+                    if(lhFix && [[lhFix fixtureName] isEqualToString:otherFixtureName]){
+                        return true;
+                    }
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
+}
+
+-(bool) fixtureWithID:(int)thisFixId isInContactWithOtherSpriteOfTag:(int)otherTag
+      atFixtureWithID:(int)otherFixtureID{
+    
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    
+                    if(lhFixA && lhFixB &&
+                       [lhFixA fixtureID] == otherFixtureID &&
+                       [lhFixB fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    
+                    if(lhFixB && lhFixA &&
+                       [lhFixB fixtureID] == otherFixtureID &&
+                       [lhFixA fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }                    
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
+
+}
+
+-(bool) fixtureWithName:(NSString*)thisFixName isInContactWithOtherSpriteOfTag:(int)otherTag
+      atFixtureWithName:(NSString*)otherFixtureName{
+    
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    
+                    if(lhFixA && lhFixB &&
+                       [[lhFixA fixtureName] isEqualToString:otherFixtureName] &&
+                       [[lhFixB fixtureName] isEqualToString:thisFixName])
+                    {
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    
+                    if(lhFixB && lhFixA &&
+                       [[lhFixB fixtureName] isEqualToString:otherFixtureName] &&
+                       [[lhFixA fixtureName] isEqualToString:thisFixName])
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
+
+}
+
+-(bool)fixtureWithID:(int)thisFixId isInContactWithOtherSpriteOfTag:(int)otherSpriteTag{
+    
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherSpriteTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                if(fixA->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    
+                    if(lhFixA && lhFixB &&
+                       [lhFixB fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    
+                    if(lhFixB && lhFixA &&
+                       [lhFixA fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
+}
+
+-(LHFixture*)lhFixtureInContactWithBezierOfTag:(int)bezierTag{
+    
+    if(body == nil)
+        return NULL;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return NULL;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHBezier* bez = [LHBezier bezierForBody:contact_body];
+            if(bez && [bez tag] == bezierTag)
+            {
+                b2Contact* contact = edge->contact;        
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+
+                
+                //find other body
+                if(fixA->GetBody() == contact_body)
+                {
+                    return [LHFixture fixtureForb2Fixture:fixB];
+                }
+                else if(fixB->GetBody() == contact_body){
+                    return [LHFixture fixtureForb2Fixture:fixA];
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return nil;
+}
+
+-(LHFixture*)lhFixtureInContactWithSpriteOfTag:(int)otherSpriteTag{
+    
+    if(body == nil)
+        return NULL;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return NULL;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHSprite* spr = [LHSprite spriteForBody:contact_body];
+            if(spr && [spr tag] == otherSpriteTag)
+            {
+                b2Contact* contact = edge->contact;
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                if(fixA->GetBody() == contact_body)
+                {
+                    return [LHFixture fixtureForb2Fixture:fixB];
+                }
+                else if(fixB->GetBody() == contact_body){
+                    return [LHFixture fixtureForb2Fixture:fixA];
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return nil;
+}
+
+-(bool)isInContactWithOtherBezierOfTag:(int)bezierTag{
+    
+    if(body == NULL)
+        return false;
+    
+    b2ContactEdge* edge = body->GetContactList();
+    if(NULL == edge){
+        return false;
+    }
+    
+    while (edge != NULL) {
+        
+        b2Body* contact_body = edge->other;
+        
+        if(contact_body){
+            
+            LHBezier* bez = [LHBezier bezierForBody:contact_body];
+            if(bez && [bez tag] == bezierTag)
+            {
+                b2Contact* contact = edge->contact;
+                
+                b2Fixture* fixA = contact->GetFixtureA();
+                b2Fixture* fixB = contact->GetFixtureB();
+                
+                //find other body
+                if(fixA->GetBody() == contact_body){
+                
+                    //LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    
+                    //beziers dont have LHFixture objects
+                    if(lhFixB && fixB->GetBody() == body)
+//                       [lhFixB fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }
+                }
+                else if(fixB->GetBody() == contact_body){
+                    
+                    //beziers dont have LHFixture objects
+                    //LHFixture* lhFixB = [LHFixture fixtureForb2Fixture:fixB];
+                    LHFixture* lhFixA = [LHFixture fixtureForb2Fixture:fixA];
+                    
+                    if(lhFixA)
+//                       [lhFixA fixtureID] == thisFixId)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        edge = edge->next;
+    }
+    
+    return false;
 }
 //------------------------------------------------------------------------------
 #endif

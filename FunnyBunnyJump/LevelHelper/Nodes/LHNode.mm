@@ -126,4 +126,13 @@ static int untitledNodesCount = 0;
 #endif
     return false;
 }
+
+- (ccColor3B) color
+{
+	return ccWHITE;
+}
+
+-(void) setColor:(ccColor3B)color3
+{
+}
 @end

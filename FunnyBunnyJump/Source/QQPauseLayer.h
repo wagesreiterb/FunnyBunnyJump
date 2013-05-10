@@ -8,6 +8,7 @@
 
 #import "CCLayer.h"
 #import "LevelHelperLoader.h"
+#import "NSNotificationCenter+Utils.h"
 
 @interface QQPauseLayer : LHLayer {
     LevelHelperLoader *_loaderPause;

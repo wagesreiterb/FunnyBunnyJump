@@ -69,5 +69,6 @@
 -(void)setLevelPassedWithNoLivesLost;
 -(BOOL)isNextLevelUnlocked;
 -(int)countDown;
+-(BOOL)isPayingUser;
 
 @end

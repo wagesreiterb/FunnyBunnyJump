@@ -47,6 +47,8 @@
 
 +(SHDocumentLoader*) sharedInstance;
 
+-(void)purgeInfo;//removes all saved informations from memory
+
 //this method will also create the appropriate info if the info is not already loaded
 -(NSDictionary*)dictionaryForSpriteNamed:(NSString*)spriteName 
                             inSheetNamed:(NSString*)sheetName

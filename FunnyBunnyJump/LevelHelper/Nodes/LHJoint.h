@@ -57,7 +57,7 @@ enum LH_JOINT_TYPE
     int tag;
     LH_JOINT_TYPE type;
     
-    __unsafe_unretained LevelHelperLoader* parentLoader;
+    __unsafe_unretained NSObject* parentLoader;
     
     bool shouldDestroyJointOnDealloc;
     
@@ -80,12 +80,12 @@ enum LH_JOINT_TYPE
 ////////////////////////////////////////////////////////////////////////////////
 +(id) jointWithDictionary:(NSDictionary*)dictionary 
                     world:(b2World*)box2d 
-                   loader:(LevelHelperLoader*)pLoader;
+                   loader:(NSObject*)pLoader;
 
 #ifdef B2_ROPE_JOINT_H
 +(id) ropeJointWithDictionary:(NSDictionary*)dictionary
                         joint:(b2RopeJoint*)ropeJt
-                  loader:(LevelHelperLoader*)pLoader;
+                       loader:(NSObject*)pLoader;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

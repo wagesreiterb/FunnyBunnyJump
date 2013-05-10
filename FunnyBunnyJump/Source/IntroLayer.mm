@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "IntroLayer.h"
+#import "LHSettings.h"
 
 
 #pragma mark - IntroLayer
@@ -61,7 +62,7 @@
 //        background = [CCSprite spriteWithFile:@"splashScreen-ipad.png"];
 //	}
  
-    
+
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
@@ -78,12 +79,17 @@
         {
             //iPad screen
             background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
-            NSLog(@"iPad normal screen");
+            NSLog(@"Que: IntroLayer: iPad normal screen");
         }
     }
     else
     {
-        if ([UIScreen instancesRespondToSelector:@selector(scale)])
+        if([[LHSettings sharedInstance] isIphone5]) {
+            NSLog(@"Que: IntroLayer: iPhone 5");
+            background = [CCSprite spriteWithFile:@"Default-568h@2x.png"];
+            [background setRotation:90];
+        }
+        else if ([UIScreen instancesRespondToSelector:@selector(scale)])
         {
             CGFloat scale = [[UIScreen mainScreen] scale];
             
@@ -131,7 +137,11 @@
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"ouch_que.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"hui_que.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"yippy_que.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"twinkle.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"fireball.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"balloon.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"balloon_big.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"balloon_inflate.wav"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"boink.wav"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"jubilant-fanfare-3.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"explosive-orchestra.mp3"];

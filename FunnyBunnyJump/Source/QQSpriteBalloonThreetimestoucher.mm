@@ -20,6 +20,7 @@
     _scaleFactor = 90;
     _repeat = 20;
     _balloonCompletelyInflated = YES;
+    reactToCollision = YES;
 }
 //------------------------------------------------------------------------------
 -(id) init{
@@ -64,7 +65,10 @@
     return [object isKindOfClass:[QQSpriteBalloon class]];
 }
 
--(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer {
+-(NSInteger)reactToTouch:(b2World*)world
+               withLayer:(CCLayer*)layer
+               withScore:(NSInteger)score_
+           withCountdown:(float)countdown_{
     
     if(reactToCollision == NO) {
         [self body]->SetActive(false);
@@ -81,6 +85,13 @@
             [self body]->SetActive(false);
             [self removeSelf];
             [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            
+            int scoreMultiplier = 1;
+            QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
+            if(myScoreInfo != nil){
+                scoreMultiplier = [myScoreInfo scoreMultiplier];
+            }
+            score_ += countdown_ * scoreMultiplier;
         } else if (wasTouched) {
             [self setReactToCollision:NO];
             wasTouched = FALSE;
@@ -95,13 +106,58 @@
             [layer addChild:_particle];
             [_particle release];
             [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            
+            int scoreMultiplier = 1;
+            QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
+            if(myScoreInfo != nil){
+                scoreMultiplier = [myScoreInfo scoreMultiplier];
+            }
+            score_ += countdown_ * scoreMultiplier;
         }
     }
+    
+    return score_;
 }
+
+//-(void)reactToTouchWithWorld:(b2World*)world withLayer:(CCLayer*)layer {
+//    
+//    if(reactToCollision == NO) {
+//        [self body]->SetActive(false);
+//    } else if(_balloonCompletelyInflated == YES && reactToCollision == YES) {
+//        [self body]->SetActive(true);
+//        if(wasTouched && _touchCount == 0) {
+//            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+//            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+//            [layer addChild:_particle];
+//            [_particle release];
+//            
+//            wasTouched = FALSE;
+//            
+//            [self body]->SetActive(false);
+//            [self removeSelf];
+//            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+//        } else if (wasTouched) {
+//            [self setReactToCollision:NO];
+//            wasTouched = FALSE;
+//            _touchCount--;
+//            for(int i = 0; i <= _repeat; i++) {
+//                [self transformScale:[self scale] * _scaleFactor / 100];
+//            }
+//            [self startInflateBalloon];
+//            
+//            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+//            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
+//            [layer addChild:_particle];
+//            [_particle release];
+//            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+//        }
+//    }
+//}
 
 -(void)startInflateBalloon {
     //[self schedule: @selector(tick:) interval:0.05 repeat:20];
     _balloonCompletelyInflated = NO;
+    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon_inflate.wav"];
     [self schedule:@selector(tick:) interval:0.05f repeat:_repeat delay:0];
 }
 

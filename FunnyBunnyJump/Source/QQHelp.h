@@ -35,20 +35,27 @@
 #import "QQGameOver.h"
 
 
+typedef enum {
+    kActionLeftJump = 0,
+    kActionRightJump = kActionLeftJump + 1,
+    kActionMoveLeft = kActionRightJump + 1
+} Actions;
 
 
 // HelloWorld Layer
 @interface QQHelp : LHLayer
 {
+    Actions action;
+    BOOL _removeAllDots;
+    
 	b2World* _world;
 	GLESDebugDraw *m_debugDraw;
     
+    ccTime counter;
+    BOOL _drawDots;
+    BOOL _actionCompleted;
     
     BOOL _explodeIt;
-    NSInteger _starsCollected;
-    NSInteger _score;
-
-    float _countDown;
     
     BOOL _gameOverLevelPassed;
     
@@ -81,6 +88,7 @@
     LHSprite *_handLeft, *_handRight;
     
     LHSprite *_spriteWatch;
+    LHSprite *_tapScreenButton;
     
     //NSArray *_balloons;
     //NSArray *_stars;
@@ -98,10 +106,8 @@
     
     
     QQLabelTimer* _labelTimer;
-    CCLabelTTF* _labelCountdown;
-    CCLabelTTF* _labelScore;
-    int _highScore;
-    CCLabelTTF* _labelHighScore;
+    CCLabelTTF* _labelHelpText;
+
     NSMutableDictionary* _dictionaryHighScore;
     
     LHSprite *_spritePauseButton;

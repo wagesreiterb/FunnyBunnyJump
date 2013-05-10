@@ -27,6 +27,7 @@
 #import "SHDocumentLoader.h"
 #import "LevelHelperLoader.h"
 #import "LHSettings.h"
+#import "NSDictionary+LHAES256.h"
 //------------------------------------------------------------------------------
 @interface SHSceneNode : NSObject {
     NSMutableDictionary* sheets; //key sheetName - object NSDictionary
@@ -50,14 +51,15 @@
 //------------------------------------------------------------------------------
 -(id)initWithContentOfFile:(NSString*)sceneFile{// sheetName:(NSString*)sheetName{
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:[sceneFile stringByDeletingPathExtension] ofType:@"pshs" inDirectory:[[LHSettings sharedInstance] activeFolder]]; 
-	    
+    NSString* path = [[LHSettings sharedInstance] pathForSpriteHelperDocument:sceneFile];
+       
     if(nil == path)
     {
-        NSString* errorMessage = [NSString stringWithFormat:@"SpriteHelper document \"%@\" could not be found. Please add it to the resource folder.", sceneFile];
-        NSLog(@"%@",errorMessage);
-        NSAssert(nil!=path, errorMessage);
+            NSString* errorMessage = [NSString stringWithFormat:@"SpriteHelper document \"%@\" could not be found. Please add it to the resource folder.", sceneFile];
+            NSLog(@"%@",errorMessage);
+            NSAssert(nil!=path, errorMessage);
     }
+    
     
     self = [super init];
 	if (self != nil) {
@@ -66,6 +68,14 @@
         
         NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
 
+        if(dictionary == nil){
+            //lets try to see if we have a decryption key
+            NSData* decryptKey = [[LHSettings sharedInstance] decryptionKey];
+            if(decryptKey){
+                dictionary = [NSDictionary dictionaryWithContentsOfEncryptedFile:path withKey:decryptKey];
+            }
+        }
+        
         NSArray* sheetsList = [dictionary objectForKey:@"SHEETS_INFO"];
         
         for(NSDictionary* dic in sheetsList){
@@ -127,6 +137,25 @@
 		sharedInstance = [[SHDocumentLoader alloc] init];
 	}
     return sharedInstance;
+}
+
+-(void)purgeInfo{
+    lastSheetDictionary = nil;
+    lastSpriteDictionary = nil;
+    lastAnimationDictionary = nil;
+    
+    [lastSprSpriteName setString:@""];
+    [lastSprSheetName setString:@""];
+    [lastSprDocumentName setString:@""];
+    
+    [lastSheetSheetName setString:@""];
+    [lastSheetDocumentName setString:@""];
+    
+    [lastAnimName setString:@""];
+    [lastAnimDocumentName setString:@""];
+
+    
+   [scenes removeAllObjects];
 }
 //------------------------------------------------------------------------------
 -(void)dealloc

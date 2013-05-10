@@ -1,9 +1,9 @@
 //
 //  AppDelegate.mm
-//  FunnyBunnyJump
+//  ___PROJECTNAME___
 //
-//  Created by Que on 09.10.12.
-//  Copyright __MyCompanyName__ 2012. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
 #import "cocos2d.h"
@@ -11,19 +11,64 @@
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 
+@implementation MyNavigationController
+
+// The available orientations should be defined in the Info.plist file.
+// And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
+// Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
+-(NSUInteger)supportedInterfaceOrientations {
+	
+	// iPhone only
+	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
+		return UIInterfaceOrientationMaskLandscape;
+	
+	// iPad only
+	return UIInterfaceOrientationMaskLandscape;
+}
+
+// Supported orientations. Customize it for your own needs
+// Only valid on iOS 4 / 5. NOT VALID for iOS 6.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	// iPhone only
+	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
+		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+	
+	// iPad only
+	// iPhone only
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+// This is needed for iOS4 and iOS5 in order to ensure
+// that the 1st scene has the correct dimensions
+// This is not needed on iOS6 and could be added to the application:didFinish...
+-(void) directorDidReshapeProjection:(CCDirector*)director
+{
+	if(director.runningScene == nil) {
+		// Add the first scene to the stack. The director will draw it immediately into the framebuffer. (Animation is started automatically when the view is displayed.)
+		// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
+		[director runWithScene: [IntroLayer scene]];
+	}
+}
+@end
+
+
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //GameCenter
+	// Create the main window
+    //GameCenter, Game Center
     NSLog(@"-- AppDelegate::application");
     [[GCHelper sharedInstance] authenticateLocalUser];
     [[GameState sharedInstance] initGameState];
-	
     
-    // Create the main window
+    //Facebook
+    //Facebook *facebook = [[Facebook alloc] init];
+    
+    
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	
@@ -35,18 +80,16 @@
 									sharegroup:nil
 								 multiSampling:NO
 							   numberOfSamples:0];
-
+    
 	// Enable multiple touches
 	[glView setMultipleTouchEnabled:YES];
-
+    
 	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
 	director_.wantsFullScreenLayout = YES;
 	
 	// Display FSP and SPF
-	//[director_ setDisplayStats:YES];
-    [director_ setDisplayStats:NO];
-
+	[director_ setDisplayStats:YES];
 	
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
@@ -54,16 +97,12 @@
 	// attach the openglView to the director
 	[director_ setView:glView];
 	
-	// for rotation and other messages
-	[director_ setDelegate:self];
-	
 	// 2D projection
 	[director_ setProjection:kCCDirectorProjection2D];
 	//	[director setProjection:kCCDirectorProjection3D];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director_ enableRetinaDisplay:YES] ) //Querika
-    //if( ! [director_ enableRetinaDisplay:NO] )
+	if( ! [director_ enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
@@ -84,49 +123,25 @@
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 	
-	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [IntroLayer scene]];
-
-    
-    //QueQue orig
-    //[director_ runWithScene: [QQHomeScreen scene]];
-    
-    //[[GameManager sharedGameManager] runSceneWithID:kLevel003];
-    //[[CCDirector sharedDirector] runWithScene:[QQLevel scene]];
-
-    
-    //[[CCDirector sharedDirector] runWithScene: [QQHomeScreen scene]];
-	
-	
 	// Create a Navigation Controller with the Director
-	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
+	navController_ = [[MyNavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
 	
+	// for rotation and other messages
+	[director_ setDelegate:navController_];
+	
 	// set the Navigation Controller as the root view controller
-//	[window_ addSubview:navController_.view];	// Generates flicker.
 	[window_ setRootViewController:navController_];
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
-    //QueQue orig
-    //[director_ runWithScene: [QQHomeScreen scene]];
-    //[director_ pushScene: [QQHomeScreen scene]];
-    
 	return YES;
 }
-
-// Supported orientations: Landscape. Customize it for your own needs
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
 
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application
 {
-    NSLog(@"AppDelegate::applicationWillResignActive");
 	if( [navController_ visibleViewController] == director_ )
 		[director_ pause];
 }
@@ -134,34 +149,22 @@
 // call got rejected
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
-    NSLog(@"AppDelegate::applicationDidBecomeActive");
-    
-	if( [navController_ visibleViewController] == director_) {
-       //&& [[GameState sharedInstance] gamePausedGameOver] == NO) {
-        NSLog(@"||||||||||   AppDelegate::applicationDidBecomeActive");
-        [director_ resume];
+	if( [navController_ visibleViewController] == director_ ) {
+		[director_ resume];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
     }
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
-    NSLog(@"AppDelegate::applicationDidEnterBackground");
-	if( [navController_ visibleViewController] == director_ ) {
-            [director_ stopAnimation];
-        //if([[GameState sharedInstance] currnetSceneIsLevel]) {
-        //    [[GameState sharedInstance] setGamePausedByTurnOff:YES];
-        //}
-    }
+	if( [navController_ visibleViewController] == director_ )
+		[director_ stopAnimation];
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
-    NSLog(@"AppDelegate::applicationWillEnterForeground");
-	if( [navController_ visibleViewController] == director_ ) {
+	if( [navController_ visibleViewController] == director_ )
 		[director_ startAnimation];
-        
-    }
 }
 
 // application will be killed

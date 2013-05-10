@@ -15,14 +15,60 @@ const int32 VELOCITY_ITERATIONS = 8;
 const int32 POSITION_ITERATIONS = 8;
 const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
-//static NSString* _level;
-
 @implementation QQLevel
-
-//@synthesize pause;
 
 -(void)afterStep {
     // process collisions and result from callbacks called by the step
+}
+
+-(void)makeObjectsStatic {
+    LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                  fromSheet:@"assets"
+                                     SHFile:@"objects"];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [shade setPosition:ccp(size.width/2, size.height/2)];
+    [shade setOpacity:OPACITY_OF_SHADE];
+    [shade setScale:SCALE_OF_SHADE];
+    [self addChild:shade];
+    
+    
+    [_player makeStatic];
+    [_trampoline makeStatic];
+    
+    NSArray *bars = [loader spritesWithTag:TAG_BAR];
+    for(QQSpriteBar *bar in bars) {
+        [bar makeStatic];
+    }
+    
+    NSArray *balloonsNormal = [loader spritesWithTag:TAG_BALLOON];
+    for(QQSpriteBalloon *balloon in balloonsNormal) {
+        [balloon makeStatic];
+    }
+    
+    NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
+    for(QQSpriteBalloonShake *balloon in balloonsShaker) {
+        [balloon makeStatic];
+    }
+    
+    NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
+    for(QQSpriteBalloonShake *balloon in balloonsSizechanger) {
+        [balloon makeStatic];
+    }
+    
+    NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
+    for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
+        [balloon unscheduleAllSelectors];
+        [balloon makeStatic];
+    }
+    
+    NSArray *balloonsBlinker = [loader spritesWithTag:TAG_BALLOON_BLINKER];
+    for(QQSpriteBalloonBlinker *balloon in balloonsBlinker) {
+        [balloon unscheduleAllSelectors];
+        [balloon makeStatic];
+    }
+    
+    [_particleBeam1 removeFromParentAndCleanup:YES];
+    [_particleBeam2 removeFromParentAndCleanup:YES];
 }
 
 -(void)makeObjectsInvisibleAndStatic {
@@ -77,6 +123,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 -(void)afterStep:(ccTime)dt {
 	// process collisions and result from callbacks called by the step
     
+    //NSLog(@".................... .. numberOfInstacnes: %d", [QQSpriteBalloon numberOfInstances]);
 
     [self makeObjectsInvisibleAndStatic];
 
@@ -99,9 +146,19 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
        
     [_player applyForce];
     [_player deflect];   //give the bunny a force when a balloon is touched
-    [_player resetPosition];
-    if(_levelState == levelRunning) [_player applyStartJump];
-    [_player restoreInitialPosition:loader];
+    //[_player resetPosition];
+    //[_player resetPosition:self];
+    if(_levelState == levelRunning) {
+        //[_player applyStartJump];
+        //[_player applyStartJumpWithGravity:_gravity];
+        [_player applyStartJumpWithImpulseX:_startImpulseX withImpulseY:_startImpulseY];
+    }
+    
+    
+    //[_player restoreInitialPosition:loader];
+    [_player restoreInitialPosition:loader withLayer:self];
+    
+    
     [_player stopPlayer];
     //[_player beam];
     [_player beamWithLoader:loader];
@@ -119,41 +176,65 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     NSInteger balloonsLeft = 0;
     
+//    NSArray *balloonsNormal = [loader spritesWithTag:TAG_BALLOON];
+//    for(QQSpriteBalloon *balloon in balloonsNormal) {
+//        [balloon reactToTouch:_world withLayer:self];
+//        balloonsLeft++;
+//        if([balloon myDirty] == YES) {
+//            NSLog(@"IF removeSelf");
+//            _balloonsDestroyed++;
+//            [balloon removeSelf];
+//        }
+//    }
+//    NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
+//    for(QQSpriteBalloonShake *balloon in balloonsShaker) {
+//        [balloon reactToTouch:_world withLayer:self];
+//        balloonsLeft++;
+//        if([balloon myDirty] == YES) {
+//            _balloonsDestroyed++;
+//            [balloon removeSelf];
+//        }
+//    }
+    
     NSArray *balloonsNormal = [loader spritesWithTag:TAG_BALLOON];
     for(QQSpriteBalloon *balloon in balloonsNormal) {
-        [balloon reactToTouch:_world withLayer:self];
+        //[balloon reactToTouch:_world withLayer:self];
+        _score = [balloon reactToTouch:_world withLayer:self withScore:_score withCountdown:_countDown];
         balloonsLeft++;
     }
 
     NSArray *balloonsShaker = [loader spritesWithTag:TAG_BALLOON_SHAKER];
     for(QQSpriteBalloonShake *balloon in balloonsShaker) {
-        [balloon reactToTouch:_world withLayer:self];
+        //[balloon reactToTouch:_world withLayer:self];
+        _score = [balloon reactToTouch:_world withLayer:self withScore:_score withCountdown:_countDown];
         balloonsLeft++;
     }
     
     NSArray *balloonsSizechanger = [loader spritesWithTag:TAG_BALLOON_SIZECHANGER];
     for(QQSpriteBalloonShake *balloon in balloonsSizechanger) {
-        [balloon reactToTouch:_world withLayer:self];
+        //[balloon reactToTouch:_world withLayer:self];
+        _score = [balloon reactToTouch:_world withLayer:self withScore:_score withCountdown:_countDown];
         balloonsLeft++;
     }
     
     NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
     for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
         if(balloon._balloonCompletelyInflated == YES) {
-            [balloon reactToTouchWithWorld:_world withLayer:self];
-            balloonsLeft++;
+            //[balloon reactToTouchWithWorld:_world withLayer:self];
+            _score = [balloon reactToTouch:_world withLayer:self withScore:_score withCountdown:_countDown];
         }
+        balloonsLeft++;
     }
     
     NSArray *balloonsBlinker = [loader spritesWithTag:TAG_BALLOON_BLINKER];
     for(QQSpriteBalloonBlinker *balloon in balloonsBlinker) {
-        [balloon reactToTouch:_world withLayer:self];
+        //[balloon reactToTouch:_world withLayer:self];
+        _score = [balloon reactToTouch:_world withLayer:self withScore:_score withCountdown:_countDown];
+        //_score += _countDown;
         balloonsLeft++;
     }
     
     if(_tapScreenButtonMakeDynamicRequired) {
-        //NSLog(@"IIIIIIIHHHHHHHH!");
-        //LHSprite* tapScreenButton = [loaderJoystick spriteWithUniqueName:@"tapScreenButton"];
         [_tapScreenButton transformPosition:_tapScreenButtonInitialPosition];
         [_tapScreenButton makeDynamic];
         _tapScreenButtonMakeDynamicRequired = NO;
@@ -167,12 +248,74 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         _gameOverLevelPassed = YES;
         [self changeLevelStatus:levelGameOver];
     }
+    
+    
+    if(_backLevel == YES) {
+        NSLog(@"_backLevel");
+        [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
+        _backLevel = NO;
+    }
+    
+    if(_reloadLevel == YES) {
+        NSLog(@"_reloadLevel");
+        [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
+        _reloadLevel = NO;
+    }
+    
+    LHSprite* fireBar = [loader spriteWithUniqueName:@EFFECT_FIREBAR];
+    if(_particleFireBar != nil) {
+        //_particleFireBar = [[CCParticleSystemQuad alloc] initWithFile:@"particleFireBar.plist"];
+        
+        CGPoint particleFireBarPosition;
+        particleFireBarPosition.x = [fireBar position].x;
+        particleFireBarPosition.y = [fireBar position].y;
+        [_particleFireBar setPosition:particleFireBarPosition];
+    }
+}
+
+- (void)backLevel:(NSNotification *)note {
+    NSLog(@"||||||||||   Received Notification - backLevel");
+    [[CCDirector sharedDirector] resume];
+    [self makeObjectsStatic];
+    _backLevel = YES;
+}
+
+- (void)reloadLevel:(NSNotification *)note {
+    NSLog(@"||||||||||   Received Notification - reloadLevel");
+    
+
+    [[CCDirector sharedDirector] resume];
+    [self makeObjectsStatic];
+    _reloadLevel = YES;
 }
 
 - (void)resumeLevel:(NSNotification *)note {
     NSLog(@"||||||||||   Received Notification - resumeLevel");
     [self enableTouches];
 }
+/*
+- (void)pauseLevel:(NSNotification *)note {
+    NSLog(@"||||||||||   Received Notification - pauseLevel");
+    NSLog(@"||||||||||   numberOfInstances: %d", [QQPauseLayer numberOfInstances]);
+    
+    QQPauseLayer* pause = [[[QQPauseLayer alloc] init] autorelease];
+    [self addChild:pause z:100];
+    [pause pauseLevel:self withLevel:self];
+    
+    [[CCDirector sharedDirector] pause];
+    [self disableTouches];
+    NSLog(@"||||||||||   numberOfInstances: %d", [QQPauseLayer numberOfInstances]);
+}
+
+-(void)touchBeganPauseButton:(LHTouchInfo*)info{
+    if(info.sprite) {
+        QQPauseLayer* pause = [[[QQPauseLayer alloc] init] autorelease];
+        [self addChild:pause z:100];
+        [pause pauseLevel:self withLevel:self];
+        [self disableTouches];
+    }
+}
+ */
 
 - (void)pauseLevel:(NSNotification *)note {
     NSLog(@"||||||||||   Received Notification - pauseLevel");
@@ -184,9 +327,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[CCDirector sharedDirector] pause];
     [self disableTouches];
     NSLog(@"||||||||||   numberOfInstances: %d", [QQPauseLayer numberOfInstances]);
-
 }
-
+ 
 -(void)touchBeganPauseButton:(LHTouchInfo*)info{
     if(info.sprite) {
         _pauseLayer = [[QQPauseLayer alloc] init];
@@ -194,6 +336,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [self disableTouches];
     }
 }
+ 
 -(void)touchEndedPauseButton:(LHTouchInfo*)info{
     if(info.sprite) {
     }
@@ -217,25 +360,26 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         case levelRunning: {
             //the level is currently running
             NSLog(@"################### isRunning level: %d", [self isRunning]);
-            //[_spritePauseButton setVisible:YES];
-            //[_spritePauseButton setTouchesDisabled:NO];
+            if(![[GameState sharedInstance] isPayingUser]) {
+                [_myAdmob dismissAdView];
+            }
             
-            //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
-            //[LevelHelperLoader setPaused:NO];
             [_player makeDynamic];
-            _levelState = levelRunning;
+            _levelState = levelRunning; //TODO: was soll das bitte???
 
             [_tapScreenButton setTouchesDisabled:YES];
-            [_tapScreenButton makeStatic];
             [_tapScreenButton setVisible:NO];
-            [_tapScreenButton body]->GetFixtureList()->SetSensor(true);
-            LHSprite* tapScreenBorder = [loaderJoystick spriteWithUniqueName:@"tapScreenBorder"];
-            [tapScreenBorder body]->GetFixtureList()->SetSensor(true);
-            
-            //[_bar setActive:YES];
+
             NSArray *barsShaker = [loader spritesWithTag:TAG_BAR_SHAKER];
             for(QQSpriteBarShaker *bar in barsShaker) {
                 [bar setToSensor:NO];
+            }
+            
+            NSArray *balloonsBlack = [loader spritesWithTag:TAG_OBSTACLE];
+            for(QQSpriteBar *balloonBlack in balloonsBlack) {
+                for (b2Fixture* f = [balloonBlack body]->GetFixtureList(); f; f = f->GetNext()) {
+                    f->SetSensor(false);
+                }
             }
             
             break;
@@ -244,7 +388,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         case levelGameOver: {
             //player has finished the game
             //ether he won or he lost
-            
             _levelState = levelGameOver;
             if(_gameOverLevelPassed) {
                 NSLog(@"_______ _gameOverLevelPassed: %@", self);
@@ -266,6 +409,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 
                 _levelState = levelNotStarted;
                 
+                //_gameOverLayer = [[[QQGameOver alloc] init] autorelease];
+                //TODO: alloc init -  but no release?!?
                 _gameOverLayer = [[QQGameOver alloc] init];
                 [_gameOverLayer showGameOverLayer:self
                                   withLevelPassed:YES
@@ -282,6 +427,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
                 [self disableTouches];
                 
+                
+                //_gameOverLayer = [[[QQGameOver alloc] init] autorelease];
                 _gameOverLayer = [[QQGameOver alloc] init];
                 [_gameOverLayer showGameOverLayer:self
                                   withLevelPassed:NO
@@ -301,22 +448,27 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             
         case levelPausedLifeLost: {
             NSLog(@"_______________ levelPausedLifeLost");
-            //[_spritePauseButton setVisible:NO];
-            //[_spritePauseButton setTouchesDisabled:YES];
+            
+            if(![[GameState sharedInstance] isPayingUser]) {
+                _myAdmob = [QQAdmob node];
+                [self addChild:_myAdmob];
+            }
 
             _levelState = levelPausedLifeLost;
             [_player setRestoreInitialPostitionRequired:YES];
             [_player setPlayerStopped:YES];
-            
-            //LHSprite* tapScreenButton = [loaderJoystick spriteWithUniqueName:@"tapScreenButton"];
+
             [_tapScreenButton setTouchesDisabled:NO];
             [_tapScreenButton setVisible:YES];
             _tapScreenButtonMakeDynamicRequired = YES;
-            [_tapScreenButton body]->GetFixtureList()->SetSensor(false);
-            LHSprite* tapScreenBorder = [loaderJoystick spriteWithUniqueName:@"tapScreenBorder"];
-            [tapScreenBorder body]->GetFixtureList()->SetSensor(false);
             
-            //[_bar setActive:NO];
+            NSArray *balloonsBlack = [loader spritesWithTag:TAG_OBSTACLE];
+            for(QQSpriteBar *balloonBlack in balloonsBlack) {
+                for (b2Fixture* f = [balloonBlack body]->GetFixtureList(); f; f = f->GetNext()) {
+                    f->SetSensor(true);
+                }
+            }
+
             NSArray *barsShaker = [loader spritesWithTag:TAG_BAR_SHAKER];
             for(QQSpriteBarShaker *bar in barsShaker) {
                 [bar setToSensor:YES];
@@ -407,13 +559,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 -(void)touchBeganTapScreenButton:(LHTouchInfo*)info{
     if(info.sprite) {
         if(_levelStarted == NO) {
-            //[self changeLevelStatus:levelRunning];
             _levelStarted = YES;
         }
-        
-        //if(_levelState == levelPausedLifeLost) {
-        //[self changeLevelStatus:levelRunning];
-        //}
     }
     [self changeLevelStatus:levelRunning];
     
@@ -430,6 +577,10 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [self addChild:particle3];
     [particle3 release];
     [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+    
+    NSLog(@"tapscreenButton");
+    //[_myAdmob hideBannerView];
+    //[_myAdmob dismissAdView];
 }
 
 /*
@@ -583,6 +734,11 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [self setupDebugDraw];
         self.isTouchEnabled = YES;  // Add at bottom of init
         //[[GameState sharedInstance] setCurrnetSceneIsLevel:YES];
+        
+        if(![[GameState sharedInstance] isPayingUser]) {
+            _myAdmob = [QQAdmob node];
+            [self addChild:_myAdmob];
+        }
 	}
 	return self;
 }
@@ -596,46 +752,57 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void)beginEndCollisionBetweenBalloonAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
     if([contact contactType]) {
         QQSpriteBalloon *touchedBalloon = (QQSpriteBalloon*)[contact bodyA]->GetUserData();
-        if([touchedBalloon visible]) {
+        //if([touchedBalloon visible]) {
             [touchedBalloon setWasTouched:TRUE];
             [_player setBalloonTouched:TRUE];
-            _score += _countDown;
-        }
+            //_score += _countDown;
+        //}
     }
 }
 
 -(void)beginEndCollisionBetweenBalloonShakerAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
     if([contact contactType]) {
         QQSpriteBalloonShake *touchedBalloon = (QQSpriteBalloonShake*)[contact bodyA]->GetUserData();
         [touchedBalloon setWasTouched:TRUE];
         [_player setBalloonTouched:TRUE];
         //[[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-        _score += _countDown;
-    } else {
-        //CCLOG(@"touch ended");
+        //_score += _countDown;
     }
 }
 
 -(void)beginEndCollisionBetweenBalloonBlinkerAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
     if([contact contactType]) {
         QQSpriteBalloonBlinker *touchedBalloon = (QQSpriteBalloonBlinker*)[contact bodyA]->GetUserData();
-            if([touchedBalloon visible]) {
-            [touchedBalloon setWasTouched:TRUE];
+
+        if([touchedBalloon visible]) {
             [_player setBalloonTouched:TRUE];
-            _score += _countDown;
         }
+   
+        //if([touchedBalloon visible]) {
+            [touchedBalloon setWasTouched:TRUE];
+            //[_player setBalloonTouched:TRUE];
+            //_score += _countDown;
+        //}
+    } else {
+        QQSpriteBalloonBlinker *touchedBalloon = (QQSpriteBalloonBlinker*)[contact bodyA]->GetUserData();
+        [touchedBalloon setWasTouched:FALSE];
+        [_player setBalloonTouched:FALSE];
     }
 }
 
 -(void)beginEndCollisionBetweenBalloonThreetimestoucherAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
     if([contact contactType]) {
         QQSpriteBalloonThreetimestoucher *touchedBalloon = (QQSpriteBalloonThreetimestoucher*)[contact bodyA]->GetUserData();
         if(touchedBalloon._balloonCompletelyInflated == YES) {
             [touchedBalloon setWasTouched:TRUE];
             [_player setBalloonTouched:TRUE];
-            _score += _countDown;
+            //_score += _countDown;
         }
     } else {
 
@@ -643,6 +810,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void)beginEndCollisionBetweenBalloonSizechangerAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
     if([contact contactType]) {
         alreadyFiredBallon = NO;
     } else {
@@ -653,12 +821,13 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             [_player setBalloonTouched:TRUE];
             //[[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
             alreadyFiredBallon = YES;
-            _score += _countDown;
+            //_score += _countDown;
         }
     }
 }
 
 -(void)beginEndCollisionBetweenTrampolineAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
 	if([contact contactType]) {
         //TRAMPOLINE
         b2Vec2 posA = [contact bodyA]->GetPosition();
@@ -678,7 +847,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         if(trampolineVelocity <= 0.1f && trampolineVelocity >= -0.1) {    //sometimes the velocity is not 0 although the player thinks it is 0 already, therefore 0.1f
             finalForce = forceX;
         } else {
-            finalForce = trampolineVelocity * 1.5f;
+            finalForce = trampolineVelocity * 1.5f; // 1.5f
         }
         [_player setForce:finalForce];
         
@@ -702,20 +871,30 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             
             [[SimpleAudioEngine sharedEngine] playEffect:@"boink.wav"];
             [_trampoline shallChangeRestitution: TRUE];
-            [_trampoline setRestitution:1.1f];
+            //[_trampoline setRestitution:1.15f];  //1.1f
+            
+            
+            if(_trampoline.redTrampolineActive) {
+                [_trampoline setRestitution:1.3f];
+            } else {
+                [_trampoline setRestitution:1.15f];
+            }
+            
+            
             [_player setAllowBeaming:TRUE];
             
             alreadyFired = YES;
             
-            NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
-            for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
-                [balloon setReactToCollision:YES];
-            }
+            //NSArray *balloonsThreetimestoucher = [loader spritesWithTag:TAG_BALLOON_THREETIMESTOUCHER];
+            //for(QQSpriteBalloonThreetimestoucher *balloon in balloonsThreetimestoucher) {
+            //    [balloon setReactToCollision:YES];
+            //}
         }
     }
 }
 
 -(void)beginEndCollisionBetweenMaxHeightAndPlayer:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
 	if([contact contactType]) {
     } else {
         [_trampoline shallChangeRestitution: TRUE];
@@ -724,6 +903,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void)beginEndCollisionBetweenPlayerAndBeam:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
 	if([contact contactType]) {
         if([_player allowBeaming]) {
             LHSprite *beam1 = [loader spriteWithUniqueName:@"beam1"];
@@ -738,6 +918,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 }
 
 -(void)beginEndCollisionBetweenPlayerAndFloor:(LHContactInfo*)contact{
+    if(_noMoreCollisionHandling)return;
 	if([contact contactType]) {
         
         //[_player setLifes:[_player lifes] - 1];
@@ -758,50 +939,52 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     }
 }
 
--(void)beginEndCollisionBetweenPlayerAndStar:(LHContactInfo*)contact{
-	if([contact contactType]) {
-
-        [[SimpleAudioEngine sharedEngine] playEffect:@"franticDataShimmer.mp3"];
-        
-        QQSpriteStar *touchedStar = (QQSpriteStar*)[contact bodyB]->GetUserData();
-        [touchedStar setWasTouched:TRUE];
-        
-        LHSprite *star;
-        CGPoint destination;
-        switch (_starsCollected) {
-            case 0: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_0"];
-                CCLOG(@"############ STAR 1");
-                break;
-            }
-            case 1: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_1"];
-                CCLOG(@"############ STAR 2");
-                break;
-            }
-            case 2: {
-                star = [loaderJoystick spriteWithUniqueName:@"starBack_2"];
-                CCLOG(@"############ STAR 3");
-                break;
-            }
-            default: {
-                CCLOG(@"beginEndCollisionBetweenPlayerAndStar: something is wrong!");
-                break;
-            }
-        }
-        destination.x = [star position].x;
-        destination.y = [star position].y;
-        [touchedStar setStarDestination:destination];
-        _starsCollected++;
-        
-    } else {
-    }
-}
+//-(void)beginEndCollisionBetweenPlayerAndStar:(LHContactInfo*)contact{
+//    if(_noMoreCollisionHandling)return;
+//	if([contact contactType]) {
+//
+//        [[SimpleAudioEngine sharedEngine] playEffect:@"franticDataShimmer.mp3"];
+//        
+//        QQSpriteStar *touchedStar = (QQSpriteStar*)[contact bodyB]->GetUserData();
+//        [touchedStar setWasTouched:TRUE];
+//        
+//        LHSprite *star;
+//        CGPoint destination;
+//        switch (_starsCollected) {
+//            case 0: {
+//                star = [loaderJoystick spriteWithUniqueName:@"starBack_0"];
+//                CCLOG(@"############ STAR 1");
+//                break;
+//            }
+//            case 1: {
+//                star = [loaderJoystick spriteWithUniqueName:@"starBack_1"];
+//                CCLOG(@"############ STAR 2");
+//                break;
+//            }
+//            case 2: {
+//                star = [loaderJoystick spriteWithUniqueName:@"starBack_2"];
+//                CCLOG(@"############ STAR 3");
+//                break;
+//            }
+//            default: {
+//                CCLOG(@"beginEndCollisionBetweenPlayerAndStar: something is wrong!");
+//                break;
+//            }
+//        }
+//        destination.x = [star position].x;
+//        destination.y = [star position].y;
+//        [touchedStar setStarDestination:destination];
+//        _starsCollected++;
+//        
+//    } else {
+//    }
+//}
 
 #pragma mark setupLevelHelper
 -(void) setupLevelHelper {
-    //[LevelHelperLoader dontStretchArt];
-    [[LHSettings sharedInstance] setStretchArt:YES];
+    [LevelHelperLoader dontStretchArt];
+    //[[LHSettings sharedInstance] setStretchArt:YES]; bolbok sylinapot
+    
     self.isTouchEnabled = YES;
     //TODO: remove all isAccelerometerEnabled
     //self.isAccelerometerEnabled = YES;
@@ -839,6 +1022,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
     //loader = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelWinter2012003"];
     loader = [[LevelHelperLoader alloc] initWithContentOfFile:[[GameManager sharedGameManager] levelToRun]];
+    NSLog(@"########## %@", [[GameManager sharedGameManager] levelToRun]);
         
 
     [loader addObjectsToWorld:_world cocos2dLayer:self]; //creating the objects
@@ -869,6 +1053,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [self setupLabelScore];
     [self setupLabelHighScore];
     [self setupRegisterForCollision];
+    [self setupHelpLabel];
+    [self setupRedTrampolineButton];
     
     // Add an observer that will respond to loginComplete
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -877,6 +1063,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(pauseLevel:)
                                                  name:@"pauseLevel" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(backLevel:)
+                                                 name:@"backLevel" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadLevel:)
+                                                 name:@"reloadLevel" object:nil];
     
     b2Vec2 gravity;
     LHSprite* spriteCustomProperties = [loader spriteWithUniqueName:@"spriteCustomProperties"];
@@ -884,13 +1076,101 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     QQLevelClass* myInfo = (QQLevelClass*)[spriteCustomProperties userInfo];
     if(myInfo != nil) {
         gravity.Set(0.0f, [myInfo gravity]);
-        NSLog(@"|-|-|-| gravity: %f", [myInfo gravity]);
+        _countDown = [myInfo countdown];
+        _startImpulseX = [myInfo startImpulseX];
+        _startImpulseY = [myInfo startImpulseY];
     }
     _world->SetGravity(gravity);
+    _gravity = gravity;
     
+    NSLog(@".................... 1.numberOfInstacnes: %d", [QQSpriteBalloon numberOfInstances]);
     
-    _countDown = [[GameState sharedInstance] countDown];
+    //_countDown = [[GameState sharedInstance] countDown]; //xxxxx
 }
+
+// HELP LABEL
+-(void)setupHelpLabel {
+    _loaderHelpLabel = [[LevelHelperLoader alloc] initWithContentOfFile:@"helpLabels"];
+    [_loaderHelpLabel addObjectsToWorld:_world cocos2dLayer:self];
+    
+    NSString *labelName = [[[GameManager sharedGameManager] levelToRun] stringByAppendingString:@"_1"];
+    _helpLabel = [_loaderHelpLabel spriteWithUniqueName:labelName];
+    
+    if(_helpLabel != nil) {
+        //if([@"levelSpring2012001_1" isEqualToString:labelName]) {
+            [_helpLabel setVisible:YES];
+            [_tapScreenButton setVisible:NO];
+            [_tapScreenButton setTouchesDisabled:YES];
+            
+            [_helpLabel registerTouchBeganObserver:self selector:@selector(touchBeganHelpLabel_1:)];
+            [_helpLabel registerTouchEndedObserver:self selector:@selector(touchEndedHelpLabel_1:)];
+        //}
+    }
+}
+
+-(void)touchBeganHelpLabel_1:(LHTouchInfo*)info{
+    if(info.sprite) {
+    }
+}
+
+-(void)touchEndedHelpLabel_1:(LHTouchInfo*)info{
+    if(info.sprite) {
+        [_helpLabel setVisible:NO];
+        [_helpLabel setTouchesDisabled:YES];
+        
+        NSString *labelName = [[[GameManager sharedGameManager] levelToRun] stringByAppendingString:@"_2"];
+        _helpLabel = [_loaderHelpLabel spriteWithUniqueName:labelName];
+        
+        if(_helpLabel != nil) {
+            [_helpLabel setVisible:YES];
+            [_helpLabel registerTouchBeganObserver:self selector:@selector(touchBeganHelpLabel_2:)];
+            [_helpLabel registerTouchEndedObserver:self selector:@selector(touchEndedHelpLabel_2:)];
+        } else {
+            [_tapScreenButton setVisible:YES];
+            [_tapScreenButton setTouchesDisabled:NO];
+        }
+    }
+}
+
+-(void)touchBeganHelpLabel_2:(LHTouchInfo*)info{
+    if(info.sprite) {
+    }
+}
+
+-(void)touchEndedHelpLabel_2:(LHTouchInfo*)info{
+    if(info.sprite) {
+        [_helpLabel setVisible:NO];
+        [_helpLabel setTouchesDisabled:YES];
+        
+        NSString *labelName = [[[GameManager sharedGameManager] levelToRun] stringByAppendingString:@"_3"];
+        _helpLabel = [_loaderHelpLabel spriteWithUniqueName:labelName];
+        
+        if(_helpLabel != nil) {
+            [_helpLabel setVisible:YES];
+            [_helpLabel registerTouchBeganObserver:self selector:@selector(touchBeganHelpLabel_3:)];
+            [_helpLabel registerTouchEndedObserver:self selector:@selector(touchEndedHelpLabel_3:)];
+        } else {
+            [_tapScreenButton setVisible:YES];
+            [_tapScreenButton setTouchesDisabled:NO];
+        }
+    }
+}
+
+-(void)touchBeganHelpLabel_3:(LHTouchInfo*)info{
+    if(info.sprite) {
+    }
+}
+
+-(void)touchEndedHelpLabel_3:(LHTouchInfo*)info{
+    if(info.sprite) {
+        [_helpLabel setVisible:NO];
+        [_helpLabel setTouchesDisabled:YES];
+        [_tapScreenButton setVisible:YES];
+        [_tapScreenButton setTouchesDisabled:NO];
+    }
+}
+
+//--- HELP LABEL
 
 -(void)setupRegisterForCollision {
     [loader useLevelHelperCollisionHandling];//necessary or else collision in LevelHelper will not be performed
@@ -948,13 +1228,27 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 
 
-
+-(void)setupRedTrampolineButton {
+    _redTrampolineButton = [loaderJoystick spriteWithUniqueName:@"redTrampolineButton"];
+    [_redTrampolineButton registerTouchBeganObserver:self selector:@selector(touchBeganRedTrampolineButton:)];
+    [_redTrampolineButton registerTouchEndedObserver:self selector:@selector(touchEndedRedTrampolineButton:)];
+}
 
 
 #pragma mark Joystick
 -(void)setupJoystick {
-    loaderJoystick = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelJoystick"];
-    [loaderJoystick addSpritesToLayer:self];
+    
+    if([[LHSettings sharedInstance] isIphone5]) {
+        loaderJoystick = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelJoystick_iPhone5"];
+    } else if ([[LHSettings sharedInstance] isIpad]) {
+        loaderJoystick = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelJoystick"];        
+    } else {
+        loaderJoystick = [[LevelHelperLoader alloc] initWithContentOfFile:@"levelJoystick"];
+    }
+    
+    //[loaderJoystick addSpritesToLayer:self];
+    [loaderJoystick addObjectsToWorld:_world cocos2dLayer:self];
+    
     _joystickLeft = [loaderJoystick spriteWithUniqueName:@"joystickLeft"];
     _joystickLeftGlow = [loaderJoystick spriteWithUniqueName:@"joystickLeftGlow"];
     [_joystickLeft registerTouchBeganObserver:self selector:@selector(touchBeganJoystickLeftButton:)];
@@ -975,6 +1269,52 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_tapScreenButton registerTouchEndedObserver:self selector:@selector(touchEndedTapScreenButton:)];
 }
 
+-(void)touchBeganRedTrampolineButton:(LHTouchInfo*)info{
+    if(info.sprite) {
+        NSLog(@"touchBeganRedTrampolineButton");
+    }
+}
+
+-(void)touchEndedRedTrampolineButton:(LHTouchInfo*)info{
+    if(info.sprite) {
+        if(!_trampoline.redTrampolineActive) {
+            NSLog(@"touchEndedRedTrampolineButton");
+            QQSpriteTrampoline *trampoline = (QQSpriteTrampoline*)[loader spriteWithUniqueName:@"trampoline"];
+            CGPoint position = [trampoline position];
+            [trampoline removeSelf];
+            
+            LHBatch *batch = [loader batchWithUniqueName:@"assets"];
+            
+            _trampoline = (QQSpriteTrampoline*)[loader createSpriteWithName:@"trampoline_red"
+                                                                  fromSheet:@"assets"
+                                                                 fromSHFile:@"objects"
+                                                                        tag:TAG_TRAMPOLINE
+                                                                     parent:batch];
+            [_trampoline transformPosition:position];
+            [_trampoline setZOrder:40];
+            
+            b2Joint* joint;
+            b2Body* bodyTrampoline = [_trampoline body];
+            LHSprite *floor = [loader spriteWithUniqueName:@"floor_neu"];
+            b2Body* bodyFloor = [floor body];
+            if(0 != bodyTrampoline && 0 != bodyFloor) {
+                b2PrismaticJointDef jointDef;
+                
+                b2Vec2 axis(1, 0);
+                axis.Normalize();
+                
+                b2Vec2 posA = bodyFloor->GetWorldCenter();
+                jointDef.Initialize(bodyTrampoline, bodyFloor, posA, axis);
+                
+                if(0 != _world){
+                    joint = (b2PrismaticJoint*)_world->CreateJoint(&jointDef);
+                }
+                
+            }
+            _trampoline.redTrampolineActive = YES;
+        }
+    }
+}
 
 
 -(void)touchBeganJoystickLeftButton:(LHTouchInfo*)info{
@@ -1038,15 +1378,29 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [self addChild:_particleSnow];
     }
     
+    LHSprite* spring = [loader spriteWithUniqueName:@EFFECT_SPRING];
+    if(spring != nil) {
+        _particleSpring = [[CCParticleSystemQuad alloc] initWithFile:@"particleSpring.plist"];
+        [self addChild:_particleSpring];
+    }
+    
     LHSprite* leaves = [loader spriteWithUniqueName:@EFFECT_LEAVES];
     if(leaves != nil) {
-        _particleLeaves = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves.plist"];
+        _particleLeaves = [[CCParticleSystemQuad alloc] initWithFile:@"fallingLeaves2.plist"];
         [self addChild:_particleLeaves];
     }
     
     LHSprite* sun = [loader spriteWithUniqueName:@EFFECT_SUN];
     if(sun != nil) {
         _particleSun = [[CCParticleSystemQuad alloc] initWithFile:@"sun.plist"];
+        
+        LHSprite* particleSunSprite = [loader spriteWithUniqueName:@"sun"];
+        CGPoint particleSunPosition;
+        particleSunPosition.x = [particleSunSprite position].x;
+        particleSunPosition.y = [particleSunSprite position].y;
+        [_particleSun setPosition:particleSunPosition];
+        //[_particleSun setPosition:CGPointMake(100, 100)];
+        
         [self addChild:_particleSun];
     }
     
@@ -1054,6 +1408,21 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(rain != nil) {
         _particleRain = [[CCParticleSystemQuad alloc] initWithFile:@"rain.plist"];
         [self addChild:_particleRain];
+    }
+    
+    LHSprite* fireBar = [loader spriteWithUniqueName:@EFFECT_FIREBAR];
+    if(fireBar != nil) {
+        _particleFireBar = [[CCParticleSystemQuad alloc] initWithFile:@"particleFireBar.plist"];
+        
+        CGPoint particleFireBarPosition;
+        particleFireBarPosition.x = [fireBar position].x;
+        particleFireBarPosition.y = [fireBar position].y;
+        [_particleFireBar setPosition:particleFireBarPosition];
+        NSLog(@"--- zOder: %d", [_particleFireBar zOrder]);
+        [_particleFireBar setZOrder:0];
+        NSLog(@"+++ zOder: %d", [_particleFireBar zOrder]);
+        
+        [self addChild:_particleFireBar];
     }
 }
 
@@ -1080,8 +1449,23 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     NSArray *balloonsBlinker = [loader spritesWithTag:TAG_BALLOON_BLINKER];
     for(QQSpriteBalloonBlinker *balloon in balloonsBlinker) {
         //[balloon startBlinkingWithDelay:1.0f andWithInterval:2.0f];
-        [balloon startBlinkingWithDelay:[self randomFloatBetween:0.0f andWith:2.0f] andWithInterval:[self randomFloatBetween:1.0f andWith:2.0f]];
-
+        QQBalloonClass* myInfo = (QQBalloonClass*)[balloon userInfo];
+        float blinkInterval = 0;
+        float blinkDelay = 0;
+        int blinkModulo = 0;
+        if(myInfo != nil){
+            //notice how the method name is exactly as the variable defined inside LH on the PlayerInfo class
+            blinkInterval = [myInfo blinkInterval];
+            blinkDelay = [myInfo blinkDelay];
+            blinkModulo = [myInfo blinkModulo];
+            if(blinkModulo == 0) {
+                [balloon startBlinkingWithDelay:blinkDelay andWithInterval:blinkInterval];
+            } else {
+                [balloon startBlinkingWithDelay:blinkDelay andWithInterval:blinkInterval andWithModulo:blinkModulo];
+            }
+        } else {
+            [balloon startBlinkingWithDelay:[self randomFloatBetween:0.0f andWith:2.0f] andWithInterval:[self randomFloatBetween:1.0f andWith:2.0f]];
+        }
     }
 }
 
@@ -1096,10 +1480,74 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //[_stars retain];
 }
 
+//-(void)setupTrampoline {
+//    
+//    //QQSpriteTrampoline *trampoline;
+//    //objPlayer = (PlayerSprite*)[loader createSpriteWithName:@"robo_anim_01_03" fromSheet:@"RobotAnimation" fromSHFile:@"RoboWorld" tag:PLAYER];
+//    //trampoline = (QQSpriteTrampoline*)[loader createSpriteWithName:@"trampoline_red"
+//    //                            fromSheet:@"assets"
+//    //                               SHFile:@"objects"
+//    //                                tag:TAG_TRAMPOLINE];
+//    
+//    //_trampoline = (QQSpriteTrampoline*)[loader createSpriteWithName:@"trampoline_red" fromSheet:@"assets" fromSHFile:@"objects" tag:TAG_TRAMPOLINE];
+//    //[self addChild:_trampoline];
+//    
+//    
+//    BOOL inAppPurchase = NO;
+//    
+//    QQSpriteTrampoline *trampoline = (QQSpriteTrampoline*)[loader spriteWithUniqueName:@"trampoline"];
+//    QQSpriteTrampoline *trampoline_red = (QQSpriteTrampoline*)[loader spriteWithUniqueName:@"trampoline_red"];
+//    
+//    if(inAppPurchase == YES) {
+//        [trampoline removeSelf];
+//        _trampoline = trampoline_red;
+//    } else {
+//        [trampoline_red removeSelf];
+//        _trampoline = trampoline;
+//    }
+//    
+//    [_trampoline setInitialRestitution];
+//}
+
 -(void)setupTrampoline {
     _trampoline = (QQSpriteTrampoline*)[loader spriteWithUniqueName:@"trampoline"];
     [_trampoline setInitialRestitution];
 }
+
+//-(void)setupTrampoline {
+//    QQSpriteTrampoline *trampoline = (QQSpriteTrampoline*)[loader spriteWithUniqueName:@"trampoline"];
+//    CGPoint position = [trampoline position];
+//    [trampoline removeSelf];
+//
+//    _trampoline = (QQSpriteTrampoline*)[loader createSpriteWithName:@"trampoline"
+//                                                          fromSheet:@"assets"
+//                                                         fromSHFile:@"objects"
+//                                                                tag:TAG_TRAMPOLINE
+//                                                             parent:self];
+//    [_trampoline transformPosition:position];
+//    [_trampoline setZOrder:0];
+//    
+//    b2Joint* joint;
+//    b2Body* bodyTrampoline = [_trampoline body];
+//    LHSprite *floor = [loader spriteWithUniqueName:@"floor"];
+//    b2Body* bodyFloor = [floor body];
+//	if(0 != bodyTrampoline && 0 != bodyFloor) {
+//        b2PrismaticJointDef jointDef;
+//
+//        b2Vec2 axis(1, 0);
+//        axis.Normalize();
+//    
+//        b2Vec2 posA = bodyFloor->GetWorldCenter();
+//        jointDef.Initialize(bodyTrampoline, bodyFloor, posA, axis);
+//        
+//        if(0 != _world){
+//            joint = (b2PrismaticJoint*)_world->CreateJoint(&jointDef);
+//        }
+//    
+//    }
+//	
+//    [_trampoline setInitialRestitution];
+//}
 
 -(void)setupBarShaker {
     NSArray *barsShaker = [loader spritesWithTag:TAG_BAR_SHAKER];
@@ -1116,7 +1564,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     if(nil != beam1 && nil != beam2) {
         //CCLOG(@"BEAM IS in the level");
         
-        _particleBeam1 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
+        _particleBeam1 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam4.plist"];
         CGPoint particlePosition;
         particlePosition.x = [beam1 position].x;
         particlePosition.y = [beam1 position].y;
@@ -1125,7 +1573,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [_particleBeam1 setPosition:particlePosition];
         [self addChild:_particleBeam1];
         
-        _particleBeam2 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam.plist"];
+        _particleBeam2 = [[CCParticleSystemQuad alloc] initWithFile:@"particleBeam4.plist"];
         CGPoint particlePosition2;
         particlePosition2.x = [beam2 position].x;
         particlePosition2.y = [beam2 position].y;
@@ -1143,7 +1591,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _earRight = [loader spriteWithUniqueName:@"bunny_ear_right"];
     _handLeft = [loader spriteWithUniqueName:@"bunny_hand_left"];
     _handRight = [loader spriteWithUniqueName:@"bunny_hand_right"];
-
+    
     /*
     [_earLeft body]->SetGravityScale(0);
     [_earRight body]->SetGravityScale(0);
@@ -1158,7 +1606,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
      */
     
     [_player makeStatic];
-    [_player setInitialPositionWithLoader:loader];
+    [_player setInitialPositionWithLoader:loader withLayer:self];
 }
 
 -(void)setupDebugDraw {
@@ -1247,7 +1695,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //[_spriteWatch setPosition:CGPointMake([_labelCountdown position].x - _labelCountdown.contentSize.width/2, [_labelCountdown position].y)];
     
     CGFloat positionWidth;
-    if(_countDown > 100) { positionWidth = 3 * 16; }
+    if(_countDown >= 100) { positionWidth = 3 * 16; }
     else if (_countDown > 10) { positionWidth = 2 * 16; }
     else { positionWidth = 1 * 16; }
     
@@ -1308,38 +1756,62 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+    [_trampoline removeSelf];
+    //[_myAdmob dismissAdView];
+    //[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
     //[[NSNotificationCenter defaultCenter] addObserver:self
     //                                         selector:@selector(resumeLevel:)
     //                                             name:@"resumeLevel" object:nil];
     
     //[[NSNotificationCenter defaultCenter] removeObserver:self
     //name:@"resumeLevel" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+        
+    _noMoreCollisionHandling = true;
+
+    if(nil != _particleSpring) [_particleSpring release];
     if(nil != _particleLeaves) [_particleLeaves release];
     if(nil != _particleSnow) [_particleSnow release];
     if(nil != _particleSun) [_particleSun release];
     if(nil != _particleRain) [_particleRain release];
     if(nil != _particleBeam1) [_particleBeam1 release];
     if(nil != _particleBeam2) [_particleBeam2 release];
-    //if(nil != _pauseLayer) [_pauseLayer release];
+
     
-    NSLog(@"Level::dealloc");
-    //[self saveGameState];
-    //[_dictionaryHighScore release];
-     
+    NSLog(@"loaderJoystick: %@", loaderJoystick);
+    if(nil != loaderJoystick) {
+        [loaderJoystick removeAllPhysics];
+        [loaderJoystick release];
+    }
+    
+    
+
+    
     if(nil != loader) {
         //NSArray* allSprites = [loader allSprites];
         //for (LHSprite* aSprite in allSprites) {
-        //    [aSprite makeNoPhysics];
+        //    NSLog(@"_ makeNoPhysics");
+            //[aSprite makeNoPhysics];
+        //    [aSprite removeSelf];
         //}
+        
+        //NSArray *balloonsNormal = [loader spritesWithTag:TAG_BALLOON];
+        //for(QQSpriteBalloon *balloon in balloonsNormal) {
+        //    [balloon removeSelf];
+        //}
+        
         [loader removeAllPhysics];
         [loader release];
+        
+        [_loaderHelpLabel release];
     }
     
-    if(nil != loaderJoystick)
-        [loaderJoystick release];
+    NSLog(@".................... 2. numberOfInstacnes: %d", [QQSpriteBalloon numberOfInstances]);
+    
+    //while ([QQSpriteBalloon numberOfInstances] != 3 + (3 - _balloonsDestroyed)) {
+    //    NSLog(@".................... .. numberOfInstacnes: %d, _balloonsDestroyed: %d", [QQSpriteBalloon numberOfInstances], _balloonsDestroyed);
+    //}
+
 
 	delete _world;
 	_world = NULL;
@@ -1351,9 +1823,16 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //QQQ[[CCDirector sharedDirector] resume];
     
     //[[GameState sharedInstance] setCurrnetSceneIsLevel:NO];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 
 	[super dealloc];    // don't forget to call "super dealloc"
-
+    NSLog(@"___ ENDE");
+    NSLog(@".................... 3. numberOfInstacnes: %d", [QQSpriteBalloon numberOfInstances]);
 }
+
+
 @end
 ////////////////////////////////////////////////////////////////////////////////
+
+
