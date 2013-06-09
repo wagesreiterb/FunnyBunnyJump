@@ -33,6 +33,52 @@
     _visible = !_visible;
 }
 
+-(NSInteger)reactToTouch:(b2World*)world
+               withLayer:(CCLayer*)layer
+               withScore:(NSInteger)score_
+           withCountdown:(float)countdown_{
+    
+    if([self wasTouched]) {
+        if(!_visible) {
+            int explodingEffect = 0;
+            QQBalloonClass* myInfo = (QQBalloonClass*)[self userInfo];
+            CCParticleSystem *particle;
+            if(myInfo != nil){
+                explodingEffect = [myInfo explodingEffect];
+                if(explodingEffect == 1) {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon2.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon_big.wav"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"fireball.wav"];
+                } else {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+                }
+            } else {
+                particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            }
+            [particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:particle];
+            
+            //_wasTouched = FALSE;
+            [self setWasTouched:FALSE];
+            [self body]->SetActive(false);
+            [self removeSelf];
+            
+            
+            int scoreMultiplier = 1;
+            QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
+            if(myScoreInfo != nil){
+                scoreMultiplier = [myScoreInfo scoreMultiplier];
+            }
+            score_ += countdown_ * scoreMultiplier;
+        }
+    }
+    return score_;
+}
+
+@end
+
 //-(void)reactToTouch:(b2World*)world withLayer:(CCLayer*)layer {
 //    if(wasTouched) {
 //        CCLOG(@"aaa reactToTouch");
@@ -59,10 +105,10 @@
 //            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
 //            [layer addChild:_particle];
 //            [_particle release];
-//            
+//
 //            wasTouched = FALSE;
 //            [self body]->SetActive(false);
-//            
+//
 //            [self removeSelf];
 //        }
 //    }
@@ -77,57 +123,14 @@
 //            [layer addChild:_particle];
 //            [_particle release];
 //            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-//            
+//
 //            wasTouched = FALSE;
 //            [self body]->SetActive(false);
-//            
+//
 //            [self removeSelf];
 //        }
 //    }
 //}
-
--(NSInteger)reactToTouch:(b2World*)world
-               withLayer:(CCLayer*)layer
-               withScore:(NSInteger)score_
-           withCountdown:(float)countdown_{
-    
-    if(wasTouched) {
-        if(!_visible) {
-            int explodingEffect = 0;
-            QQBalloonClass* myInfo = (QQBalloonClass*)[self userInfo];
-            if(myInfo != nil){
-                explodingEffect = [myInfo explodingEffect];
-                if(explodingEffect == 1) {
-                    _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon2.plist"];
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon_big.wav"];
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"fireball.wav"];
-                } else {
-                    _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-                }
-            } else {
-                _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-                [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-            }
-            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
-            [layer addChild:_particle];
-            [_particle release];
-            
-            wasTouched = FALSE;
-            [self body]->SetActive(false);
-            [self removeSelf];
-            
-            
-            int scoreMultiplier = 1;
-            QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
-            if(myScoreInfo != nil){
-                scoreMultiplier = [myScoreInfo scoreMultiplier];
-            }
-            score_ += countdown_ * scoreMultiplier;
-        }
-    }
-    return score_;
-}
 
 //-(NSInteger)reactToTouch:(b2World*)world
 //               withLayer:(CCLayer*)layer
@@ -154,4 +157,4 @@
 //    return score_;
 //}
 
-@end
+

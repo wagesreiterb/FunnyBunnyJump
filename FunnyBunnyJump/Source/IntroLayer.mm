@@ -193,25 +193,21 @@
     if([[GameState sharedInstance] tempHighScore] == nil) {
         NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
         [[GameState sharedInstance] setTempHighScore:tmpDict];
-        [tmpDict release];
     }
     
     if([[GameState sharedInstance] tempLevelPassed] == nil) {
         NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
         [[GameState sharedInstance] setTempLevelPassed:tmpDict];
-        [tmpDict release];
     }
     
     if([[GameState sharedInstance] tempLevelPassedInTime] == nil) {
         NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
         [[GameState sharedInstance] setTempLevelPassedInTime:tmpDict];
-        [tmpDict release];
     }
     
     if([[GameState sharedInstance] tempLevelPassedNoLivesLost] == nil) {
         NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc] init];
         [[GameState sharedInstance] setTempLevelPassedNoLivesLost:tmpDict];
-        [tmpDict release];
     }
     
     

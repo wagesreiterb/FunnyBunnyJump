@@ -275,13 +275,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{572, 2}, {568, 384}}</string>
+								<string>{{2, 388}, {568, 384}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -815,13 +815,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{980, 390}, {100, 20}}</string>
+								<string>{{514, 460}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -890,13 +890,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1004, 425}, {18.75, 29}}</string>
+								<string>{{801, 426}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1285,7 +1285,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{590, 496}, {16, 16}}</string>
+								<string>{{891, 496}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1360,7 +1360,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{590, 496}, {16, 16}}</string>
+								<string>{{891, 496}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1406,9 +1406,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1421,10 +1423,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1459,7 +1463,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1505,9 +1509,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1520,10 +1526,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1558,7 +1566,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1604,9 +1612,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1619,10 +1629,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1657,7 +1669,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1703,9 +1715,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1718,10 +1732,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1756,7 +1772,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1802,9 +1818,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1817,10 +1835,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1855,7 +1875,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1901,9 +1921,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1916,10 +1938,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1954,7 +1978,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2000,9 +2024,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2015,10 +2041,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2053,7 +2081,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2099,9 +2127,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2114,10 +2144,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>8</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2152,7 +2184,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{281, 489}, {21.75, 30}}</string>
+								<string>{{608, 484}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2227,7 +2259,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{980, 299}, {87, 13}}</string>
+								<string>{{471, 331}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2302,7 +2334,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{980, 299}, {87, 13}}</string>
+								<string>{{471, 331}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2377,7 +2409,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2452,7 +2484,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2527,7 +2559,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2602,7 +2634,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2677,7 +2709,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2752,7 +2784,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2827,7 +2859,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2902,7 +2934,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{383, 488}, {21.75, 30}}</string>
+								<string>{{651, 454}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2977,7 +3009,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{980, 299}, {87, 13}}</string>
+								<string>{{471, 331}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3052,7 +3084,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{4, 392}, {154.5, 112.5}}</string>
+								<string>{{167, 390}, {154.5, 112.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3127,7 +3159,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{839, 392}, {137, 114}}</string>
+								<string>{{494, 182}, {137, 114}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3232,7 +3264,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{917, 2}, {568, 73}}</string>
+								<string>{{912, 2}, {568, 73}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3406,10 +3438,12 @@
 					<real>2</real>
 					<key>blinkModulo</key>
 					<real>0.0</real>
+					<key>explodingEffect</key>
+					<real>0.0</real>
 					<key>movingStartDelay</key>
 					<real>2</real>
-					<key>score</key>
-					<real>5</real>
+					<key>scoreMultiplier</key>
+					<real>1</real>
 				</dict>
 			</dict>
 			<dict>

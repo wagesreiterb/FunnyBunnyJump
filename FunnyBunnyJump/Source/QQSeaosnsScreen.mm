@@ -110,7 +110,6 @@ static CCScrollLayer *myScroller;
     // finally add the scroller to your scene
     [scene addChild:scroller];
     
-    [scroller release];
     
     myScroller = scroller;
     
@@ -128,7 +127,7 @@ static CCScrollLayer *myScroller;
         [self setupWorld];
         //[self setupLevelHelper];
         [self setupDebugDraw];
-        self.isTouchEnabled = YES;  // Add at bottom of init
+        //self.isTouchEnabled = YES;  // Add at bottom of init
 	}
 	return self;
 }
@@ -142,8 +141,10 @@ static CCScrollLayer *myScroller;
 
 
 -(void) setupLevelHelper:(NSString*)withLevel {
-    self.isTouchEnabled = YES;
-    self.isAccelerometerEnabled = YES;
+    [self setTouchEnabled:YES];
+    [self setAccelerometerEnabled:NO];
+    //self.isTouchEnabled = YES;
+    //self.isAccelerometerEnabled = YES;
     //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
     [self schedule: @selector(tick:) interval:1.0f/70.0f];
 
@@ -199,7 +200,7 @@ static CCScrollLayer *myScroller;
 		if (b->GetUserData() != NULL)
         {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			CCSprite *myActor = (CCSprite*)b->GetUserData();
+			CCSprite *myActor = (__bridge CCSprite*)b->GetUserData();
             
             if(myActor != 0)
             {
@@ -322,12 +323,10 @@ static CCScrollLayer *myScroller;
 - (void) dealloc
 {
     if(nil != loader) {
-        [loader release];
         loader = nil;
     }
     
     if(nil != _loader1) {
-        [_loader1 release];
         _loader1 = nil;
     }
     
@@ -336,7 +335,7 @@ static CCScrollLayer *myScroller;
 	
   	delete m_debugDraw;
     
-	[super dealloc];    // don't forget to call "super dealloc"
+	    // don't forget to call "super dealloc"
 }
 @end
 ////////////////////////////////////////////////////////////////////////////////

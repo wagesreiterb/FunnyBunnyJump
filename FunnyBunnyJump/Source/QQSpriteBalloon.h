@@ -13,13 +13,12 @@
 #import "QQBalloonClass.h"
 
 @interface QQSpriteBalloon : LHSprite {
-    BOOL wasTouched;
+    //BOOL wasTouched;
     enum whatToDo {REMOVE, EXPLODE, FADEOUT};
     enum whatToDo currentToDo;
-    CCParticleSystem *_particle;
 }
 
-+(NSUInteger)numberOfInstances;
+//+(NSUInteger)numberOfInstances;
 
 @property BOOL wasTouched;
 @property enum whatToDo currentToDo;

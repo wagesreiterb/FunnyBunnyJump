@@ -21,7 +21,7 @@ static GCHelper *sharedHelper = nil;
 +(GCHelper*)sharedInstance {
     @synchronized([GCHelper class]) {
         if(!sharedHelper) {
-            sharedHelper = [loadData(@"GameCenterData") retain];
+            sharedHelper = loadData(@"GameCenterData");
             if(!sharedHelper) {
                 [[self alloc]
                  initWithScoresToReport:[NSMutableArray array]
@@ -105,7 +105,7 @@ static GCHelper *sharedHelper = nil;
 
 - (void)reportScore:(NSString *)identifier score:(int)rawScore {
     NSLog(@"GCHelper::reportScore");
-    GKScore *score = [[[GKScore alloc] initWithCategory:identifier] autorelease];
+    GKScore *score = [[GKScore alloc] initWithCategory:identifier];
     
     score.value = rawScore;
     [scoresToReport addObject:score];
@@ -116,8 +116,8 @@ static GCHelper *sharedHelper = nil;
 }
 
 -(void)reportAchievements:(NSString *)identifier percentComplete:(double)percentComplete {
-    GKAchievement* achievement = [[[GKAchievement alloc]
-                                   initWithIdentifier:identifier] autorelease];
+    GKAchievement* achievement = [[GKAchievement alloc]
+                                   initWithIdentifier:identifier];
     achievement.percentComplete = percentComplete;
     [self save];
     
@@ -153,8 +153,8 @@ static GCHelper *sharedHelper = nil;
     NSString*scoreCategory = score.category;
     
     // Create a new temporary score with these values
-    GKScore *toReport = [[[GKScore alloc]
-                          initWithCategory:scoreCategory] autorelease];
+    GKScore *toReport = [[GKScore alloc]
+                          initWithCategory:scoreCategory];
     toReport.value = scoreValue;
     
     // Report the temporary score, delete the original on success

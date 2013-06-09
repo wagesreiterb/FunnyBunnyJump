@@ -10,18 +10,23 @@
 #import "LevelHelperLoader.h"
 #import "NSNotificationCenter+Utils.h"
 
+@class QQLevel;
+
 @interface QQPauseLayer : LHLayer {
     LevelHelperLoader *_loaderPause;
+    QQLevel *_mainLayer;
     
     LHSprite *_spriteBackButton;
     LHSprite *_spriteResumeButton;
     LHSprite *_spriteReloadButton;
     NSMutableArray *_arrayLoaders;
+    
+    BOOL isPauseLayerVisible;
 }
 
-+(NSUInteger)numberOfInstances;
++(id)sharedInstance;
 
--(void)pauseLevel:(LHLayer*)mainLayer withLevel:(id)level_;
+-(void)pauseLevel:(QQLevel*)mainLayer;
 -(void)disableTouchesWithLoader:(LevelHelperLoader*)loader;
 
 

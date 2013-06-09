@@ -151,7 +151,10 @@
 {
 	if( [navController_ visibleViewController] == director_ ) {
 		[director_ resume];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseLevel" object:nil];
+        
+        //Querika - der scheiss geht net gscheit
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDelegateResume" object:nil];
+        NSLog(@"||| Active");
     }
 }
 
@@ -163,8 +166,10 @@
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
-	if( [navController_ visibleViewController] == director_ )
+	if( [navController_ visibleViewController] == director_ ) {
 		[director_ startAnimation];
+        NSLog(@"||| Foreground");
+    }
 }
 
 // application will be killed
@@ -185,12 +190,5 @@
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
-- (void) dealloc
-{
-	[window_ release];
-	[navController_ release];
-	
-	[super dealloc];
-}
 @end
 

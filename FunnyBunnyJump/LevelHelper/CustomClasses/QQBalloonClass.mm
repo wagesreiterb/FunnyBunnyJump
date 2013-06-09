@@ -16,16 +16,6 @@
 @synthesize scoreMultiplier;
 
 
--(void) dealloc{
-#if __has_feature(objc_arc) && __clang_major__ >= 3
-
-#else
-
-
-[super dealloc];
-
-#endif // __has_feature(objc_arc)
-}
 
 +(QQBalloonClass*) customClassInstance{
 #if __has_feature(objc_arc) && __clang_major__ >= 3

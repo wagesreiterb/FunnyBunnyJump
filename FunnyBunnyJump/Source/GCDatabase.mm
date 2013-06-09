@@ -31,10 +31,10 @@ id loadData(NSString * filename) {
     NSString *filePath = pathForFile(filename);
     NSLog(@"load: filePath: %@", filePath);
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        NSData *data = [[[NSData alloc]
-                         initWithContentsOfFile:filePath] autorelease];
-        NSKeyedUnarchiver *unarchiver = [[[NSKeyedUnarchiver alloc]
-                                          initForReadingWithData:data] autorelease];
+        NSData *data = [[NSData alloc]
+                         initWithContentsOfFile:filePath];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                          initForReadingWithData:data];
         id retval = [unarchiver decodeObjectForKey:@"Data"];
         [unarchiver finishDecoding];
         NSLog(@"+++ loadData");
@@ -66,8 +66,8 @@ id loadData(NSString * filename) {
 }
 
 void saveData(id theData, NSString *filename) {
-    NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
-    NSKeyedArchiver *archiver = [[[NSKeyedArchiver alloc] initForWritingWithMutableData:data] autorelease];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:theData forKey:@"Data"];
     [archiver finishEncoding];
     

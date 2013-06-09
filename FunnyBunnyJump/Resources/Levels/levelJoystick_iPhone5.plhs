@@ -138,7 +138,7 @@
 		</dict>
 	</array>
 	<key>LHVersion</key>
-	<string>1.4.987</string>
+	<string>1.4.989</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -296,13 +296,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{845, 446}, {18.75, 22}}</string>
+								<string>{{976, 298}, {18.75, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -371,13 +371,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{845, 446}, {18.75, 22}}</string>
+								<string>{{976, 298}, {18.75, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -446,13 +446,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{845, 446}, {18.75, 22}}</string>
+								<string>{{976, 298}, {18.75, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -521,7 +521,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{108, 346}, {32, 32}}</string>
+								<string>{{897, 193}, {32, 32}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -596,7 +596,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{891, 496}, {16, 16}}</string>
+								<string>{{1002, 300}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -729,13 +729,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{280, 182}, {210.75, 145.5}}</string>
+								<string>{{182, 4}, {210.75, 145.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -804,13 +804,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{834, 424}, {18.5, 22}}</string>
+								<string>{{1005, 274}, {18.5, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -879,13 +879,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{834, 424}, {18.5, 22}}</string>
+								<string>{{1005, 274}, {18.5, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -954,13 +954,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{834, 424}, {18.5, 22}}</string>
+								<string>{{1005, 274}, {18.5, 22}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1029,7 +1029,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{891, 496}, {16, 16}}</string>
+								<string>{{1002, 300}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1104,13 +1104,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{581, 443}, {12.75, 16}}</string>
+								<string>{{966, 247}, {12.75, 16}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1179,7 +1179,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{325, 380}, {76, 72.75}}</string>
+								<string>{{572, 365}, {76, 72.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1254,7 +1254,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{325, 380}, {76, 72.75}}</string>
+								<string>{{572, 365}, {76, 72.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1329,7 +1329,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{891, 496}, {16, 16}}</string>
+								<string>{{1002, 300}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1404,7 +1404,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{325, 380}, {76, 72.75}}</string>
+								<string>{{572, 365}, {76, 72.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1479,7 +1479,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{325, 380}, {76, 72.75}}</string>
+								<string>{{572, 365}, {76, 72.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1554,13 +1554,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{494, 300}, {84, 80.75}}</string>
+								<string>{{311, 525}, {84, 80.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1629,13 +1629,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{494, 300}, {84, 80.75}}</string>
+								<string>{{311, 525}, {84, 80.75}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1773,13 +1773,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1007, 301}, {87, 13}}</string>
+								<string>{{512, 465}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1848,7 +1848,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{631, 428}, {21.75, 30}}</string>
+								<string>{{933, 212}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1923,19 +1923,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{871, 333}, {46.75, 45}}</string>
+								<string>{{939, 53}, {46.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{-16.5, 68.75}</string>
+								<string>{490.5, 82.75}</string>
 								<key>Scale</key>
 								<string>{0.74229055643081665, 0.74229055643081665}</string>
 								<key>SpriteSize</key>

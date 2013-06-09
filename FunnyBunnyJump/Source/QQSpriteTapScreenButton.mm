@@ -10,9 +10,6 @@
 
 @implementation QQSpriteTapScreenButton
 
--(void) dealloc{
-	[super dealloc];
-}
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownSpriteTapScreenButtonInit{
     //initialize your member variabled here
@@ -31,11 +28,11 @@
 }
 //------------------------------------------------------------------------------
 +(id)spriteWithDictionary:(NSDictionary*)dictionary{
-    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+    return [[self alloc] initWithDictionary:dictionary];
 }
 //------------------------------------------------------------------------------
 +(id)batchSpriteWithDictionary:(NSDictionary*)dictionary batch:(LHBatch*)batch{
-    return [[[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch] autorelease];
+    return [[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch];
 }
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{

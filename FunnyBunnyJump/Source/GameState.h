@@ -30,21 +30,25 @@
 @property (assign) BOOL completedSeasonWinter2012;
 
 @property (copy) NSDictionary *highScore;
-@property (retain) NSMutableDictionary *tempHighScore;
+@property (strong) NSMutableDictionary *tempHighScore;
 
 @property (copy) NSDictionary *levelLocked;
-@property (retain) NSMutableDictionary *tempLevelLocked;
+@property (strong) NSMutableDictionary *tempLevelLocked;
 
 @property (copy) NSDictionary *levelPassed;
-@property (retain) NSMutableDictionary *tempLevelPassed;
+@property (strong) NSMutableDictionary *tempLevelPassed;
 @property (copy) NSDictionary *levelPassedInTime;
-@property (retain) NSMutableDictionary *tempLevelPassedInTime;
+@property (strong) NSMutableDictionary *tempLevelPassedInTime;
 @property (copy) NSDictionary *levelPassedNoLivesLost;
-@property (retain) NSMutableDictionary *tempLevelPassedNoLivesLost;
+@property (strong) NSMutableDictionary *tempLevelPassedNoLivesLost;
 
 @property (getter = isSoundEnabled) BOOL soundEnabled;
 @property (getter = isMusicEnabled) BOOL musicEnabled;
 @property BOOL gameOnceStarted;
+
+//@property BOOL reloadLevel;
+//@property BOOL backLevel;
+//@property BOOL levelPaused;
 
 //@property BOOL gamePausedByTurnOff;
 //@property BOOL gamePausedGameOver;

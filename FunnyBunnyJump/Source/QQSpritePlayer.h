@@ -91,8 +91,8 @@
 -(void)beam;
 -(void)beamWithLoader:(LevelHelperLoader*)loader_;
 -(void)setPause:(BOOL)pause;
--(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight
-         withHandLeft:(LHSprite*)handLeft withHandRight:(LHSprite*)handRight;
+//-(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight
+//         withHandLeft:(LHSprite*)handLeft withHandRight:(LHSprite*)handRight;
 -(void)upOrDownActionWithLoader:(LevelHelperLoader*)loader_;
 -(void)removeSelfWithLoader:(LevelHelperLoader*)loader_;
 -(void)setInitialPositionWithLoader:(LevelHelperLoader*)loader_;

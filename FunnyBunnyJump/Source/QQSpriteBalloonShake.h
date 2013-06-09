@@ -15,6 +15,6 @@
 
 -(void)startMoving;
 -(void)tick:(ccTime)dt;
--(void)startMovingWithDelay:(int)delay;
+-(void)startMovingWithDelay:(float)delay;
 
 @end

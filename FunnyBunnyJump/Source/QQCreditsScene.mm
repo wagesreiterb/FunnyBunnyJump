@@ -157,7 +157,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 		if (b->GetUserData() != NULL)
         {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			CCSprite *myActor = (CCSprite*)b->GetUserData();
+			CCSprite *myActor = (__bridge CCSprite*)b->GetUserData();
             
             if(myActor != 0)
             {
@@ -240,16 +240,15 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 ////////////////////////////////////////////////////////////////////////////////
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
-{    
-    if(nil != _loader)
-        [_loader release];
+{
+    _loader = nil;
     
 	delete _world;
 	_world = NULL;
 	
   	delete m_debugDraw;
     
-	[super dealloc];    // don't forget to call "super dealloc"
+	    // don't forget to call "super dealloc"
 }
 
 @end

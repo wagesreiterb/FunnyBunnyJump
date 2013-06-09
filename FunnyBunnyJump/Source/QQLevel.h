@@ -40,15 +40,14 @@
 
 
 // HelloWorld Layer
-@interface QQLevel : LHLayer
-{
+@interface QQLevel : LHLayer {
 	b2World* _world;
 	GLESDebugDraw *m_debugDraw;
     BOOL _noMoreCollisionHandling;
     int _balloonsDestroyed;
     
-    BOOL _backLevel;
-    BOOL _reloadLevel;
+//    BOOL _backLevel;
+//    BOOL _reloadLevel;
     
     
     BOOL _explodeIt;
@@ -66,7 +65,18 @@
         levelPausedLifeLost,
         levelGameOver};
     
-    enum levelStates _levelState;
+    enum stateMachine {
+        init,
+        helpLabels,
+        tapScreen,
+        bunnyJump,
+        running,
+        paused,
+        liveLost,
+        gameOver
+    };
+    
+    //enum levelStates _levelState;
     BOOL _gameOverLevelPassed;
     
     BOOL _highScoreEffectAlreadyPlayed;
@@ -75,13 +85,10 @@
     //Layers
 	LevelHelperLoader* loader;
     LevelHelperLoader* loaderJoystick;
-    LevelHelperLoader* loaderPause;
     LevelHelperLoader* _loaderOverlayGameOver;
-    
-    LevelHelperLoader* loaderParallaxClouds;
     LevelHelperLoader* _loaderHelpLabel;
+    
     LHSprite* _helpLabel;
-    //LHParallaxNode* _parallaxClouds;
 
     //BOOL pause;
     BOOL _levelStarted;
@@ -104,12 +111,6 @@
     LHSprite *_handLeft, *_handRight;
     
     LHSprite *_spriteWatch;
-    
-    //NSArray *_balloons;
-    //NSArray *_stars;
-    //NSArray *_testinger;
-    
-    //NSArray *myColors;
     
     CCParticleSystem *_particleBeam1;
     CCParticleSystem *_particleBeam2;
@@ -146,13 +147,29 @@
     
     QQAdmob *_myAdmob;
     BOOL redTrampolineActive;
+    
+    BOOL _cleanupRequired;
+    float _cleanupInXMilliseconds;
+    
+    NSArray *_balloonsNormal;
+    
+    //BOOL _myCleanUp;
+    int _bled;
 }
 
-
+@property enum levelStates levelState;
+@property enum stateMachine myLevelState;
+@property BOOL backLevel;
+@property BOOL reloadLevel;
+@property BOOL myCleanUp;
 
 // returns a Scene that contains the HelloWorld as the only child
 +(id)scene;
+-(void)disableTouchesForPause:(BOOL)touchDisabled;
 -(void)disableTouches;
+-(void)enableTouches;
+-(void)makeObjectsStatic;
+-(void)changeLevelStatus:(stateMachine)levelStatus_ withActionRequired:(BOOL)actionRequired;
 //+(id)scene:(NSString*)level;
 //-(void)setupLevelHelper;
 //-(void)setupDebugDraw;

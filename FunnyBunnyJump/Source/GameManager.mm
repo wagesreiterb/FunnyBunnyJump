@@ -76,10 +76,6 @@ static GameManager* _sharedGameManager = nil;
             sceneToRun =[QQCreditsScene scene];
             break;
             
-        case kHelpScreen:
-            sceneToRun =[QQHelp scene];
-            break;
-            
         case kLevel2012001: {
             //NSString *fullLevelName = @"level";
             //fullLevelName = [fullLevelName stringByAppendingString:seasonName];
@@ -258,21 +254,15 @@ static GameManager* _sharedGameManager = nil;
         [[CCDirector sharedDirector] runWithScene:sceneToRun];
     } else {
         //[[CCDirector sharedDirector] replaceScene:sceneToRun];
-        //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.3f
-        //                                                                                     scene:sceneToRun]];
-
-        //[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.75f
-        //                                                                                     scene:sceneToRun]];
-        
-        
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f
                                                                                      scene:sceneToRun]];
         
-        
-        
-        
         //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.75f
         //                                                                               scene:sceneToRun]];
+        //[[CCDirector sharedDirector] replaceScene:[CCTransitionTurnOffTiles transitionWithDuration:0.3f
+        //                                                                                     scene:sceneToRun]];
+        //[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.75f
+        //                                                                                     scene:sceneToRun]];
         
     }
     

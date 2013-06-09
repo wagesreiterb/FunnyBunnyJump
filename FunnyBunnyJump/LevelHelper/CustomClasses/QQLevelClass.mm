@@ -14,16 +14,6 @@
 @synthesize gravity;
 
 
--(void) dealloc{
-#if __has_feature(objc_arc) && __clang_major__ >= 3
-
-#else
-
-
-[super dealloc];
-
-#endif // __has_feature(objc_arc)
-}
 
 +(QQLevelClass*) customClassInstance{
 #if __has_feature(objc_arc) && __clang_major__ >= 3

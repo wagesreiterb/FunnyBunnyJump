@@ -10,9 +10,6 @@
 
 @implementation QQSpriteMusicButton
 
--(void) dealloc{
-	[super dealloc];
-}
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownSpriteMusicButtonInit{
     //initialize your member variabled here
@@ -34,11 +31,11 @@
 }
 //------------------------------------------------------------------------------
 +(id)spriteWithDictionary:(NSDictionary*)dictionary{
-    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+    return [[self alloc] initWithDictionary:dictionary];
 }
 //------------------------------------------------------------------------------
 +(id)batchSpriteWithDictionary:(NSDictionary*)dictionary batch:(LHBatch*)batch{
-    return [[[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch] autorelease];
+    return [[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch];
 }
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{
@@ -68,7 +65,6 @@
         CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
         [particle setPosition:CGPointMake([self position].x, [self position].y)];
         [layer addChild:particle];
-        [particle release];
         
         LHSprite* balloonMusic = [loader spriteWithUniqueName:@"musicButton"];
         LHSprite* balloonMusicOn = [LHSprite spriteWithName:@"balloonMusicOn"

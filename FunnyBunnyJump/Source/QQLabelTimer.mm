@@ -10,9 +10,6 @@
 
 @implementation QQLabelTimer
 
--(void) dealloc{
-	[super dealloc];
-}
 
 -(id) init {
     //wird das überhaupt benötigt?

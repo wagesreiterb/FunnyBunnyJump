@@ -9,8 +9,10 @@
 #import "LHLayer.h"
 #import "LevelHelperLoader.h"
 
+@class QQLevel;
+
 @interface QQGameOver : LHLayer {
-    LHLayer* _mainLayer;
+    QQLevel* _mainLayer;
     CGPoint _levelPassedPosition;
     CGPoint _levelPassedInTimePosition;
     CGPoint _levelPassedNoLivesLostPosition;
@@ -20,7 +22,7 @@
 }
 
 //-(void)pauseLevel:(LHLayer*)mainLayer;
--(void)showGameOverLayer:(LHLayer*)mainLayer
+-(void)showGameOverLayer:(QQLevel*)mainLayer
          withLevelPassed:(BOOL)levelPassed_
    withLevelPassedInTime:(BOOL)levelPassedInTime_
          withPlayerLives:(int)playerLives_

@@ -16,7 +16,7 @@
     _moveLeft = YES;
 }
 
--(void)startMovingWithDelay:(int)delay {
+-(void)startMovingWithDelay:(float)delay {
     float interval = 1.0f;
     //[self schedule: @selector(tick:) interval:interval];
     [self schedule: @selector(tick:) interval:interval repeat:-1 delay:delay];

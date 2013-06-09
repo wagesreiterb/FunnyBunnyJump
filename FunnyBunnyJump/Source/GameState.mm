@@ -25,9 +25,17 @@ static GameState *sharedInstance = nil;
 +(GameState*)sharedInstance {
     @synchronized([GameState class]) {
         if(!sharedInstance) {
-            sharedInstance = [loadData(@"GameState") retain];
+            NSLog(@"GameState::init - 3");
+            sharedInstance = loadData(@"GameState");
+            // Add an observer that will respond to loginComplete
+//            [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                     selector:@selector(appDelegateResume:)
+//                                                         name:@"appDelegateResume" object:nil];
+            
             if(!sharedInstance) {
+                NSLog(@"GameState::init - 4");
                 [[self alloc] init];
+                
             }
         }
         return sharedInstance;
@@ -96,7 +104,6 @@ static GameState *sharedInstance = nil;
         //[highScore retain];
         if(tempHighScore == nil) {
             tempHighScore = [NSMutableDictionary dictionaryWithDictionary:highScore];
-            [tempHighScore retain];
             //NSLog(@"---- READ tempHighScore %@", tempHighScore);
             //NSLog(@"---- READ tempHighScore retainCount %d", [tempHighScore retainCount]);
         }
@@ -104,18 +111,14 @@ static GameState *sharedInstance = nil;
         _levelLocked = [decoder decodeObjectForKey:@"levelLocked"];
         //NSLog(@"---- READ _levelLocked:%@", _levelLocked);
         _tempLevelLocked = [NSMutableDictionary dictionaryWithDictionary:_levelLocked];
-        [_tempLevelLocked retain];
         
         
         _levelPassed = [decoder decodeObjectForKey:@"levelPassed"];
         _tempLevelPassed = [NSMutableDictionary dictionaryWithDictionary:_levelPassed];
-        [_tempLevelPassed retain];
         _levelPassedInTime = [decoder decodeObjectForKey:@"levelPassedInTime"];
         _tempLevelPassedInTime = [NSMutableDictionary dictionaryWithDictionary:_levelPassedInTime];
-        [_tempLevelPassedInTime retain];
         _levelPassedNoLivesLost = [decoder decodeObjectForKey:@"levelPassedNoLivesLost"];
         _tempLevelPassedNoLivesLost = [NSMutableDictionary dictionaryWithDictionary:_levelPassedNoLivesLost];
-        [_tempLevelPassedNoLivesLost retain];
     }
     return self;
 }
@@ -417,7 +420,6 @@ static GameState *sharedInstance = nil;
     
     //if(_tempLevelLocked == nil) {
         _tempLevelLocked = [NSMutableDictionary dictionaryWithDictionary:_levelLocked];
-        [_tempLevelLocked retain];
     //}
     
     NSLog(@"+++ createLevelLockedDictionary %@", _tempLevelLocked);
@@ -536,7 +538,6 @@ static GameState *sharedInstance = nil;
                     nil];
 
     _tempLevelPassed = [NSMutableDictionary dictionaryWithDictionary:_levelPassed];
-    [_tempLevelPassed retain];
 }
 
 -(void)createLevelPassedInTimeDictionary {
@@ -652,7 +653,6 @@ static GameState *sharedInstance = nil;
                     nil];
     
     _tempLevelPassedInTime = [NSMutableDictionary dictionaryWithDictionary:_levelPassedInTime];
-    [_tempLevelPassedInTime retain];
 }
 
 -(void)createLevelPassedNoLivesLostDictionary {
@@ -768,7 +768,6 @@ static GameState *sharedInstance = nil;
                           nil];
     
     _tempLevelPassedNoLivesLost = [NSMutableDictionary dictionaryWithDictionary:_levelPassedNoLivesLost];
-    [_tempLevelPassedNoLivesLost retain];
 }
 
 /*
@@ -906,12 +905,18 @@ static GameState *sharedInstance = nil;
     return YES;
 }
 
--(void)dealloc {
-    [_tempLevelLocked release];
-    [_tempLevelPassed release];
-    [tempHighScore release];
-    //[_countDown release];
-    [super dealloc];
-}
+//+(void)appDelegateResume:(NSNotification *)note {
+//    NSLog(@"|-|-|-|-|-|   Received Notification - appDelegateResume: %@", self);
+//    if([[self sharedInstance] levelPaused]) {
+//        NSLog(@"|-|-|-|-|-|   IF");
+//        [[CCDirector sharedDirector] pause];
+//    }
+//    else {
+//        NSLog(@"|-|-|-|-|-|   ELSE");
+//        //_levelPaused = YES;
+//        //[[self sharedInstance] setLevelPaused:YES];
+//    }
+//}
+
 
 @end

@@ -41,13 +41,13 @@
 }
 
 /** The User's Facebook ID. */
-@property (readonly) NSString *fbid;
+@property (weak, readonly) NSString *fbid;
 /**
  * (Optional) The Facebook access token you recieved if are logged in.
  * This will help prevent rate limiting if your App becomes popular
  * and makes many requests for pictures.
  */
-@property (readonly) NSString *accessToken;
+@property (weak, readonly) NSString *accessToken;
 
 /**
  * Creates a new CCFBProfilePicture.

@@ -257,7 +257,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
             [particle setPosition:CGPointMake([musicButtonPlaceholder position].x, [musicButtonPlaceholder position].y)];
             [self addChild:particle];
-            [particle release];
             [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
             
             [_spriteMusic setPosition:[musicButtonPlaceholder position]];
@@ -351,7 +350,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
             [particle setPosition:CGPointMake([soundButtonPlaceholder position].x, [soundButtonPlaceholder position].y)];
             [self addChild:particle];
-            [particle release];
             [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
             
             [_spriteSound setPosition:[soundButtonPlaceholder position]];
@@ -378,7 +376,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
             
         [[app navController] presentModalViewController:leaderboardViewController animated:YES];
-        [leaderboardViewController release];
 
 
 }
@@ -392,7 +389,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 		
         [[app navController] presentModalViewController:achivementViewController animated:YES];
-        [achivementViewController release];
 
 }
 
@@ -466,7 +462,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 		if (b->GetUserData() != NULL)
         {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			CCSprite *myActor = (CCSprite*)b->GetUserData();
+            //CCSprite *myActor = (CCSprite*)b->GetUserData();
+			CCSprite *myActor = (__bridge CCSprite*)b->GetUserData();
             
             if(myActor != 0)
             {
@@ -551,15 +548,14 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     //_balloons = nil;
     //[_stars release];
     
-    if(nil != loader)
-        [loader release];
+    loader = nil;
 
 	delete _world;
 	_world = NULL;
 	
   	delete m_debugDraw;
     
-	[super dealloc];    // don't forget to call "super dealloc"
+	    // don't forget to call "super dealloc"
 }
 
 @end

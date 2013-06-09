@@ -30,7 +30,7 @@ LHSprite *_spriteNextButton;
 	[super onEnter];
 }
 
--(void)showGameOverLayer:(LHLayer*)mainLayer
+-(void)showGameOverLayer:(QQLevel*)mainLayer
          withLevelPassed:(BOOL)levelPassed_
    withLevelPassedInTime:(BOOL)levelPassedInTime_
          withPlayerLives:(int)playerLives_
@@ -64,12 +64,20 @@ LHSprite *_spriteNextButton;
     
     //vAlignment:kCCVerticalTextAlignmentCenter
     LHSprite* spriteLevelCleared = [_loaderGameOver spriteWithUniqueName:@"labelLevelCleared"];
+//    CCLabelTTF *_labelLevelCleared = [CCLabelTTF labelWithString:@""
+//                                       dimensions:CGSizeMake(200, 50)
+//                                       hAlignment:kCCTextAlignmentCenter
+//                                       vAlignment:kCCVerticalTextAlignmentCenter
+//                                         fontName:@"Marker Felt"
+//                                         fontSize:32];
+    
     CCLabelTTF *_labelLevelCleared = [CCLabelTTF labelWithString:@""
-                                       dimensions:CGSizeMake(200, 50)
-                                       hAlignment:kCCTextAlignmentCenter
-                                       vAlignment:kCCVerticalTextAlignmentCenter
-                                         fontName:@"Marker Felt"
-                                         fontSize:32];
+                                                fontName:@"Marker Felt"
+                                                fontSize:32
+                                              dimensions:CGSizeMake(200, 50)
+                                              hAlignment:kCCTextAlignmentCenter
+                                              vAlignment:kCCVerticalTextAlignmentCenter];
+    
     [_labelLevelCleared setColor:ccc3(0,0,0)];
     [_labelLevelCleared setPosition:spriteLevelCleared.position];
     
@@ -91,8 +99,9 @@ LHSprite *_spriteNextButton;
     
 
     if(levelPassed_ == YES && score_ > highScore_) {
-        //[self performSelector:@selector(tickNewHighScore:) withObject:nil afterDelay:_delayOfStarMove * 6];
-        [self.scheduler scheduleSelector:@selector(tickNewHighScore:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 6];
+        //[self.scheduler scheduleSelector:@selector(tickNewHighScore:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 6];
+        [self.scheduler scheduleSelector:@selector(tickNewHighScore:) forTarget:self interval:-1 repeat:1 delay:(_delayOfStarMove * 6) paused:NO];
+        
     }
     
     //level Passed
@@ -117,7 +126,8 @@ LHSprite *_spriteNextButton;
         //[self scheduleOnce:@selector(tickLevelPassed:) delay:_delayOfStarMove];
         
         //[self.scheduler scheduleSelector:(SEL) forTarget:(id) interval:(ccTime) paused:(BOOL) repeat:(uint) delay:(ccTime)];
-        [self.scheduler scheduleSelector:@selector(tickLevelPassed:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove];
+        //[self.scheduler scheduleSelector:@selector(tickLevelPassed:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove];
+        [self.scheduler scheduleSelector:@selector(tickLevelPassed:) forTarget:self interval:-1 repeat:1 delay:(_delayOfStarMove) paused:NO];
         
         NSLog(@"################### isRunning: %d", [self isRunning]);
         
@@ -138,10 +148,12 @@ LHSprite *_spriteNextButton;
         [starLevelPassedInTime setVisible:YES];
         LHSprite* levelPassedInTime = [_loaderGameOver spriteWithUniqueName:@"passedWithinTime"];
         _levelPassedInTimePosition = [levelPassedInTime position];
-        //[self performSelector:@selector(tickLevelPassedInTimeMoveStar:) withObject:nil afterDelay:_delayOfStarMove];
-        //[self performSelector:@selector(tickLevelPassedInTime:) withObject:nil afterDelay:_delayOfStarMove + _durationOfStarMove];
-        [self.scheduler scheduleSelector:@selector(tickLevelPassedInTimeMoveStar:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove];
-        [self.scheduler scheduleSelector:@selector(tickLevelPassedInTime:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove + _durationOfStarMove];
+
+        //[self.scheduler scheduleSelector:@selector(tickLevelPassedInTimeMoveStar:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove];
+        [self.scheduler scheduleSelector:@selector(tickLevelPassedInTimeMoveStar:) forTarget:self interval:-1 repeat:1 delay:(_delayOfStarMove) paused:NO];
+        
+        //[self.scheduler scheduleSelector:@selector(tickLevelPassedInTime:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove + _durationOfStarMove];
+        [self.scheduler scheduleSelector:@selector(tickLevelPassedInTime:) forTarget:self interval:-1 repeat:1 delay:_delayOfStarMove + _durationOfStarMove paused:NO];
     }
     
     //No Lives Lost
@@ -150,10 +162,12 @@ LHSprite *_spriteNextButton;
         [starLevelPassedWithNoLivesLost setVisible:YES];
         LHSprite* levelPassedWithNoLivesLost = [_loaderGameOver spriteWithUniqueName:@"passedWithNoLivesLost"];
         _levelPassedNoLivesLostPosition = [levelPassedWithNoLivesLost position];
-        //[self performSelector:@selector(tickLevelPassedNoLivesLostMoveStar:) withObject:nil afterDelay:_delayOfStarMove * 2];
-        //[self performSelector:@selector(tickLevelPassedNoLivesLost:) withObject:nil afterDelay:_delayOfStarMove * 2 + _durationOfStarMove];
-        [self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLostMoveStar:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2];
-        [self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLost:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2 + _durationOfStarMove];
+        
+        //[self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLostMoveStar:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2];
+        [self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLostMoveStar:) forTarget:self interval:-1 repeat:1 delay:(_delayOfStarMove * 2) paused:NO];
+        
+        //[self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLost:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2 + _durationOfStarMove];
+        [self.scheduler scheduleSelector:@selector(tickLevelPassedNoLivesLost:) forTarget:self interval:-1 repeat:1 delay:(_delayOfStarMove * 2 + _durationOfStarMove) paused:NO];
     }
     
 
@@ -161,8 +175,8 @@ LHSprite *_spriteNextButton;
         [_labelLevelCleared setString:@"Level Cleared!"];
     } else {
         [_labelLevelCleared setString:@"Level Failed!"];
-        //[self performSelector:@selector(tickLevelFailed:) withObject:nil afterDelay:_delayOfStarMove * 2];
-        [self.scheduler scheduleSelector:@selector(tickLevelFailed:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2];
+        //[self.scheduler scheduleSelector:@selector(tickLevelFailed:) forTarget:self interval:-1 paused:NO repeat:1 delay:_delayOfStarMove * 2];
+        [self.scheduler scheduleSelector:@selector(tickLevelFailed:) forTarget:self interval:-1 repeat:1 delay:_delayOfStarMove * 2 paused:NO];
     }
     
     [mainLayer addChild:_labelLevelCleared];
@@ -180,12 +194,19 @@ LHSprite *_spriteNextButton;
     
     
     //CCLabelTTF *labelScore = [CCLabelTTF labelWithString:textScore fontName:@"Marker Felt" fontSize:16];
+//    CCLabelTTF *labelScore = [CCLabelTTF labelWithString:textScore
+//                                                  dimensions:CGSizeMake(480, 50)
+//                                                  hAlignment:kCCTextAlignmentCenter
+//                                                  vAlignment:kCCVerticalTextAlignmentCenter
+//                                                    fontName:@"Marker Felt"
+//                                                    fontSize:48];
+    
     CCLabelTTF *labelScore = [CCLabelTTF labelWithString:textScore
+                                                    fontName:@"Marker Felt"
+                                                    fontSize:48
                                                   dimensions:CGSizeMake(480, 50)
                                                   hAlignment:kCCTextAlignmentCenter
-                                                  vAlignment:kCCVerticalTextAlignmentCenter
-                                                    fontName:@"Marker Felt"
-                                                    fontSize:48];
+                                                  vAlignment:kCCVerticalTextAlignmentCenter];
     
     [labelScore setColor:ccc3(0,0,0)];
     [labelScore setPosition:labelScoreSprite.position];
@@ -202,12 +223,19 @@ LHSprite *_spriteNextButton;
     textHighScore = [textHighScore stringByAppendingString: [NSString stringWithFormat:@"%d", highScore_]];
     
     //CCLabelTTF *labelHighScore = [CCLabelTTF labelWithString:textHighScore fontName:@"Marker Felt" fontSize:16];
+//    CCLabelTTF *labelHighScore = [CCLabelTTF labelWithString:textHighScore
+//                                                  dimensions:CGSizeMake(200, 50)
+//                                                  hAlignment:kCCTextAlignmentLeft
+//                                                  vAlignment:kCCVerticalTextAlignmentCenter
+//                                                    fontName:@"Marker Felt"
+//                                                    fontSize:16];
+    
     CCLabelTTF *labelHighScore = [CCLabelTTF labelWithString:textHighScore
+                                                    fontName:@"Marker Felt"
+                                                    fontSize:16
                                                   dimensions:CGSizeMake(200, 50)
                                                   hAlignment:kCCTextAlignmentLeft
-                                                  vAlignment:kCCVerticalTextAlignmentCenter
-                                                    fontName:@"Marker Felt"
-                                                    fontSize:16];
+                                                  vAlignment:kCCVerticalTextAlignmentCenter];
     
     [labelHighScore setColor:ccc3(0,0,0)];
     [labelHighScore setPosition:labelHighScoreSprite.position];
@@ -270,7 +298,6 @@ LHSprite *_spriteNextButton;
     CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingStar5.plist"];
     [particle setPosition:_levelPassedPosition];
     [_mainLayer addChild:particle];
-    [particle release];
     [[SimpleAudioEngine sharedEngine] playEffect:@"explosive-orchestra.mp3"];
 }
 -(void)tickLevelPassedInTime:(ccTime)dt {
@@ -278,7 +305,6 @@ LHSprite *_spriteNextButton;
     CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingStar5.plist"];
     [particle setPosition:_levelPassedInTimePosition];
     [_mainLayer addChild:particle];
-    [particle release];
     [[SimpleAudioEngine sharedEngine] playEffect:@"explosive-orchestra.mp3"];
 }
 -(void)tickLevelPassedNoLivesLost:(ccTime)dt {
@@ -286,7 +312,6 @@ LHSprite *_spriteNextButton;
     CCParticleSystemQuad* particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingStar5.plist"];
     [particle setPosition:_levelPassedNoLivesLostPosition];
     [_mainLayer addChild:particle];
-    [particle release];
     [[SimpleAudioEngine sharedEngine] playEffect:@"explosive-orchestra.mp3"];
 }
 
@@ -307,35 +332,35 @@ LHSprite *_spriteNextButton;
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
         //NSLog(@"***** touchBeganBackButton");
-        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        [self.scheduler unscheduleAllForTarget:self];
         //[[GameState sharedInstance] setGamePausedGameOver:NO];
         //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [[GameManager sharedGameManager] runSceneWithID:kLevelChooser];
-        [self release];
+        [_mainLayer setMyCleanUp:YES];
     }
 }
 
 -(void)touchBeganReloadButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"***** touchBeganReloadButton");
-        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        [self.scheduler unscheduleAllForTarget:self];
         //[[GameState sharedInstance] setGamePausedGameOver:NO];
         //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         [[GameManager sharedGameManager] runSceneWithID:[[GameManager sharedGameManager] currentScene]];
-        [self release];
+        [_mainLayer setMyCleanUp:YES];
     }
 }
 
 -(void)touchBeganNextButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        [self.scheduler unscheduleAllSelectorsForTarget:self];
+        [self.scheduler unscheduleAllForTarget:self];
         //[[GameState sharedInstance] setGamePausedGameOver:NO];
         //[[GameState sharedInstance] setGamePausedByTurnOff:NO];
         SceneTypes nextLevel = [[GameManager sharedGameManager] currentScene];
         nextLevel++;
         
         [[GameManager sharedGameManager] runSceneWithID:nextLevel];
-        [self release];
+        [_mainLayer setMyCleanUp:YES];
     }
 }
 
@@ -351,13 +376,12 @@ LHSprite *_spriteNextButton;
     [_mainLayer addChild:shade];
     
     
-    [_loaderGameOver release];
+    //ARC_QUE[_loaderGameOver release];
     _loaderGameOver = nil;
     
     [[GameState sharedInstance] save];
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volumeBackgroundMusic];
     
-    [super dealloc];
 }
 
 @end

@@ -36,11 +36,11 @@
 }
 //------------------------------------------------------------------------------
 +(id)spriteWithDictionary:(NSDictionary*)dictionary{
-    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+    return [[self alloc] initWithDictionary:dictionary];
 }
 //------------------------------------------------------------------------------
 +(id)batchSpriteWithDictionary:(NSDictionary*)dictionary batch:(LHBatch*)batch{
-    return [[[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch] autorelease];
+    return [[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch];
 }
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{
@@ -74,38 +74,65 @@
         [self body]->SetActive(false);
     } else if(_balloonCompletelyInflated == YES && reactToCollision == YES) {
         [self body]->SetActive(true);
-        if(wasTouched && _touchCount == 0) {
-            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
-            [layer addChild:_particle];
-            [_particle release];
+        int explodingEffect = 0;
+        CCParticleSystem *particle;
+        if(self.wasTouched && _touchCount == 0) {
+            QQBalloonClass* myInfo = (QQBalloonClass*)[self userInfo];
+            if(myInfo != nil){
+                explodingEffect = [myInfo explodingEffect];
+                if(explodingEffect == 1) {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon2.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon_big.wav"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"fireball.mp3"];
+                } else {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+                }
+            } else {
+                particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            }
+
+            [particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:particle];
             
-            wasTouched = FALSE;
-            
+            self.wasTouched = FALSE;
             [self body]->SetActive(false);
             [self removeSelf];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
-            
+
             int scoreMultiplier = 1;
             QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
             if(myScoreInfo != nil){
                 scoreMultiplier = [myScoreInfo scoreMultiplier];
             }
             score_ += countdown_ * scoreMultiplier;
-        } else if (wasTouched) {
+        } else if (self.wasTouched) {
             [self setReactToCollision:NO];
-            wasTouched = FALSE;
+            self.wasTouched = FALSE;
             _touchCount--;
             for(int i = 0; i <= _repeat; i++) {
                 [self transformScale:[self scale] * _scaleFactor / 100];
             }
             [self startInflateBalloon];
             
-            _particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
-            [_particle setPosition:CGPointMake([self position].x, [self position].y)];
-            [layer addChild:_particle];
-            [_particle release];
-            [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            QQBalloonClass* myInfo = (QQBalloonClass*)[self userInfo];
+            if(myInfo != nil){
+                explodingEffect = [myInfo explodingEffect];
+                if(explodingEffect == 1) {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon2.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon_big.wav"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"fireball.mp3"];
+                } else {
+                    particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+                }
+            } else {
+                particle = [[CCParticleSystemQuad alloc] initWithFile:@"particleExplodingBalloon.plist"];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
+            }
+            
+            [particle setPosition:CGPointMake([self position].x, [self position].y)];
+            [layer addChild:particle];
             
             int scoreMultiplier = 1;
             QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];

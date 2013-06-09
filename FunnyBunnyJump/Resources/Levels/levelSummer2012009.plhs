@@ -222,7 +222,7 @@
 		</dict>
 	</array>
 	<key>LHVersion</key>
-	<string>1.4.987</string>
+	<string>1.4.989</string>
 	<key>NODES_INFO</key>
 	<array>
 		<dict>
@@ -283,7 +283,7 @@
 								<key>IsRotated</key>
 								<false/>
 								<key>Locked</key>
-								<false/>
+								<true/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
@@ -388,7 +388,7 @@
 								<key>IsRotated</key>
 								<false/>
 								<key>Locked</key>
-								<false/>
+								<true/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
@@ -463,7 +463,7 @@
 								<key>IsRotated</key>
 								<false/>
 								<key>Locked</key>
-								<false/>
+								<true/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
@@ -538,7 +538,7 @@
 								<key>IsRotated</key>
 								<true/>
 								<key>Locked</key>
-								<false/>
+								<true/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
@@ -635,13 +635,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1012, 4}, {50, 7.5}}</string>
+								<string>{{236, 1012}, {50, 7.5}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -710,13 +710,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{980, 390}, {100, 20}}</string>
+								<string>{{719, 48}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -785,7 +785,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1004, 392}, {18.75, 29}}</string>
+								<string>{{1003, 37}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -860,13 +860,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1012, 96}, {17.5, 8.75}}</string>
+								<string>{{349, 613}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -935,13 +935,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1012, 96}, {17.5, 8.75}}</string>
+								<string>{{349, 613}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1010,7 +1010,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{4, 299}, {5.5, 6.5}}</string>
+								<string>{{529, 290}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1085,7 +1085,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{4, 299}, {5.5, 6.5}}</string>
+								<string>{{529, 290}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1180,7 +1180,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{249, 287}, {16, 16}}</string>
+								<string>{{944, 201}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1255,7 +1255,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{249, 287}, {16, 16}}</string>
+								<string>{{944, 201}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1330,13 +1330,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{296, 182}, {21.75, 30}}</string>
+								<string>{{636, 249}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1458,13 +1458,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{316, 250}, {21.75, 30}}</string>
+								<string>{{617, 223}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1586,13 +1586,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{316, 250}, {21.75, 30}}</string>
+								<string>{{617, 223}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1632,9 +1632,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1647,10 +1649,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1685,13 +1689,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{322, 182}, {21.75, 30}}</string>
+								<string>{{568, 245}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1731,9 +1735,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1746,10 +1752,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1784,13 +1792,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{322, 182}, {21.75, 30}}</string>
+								<string>{{568, 245}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1830,9 +1838,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1845,10 +1855,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1883,7 +1895,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{291, 284}, {21.75, 30}}</string>
+								<string>{{568, 271}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1929,9 +1941,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -1944,10 +1958,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -1982,7 +1998,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{291, 284}, {21.75, 30}}</string>
+								<string>{{568, 271}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2028,9 +2044,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2043,10 +2061,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2081,7 +2101,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{417, 487}, {21.75, 30}}</string>
+								<string>{{636, 274}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2127,9 +2147,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2142,10 +2164,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2180,7 +2204,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{417, 487}, {21.75, 30}}</string>
+								<string>{{636, 274}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2226,9 +2250,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2241,10 +2267,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2279,13 +2307,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{291, 216}, {21.75, 30}}</string>
+								<string>{{602, 274}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2325,9 +2353,11 @@
 									<false/>
 									<key>blinkModulo</key>
 									<false/>
+									<key>explodingEffect</key>
+									<true/>
 									<key>movingStartDelay</key>
 									<true/>
-									<key>score</key>
+									<key>scoreMultiplier</key>
 									<true/>
 								</dict>
 								<key>ClassName</key>
@@ -2340,10 +2370,12 @@
 									<real>0.25</real>
 									<key>blinkModulo</key>
 									<real>4</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
 									<key>movingStartDelay</key>
 									<real>2</real>
-									<key>score</key>
-									<real>5</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2378,13 +2410,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{291, 216}, {21.75, 30}}</string>
+								<string>{{602, 274}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2545,13 +2577,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1007, 301}, {87, 13}}</string>
+								<string>{{534, 191}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2598,173 +2630,6 @@
 							<dict/>
 							<key>PhysicProperties</key>
 							<dict>
-								<key>AngularDamping</key>
-								<real>0.0</real>
-								<key>AngularVelocity</key>
-								<real>0.0</real>
-								<key>CanSleep</key>
-								<true/>
-								<key>FixedRot</key>
-								<false/>
-								<key>GravityScale</key>
-								<real>1</real>
-								<key>HandledBySH</key>
-								<false/>
-								<key>IsBullet</key>
-								<false/>
-								<key>LinearDamping</key>
-								<real>0.0</real>
-								<key>LinearVelocity</key>
-								<string>{0, 0}</string>
-								<key>SH_ComplexShapes</key>
-								<array>
-									<dict>
-										<key>Category</key>
-										<integer>1</integer>
-										<key>Density</key>
-										<real>0.20000000298023224</real>
-										<key>Fixture</key>
-										<array>
-											<array>
-												<string>{42.25, -3.5}</string>
-												<string>{43.275000000000006, 2}</string>
-												<string>{34.25, 5.5}</string>
-											</array>
-											<array>
-												<string>{35.25, -6}</string>
-												<string>{42.25, -3.5}</string>
-												<string>{34.25, 5.5}</string>
-											</array>
-											<array>
-												<string>{-31.25, -6.2750000000000004}</string>
-												<string>{35.25, -6}</string>
-												<string>{34.25, 5.5}</string>
-											</array>
-											<array>
-												<string>{-31.25, -6.2750000000000004}</string>
-												<string>{34.25, 5.5}</string>
-												<string>{9.75, 6.5}</string>
-											</array>
-											<array>
-												<string>{-31.25, -6.2750000000000004}</string>
-												<string>{9.75, 6.5}</string>
-												<string>{-39.5, 5.75}</string>
-											</array>
-											<array>
-												<string>{-40.5, -5}</string>
-												<string>{-31.25, -6.2750000000000004}</string>
-												<string>{-39.5, 5.75}</string>
-											</array>
-											<array>
-												<string>{-40.5, -5}</string>
-												<string>{-39.5, 5.75}</string>
-												<string>{-43.475000000000001, 1.5}</string>
-											</array>
-											<array>
-												<string>{-43.475000000000001, 1.5}</string>
-												<string>{-43.5, -1.5}</string>
-												<string>{-40.5, -5}</string>
-											</array>
-										</array>
-										<key>Friction</key>
-										<real>0.20000000298023224</real>
-										<key>Group</key>
-										<integer>0</integer>
-										<key>IsCircle</key>
-										<false/>
-										<key>IsSensor</key>
-										<false/>
-										<key>LHHeight</key>
-										<real>13</real>
-										<key>LHShapePositionOffset</key>
-										<string>{-43.5, -6.5}</string>
-										<key>LHWidth</key>
-										<real>87</real>
-										<key>Mask</key>
-										<integer>65535</integer>
-										<key>Name</key>
-										<string>UntitledFixture</string>
-										<key>Restitution</key>
-										<real>0.20000000298023224</real>
-										<key>Tag</key>
-										<integer>0</integer>
-									</dict>
-								</array>
-								<key>Type</key>
-								<integer>0</integer>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>balloonBarWhite</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>318</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{1007, 301}, {87, 13}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<true/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>0.85000002384185791</real>
-								<key>Position</key>
-								<string>{452.70215984227798, 26.546168333440164}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{87, 13}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>balloonBarWhite_1</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>balloonBarWhite_1</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
 								<key>HandledBySH</key>
 								<true/>
 							</dict>
@@ -2787,13 +2652,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{4, 392}, {154.5, 112.5}}</string>
+								<string>{{299, 219}, {154.5, 112.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2862,13 +2727,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{839, 392}, {137, 114}}</string>
+								<string>{{331, 4}, {137, 114}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2892,6 +2757,139 @@
 							</dict>
 							<key>UniqueName</key>
 							<string>stone_right_iPhone5_summer</string>
+						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>assets</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>AngularDamping</key>
+								<real>0.0</real>
+								<key>AngularVelocity</key>
+								<real>0.0</real>
+								<key>CanSleep</key>
+								<true/>
+								<key>FixedRot</key>
+								<false/>
+								<key>GravityScale</key>
+								<real>1</real>
+								<key>HandledBySH</key>
+								<false/>
+								<key>IsBullet</key>
+								<false/>
+								<key>LinearDamping</key>
+								<real>0.0</real>
+								<key>LinearVelocity</key>
+								<string>{0, 0}</string>
+								<key>SH_ComplexShapes</key>
+								<array>
+									<dict>
+										<key>Category</key>
+										<integer>1</integer>
+										<key>Density</key>
+										<real>0.20000000298023224</real>
+										<key>Fixture</key>
+										<array>
+											<array>
+												<string>{-50, -6.75}</string>
+												<string>{50, -6.75}</string>
+												<string>{50, 6.75}</string>
+												<string>{-50, 6.75}</string>
+											</array>
+										</array>
+										<key>Friction</key>
+										<real>0.20000000298023224</real>
+										<key>Group</key>
+										<integer>0</integer>
+										<key>IsCircle</key>
+										<false/>
+										<key>IsSensor</key>
+										<false/>
+										<key>LHHeight</key>
+										<real>13.5</real>
+										<key>LHShapePositionOffset</key>
+										<string>{-50, -6.75}</string>
+										<key>LHWidth</key>
+										<real>100</real>
+										<key>Mask</key>
+										<integer>65535</integer>
+										<key>Name</key>
+										<string>UntitledFixture</string>
+										<key>Restitution</key>
+										<real>0.20000000298023224</real>
+										<key>Tag</key>
+										<integer>0</integer>
+									</dict>
+								</array>
+								<key>Type</key>
+								<integer>0</integer>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>assets</string>
+							<key>SHSpriteName</key>
+							<string>glassbar</string>
+							<key>SheetImage</key>
+							<string>objects_assets.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>318</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{379, 459}, {100, 13.5}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>0.64999997615814209</real>
+								<key>Position</key>
+								<string>{457.7938597202301, 21.956140279769897}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{100, 13.5}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0, 0}</string>
+								<key>UniqueName</key>
+								<string>glassbar</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>glassbar</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -2967,7 +2965,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{416, 192}, {568, 72.5}}</string>
+								<string>{{2, 876}, {568, 72.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3070,10 +3068,12 @@
 					<real>2</real>
 					<key>blinkModulo</key>
 					<real>0.0</real>
+					<key>explodingEffect</key>
+					<real>0.0</real>
 					<key>movingStartDelay</key>
 					<real>2</real>
-					<key>score</key>
-					<real>5</real>
+					<key>scoreMultiplier</key>
+					<real>1</real>
 				</dict>
 			</dict>
 			<dict>

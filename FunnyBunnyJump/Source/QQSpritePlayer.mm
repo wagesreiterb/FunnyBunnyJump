@@ -21,9 +21,6 @@
 @synthesize shallResetPosition;
 
 
--(void) dealloc{
-	[super dealloc];
-}
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownPlayerSpriteInit{
     //initialize your member variabled here
@@ -44,11 +41,11 @@
 }
 //------------------------------------------------------------------------------
 +(id)spriteWithDictionary:(NSDictionary*)dictionary{
-    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+    return [[self alloc] initWithDictionary:dictionary];
 }
 //------------------------------------------------------------------------------
 +(id)batchSpriteWithDictionary:(NSDictionary*)dictionary batch:(LHBatch*)batch{
-    return [[[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch] autorelease];
+    return [[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch];
 }
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{
@@ -86,25 +83,25 @@
     }
 }
 
--(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight
-         withHandLeft:(LHSprite*)handLeft withHandRight:(LHSprite*)handRight {
-    CGPoint oldLocation = _locationY;
-    _locationY = [self position];
-    
-    if(oldLocation.y < location.y) {
-        //CCLOG(@"------- UP");
-        [earLeft body]->SetGravityScale(3.0);
-        [earRight body]->SetGravityScale(3.0);
-        [handLeft body]->SetGravityScale(3.0);
-        [handRight body]->SetGravityScale(3.0);
-    } else {
-        //CCLOG(@"------- DOWN");
-        [earLeft body]->SetGravityScale(0.3);
-        [earRight body]->SetGravityScale(0.3);
-        [handLeft body]->SetGravityScale(0.3);
-        [handRight body]->SetGravityScale(0.3);
-    }
-}
+//-(void)upOrDownAction:(LHSprite*)earLeft withEarRight:(LHSprite*)earRight
+//         withHandLeft:(LHSprite*)handLeft withHandRight:(LHSprite*)handRight {
+//    CGPoint oldLocation = _locationY;
+//    _locationY = [self position];
+//    
+//    if(oldLocation.y < location.y) {
+//        //CCLOG(@"------- UP");
+//        [earLeft body]->SetGravityScale(3.0);
+//        [earRight body]->SetGravityScale(3.0);
+//        [handLeft body]->SetGravityScale(3.0);
+//        [handRight body]->SetGravityScale(3.0);
+//    } else {
+//        //CCLOG(@"------- DOWN");
+//        [earLeft body]->SetGravityScale(0.3);
+//        [earRight body]->SetGravityScale(0.3);
+//        [handLeft body]->SetGravityScale(0.3);
+//        [handRight body]->SetGravityScale(0.3);
+//    }
+//}
 
 -(void)upOrDownActionWithLoader:(LevelHelperLoader*)loader_ {
     CGPoint oldLocation = _locationY;
@@ -129,7 +126,7 @@
     }
 }
 
--(void)deflect {   //ablenken
+-(void)deflect {   //ablenken, give the bunny a force when a balloon is touched
     CGPoint oldLocation = location;
     location = [self position];
     
@@ -326,7 +323,7 @@
 }
 
 -(void)setPositionWithLoader:(LevelHelperLoader*)loader_ position:(CGPoint)position__{
-    NSLog(@"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+    //NSLog(@"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
     _initialPositionBunny.x = position__.x;
     _initialPositionBunny.y = position__.y;
     
@@ -352,7 +349,6 @@
     CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
     [particle setPosition:CGPointMake([self position].x, [self position].y)];
     [layer addChild:particle];
-    [particle release];
     
     [[SimpleAudioEngine sharedEngine] playEffect:@"twinkle.wav"];
 }
@@ -418,7 +414,6 @@
         CCParticleSystemQuad *particle = [[CCParticleSystemQuad alloc] initWithFile:@"bunnyAppears.plist"];
         [particle setPosition:CGPointMake([self position].x, [self position].y)];
         [layer addChild:particle];
-        [particle release];
         
         [[SimpleAudioEngine sharedEngine] playEffect:@"twinkle.wav"];
 

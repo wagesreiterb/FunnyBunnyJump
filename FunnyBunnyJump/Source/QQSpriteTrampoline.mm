@@ -17,9 +17,6 @@
 @synthesize changeRestitution;
 @synthesize redTrampolineActive;
 
--(void) dealloc{
-	[super dealloc];
-}
 ////////////////////////////////////////////////////////////////////////////////
 -(void) ownSpriteTrampolineInit{
     //initialize your member variabled here
@@ -39,11 +36,11 @@
 }
 //------------------------------------------------------------------------------
 +(id)spriteWithDictionary:(NSDictionary*)dictionary{
-    return [[[self alloc] initWithDictionary:dictionary] autorelease];
+    return [[self alloc] initWithDictionary:dictionary];
 }
 //------------------------------------------------------------------------------
 +(id)batchSpriteWithDictionary:(NSDictionary*)dictionary batch:(LHBatch*)batch{
-    return [[[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch] autorelease];
+    return [[self alloc] initBatchSpriteWithDictionary:dictionary batch:batch];
 }
 //------------------------------------------------------------------------------
 -(id)initWithDictionary:(NSDictionary*)dictionary{
@@ -102,11 +99,11 @@
         b2Fixture* fix = body->GetFixtureList();
         
         while (fix) {
-#ifndef LH_ARC_ENABLED
-            LHFixture* lhFix = (LHFixture*)(fix->GetUserData());
-#else
+//#ifndef LH_ARC_ENABLED
+//            LHFixture* lhFix = (LHFixture*)(fix->GetUserData());
+//#else
             LHFixture* lhFix = (__bridge LHFixture*)(fix->GetUserData());
-#endif
+//#endif
             if([LHFixture isLHFixture:lhFix])
             {
                 if([[lhFix fixtureName] isEqualToString:@"right"]){
