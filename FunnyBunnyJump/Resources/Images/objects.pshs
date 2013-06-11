@@ -140,7 +140,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -152,7 +152,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -189,9 +189,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{627, 277}, {21.75, 30}}</string>
+						<string>{{933, 386}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2508, 1108}, {87, 120}}</string>
+						<string>{{3732, 1544}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -201,7 +201,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -217,7 +217,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2508, 1108}</string>
+						<string>{3732, 1544}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -337,9 +337,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{963, 80}, {40, 69.5}}</string>
+						<string>{{634, 205}, {40, 69.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3852, 320}, {160, 278}}</string>
+						<string>{{2536, 820}, {160, 278}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -349,7 +349,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -365,7 +365,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 278}</string>
 						<key>Position</key>
-						<string>{3852, 320}</string>
+						<string>{2536, 820}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -483,7 +483,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -495,7 +495,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -532,9 +532,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{627, 311}, {21.75, 30}}</string>
+						<string>{{989, 421}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2508, 1244}, {87, 120}}</string>
+						<string>{{3956, 1684}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -544,7 +544,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -560,7 +560,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2508, 1244}</string>
+						<string>{3956, 1684}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -680,9 +680,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{893, 53}, {40, 70.75}}</string>
+						<string>{{464, 479}, {40, 70.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3572, 212}, {160, 283}}</string>
+						<string>{{1856, 1916}, {160, 283}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -692,7 +692,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -708,7 +708,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 283}</string>
 						<key>Position</key>
-						<string>{3572, 212}</string>
+						<string>{1856, 1916}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -975,7 +975,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -987,7 +987,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -1024,9 +1024,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{827, 304}, {21.75, 30}}</string>
+						<string>{{899, 335}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3308, 1216}, {87, 120}}</string>
+						<string>{{3596, 1340}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1036,7 +1036,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1052,7 +1052,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3308, 1216}</string>
+						<string>{3596, 1340}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1320,9 +1320,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{891, 128}, {40, 68.5}}</string>
+						<string>{{726, 141}, {40, 68.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3564, 512}, {160, 274}}</string>
+						<string>{{2904, 564}, {160, 274}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1332,7 +1332,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1348,7 +1348,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 274}</string>
 						<key>Position</key>
-						<string>{3564, 512}</string>
+						<string>{2904, 564}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1468,9 +1468,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{311, 525}, {65.75, 100}}</string>
+						<string>{{313, 377}, {65.75, 100}}</string>
 						<key>Frame-HD</key>
-						<string>{{1244, 2100}, {263, 400}}</string>
+						<string>{{1252, 1508}, {263, 400}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1496,7 +1496,7 @@
 						<key>OriginalSize</key>
 						<string>{263, 400}</string>
 						<key>Position</key>
-						<string>{1244, 2100}</string>
+						<string>{1252, 1508}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1616,9 +1616,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{792, 94}, {40, 69}}</string>
+						<string>{{707, 205}, {40, 69}}</string>
 						<key>Frame-HD</key>
-						<string>{{3168, 376}, {160, 276}}</string>
+						<string>{{2828, 820}, {160, 276}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1644,7 +1644,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 276}</string>
 						<key>Position</key>
-						<string>{3168, 376}</string>
+						<string>{2828, 820}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1762,7 +1762,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -1774,7 +1774,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -1811,9 +1811,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{997, 376}, {21.75, 30}}</string>
+						<string>{{778, 319}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3988, 1504}, {87, 120}}</string>
+						<string>{{3112, 1276}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1823,7 +1823,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1839,7 +1839,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3988, 1504}</string>
+						<string>{3112, 1276}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1959,9 +1959,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{963, 153}, {40, 69.5}}</string>
+						<string>{{653, 142}, {40, 69.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3852, 612}, {160, 278}}</string>
+						<string>{{2612, 568}, {160, 278}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -1971,7 +1971,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1987,7 +1987,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 278}</string>
 						<key>Position</key>
-						<string>{3852, 612}</string>
+						<string>{2612, 568}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2106,7 +2106,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -2118,7 +2118,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -2155,9 +2155,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{601, 276}, {21.75, 30}}</string>
+						<string>{{812, 326}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2404, 1104}, {87, 120}}</string>
+						<string>{{3248, 1304}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -2167,7 +2167,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2183,7 +2183,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2404, 1104}</string>
+						<string>{3248, 1304}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2301,7 +2301,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -2313,7 +2313,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -2350,9 +2350,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{937, 121}, {21.75, 30}}</string>
+						<string>{{991, 318}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3748, 484}, {87, 120}}</string>
+						<string>{{3964, 1272}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -2362,7 +2362,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2378,7 +2378,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3748, 484}</string>
+						<string>{3964, 1272}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2498,9 +2498,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{965, 4}, {40, 71.75}}</string>
+						<string>{{388, 481}, {40, 71.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3860, 16}, {160, 285}}</string>
+						<string>{{1552, 1924}, {160, 285}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -2510,7 +2510,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2526,7 +2526,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 285}</string>
 						<key>Position</key>
-						<string>{3860, 16}</string>
+						<string>{1552, 1924}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2671,17 +2671,17 @@
 								<real>0.20000000298023224</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{-20, 0.099999999999995537}</string>
-									<string>{-2.9999999999999991, 16}</string>
-									<string>{-6.4448057898559865, 70.842528186849563}</string>
-									<string>{1.3042488410919312e-14, 213}</string>
-									<string>{-3.9999999999999809, 311}</string>
-									<string>{-17.999999999999979, 347.10000000000002}</string>
-									<string>{-39.999999999999979, 343}</string>
-									<string>{-49.999999999999979, 315}</string>
-									<string>{-51.100000000000001, 49}</string>
-									<string>{-46, 12.000000000000004}</string>
-									<string>{-32, 1.9594348786357651e-15}</string>
+									<string>{0.099999999999993094, 20}</string>
+									<string>{16, 3.0000000000000009}</string>
+									<string>{70.842528186849563, 6.4448057898559918}</string>
+									<string>{213, -1.1683663042826915e-15}</string>
+									<string>{311, 4.0000000000000009}</string>
+									<string>{347.10000000000002, 18}</string>
+									<string>{343, 40}</string>
+									<string>{315, 50}</string>
+									<string>{49, 51.100000000000001}</string>
+									<string>{11.999999999999996, 46}</string>
+									<string>{-1.9594348786357651e-15, 32}</string>
 								</array>
 								<key>ShapePositionOffset</key>
 								<string>{0, 0}</string>
@@ -2721,9 +2721,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1009, 4}, {87, 13}}</string>
+						<string>{{688, 124}, {87, 13}}</string>
 						<key>Frame-HD</key>
-						<string>{{4036, 16}, {348, 52}}</string>
+						<string>{{2752, 496}, {348, 52}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -2733,7 +2733,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2749,7 +2749,7 @@
 						<key>OriginalSize</key>
 						<string>{348, 52}</string>
 						<key>Position</key>
-						<string>{4036, 16}</string>
+						<string>{2752, 496}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2966,9 +2966,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{461, 438}, {87, 13}}</string>
+						<string>{{634, 249}, {87, 13}}</string>
 						<key>Frame-HD</key>
-						<string>{{1844, 1752}, {348, 52}}</string>
+						<string>{{2536, 996}, {348, 52}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -2994,7 +2994,7 @@
 						<key>OriginalSize</key>
 						<string>{348, 52}</string>
 						<key>Position</key>
-						<string>{1844, 1752}</string>
+						<string>{2536, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3114,9 +3114,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{461, 366}, {45, 68}}</string>
+						<string>{{503, 282}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{1844, 1464}, {180, 272}}</string>
+						<string>{{2012, 1128}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -3142,7 +3142,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{1844, 1464}</string>
+						<string>{2012, 1128}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3309,9 +3309,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1002, 308}, {21.75, 30}}</string>
+						<string>{{752, 287}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{4008, 1232}, {87, 120}}</string>
+						<string>{{3008, 1148}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -3337,7 +3337,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{4008, 1232}</string>
+						<string>{3008, 1148}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3456,7 +3456,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -3468,7 +3468,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -3505,9 +3505,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1002, 342}, {21.75, 30}}</string>
+						<string>{{812, 300}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{4008, 1368}, {87, 120}}</string>
+						<string>{{3248, 1200}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -3517,7 +3517,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3533,7 +3533,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{4008, 1368}</string>
+						<string>{3248, 1200}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3664,7 +3664,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 89.5}</string>
+								<string>{-89.5, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -3701,9 +3701,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{701, 311}, {32.5, 44.75}}</string>
+						<string>{{853, 295}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2804, 1244}, {130, 179}}</string>
+						<string>{{3412, 1180}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -3713,7 +3713,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3729,7 +3729,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2804, 1244}</string>
+						<string>{3412, 1180}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3850,9 +3850,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{789, 226}, {40, 61.75}}</string>
+						<string>{{858, 92}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3156, 904}, {160, 245}}</string>
+						<string>{{3432, 368}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -3878,7 +3878,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3156, 904}</string>
+						<string>{3432, 368}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4045,9 +4045,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{926, 359}, {21.75, 30}}</string>
+						<string>{{899, 360}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3704, 1436}, {87, 120}}</string>
+						<string>{{3596, 1440}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4073,7 +4073,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3704, 1436}</string>
+						<string>{3596, 1440}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4240,9 +4240,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 263}, {32.5, 44.75}}</string>
+						<string>{{904, 236}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 1052}, {130, 179}}</string>
+						<string>{{3616, 944}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4268,7 +4268,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2612, 1052}</string>
+						<string>{3616, 944}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4387,7 +4387,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -4399,7 +4399,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -4436,9 +4436,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 223}, {21.75, 30}}</string>
+						<string>{{725, 249}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 892}, {87, 120}}</string>
+						<string>{{2900, 996}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4448,7 +4448,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4464,7 +4464,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 892}</string>
+						<string>{2900, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4632,9 +4632,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{854, 163}, {32.75, 45}}</string>
+						<string>{{931, 48}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3416, 652}, {131, 180}}</string>
+						<string>{{3724, 192}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4660,7 +4660,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{3416, 652}</string>
+						<string>{3724, 192}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4781,9 +4781,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{683, 170}, {40, 61.75}}</string>
+						<string>{{841, 4}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2732, 680}, {160, 245}}</string>
+						<string>{{3364, 16}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4809,7 +4809,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{2732, 680}</string>
+						<string>{3364, 16}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4929,9 +4929,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{503, 282}, {45, 68}}</string>
+						<string>{{547, 354}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{2012, 1128}, {180, 272}}</string>
+						<string>{{2188, 1416}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -4957,7 +4957,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{2012, 1128}</string>
+						<string>{2188, 1416}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5075,7 +5075,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -5087,7 +5087,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -5124,9 +5124,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{601, 344}, {21.75, 30}}</string>
+						<string>{{650, 291}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2404, 1376}, {87, 120}}</string>
+						<string>{{2600, 1164}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -5136,7 +5136,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5152,7 +5152,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2404, 1376}</string>
+						<string>{2600, 1164}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5270,7 +5270,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -5282,7 +5282,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -5319,9 +5319,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 291}, {21.75, 30}}</string>
+						<string>{{684, 266}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 1164}, {87, 120}}</string>
+						<string>{{2736, 1064}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -5331,7 +5331,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5347,7 +5347,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 1164}</string>
+						<string>{2736, 1064}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5468,9 +5468,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{961, 227}, {40, 61.75}}</string>
+						<string>{{865, 48}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3844, 908}, {160, 245}}</string>
+						<string>{{3460, 192}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -5480,7 +5480,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5496,7 +5496,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3844, 908}</string>
+						<string>{3460, 192}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5663,9 +5663,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{937, 53}, {21.75, 30}}</string>
+						<string>{{1002, 250}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3748, 212}, {87, 120}}</string>
+						<string>{{4008, 1000}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -5691,7 +5691,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3748, 212}</string>
+						<string>{4008, 1000}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5858,9 +5858,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{854, 212}, {32.75, 45}}</string>
+						<string>{{799, 141}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3416, 848}, {131, 180}}</string>
+						<string>{{3196, 564}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -5886,7 +5886,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{3416, 848}</string>
+						<string>{3196, 564}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6006,9 +6006,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{844, 4}, {45, 68}}</string>
+						<string>{{498, 366}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{3376, 16}, {180, 272}}</string>
+						<string>{{1992, 1464}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6034,7 +6034,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{3376, 16}</string>
+						<string>{1992, 1464}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6154,9 +6154,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{585, 205}, {45, 67.75}}</string>
+						<string>{{596, 354}, {45, 67.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2340, 820}, {180, 271}}</string>
+						<string>{{2384, 1416}, {180, 271}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6182,7 +6182,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 271}</string>
 						<key>Position</key>
-						<string>{2340, 820}</string>
+						<string>{2384, 1416}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6302,9 +6302,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{893, 4}, {45, 67.75}}</string>
+						<string>{{601, 277}, {45, 67.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3572, 16}, {180, 271}}</string>
+						<string>{{2404, 1108}, {180, 271}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6314,7 +6314,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -6330,7 +6330,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 271}</string>
 						<key>Position</key>
-						<string>{3572, 16}</string>
+						<string>{2404, 1108}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6448,7 +6448,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -6460,7 +6460,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -6497,9 +6497,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{865, 129}, {21.75, 30}}</string>
+						<string>{{935, 334}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3460, 516}, {87, 120}}</string>
+						<string>{{3740, 1336}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6509,7 +6509,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -6525,7 +6525,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3460, 516}</string>
+						<string>{3740, 1336}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6643,7 +6643,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -6655,7 +6655,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -6692,9 +6692,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{601, 310}, {21.75, 30}}</string>
+						<string>{{989, 395}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2404, 1240}, {87, 120}}</string>
+						<string>{{3956, 1580}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6704,7 +6704,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -6720,7 +6720,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2404, 1240}</string>
+						<string>{3956, 1580}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6841,9 +6841,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{789, 182}, {40, 61.75}}</string>
+						<string>{{967, 70}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3156, 728}, {160, 245}}</string>
+						<string>{{3868, 280}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -6853,7 +6853,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -6869,7 +6869,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3156, 728}</string>
+						<string>{3868, 280}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7037,9 +7037,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{853, 310}, {32.5, 45}}</string>
+						<string>{{780, 245}, {32.5, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3412, 1240}, {130, 180}}</string>
+						<string>{{3120, 980}, {130, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -7065,7 +7065,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 180}</string>
 						<key>Position</key>
-						<string>{3412, 1240}</string>
+						<string>{3120, 980}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7196,7 +7196,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 90}</string>
+								<string>{-90, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -7233,9 +7233,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{740, 238}, {32.5, 45}}</string>
+						<string>{{855, 222}, {32.5, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{2960, 952}, {130, 180}}</string>
+						<string>{{3420, 888}, {130, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -7245,7 +7245,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -7261,7 +7261,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 180}</string>
 						<key>Position</key>
-						<string>{2960, 952}</string>
+						<string>{3420, 888}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7379,7 +7379,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -7391,7 +7391,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -7428,9 +7428,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{865, 95}, {21.75, 30}}</string>
+						<string>{{901, 309}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3460, 380}, {87, 120}}</string>
+						<string>{{3604, 1236}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -7440,7 +7440,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -7456,7 +7456,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3460, 380}</string>
+						<string>{3604, 1236}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7587,7 +7587,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 89.5}</string>
+								<string>{-89.5, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -7624,9 +7624,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{701, 263}, {32.5, 44.75}}</string>
+						<string>{{953, 257}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2804, 1052}, {130, 179}}</string>
+						<string>{{3812, 1028}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -7636,7 +7636,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -7652,7 +7652,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2804, 1052}</string>
+						<string>{3812, 1028}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7770,7 +7770,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -7782,7 +7782,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -7819,9 +7819,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 189}, {21.75, 30}}</string>
+						<string>{{990, 369}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 756}, {87, 120}}</string>
+						<string>{{3960, 1476}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -7831,7 +7831,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -7847,7 +7847,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 756}</string>
+						<string>{3960, 1476}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -7965,7 +7965,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -7977,7 +7977,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -8014,9 +8014,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 257}, {21.75, 30}}</string>
+						<string>{{650, 266}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 1028}, {87, 120}}</string>
+						<string>{{2600, 1064}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8026,7 +8026,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -8042,7 +8042,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 1028}</string>
+						<string>{2600, 1064}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -8163,9 +8163,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{789, 138}, {40, 61.75}}</string>
+						<string>{{906, 4}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3156, 552}, {160, 245}}</string>
+						<string>{{3624, 16}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8191,7 +8191,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3156, 552}</string>
+						<string>{3624, 16}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -8358,9 +8358,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{937, 87}, {21.75, 30}}</string>
+						<string>{{1002, 284}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3748, 348}, {87, 120}}</string>
+						<string>{{4008, 1136}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8386,7 +8386,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3748, 348}</string>
+						<string>{4008, 1136}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -8517,7 +8517,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65.5, 90}</string>
+								<string>{-90, 65.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -8554,9 +8554,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{961, 346}, {32.75, 45}}</string>
+						<string>{{856, 185}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3844, 1384}, {131, 180}}</string>
+						<string>{{3424, 740}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8566,7 +8566,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -8582,7 +8582,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{3844, 1384}</string>
+						<string>{3424, 740}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -8700,7 +8700,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -8712,7 +8712,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -8749,9 +8749,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{595, 378}, {21.75, 30}}</string>
+						<string>{{778, 294}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2380, 1512}, {87, 120}}</string>
+						<string>{{3112, 1176}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8761,7 +8761,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -8777,7 +8777,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2380, 1512}</string>
+						<string>{3112, 1176}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -8907,7 +8907,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 90}</string>
+								<string>{-90, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -8944,9 +8944,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{890, 331}, {32.5, 45}}</string>
+						<string>{{905, 199}, {32.5, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3560, 1324}, {130, 180}}</string>
+						<string>{{3620, 796}, {130, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -8956,7 +8956,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -8972,7 +8972,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 180}</string>
 						<key>Position</key>
-						<string>{3560, 1324}</string>
+						<string>{3620, 796}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -9102,7 +9102,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65.5, 90}</string>
+								<string>{-90, 65.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -9139,9 +9139,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{703, 214}, {32.75, 45}}</string>
+						<string>{{956, 184}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{2812, 856}, {131, 180}}</string>
+						<string>{{3824, 736}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -9151,7 +9151,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -9167,7 +9167,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{2812, 856}</string>
+						<string>{3824, 736}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -9298,7 +9298,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65.5, 90}</string>
+								<string>{-90, 65.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -9335,9 +9335,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{854, 261}, {32.75, 45}}</string>
+						<string>{{907, 163}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3416, 1044}, {131, 180}}</string>
+						<string>{{3628, 652}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -9347,7 +9347,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -9363,7 +9363,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{3416, 1044}</string>
+						<string>{3628, 652}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -9482,7 +9482,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -9494,7 +9494,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -9531,9 +9531,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{627, 345}, {21.75, 30}}</string>
+						<string>{{933, 360}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{2508, 1380}, {87, 120}}</string>
+						<string>{{3732, 1440}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -9543,7 +9543,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -9559,7 +9559,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{2508, 1380}</string>
+						<string>{3732, 1440}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -9690,7 +9690,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 89.5}</string>
+								<string>{-89.5, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -9727,9 +9727,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{559, 354}, {32.5, 44.75}}</string>
+						<string>{{954, 221}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2236, 1416}, {130, 179}}</string>
+						<string>{{3816, 884}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -9739,7 +9739,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -9755,7 +9755,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2236, 1416}</string>
+						<string>{3816, 884}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -9873,7 +9873,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -9885,7 +9885,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -9922,9 +9922,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 155}, {21.75, 30}}</string>
+						<string>{{990, 344}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 620}, {87, 120}}</string>
+						<string>{{3960, 1376}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -9934,7 +9934,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -9950,7 +9950,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 620}</string>
+						<string>{3960, 1376}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10081,7 +10081,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65, 89.5}</string>
+								<string>{-89.5, 65}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -10118,9 +10118,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{738, 287}, {32.5, 44.75}}</string>
+						<string>{{853, 259}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2952, 1148}, {130, 179}}</string>
+						<string>{{3412, 1036}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10130,7 +10130,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -10146,7 +10146,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2952, 1148}</string>
+						<string>{3412, 1036}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10267,9 +10267,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{891, 201}, {40, 61.75}}</string>
+						<string>{{971, 4}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3564, 804}, {160, 245}}</string>
+						<string>{{3884, 16}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10295,7 +10295,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3564, 804}</string>
+						<string>{3884, 16}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10413,7 +10413,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -10425,7 +10425,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -10462,9 +10462,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{827, 270}, {21.75, 30}}</string>
+						<string>{{846, 332}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3308, 1080}, {87, 120}}</string>
+						<string>{{3384, 1328}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10474,7 +10474,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -10490,7 +10490,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3308, 1080}</string>
+						<string>{3384, 1328}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10657,9 +10657,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 299}, {32.5, 44.75}}</string>
+						<string>{{901, 272}, {32.5, 44.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 1196}, {130, 179}}</string>
+						<string>{{3604, 1088}, {130, 179}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10685,7 +10685,7 @@
 						<key>OriginalSize</key>
 						<string>{130, 179}</string>
 						<key>Position</key>
-						<string>{2612, 1196}</string>
+						<string>{3604, 1088}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10805,9 +10805,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{552, 282}, {45, 68}}</string>
+						<string>{{585, 205}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{2208, 1128}, {180, 272}}</string>
+						<string>{{2340, 820}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10833,7 +10833,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{2208, 1128}</string>
+						<string>{2340, 820}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -10953,9 +10953,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{795, 4}, {45, 68}}</string>
+						<string>{{449, 366}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{3180, 16}, {180, 272}}</string>
+						<string>{{1796, 1464}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -10981,7 +10981,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{3180, 16}</string>
+						<string>{1796, 1464}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -11099,7 +11099,7 @@
 								<key>LHHeight</key>
 								<real>30</real>
 								<key>LHShapePositionOffset</key>
-								<string>{0, 0}</string>
+								<string>{1.7763568394002505e-15, 0}</string>
 								<key>LHWidth</key>
 								<real>21.75</real>
 								<key>Mask</key>
@@ -11111,7 +11111,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{43.5, 60}</string>
+								<string>{-60, 43.500000000000007}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -11148,9 +11148,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{935, 325}, {21.75, 30}}</string>
+						<string>{{718, 274}, {21.75, 30}}</string>
 						<key>Frame-HD</key>
-						<string>{{3740, 1300}, {87, 120}}</string>
+						<string>{{2872, 1096}, {87, 120}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -11160,7 +11160,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -11176,7 +11176,7 @@
 						<key>OriginalSize</key>
 						<string>{87, 120}</string>
 						<key>Position</key>
-						<string>{3740, 1300}</string>
+						<string>{2872, 1096}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -11296,9 +11296,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{510, 366}, {45, 68}}</string>
+						<string>{{552, 282}, {45, 68}}</string>
 						<key>Frame-HD</key>
-						<string>{{2040, 1464}, {180, 272}}</string>
+						<string>{{2208, 1128}, {180, 272}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -11324,7 +11324,7 @@
 						<key>OriginalSize</key>
 						<string>{180, 272}</string>
 						<key>Position</key>
-						<string>{2040, 1464}</string>
+						<string>{2208, 1128}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -11455,7 +11455,7 @@
 								<key>ShapePoints</key>
 								<array/>
 								<key>ShapePositionOffset</key>
-								<string>{65.5, 90}</string>
+								<string>{-90, 65.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>Width</key>
@@ -11492,9 +11492,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{752, 124}, {32.75, 45}}</string>
+						<string>{{809, 69}, {32.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3008, 496}, {131, 180}}</string>
+						<string>{{3236, 276}, {131, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -11504,7 +11504,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -11520,7 +11520,7 @@
 						<key>OriginalSize</key>
 						<string>{131, 180}</string>
 						<key>Position</key>
-						<string>{3008, 496}</string>
+						<string>{3236, 276}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -11641,9 +11641,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{891, 266}, {40, 61.75}}</string>
+						<string>{{923, 97}, {40, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3564, 1064}, {160, 245}}</string>
+						<string>{{3692, 388}, {160, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -11669,7 +11669,7 @@
 						<key>OriginalSize</key>
 						<string>{160, 245}</string>
 						<key>Position</key>
-						<string>{3564, 1064}</string>
+						<string>{3692, 388}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -11994,9 +11994,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 178}, {32, 24.75}}</string>
+						<string>{{827, 192}, {32, 24.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 712}, {128, 99}}</string>
+						<string>{{3308, 768}, {128, 99}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -12022,7 +12022,7 @@
 						<key>OriginalSize</key>
 						<string>{128, 99}</string>
 						<key>Position</key>
-						<string>{2612, 712}</string>
+						<string>{3308, 768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -12189,9 +12189,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 336}, {36.75, 36.75}}</string>
+						<string>{{950, 294}, {36.75, 36.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 1344}, {147, 147}}</string>
+						<string>{{3800, 1176}, {147, 147}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -12217,7 +12217,7 @@
 						<key>OriginalSize</key>
 						<string>{147, 147}</string>
 						<key>Position</key>
-						<string>{2612, 1344}</string>
+						<string>{3800, 1176}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -12548,9 +12548,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1005, 275}, {18.75, 29}}</string>
+						<string>{{1005, 217}, {18.75, 29}}</string>
 						<key>Frame-HD</key>
-						<string>{{4020, 1100}, {75, 116}}</string>
+						<string>{{4020, 868}, {75, 116}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -12576,7 +12576,7 @@
 						<key>OriginalSize</key>
 						<string>{75, 116}</string>
 						<key>Position</key>
-						<string>{4020, 1100}</string>
+						<string>{4020, 868}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -12760,9 +12760,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1005, 242}, {18.75, 29}}</string>
+						<string>{{1005, 184}, {18.75, 29}}</string>
 						<key>Frame-HD</key>
-						<string>{{4020, 968}, {75, 116}}</string>
+						<string>{{4020, 736}, {75, 116}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -12788,7 +12788,7 @@
 						<key>OriginalSize</key>
 						<string>{75, 116}</string>
 						<key>Position</key>
-						<string>{4020, 968}</string>
+						<string>{4020, 736}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -12927,7 +12927,7 @@
 									<string>{-14.999999999999998, 20}</string>
 									<string>{-23, 21.100000000000001}</string>
 									<string>{-25.100000000000001, 14.000000000000002}</string>
-									<string>{-4, 2.4492935982947064e-16}</string>
+									<string>{-4, 0}</string>
 								</array>
 								<key>ShapePositionOffset</key>
 								<string>{0, 0}</string>
@@ -13115,9 +13115,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{827, 338}, {18.75, 22}}</string>
+						<string>{{967, 398}, {18.75, 22}}</string>
 						<key>Frame-HD</key>
-						<string>{{3308, 1352}, {73, 88}}</string>
+						<string>{{3868, 1592}, {73, 88}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13127,7 +13127,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -13143,7 +13143,7 @@
 						<key>OriginalSize</key>
 						<string>{73, 88}</string>
 						<key>Position</key>
-						<string>{3308, 1352}</string>
+						<string>{3868, 1592}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -13263,9 +13263,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{804, 319}, {18.5, 22}}</string>
+						<string>{{967, 372}, {18.5, 22}}</string>
 						<key>Frame-HD</key>
-						<string>{{3216, 1276}, {74, 88}}</string>
+						<string>{{3868, 1488}, {74, 88}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13291,7 +13291,7 @@
 						<key>OriginalSize</key>
 						<string>{74, 88}</string>
 						<key>Position</key>
-						<string>{3216, 1276}</string>
+						<string>{3868, 1488}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -13426,11 +13426,11 @@
 								<real>0.20000000298023224</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{-30, 0.10000000000000325}</string>
-									<string>{-10.999999999999998, 24}</string>
-									<string>{-2.9999999999999956, 69.099999999999994}</string>
-									<string>{-27.999999999999996, 45}</string>
-									<string>{-32, 1.9594348786357651e-15}</string>
+									<string>{0.099999999999999589, 30}</string>
+									<string>{24, 11}</string>
+									<string>{69.099999999999994, 3.0000000000000009}</string>
+									<string>{45, 28}</string>
+									<string>{-1.9594348786357651e-15, 32}</string>
 								</array>
 								<key>ShapePositionOffset</key>
 								<string>{0, 0}</string>
@@ -13470,9 +13470,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{875, 359}, {17.5, 8.75}}</string>
+						<string>{{596, 425}, {17.5, 8.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3500, 1436}, {70, 35}}</string>
+						<string>{{2384, 1700}, {70, 35}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13482,7 +13482,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -13498,7 +13498,7 @@
 						<key>OriginalSize</key>
 						<string>{70, 35}</string>
 						<key>Position</key>
-						<string>{3500, 1436}</string>
+						<string>{2384, 1700}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -13618,9 +13618,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{961, 292}, {37.5, 50.5}}</string>
+						<string>{{785, 190}, {37.5, 50.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3844, 1168}, {150, 202}}</string>
+						<string>{{3140, 760}, {150, 202}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13646,7 +13646,7 @@
 						<key>OriginalSize</key>
 						<string>{150, 202}</string>
 						<key>Position</key>
-						<string>{3844, 1168}</string>
+						<string>{3140, 760}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -13766,9 +13766,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{688, 124}, {42, 60.5}}</string>
+						<string>{{795, 4}, {42, 60.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2752, 496}, {168, 242}}</string>
+						<string>{{3180, 16}, {168, 242}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13778,7 +13778,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -13794,7 +13794,7 @@
 						<key>OriginalSize</key>
 						<string>{168, 242}</string>
 						<key>Position</key>
-						<string>{2752, 496}</string>
+						<string>{3180, 16}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -13910,9 +13910,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{559, 402}, {32, 32}}</string>
+						<string>{{817, 264}, {32, 32}}</string>
 						<key>Frame-HD</key>
-						<string>{{2236, 1608}, {128, 128}}</string>
+						<string>{{3268, 1056}, {128, 128}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -13938,7 +13938,7 @@
 						<key>OriginalSize</key>
 						<string>{128, 128}</string>
 						<key>Position</key>
-						<string>{2236, 1608}</string>
+						<string>{3268, 1056}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -14058,9 +14058,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{748, 173}, {36.75, 61.75}}</string>
+						<string>{{449, 438}, {36.75, 61.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2992, 692}, {147, 245}}</string>
+						<string>{{1796, 1752}, {147, 245}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -14070,7 +14070,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -14086,11 +14086,409 @@
 						<key>OriginalSize</key>
 						<string>{147, 245}</string>
 						<key>Position</key>
-						<string>{2992, 692}</string>
+						<string>{1796, 1752}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{36.75, 61.25}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>chain</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va4gEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAAbAMAAAUA
+					AAABAQAAVXNlcnMAAAADAAAAAQEAAFF1ZQAI
+					AAAAAQEAAEJlcm5oYXJkAwAAAAEBAABpT1MA
+					DgAAAAEBAABGdW5ueUJ1bm55SnVtcAAADAAA
+					AAEBAABQcm9qZWN0RmlsZXMHAAAAAQEAAEdy
+					YWZpY3MAFQAAAAEBAABTcHJpdGVIZWxwZXJP
+					cmlnaW5hbHMAAAAJAAAAAQEAAGNoYWluLnBu
+					ZwAAACQAAAABBgAABAAAABQAAAAgAAAAMAAA
+					ADwAAABUAAAAaAAAAHgAAACYAAAACAAAAAQD
+					AABgBgAAAAAAAAgAAAAEAwAA/wYAAAAAAAAI
+					AAAABAMAAG0yBAAAAAAACAAAAAQDAABcswQA
+					AAAAAAgAAAAEAwAAarMEAAAAAAAIAAAABAMA
+					AG+zBAAAAAAACAAAAAQDAABxswQAAAAAAAgA
+					AAAEAwAAcrMEAAAAAAAIAAAABAMAAAuQlQAA
+					AAAAJAAAAAEGAADYAAAA6AAAAPgAAAAIAQAA
+					GAEAACgBAAA4AQAASAEAAFgBAAAYAAAAAQIA
+					AAEAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAA
+					AAABBQAABAAAAAMDAAAGAAAACAAAAAQDAAAH
+					AAAAAAAAAAQAAAADAwAA9QEAAA0AAAABAQAA
+					TWFjaW50b3NoIFNTRAAAAAgAAAAEAwAAAMDk
+					iTsAAAAIAAAAAAQAAEG06WAHAAAAJAAAAAEB
+					AAA1MkM2RDFFMi1FMjM1LTNBNzgtODBCRi01
+					Mzc1OThDRTQ5MTgYAAAAAQIAAIEAAAABAAgA
+					7z8AAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
+					AAQAAAADAwAAAAEAAOMAAAABAgAAYTdhYmQ1
+					ZWIxZjBlZmYwYjQ4ZDEwNDAxNDA0YzZmN2U0
+					ZmU3MTEzMzswMDAwMDAwMDswMDAwMDAwMDAw
+					MDAwMDIwO2NvbS5hcHBsZS5hcHAtc2FuZGJv
+					eC5yZWFkLXdyaXRlOzAwMDAwMDAxOzBlMDAw
+					MDAyOzAwMDAwMDAwMDA5NTkwMGI7L3VzZXJz
+					L3F1ZS9iZXJuaGFyZC9pb3MvZnVubnlidW5u
+					eWp1bXAvcHJvamVjdGZpbGVzL2dyYWZpY3Mv
+					c3ByaXRlaGVscGVyb3JpZ2luYWxzL2NoYWlu
+					LnBuZwAA5AAAAP7///8BAAAAAAAAABIAAAAE
+					EAAArAAAAAAAAAAFEAAAaAEAAAAAAAAQEAAA
+					lAEAAAAAAABUEAAAvAEAAAAAAABVEAAAvAEA
+					AAAAAABWEAAAtAEAAAAAAAACIAAAaAIAAAAA
+					AAAQIAAA5AEAAAAAAAARIAAAHAIAAAAAAAAS
+					IAAA/AEAAAAAAAATIAAADAIAAAAAAAAgIAAA
+					SAIAAAAAAAAwIAAAtAEAAAAAAAABwAAAyAEA
+					AAAAAAARwAAAFAAAAAAAAAASwAAA2AEAAAAA
+					AAAQ0AAAdAIAAAAAAACA8AAAgAIAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Category</key>
+								<integer>1</integer>
+								<key>Density</key>
+								<real>0.20000000298023224</real>
+								<key>Fixture</key>
+								<array>
+									<array/>
+								</array>
+								<key>Friction</key>
+								<real>0.20000000298023224</real>
+								<key>Group</key>
+								<integer>0</integer>
+								<key>Height</key>
+								<real>32</real>
+								<key>HolesPoints</key>
+								<array/>
+								<key>IsCircle</key>
+								<true/>
+								<key>IsRectangle</key>
+								<false/>
+								<key>IsSensor</key>
+								<false/>
+								<key>LHHeight</key>
+								<real>8</real>
+								<key>LHShapePositionOffset</key>
+								<string>{0, 0}</string>
+								<key>LHWidth</key>
+								<real>8</real>
+								<key>Mask</key>
+								<integer>65535</integer>
+								<key>Name</key>
+								<string>UntitledFixture</string>
+								<key>Restitution</key>
+								<real>0.20000000298023224</real>
+								<key>ShapePoints</key>
+								<array/>
+								<key>ShapePositionOffset</key>
+								<string>{16, 16}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>Width</key>
+								<real>32</real>
+							</dict>
+						</array>
+						<key>Type</key>
+						<integer>2</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>assets</string>
+					<key>SHSpriteName</key>
+					<string>chain</string>
+					<key>SheetImage</key>
+					<string>objects_assets.png</string>
+					<key>SheetImage-HD</key>
+					<string>objects_assets-ipadhd.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{522, 354}, {8, 8}}</string>
+						<key>Frame-HD</key>
+						<string>{{2088, 1416}, {32, 32}}</string>
+						<key>Image</key>
+						<string>objects_assets.png</string>
+						<key>Image-HD</key>
+						<string>objects_assets-ipadhd.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>chain</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Que/Bernhard/iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/chain.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/chain.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {32, 32}}</string>
+						<key>OriginalSize</key>
+						<string>{32, 32}</string>
+						<key>Position</key>
+						<string>{2088, 1416}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{8, 8}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>chain2</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va4gEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAAbAMAAAUA
+					AAABAQAAVXNlcnMAAAADAAAAAQEAAFF1ZQAI
+					AAAAAQEAAEJlcm5oYXJkAwAAAAEBAABpT1MA
+					DgAAAAEBAABGdW5ueUJ1bm55SnVtcAAADAAA
+					AAEBAABQcm9qZWN0RmlsZXMHAAAAAQEAAEdy
+					YWZpY3MAFQAAAAEBAABTcHJpdGVIZWxwZXJP
+					cmlnaW5hbHMAAAAKAAAAAQEAAGNoYWluMi5w
+					bmcAACQAAAABBgAABAAAABQAAAAgAAAAMAAA
+					ADwAAABUAAAAaAAAAHgAAACYAAAACAAAAAQD
+					AABgBgAAAAAAAAgAAAAEAwAA/wYAAAAAAAAI
+					AAAABAMAAG0yBAAAAAAACAAAAAQDAABcswQA
+					AAAAAAgAAAAEAwAAarMEAAAAAAAIAAAABAMA
+					AG+zBAAAAAAACAAAAAQDAABxswQAAAAAAAgA
+					AAAEAwAAcrMEAAAAAAAIAAAABAMAAI2dlQAA
+					AAAAJAAAAAEGAADYAAAA6AAAAPgAAAAIAQAA
+					GAEAACgBAAA4AQAASAEAAFgBAAAYAAAAAQIA
+					AAEAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAA
+					AAABBQAABAAAAAMDAAAGAAAACAAAAAQDAAAH
+					AAAAAAAAAAQAAAADAwAA9QEAAA0AAAABAQAA
+					TWFjaW50b3NoIFNTRAAAAAgAAAAEAwAAAMDk
+					iTsAAAAIAAAAAAQAAEG06WAHAAAAJAAAAAEB
+					AAA1MkM2RDFFMi1FMjM1LTNBNzgtODBCRi01
+					Mzc1OThDRTQ5MTgYAAAAAQIAAIEAAAABAAgA
+					7z8AAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
+					AAQAAAADAwAAAAEAAOQAAAABAgAAZTEyNWJl
+					NDlmMjIzN2Y5ZDAwYWY3ZTY0ZDk2OWI2ZDJi
+					ZTZhODUwZDswMDAwMDAwMDswMDAwMDAwMDAw
+					MDAwMDIwO2NvbS5hcHBsZS5hcHAtc2FuZGJv
+					eC5yZWFkLXdyaXRlOzAwMDAwMDAxOzBlMDAw
+					MDAyOzAwMDAwMDAwMDA5NTlkOGQ7L3VzZXJz
+					L3F1ZS9iZXJuaGFyZC9pb3MvZnVubnlidW5u
+					eWp1bXAvcHJvamVjdGZpbGVzL2dyYWZpY3Mv
+					c3ByaXRlaGVscGVyb3JpZ2luYWxzL2NoYWlu
+					Mi5wbmcA5AAAAP7///8BAAAAAAAAABIAAAAE
+					EAAArAAAAAAAAAAFEAAAaAEAAAAAAAAQEAAA
+					lAEAAAAAAABUEAAAvAEAAAAAAABVEAAAvAEA
+					AAAAAABWEAAAtAEAAAAAAAACIAAAaAIAAAAA
+					AAAQIAAA5AEAAAAAAAARIAAAHAIAAAAAAAAS
+					IAAA/AEAAAAAAAATIAAADAIAAAAAAAAgIAAA
+					SAIAAAAAAAAwIAAAtAEAAAAAAAABwAAAyAEA
+					AAAAAAARwAAAFAAAAAAAAAASwAAA2AEAAAAA
+					AAAQ0AAAdAIAAAAAAACA8AAAgAIAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Category</key>
+								<integer>1</integer>
+								<key>Density</key>
+								<real>0.20000000298023224</real>
+								<key>Fixture</key>
+								<array>
+									<array>
+										<string>{-11, -15.75}</string>
+										<string>{11, -15.75}</string>
+										<string>{11, 15.75}</string>
+										<string>{-11, 15.75}</string>
+									</array>
+								</array>
+								<key>Friction</key>
+								<real>0.20000000298023224</real>
+								<key>Group</key>
+								<integer>0</integer>
+								<key>Height</key>
+								<real>126</real>
+								<key>HolesPoints</key>
+								<array/>
+								<key>IsCircle</key>
+								<false/>
+								<key>IsRectangle</key>
+								<true/>
+								<key>IsSensor</key>
+								<false/>
+								<key>LHHeight</key>
+								<real>31.5</real>
+								<key>LHShapePositionOffset</key>
+								<string>{-11, -15.75}</string>
+								<key>LHWidth</key>
+								<real>22</real>
+								<key>Mask</key>
+								<integer>65535</integer>
+								<key>Name</key>
+								<string>UntitledFixture_1</string>
+								<key>Restitution</key>
+								<real>0.20000000298023224</real>
+								<key>ShapePoints</key>
+								<array>
+									<string>{0, 0}</string>
+									<string>{88, 0}</string>
+									<string>{88, 126}</string>
+									<string>{0, 126}</string>
+								</array>
+								<key>ShapePositionOffset</key>
+								<string>{0, 0}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>Width</key>
+								<real>88</real>
+							</dict>
+						</array>
+						<key>Type</key>
+						<integer>2</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>assets</string>
+					<key>SHSpriteName</key>
+					<string>chain2</string>
+					<key>SheetImage</key>
+					<string>objects_assets.png</string>
+					<key>SheetImage-HD</key>
+					<string>objects_assets-ipadhd.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{827, 228}, {22, 31.5}}</string>
+						<key>Frame-HD</key>
+						<string>{{3308, 912}, {88, 126}}</string>
+						<key>Image</key>
+						<string>objects_assets.png</string>
+						<key>Image-HD</key>
+						<string>objects_assets-ipadhd.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>chain2</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Que/Bernhard/iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/chain2.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/chain2.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {88, 126}}</string>
+						<key>OriginalSize</key>
+						<string>{88, 126}</string>
+						<key>Position</key>
+						<string>{3308, 912}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{22, 31.5}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -15313,9 +15711,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{773, 76}, {100, 13.5}}</string>
+						<string>{{514, 455}, {100, 13.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3092, 304}, {400, 54}}</string>
+						<string>{{2056, 1820}, {400, 54}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -15341,7 +15739,7 @@
 						<key>OriginalSize</key>
 						<string>{400, 54}</string>
 						<key>Position</key>
-						<string>{3092, 304}</string>
+						<string>{2056, 1820}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -15894,9 +16292,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{248, 630}, {84, 80.75}}</string>
+						<string>{{311, 525}, {84, 80.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{992, 2520}, {336, 323}}</string>
+						<string>{{1244, 2100}, {336, 323}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -15922,7 +16320,7 @@
 						<key>OriginalSize</key>
 						<string>{336, 323}</string>
 						<key>Position</key>
-						<string>{992, 2520}</string>
+						<string>{1244, 2100}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -16089,9 +16487,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{757, 336}, {12.5, 12.75}}</string>
+						<string>{{1011, 109}, {12.5, 12.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3028, 1344}, {50, 49}}</string>
+						<string>{{4044, 436}, {50, 49}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -16117,7 +16515,7 @@
 						<key>OriginalSize</key>
 						<string>{50, 49}</string>
 						<key>Position</key>
-						<string>{3028, 1344}</string>
+						<string>{4044, 436}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -16238,9 +16636,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1007, 95}, {35.75, 17.75}}</string>
+						<string>{{798, 119}, {35.75, 17.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{4028, 380}, {141, 71}}</string>
+						<string>{{3192, 476}, {141, 71}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -16250,7 +16648,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -16266,7 +16664,7 @@
 						<key>OriginalSize</key>
 						<string>{141, 71}</string>
 						<key>Position</key>
-						<string>{4028, 380}</string>
+						<string>{3192, 476}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -16381,9 +16779,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{926, 385}, {16, 16}}</string>
+						<string>{{836, 172}, {16, 16}}</string>
 						<key>Frame-HD</key>
-						<string>{{3704, 1540}, {64, 64}}</string>
+						<string>{{3344, 688}, {64, 64}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -16409,7 +16807,7 @@
 						<key>OriginalSize</key>
 						<string>{64, 64}</string>
 						<key>Position</key>
-						<string>{3704, 1540}</string>
+						<string>{3344, 688}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -16528,9 +16926,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{774, 319}, {20, 25.75}}</string>
+						<string>{{684, 291}, {20, 25.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3096, 1276}, {80, 103}}</string>
+						<string>{{2736, 1164}, {80, 103}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -16556,7 +16954,7 @@
 						<key>OriginalSize</key>
 						<string>{80, 103}</string>
 						<key>Position</key>
-						<string>{3096, 1276}</string>
+						<string>{2736, 1164}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -17173,9 +17571,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{946, 404}, {10.75, 15}}</string>
+						<string>{{726, 108}, {10.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3784, 1616}, {41, 60}}</string>
+						<string>{{2904, 432}, {41, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -17185,7 +17583,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -17201,7 +17599,7 @@
 						<key>OriginalSize</key>
 						<string>{41, 60}</string>
 						<key>Position</key>
-						<string>{3784, 1616}</string>
+						<string>{2904, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -17321,9 +17719,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{979, 414}, {10.75, 15}}</string>
+						<string>{{745, 108}, {10.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3916, 1656}, {41, 60}}</string>
+						<string>{{2980, 432}, {41, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -17333,7 +17731,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -17349,7 +17747,7 @@
 						<key>OriginalSize</key>
 						<string>{41, 60}</string>
 						<key>Position</key>
-						<string>{3916, 1656}</string>
+						<string>{2980, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -17617,9 +18015,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{981, 395}, {12.75, 15}}</string>
+						<string>{{1011, 90}, {12.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3924, 1580}, {51, 60}}</string>
+						<string>{{4044, 360}, {51, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -17645,7 +18043,7 @@
 						<key>OriginalSize</key>
 						<string>{51, 60}</string>
 						<key>Position</key>
-						<string>{3924, 1580}</string>
+						<string>{4044, 360}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -17765,9 +18163,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{946, 385}, {10.75, 15}}</string>
+						<string>{{707, 108}, {10.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3784, 1540}, {41, 60}}</string>
+						<string>{{2828, 432}, {41, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -17777,7 +18175,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -17793,7 +18191,7 @@
 						<key>OriginalSize</key>
 						<string>{41, 60}</string>
 						<key>Position</key>
-						<string>{3784, 1540}</string>
+						<string>{2828, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -17913,9 +18311,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{877, 76}, {11.75, 15}}</string>
+						<string>{{669, 108}, {11.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3508, 304}, {47, 60}}</string>
+						<string>{{2676, 432}, {47, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -17925,7 +18323,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -17941,7 +18339,7 @@
 						<key>OriginalSize</key>
 						<string>{47, 60}</string>
 						<key>Position</key>
-						<string>{3508, 304}</string>
+						<string>{2676, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18061,9 +18459,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{773, 94}, {10.5, 15}}</string>
+						<string>{{688, 108}, {10.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3092, 376}, {42, 60}}</string>
+						<string>{{2752, 432}, {42, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18089,7 +18487,7 @@
 						<key>OriginalSize</key>
 						<string>{42, 60}</string>
 						<key>Position</key>
-						<string>{3092, 376}</string>
+						<string>{2752, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18209,9 +18607,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{757, 352}, {9, 15}}</string>
+						<string>{{783, 106}, {9, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3028, 1408}, {36, 60}}</string>
+						<string>{{3132, 424}, {36, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18221,7 +18619,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -18237,7 +18635,7 @@
 						<key>OriginalSize</key>
 						<string>{36, 60}</string>
 						<key>Position</key>
-						<string>{3028, 1408}</string>
+						<string>{3132, 424}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18357,9 +18755,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{960, 395}, {16.75, 15}}</string>
+						<string>{{969, 334}, {16.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3840, 1580}, {67, 60}}</string>
+						<string>{{3876, 1336}, {67, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18385,7 +18783,7 @@
 						<key>OriginalSize</key>
 						<string>{67, 60}</string>
 						<key>Position</key>
-						<string>{3840, 1580}</string>
+						<string>{3876, 1336}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18505,9 +18903,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1013, 429}, {10, 15}}</string>
+						<string>{{764, 108}, {10, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{4052, 1716}, {40, 60}}</string>
+						<string>{{3056, 432}, {40, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18517,7 +18915,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -18533,7 +18931,7 @@
 						<key>OriginalSize</key>
 						<string>{40, 60}</string>
 						<key>Position</key>
-						<string>{4052, 1716}</string>
+						<string>{3056, 432}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18653,9 +19051,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{738, 336}, {14.75, 15}}</string>
+						<string>{{779, 122}, {14.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{2952, 1344}, {59, 60}}</string>
+						<string>{{3116, 488}, {59, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18681,7 +19079,7 @@
 						<key>OriginalSize</key>
 						<string>{59, 60}</string>
 						<key>Position</key>
-						<string>{2952, 1344}</string>
+						<string>{3116, 488}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18801,9 +19199,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{773, 343}, {14.75, 15}}</string>
+						<string>{{880, 332}, {14.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3092, 1372}, {59, 60}}</string>
+						<string>{{3520, 1328}, {59, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18829,7 +19227,7 @@
 						<key>OriginalSize</key>
 						<string>{59, 60}</string>
 						<key>Position</key>
-						<string>{3092, 1372}</string>
+						<string>{3520, 1328}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -18949,9 +19347,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1007, 135}, {25, 15}}</string>
+						<string>{{653, 186}, {25, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{4028, 540}, {100, 60}}</string>
+						<string>{{2612, 744}, {100, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -18961,7 +19359,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -18977,7 +19375,7 @@
 						<key>OriginalSize</key>
 						<string>{100, 60}</string>
 						<key>Position</key>
-						<string>{4028, 540}</string>
+						<string>{2612, 744}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19097,9 +19495,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{887, 380}, {17.5, 15}}</string>
+						<string>{{836, 151}, {17.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3548, 1520}, {70, 60}}</string>
+						<string>{{3344, 604}, {70, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19109,7 +19507,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -19125,7 +19523,7 @@
 						<key>OriginalSize</key>
 						<string>{70, 60}</string>
 						<key>Position</key>
-						<string>{3548, 1520}</string>
+						<string>{3344, 604}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19245,9 +19643,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{960, 414}, {15.5, 15}}</string>
+						<string>{{759, 249}, {15.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3840, 1656}, {62, 60}}</string>
+						<string>{{3036, 996}, {62, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19273,7 +19671,7 @@
 						<key>OriginalSize</key>
 						<string>{62, 60}</string>
 						<key>Position</key>
-						<string>{3840, 1656}</string>
+						<string>{3036, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19393,9 +19791,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{853, 359}, {18, 15}}</string>
+						<string>{{837, 129}, {18, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3412, 1436}, {72, 60}}</string>
+						<string>{{3348, 516}, {72, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19405,7 +19803,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -19421,7 +19819,7 @@
 						<key>OriginalSize</key>
 						<string>{72, 60}</string>
 						<key>Position</key>
-						<string>{3412, 1436}</string>
+						<string>{3348, 516}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19541,9 +19939,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{994, 429}, {15.5, 15}}</string>
+						<string>{{759, 268}, {15.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3976, 1716}, {62, 60}}</string>
+						<string>{{3036, 1072}, {62, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19569,7 +19967,7 @@
 						<key>OriginalSize</key>
 						<string>{62, 60}</string>
 						<key>Position</key>
-						<string>{3976, 1716}</string>
+						<string>{3036, 1072}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19689,9 +20087,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{738, 354}, {14.75, 15}}</string>
+						<string>{{880, 350}, {14.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{2952, 1416}, {59, 60}}</string>
+						<string>{{3520, 1400}, {59, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19717,7 +20115,7 @@
 						<key>OriginalSize</key>
 						<string>{59, 60}</string>
 						<key>Position</key>
-						<string>{2952, 1416}</string>
+						<string>{3520, 1400}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19837,9 +20235,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1007, 191}, {22.75, 15}}</string>
+						<string>{{709, 186}, {22.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{4028, 764}, {89, 60}}</string>
+						<string>{{2836, 744}, {89, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -19849,7 +20247,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -19865,7 +20263,7 @@
 						<key>OriginalSize</key>
 						<string>{89, 60}</string>
 						<key>Position</key>
-						<string>{4028, 764}</string>
+						<string>{2836, 744}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -19985,9 +20383,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{997, 410}, {16.5, 15}}</string>
+						<string>{{969, 353}, {16.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{3988, 1640}, {66, 60}}</string>
+						<string>{{3876, 1412}, {66, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20013,7 +20411,7 @@
 						<key>OriginalSize</key>
 						<string>{66, 60}</string>
 						<key>Position</key>
-						<string>{3988, 1640}</string>
+						<string>{3876, 1412}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20133,9 +20531,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1007, 217}, {21.75, 15}}</string>
+						<string>{{735, 185}, {21.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{4028, 868}, {85, 60}}</string>
+						<string>{{2940, 740}, {85, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20145,7 +20543,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -20161,7 +20559,7 @@
 						<key>OriginalSize</key>
 						<string>{85, 60}</string>
 						<key>Position</key>
-						<string>{4028, 868}</string>
+						<string>{2940, 740}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20281,9 +20679,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{634, 205}, {20.75, 15}}</string>
+						<string>{{760, 185}, {20.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{2536, 820}, {83, 60}}</string>
+						<string>{{3040, 740}, {83, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20293,7 +20691,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -20309,7 +20707,7 @@
 						<key>OriginalSize</key>
 						<string>{83, 60}</string>
 						<key>Position</key>
-						<string>{2536, 820}</string>
+						<string>{3040, 740}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20429,9 +20827,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{634, 254}, {19.75, 15}}</string>
+						<string>{{837, 106}, {19.75, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{2536, 1016}, {77, 60}}</string>
+						<string>{{3348, 424}, {77, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20457,7 +20855,7 @@
 						<key>OriginalSize</key>
 						<string>{77, 60}</string>
 						<key>Position</key>
-						<string>{2536, 1016}</string>
+						<string>{3348, 424}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20577,9 +20975,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1007, 164}, {23, 15}}</string>
+						<string>{{682, 186}, {23, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{4028, 656}, {92, 60}}</string>
+						<string>{{2728, 744}, {92, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20589,7 +20987,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -20605,7 +21003,7 @@
 						<key>OriginalSize</key>
 						<string>{92, 60}</string>
 						<key>Position</key>
-						<string>{4028, 656}</string>
+						<string>{2728, 744}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20725,9 +21123,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{634, 229}, {20.5, 15}}</string>
+						<string>{{841, 48}, {20.5, 15}}</string>
 						<key>Frame-HD</key>
-						<string>{{2536, 916}, {82, 60}}</string>
+						<string>{{3364, 192}, {82, 60}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20737,7 +21135,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -20753,7 +21151,7 @@
 						<key>OriginalSize</key>
 						<string>{82, 60}</string>
 						<key>Position</key>
-						<string>{2536, 916}</string>
+						<string>{3364, 192}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -20930,9 +21328,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{669, 108}, {109.5, 11.75}}</string>
+						<string>{{311, 613}, {109.5, 11.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2676, 432}, {438, 45}}</string>
+						<string>{{1244, 2452}, {438, 45}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -20958,7 +21356,7 @@
 						<key>OriginalSize</key>
 						<string>{438, 45}</string>
 						<key>Position</key>
-						<string>{2676, 432}</string>
+						<string>{1244, 2452}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -21445,15 +21843,15 @@
 								<real>0.20000000298023224</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{162, 1.00000000000001}</string>
-									<string>{93, 22.000000000000007}</string>
-									<string>{30.999999999999996, 78}</string>
-									<string>{1.9999999999999909, 148}</string>
-									<string>{4.9999999999999867, 223}</string>
-									<string>{10.999999999999991, 156}</string>
-									<string>{48.999999999999993, 87}</string>
-									<string>{108, 44.000000000000007}</string>
-									<string>{181, 30.999999999999996}</string>
+									<string>{162, 1}</string>
+									<string>{93, 22}</string>
+									<string>{31, 78}</string>
+									<string>{2, 148}</string>
+									<string>{5, 223}</string>
+									<string>{11, 156}</string>
+									<string>{49, 87}</string>
+									<string>{108, 44}</string>
+									<string>{181, 31}</string>
 									<string>{236, 50}</string>
 									<string>{274, 87}</string>
 									<string>{294, 141}</string>
@@ -21498,10 +21896,10 @@
 									<string>{330, 184}</string>
 									<string>{333, 139}</string>
 									<string>{321, 94}</string>
-									<string>{295, 52.999999999999993}</string>
+									<string>{295, 53}</string>
 									<string>{258, 22}</string>
-									<string>{215, 4.0000000000000133}</string>
-									<string>{163, 9.9808714130509288e-15}</string>
+									<string>{215, 4}</string>
+									<string>{163, 0}</string>
 								</array>
 								<key>ShapePositionOffset</key>
 								<string>{0, 0}</string>
@@ -21812,15 +22210,15 @@
 								<real>0.20000000298023224</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{162, 1.00000000000001}</string>
-									<string>{93, 22.000000000000007}</string>
-									<string>{30.999999999999996, 78}</string>
-									<string>{1.9999999999999909, 148}</string>
-									<string>{4.9999999999999867, 223}</string>
-									<string>{10.999999999999991, 156}</string>
-									<string>{48.999999999999993, 87}</string>
-									<string>{108, 44.000000000000007}</string>
-									<string>{181, 30.999999999999996}</string>
+									<string>{162, 1}</string>
+									<string>{93, 22}</string>
+									<string>{31, 78}</string>
+									<string>{2, 148}</string>
+									<string>{5, 223}</string>
+									<string>{11, 156}</string>
+									<string>{49, 87}</string>
+									<string>{108, 44}</string>
+									<string>{181, 31}</string>
 									<string>{236, 50}</string>
 									<string>{274, 87}</string>
 									<string>{294, 141}</string>
@@ -21852,7 +22250,7 @@
 									<string>{330, 184}</string>
 									<string>{321, 94}</string>
 									<string>{258, 22}</string>
-									<string>{163, 9.9808714130509288e-15}</string>
+									<string>{163, 0}</string>
 								</array>
 								<key>ShapePositionOffset</key>
 								<string>{0, 0}</string>
@@ -22039,9 +22437,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{777, 270}, {46.75, 45}}</string>
+						<string>{{856, 136}, {46.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{3108, 1080}, {187, 180}}</string>
+						<string>{{3424, 544}, {187, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -22067,7 +22465,7 @@
 						<key>OriginalSize</key>
 						<string>{187, 180}</string>
 						<key>Position</key>
-						<string>{3108, 1080}</string>
+						<string>{3424, 544}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -22188,9 +22586,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{792, 345}, {9.75, 9}}</string>
+						<string>{{802, 106}, {9.75, 9}}</string>
 						<key>Frame-HD</key>
-						<string>{{3168, 1380}, {37, 36}}</string>
+						<string>{{3208, 424}, {37, 36}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -22216,7 +22614,7 @@
 						<key>OriginalSize</key>
 						<string>{37, 36}</string>
 						<key>Position</key>
-						<string>{3168, 1380}</string>
+						<string>{3208, 424}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -22336,9 +22734,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{806, 345}, {9.75, 9}}</string>
+						<string>{{815, 106}, {9.75, 9}}</string>
 						<key>Frame-HD</key>
-						<string>{{3224, 1380}, {37, 36}}</string>
+						<string>{{3260, 424}, {37, 36}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -22348,7 +22746,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -22364,7 +22762,7 @@
 						<key>OriginalSize</key>
 						<string>{37, 36}</string>
 						<key>Position</key>
-						<string>{3224, 1380}</string>
+						<string>{3260, 424}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -22484,9 +22882,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 214}, {46.75, 45}}</string>
+						<string>{{967, 135}, {46.75, 45}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 856}, {187, 180}}</string>
+						<string>{{3868, 540}, {187, 180}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -22512,7 +22910,7 @@
 						<key>OriginalSize</key>
 						<string>{187, 180}</string>
 						<key>Position</key>
-						<string>{2612, 856}</string>
+						<string>{3868, 540}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -22779,9 +23177,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{313, 377}, {62.75, 100}}</string>
+						<string>{{383, 377}, {62.75, 100}}</string>
 						<key>Frame-HD</key>
-						<string>{{1252, 1508}, {249, 400}}</string>
+						<string>{{1532, 1508}, {249, 400}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -22807,7 +23205,7 @@
 						<key>OriginalSize</key>
 						<string>{249, 400}</string>
 						<key>Position</key>
-						<string>{1252, 1508}</string>
+						<string>{1532, 1508}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -23852,7 +24250,7 @@
 								<real>0.5</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{-0.99999999999999989, 1}</string>
+									<string>{-1, 1}</string>
 									<string>{-453, 0}</string>
 									<string>{-445, 244.00000000000003}</string>
 									<string>{-425, 414}</string>
@@ -24369,7 +24767,7 @@
 								<real>0.5</real>
 								<key>ShapePoints</key>
 								<array>
-									<string>{-0.99999999999997147, 538}</string>
+									<string>{-0.99999999999997158, 538}</string>
 									<string>{-58, 78}</string>
 									<string>{-85, 28}</string>
 									<string>{-126, 0}</string>
@@ -25242,8 +25640,8 @@
 								<array>
 									<string>{27, 1}</string>
 									<string>{13, 3}</string>
-									<string>{3.9999999999999996, 7}</string>
-									<string>{0.99999999999999989, 9}</string>
+									<string>{4, 7}</string>
+									<string>{1, 9}</string>
 									<string>{0, 15}</string>
 									<string>{8, 21}</string>
 									<string>{34, 27}</string>
@@ -26090,9 +26488,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{449, 125}, {115.75, 13.75}}</string>
+						<string>{{514, 438}, {115.75, 13.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1796, 500}, {461, 53}}</string>
+						<string>{{2056, 1752}, {461, 53}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -26118,7 +26516,7 @@
 						<key>OriginalSize</key>
 						<string>{461, 53}</string>
 						<key>Position</key>
-						<string>{1796, 500}</string>
+						<string>{2056, 1752}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -26237,9 +26635,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{909, 380}, {12.75, 16}}</string>
+						<string>{{1011, 70}, {12.75, 16}}</string>
 						<key>Frame-HD</key>
-						<string>{{3636, 1520}, {51, 64}}</string>
+						<string>{{4044, 280}, {51, 64}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -26265,7 +26663,7 @@
 						<key>OriginalSize</key>
 						<string>{51, 64}</string>
 						<key>Position</key>
-						<string>{3636, 1520}</string>
+						<string>{4044, 280}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -26432,9 +26830,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{379, 377}, {78, 77.5}}</string>
+						<string>{{395, 525}, {78, 77.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{1516, 1508}, {312, 310}}</string>
+						<string>{{1580, 2100}, {312, 310}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -26460,11 +26858,206 @@
 						<key>OriginalSize</key>
 						<string>{312, 310}</string>
 						<key>Position</key>
-						<string>{1516, 1508}</string>
+						<string>{1580, 2100}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{78, 77.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>windmill_drops</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va5gEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAAfAMAAAUA
+					AAABAQAAVXNlcnMAAAADAAAAAQEAAFF1ZQAI
+					AAAAAQEAAEJlcm5oYXJkAwAAAAEBAABpT1MA
+					DgAAAAEBAABGdW5ueUJ1bm55SnVtcAAADAAA
+					AAEBAABQcm9qZWN0RmlsZXMHAAAAAQEAAEdy
+					YWZpY3MAFQAAAAEBAABTcHJpdGVIZWxwZXJP
+					cmlnaW5hbHMAAAASAAAAAQEAAHdpbmRtaWxs
+					X2Ryb3BzLnBuZwAAJAAAAAEGAAAEAAAAFAAA
+					ACAAAAAwAAAAPAAAAFQAAABoAAAAeAAAAJgA
+					AAAIAAAABAMAAGAGAAAAAAAACAAAAAQDAAD/
+					BgAAAAAAAAgAAAAEAwAAbTIEAAAAAAAIAAAA
+					BAMAAFyzBAAAAAAACAAAAAQDAABqswQAAAAA
+					AAgAAAAEAwAAb7MEAAAAAAAIAAAABAMAAHGz
+					BAAAAAAACAAAAAQDAAByswQAAAAAAAgAAAAE
+					AwAAYciYAAAAAAAkAAAAAQYAAOAAAADwAAAA
+					AAEAABABAAAgAQAAMAEAAEABAABQAQAAYAEA
+					ABgAAAABAgAAAQAAAAAAAAAPAAAAAAAAAAAA
+					AAAAAAAAAAAAAAEFAAAEAAAAAwMAAAYAAAAI
+					AAAABAMAAAcAAAAAAAAABAAAAAMDAAD1AQAA
+					DQAAAAEBAABNYWNpbnRvc2ggU1NEAAAACAAA
+					AAQDAAAAwOSJOwAAAAgAAAAABAAAQbTpYAcA
+					AAAkAAAAAQEAADUyQzZEMUUyLUUyMzUtM0E3
+					OC04MEJGLTUzNzU5OENFNDkxOBgAAAABAgAA
+					gQAAAAEACADvPwAAAQAIAAAAAAAAAAAAAQAA
+					AAEBAAAvAAAABAAAAAMDAAAAAQAA7AAAAAEC
+					AAAyMDY2YTAyOTVlNDY4NmMxZjkwYWQyYzM3
+					ZjQzZDNjZTg5NDA0MGQzOzAwMDAwMDAwOzAw
+					MDAwMDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFw
+					cC1zYW5kYm94LnJlYWQtd3JpdGU7MDAwMDAw
+					MDE7MGUwMDAwMDI7MDAwMDAwMDAwMDk4Yzg2
+					MTsvdXNlcnMvcXVlL2Jlcm5oYXJkL2lvcy9m
+					dW5ueWJ1bm55anVtcC9wcm9qZWN0ZmlsZXMv
+					Z3JhZmljcy9zcHJpdGVoZWxwZXJvcmlnaW5h
+					bHMvd2luZG1pbGxfZHJvcHMucG5nAOQAAAD+
+					////AQAAAAAAAAASAAAABBAAALQAAAAAAAAA
+					BRAAAHABAAAAAAAAEBAAAJwBAAAAAAAAVBAA
+					AMQBAAAAAAAAVRAAAMQBAAAAAAAAVhAAALwB
+					AAAAAAAAAiAAAHACAAAAAAAAECAAAOwBAAAA
+					AAAAESAAACQCAAAAAAAAEiAAAAQCAAAAAAAA
+					EyAAABQCAAAAAAAAICAAAFACAAAAAAAAMCAA
+					ALwBAAAAAAAAAcAAANABAAAAAAAAEcAAABQA
+					AAAAAAAAEsAAAOABAAAAAAAAENAAAHwCAAAA
+					AAAAgPAAAIgCAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Category</key>
+								<integer>1</integer>
+								<key>Density</key>
+								<real>0.20000000298023224</real>
+								<key>Fixture</key>
+								<array>
+									<array/>
+								</array>
+								<key>Friction</key>
+								<real>0.20000000298023224</real>
+								<key>Group</key>
+								<integer>0</integer>
+								<key>Height</key>
+								<real>398</real>
+								<key>HolesPoints</key>
+								<array/>
+								<key>IsCircle</key>
+								<true/>
+								<key>IsRectangle</key>
+								<false/>
+								<key>IsSensor</key>
+								<false/>
+								<key>LHHeight</key>
+								<real>99.5</real>
+								<key>LHShapePositionOffset</key>
+								<string>{0, 0}</string>
+								<key>LHWidth</key>
+								<real>99.25</real>
+								<key>Mask</key>
+								<integer>65535</integer>
+								<key>Name</key>
+								<string>UntitledFixture</string>
+								<key>Restitution</key>
+								<real>1.1000000238418579</real>
+								<key>ShapePoints</key>
+								<array/>
+								<key>ShapePositionOffset</key>
+								<string>{198.5, 199}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>Width</key>
+								<real>397</real>
+							</dict>
+						</array>
+						<key>Type</key>
+						<integer>2</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>assets</string>
+					<key>SHSpriteName</key>
+					<string>windmill_drops</string>
+					<key>SheetImage</key>
+					<string>objects_assets.png</string>
+					<key>SheetImage-HD</key>
+					<string>objects_assets-ipadhd.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{248, 630}, {99.75, 99.5}}</string>
+						<key>Frame-HD</key>
+						<string>{{992, 2520}, {397, 398}}</string>
+						<key>Image</key>
+						<string>objects_assets.png</string>
+						<key>Image-HD</key>
+						<string>objects_assets-ipadhd.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>windmill_drops</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Que/Bernhard/iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/windmill_drops.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../iOS/FunnyBunnyJump/ProjectFiles/Grafics/SpriteHelperOriginals/windmill_drops.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {397, 398}}</string>
+						<key>OriginalSize</key>
+						<string>{397, 398}</string>
+						<key>Position</key>
+						<string>{992, 2520}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{99.25, 99.5}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -27067,9 +27660,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{379, 459}, {115.75, 13.75}}</string>
+						<string>{{449, 125}, {115.75, 13.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1516, 1836}, {461, 53}}</string>
+						<string>{{1796, 500}, {461, 53}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -27095,7 +27688,7 @@
 						<key>OriginalSize</key>
 						<string>{461, 53}</string>
 						<key>Position</key>
-						<string>{1516, 1836}</string>
+						<string>{1796, 500}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -27215,9 +27808,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{653, 142}, {32, 26}}</string>
+						<string>{{773, 76}, {32, 26}}</string>
 						<key>Frame-HD</key>
-						<string>{{2612, 568}, {128, 104}}</string>
+						<string>{{3092, 304}, {128, 104}}</string>
 						<key>Image</key>
 						<string>objects_assets.png</string>
 						<key>Image-HD</key>
@@ -27227,7 +27820,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -27243,7 +27836,7 @@
 						<key>OriginalSize</key>
 						<string>{128, 104}</string>
 						<key>Position</key>
-						<string>{2612, 568}</string>
+						<string>{3092, 304}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -31792,16 +32385,16 @@
 	AAB4Q29kZVByb2plY3RzAAAADgAAAAEBAABGdW5ueUJ1bm55SnVtcAAACQAAAAEBAABS
 	ZXNvdXJjZXMAAAAGAAAAAQEAAEltYWdlcwAAIAAAAAEGAAAEAAAAFAAAACAAAAAwAAAA
 	SAAAAEgAAABgAAAAdAAAAAgAAAAEAwAAYAYAAAAAAAAIAAAABAMAAP8GAAAAAAAACAAA
-	AAQDAABtMgQAAAAAAAgAAAAEAwAAjmgEAAAAAAAIAAAABAMAAHI3SwAAAAAACAAAAAQD
-	AADzRUsAAAAAAAgAAAAEAwAAF0hLAAAAAAAIAAAABAMAABxISwAAAAAAIAAAAAEGAACs
+	AAQDAABtMgQAAAAAAAgAAAAEAwAAjmgEAAAAAAAIAAAABAMAAEBflQAAAAAACAAAAAQD
+	AACKYJUAAAAAAAgAAAAEAwAA02CVAAAAAAAIAAAABAMAANRglQAAAAAAIAAAAAEGAACs
 	AAAAvAAAAMwAAADcAAAA7AAAAPwAAAAMAQAAHAEAABgAAAABAgAAAgAAAAAAAAAPAAAA
 	AAAAAAAAAAAAAAAACAAAAAQDAAAGAAAAAAAAAAQAAAADAwAA9QEAAA0AAAABAQAATWFj
 	aW50b3NoIFNTRAAAAAgAAAAEAwAAAMDkiTsAAAAIAAAAAAQAAEG06WAHAAAAJAAAAAEB
 	AAA1MkM2RDFFMi1FMjM1LTNBNzgtODBCRi01Mzc1OThDRTQ5MTgYAAAAAQIAAIEAAAAB
 	AAgA7z8AAAEACAAAAAAAAAAAAAEAAAABAQAALwAAAAAAAAABBQAABAAAAAMDAAAAAQAA
-	2AAAAAECAABjODg4MDJjODZjOGZjNWRmZTNjZDllZmExNzI0MGEzNGNhODk5Nzg5OzAw
+	2AAAAAECAAAwYjczZjBhZWNlZjM3N2NlMjgzMzJmNmRjOTQxNmIyMjdlMWY3MDE0OzAw
 	MDAwMDAwOzAwMDAwMDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJlYWQt
-	d3JpdGU7MDAwMDAwMDE7MGUwMDAwMDI7MDAwMDAwMDAwMDRiNDgxYzsvdXNlcnMvcXVl
+	d3JpdGU7MDAwMDAwMDE7MGUwMDAwMDI7MDAwMDAwMDAwMDk1NjBkNDsvdXNlcnMvcXVl
 	L2Jlcm5oYXJkL3hjb2RlcHJvamVjdHMvZnVubnlidW5ueWp1bXAvZnVubnlidW5ueWp1
 	bXAvcmVzb3VyY2VzL2ltYWdlcwDAAAAA/v///wEAAAAAAAAADwAAAAQQAACEAAAAAAAA
 	AAUQAAAsAQAAAAAAABAQAABUAQAAAAAAAAIgAAAUAgAAAAAAABAgAACQAQAAAAAAABEg

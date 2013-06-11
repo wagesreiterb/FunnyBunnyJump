@@ -19,6 +19,7 @@
 		8205DB421666986500B962BB /* objects_backgrounds3-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */; };
 		820C197617647AFA00B6AD6A /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 820C197517647AFA00B6AD6A /* libGoogleAdMobAds.a */; };
 		820C197817647BF900B6AD6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 820C197717647BF900B6AD6A /* Default-568h@2x.png */; };
+		820C197C17649C6400B6AD6A /* chain.png in Resources */ = {isa = PBXBuildFile; fileRef = 820C197B17649C6400B6AD6A /* chain.png */; };
 		821B0726169999FA00098FD2 /* explosive-orchestra.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 821B0724169999FA00098FD2 /* explosive-orchestra.mp3 */; };
 		821B0727169999FA00098FD2 /* jubilant-fanfare-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 821B0725169999FA00098FD2 /* jubilant-fanfare-3.mp3 */; };
 		821B072916999FEC00098FD2 /* cartoonFailure2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 821B072816999FEC00098FD2 /* cartoonFailure2.mp3 */; };
@@ -732,6 +733,7 @@
 		8205DB401666986500B962BB /* objects_backgrounds3-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objects_backgrounds3-ipadhd.png"; sourceTree = "<group>"; };
 		820C197517647AFA00B6AD6A /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		820C197717647BF900B6AD6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		820C197B17649C6400B6AD6A /* chain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chain.png; sourceTree = "<group>"; };
 		821B0724169999FA00098FD2 /* explosive-orchestra.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "explosive-orchestra.mp3"; sourceTree = "<group>"; };
 		821B0725169999FA00098FD2 /* jubilant-fanfare-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "jubilant-fanfare-3.mp3"; sourceTree = "<group>"; };
 		821B072816999FEC00098FD2 /* cartoonFailure2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cartoonFailure2.mp3; sourceTree = "<group>"; };
@@ -1578,6 +1580,7 @@
 		8282EFC51624AF4A00B5303B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				820C197B17649C6400B6AD6A /* chain.png */,
 				82EAD27B16D2A9CD002DC877 /* rope.png */,
 				8246F05F162F30850091680F /* objects.pshs */,
 				8246F081163410FF0091680F /* objects_foregrounds.png */,
@@ -2977,6 +2980,7 @@
 				82295E09173105AE00C12B39 /* twinkle.wav in Resources */,
 				82295E0B173110D900C12B39 /* fireball.mp3 in Resources */,
 				820C197817647BF900B6AD6A /* Default-568h@2x.png in Resources */,
+				820C197C17649C6400B6AD6A /* chain.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
