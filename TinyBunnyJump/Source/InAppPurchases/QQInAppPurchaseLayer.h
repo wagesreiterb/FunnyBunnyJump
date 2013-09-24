@@ -13,6 +13,7 @@
 #import "IAPProduct.h"
 #import <StoreKit/StoreKit.h>
 #import "QQProduct.h"
+#import "QQHomeScreen.h"
 
 @class QQLevel;
 
@@ -23,6 +24,8 @@
     LHSprite* _spriteBackButton;
     LHSprite* _spritePleaseWait;
     LHSprite* _pleaseWaitBackground;
+    
+    QQInAppPurchaseLayer *_layer;
     
     int _rotation;
     BOOL _pleaseWaitActive;
@@ -43,6 +46,9 @@
 @property (nonatomic, strong) NSString * chosenProductIdentifier;
 
 +(id)sharedInstance;
+-(id)scene;
 -(void)openIAPStore:(QQLevel*)mainLayer;
+-(void)openIAPStoreFromHomeScreen:(CCScene*)mainScene;
+-(void)openIAPStoreFromHomeScreen;
 
 @end

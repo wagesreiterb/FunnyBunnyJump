@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>2HDSuffix</key>
+	<string>-ipadhd</string>
+	<key>AutoGenerateCode</key>
+	<false/>
+	<key>AutoIncludeXCode</key>
+	<false/>
+	<key>BundleIdentifier</key>
+	<string></string>
+	<key>CodePathRelative</key>
+	<string>..</string>
+	<key>CustomClasses</key>
+	<array/>
+	<key>CustomScreenSize</key>
+	<string>{480, 320}</string>
+	<key>Device</key>
+	<integer>2</integer>
+	<key>Engine</key>
+	<integer>0</integer>
+	<key>HDSuffix</key>
+	<string>-hd</string>
+	<key>LastLevelLoaded</key>
+	<string>/Users/Que/Bernhard/xCodeProjects/TinyBunnyJump/TinyBunnyJump/Resources/Levels/homeScreen.plhs</string>
+	<key>Orientation</key>
+	<integer>1</integer>
+	<key>ProjectName</key>
+	<string></string>
+	<key>Tags</key>
+	<array>
+		<string>DEFAULT</string>
+		<string>TAG_PLAYER</string>
+		<string>TAG_FLOOR</string>
+		<string>TAG_BALLOON</string>
+		<string>TAG_MAX_HEIGHT</string>
+		<string>TAG_TRAMPOLINE</string>
+		<string>TAG_BEAM</string>
+		<string>TAG_BAR</string>
+		<string>TAG_STAR</string>
+		<string>TAG_LEVELCHOOSER</string>
+		<string>TAG_BALLOON_SIZECHANGER</string>
+		<string>TAG_BALLOON_SHAKER</string>
+		<string>TAG_BALLOON_BLINKER</string>
+		<string>TAG_BALLOON_THREETIMESTOUCHER</string>
+		<string>TAG_TAP_SCREEN_BUTTON</string>
+		<string>TAG_BAR_SHAKER</string>
+		<string>TAG_MUSIC_BUTTON</string>
+		<string>TAG_LOCK</string>
+		<string>TAG_DOTS</string>
+		<string>TAG_TRAMPOLINE_SENSOR</string>
+		<string>TAG_OBSTACLE</string>
+	</array>
+</dict>
+</plist>

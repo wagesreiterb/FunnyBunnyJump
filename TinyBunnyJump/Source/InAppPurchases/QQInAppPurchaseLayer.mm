@@ -32,11 +32,24 @@
     return _sharedObject;
 }
 
+-(id)scene
+{
+    CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
+    //QQInAppPurchaseLayer *layer = [QQInAppPurchaseLayer node];    // 'layer' is an autorelease object.
+    _layer = [QQInAppPurchaseLayer node];    // 'layer' is an autorelease object.
+    
+    [scene addChild: _layer];    // add layer as a child to scene
+    
+	return scene; 	// return the scene
+}
+
 -(id)init
 {
-    NSLog(@"... init");
+    NSLog(@"... init QQInAppPurchaseLayer");
 	if( (self=[super init])) {
-        _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
+
+        //[_loaderIAP addSpritesToLayer:self];
+        
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
         
         _priceFormatter = [[NSNumberFormatter alloc] init];
@@ -44,21 +57,64 @@
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
         _myQQProducts = [[NSMutableArray alloc] init];
-
+        //[self setupProductsFromHomeScreen];
 	}
 	return self;
 }
 
--(void)openIAPStore:(QQLevel*)mainLayer {
+
+//-(void)openIAPStore:(QQLevel*)mainLayer {
+-(void)openIAPStoreFromHomeScreen:(CCScene*)mainScene {
     NSLog(@"... openInAppPurchase Store");
     
-    //[self showConfirmAlert];
+    //_mainLayer = mainLayer;
+    _layer = [QQInAppPurchaseLayer node];
+    [mainScene addChild: _layer];
     
+    _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
+    [_loaderIAP addSpritesToLayer:_layer];
     
+    _spriteBackButton = [_loaderIAP spriteWithUniqueName:@"buttonBack"];
+    [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
+    [_spriteBackButton registerTouchEndedObserver:self selector:@selector(touchEndedBackButton:)];
+    
+    //[self setupThirtyTrampolinesButton];
+    //[self setupEightyTrampolinesButton];
+    
+    [self setupProducts];
+    
+    if([SKPaymentQueue canMakePayments]) {
+        // Display a store to the user
+        [self inAppPurchaseActivated];
+    } else {
+        // Warn the user that purchases are disabled
+        [self inAppPurchaseDeactivated];
+    }
+}
+
+-(void)setupProductsFromHomeScreen {
+    NSArray *arrayOfProductIdentifiers = [NSArray arrayWithObjects:PRODUCT_THIRTY_TRAMPOLINES, PRODUCT_EIGHTY_TRAMPOLINES,nil];
+    
+    for(NSString *productIdentifier in arrayOfProductIdentifiers) {
+        QQProduct* product;
+        product = [[QQProduct alloc] initWithProductIdentifier:productIdentifier
+                                                     withLayer:self
+                                                    withLoader:_loaderIAP];
+        product.delegate = self;
+        
+        [_myQQProducts addObject:product];
+    }
+}
+
+//-(void)openIAPStore:(QQLevel*)mainLayer {
+-(void)openIAPStore:(QQLevel*)mainLayer {
+    NSLog(@"... openInAppPurchase Store");
+
     _mainLayer = mainLayer;
     [_mainLayer disableTouchesForPause:YES];
     [_mainLayer setInAppPurchaseStoreOpen:YES];
     
+    _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
     [_loaderIAP addSpritesToLayer:mainLayer];
     
     _spriteBackButton = [_loaderIAP spriteWithUniqueName:@"buttonBack"];
