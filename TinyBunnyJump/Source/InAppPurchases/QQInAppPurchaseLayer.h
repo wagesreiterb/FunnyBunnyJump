@@ -9,23 +9,23 @@
 #import "CCLayer.h"
 #import "LevelHelperLoader.h"
 #import "NSNotificationCenter+Utils.h"
-#import "TBJIAPHelper.h"
-#import "IAPProduct.h"
+//#import "TBJIAPHelper.h"
+//#import "IAPProduct.h"
 #import <StoreKit/StoreKit.h>
 #import "QQProduct.h"
-#import "QQHomeScreen.h"
+#import "QQInAppPurchaseStore.h"
 
 @class QQLevel;
 
-@interface QQInAppPurchaseLayer : LHLayer {
+@interface QQInAppPurchaseLayer : LHLayer  {
     LevelHelperLoader *_loaderIAP;
-    QQLevel *_mainLayer;
+    //QQLevel *_mainLayer;
+    LHLayer *_mainLayer;
+    BOOL _entryFromLevel;
     
     LHSprite* _spriteBackButton;
     LHSprite* _spritePleaseWait;
     LHSprite* _pleaseWaitBackground;
-    
-    QQInAppPurchaseLayer *_layer;
     
     int _rotation;
     BOOL _pleaseWaitActive;
@@ -34,21 +34,21 @@
     //LHSprite* _thirtyTrampolinesButton;
     //LHSprite* _eightyTrampolinesButton;
     
-    NSNumberFormatter* _priceFormatter;
-    NSArray *myProducts;
+    //NSNumberFormatter* _priceFormatter;
+    //NSArray *myProducts;
     
     //CCLabelTTF *_labelBuyTrampoline;
     //CCLabelTTF *_labelBuy80Trampoline;
     
     NSMutableArray *_myQQProducts;
+    
+    NSNumberFormatter* _priceFormatter;
 }
 
 @property (nonatomic, strong) NSString * chosenProductIdentifier;
 
 +(id)sharedInstance;
--(id)scene;
--(void)openIAPStore:(QQLevel*)mainLayer;
--(void)openIAPStoreFromHomeScreen:(CCScene*)mainScene;
--(void)openIAPStoreFromHomeScreen;
+-(void)showIAPStoreFromLevel:(QQLevel*)mainLayer;
+-(void)showIAPStoreFromHomescreen:(LHLayer*)mainLayer;
 
 @end

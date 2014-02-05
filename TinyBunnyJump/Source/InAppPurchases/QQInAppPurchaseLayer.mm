@@ -7,17 +7,14 @@
 //
 
 #import "QQInAppPurchaseLayer.h"
+#import "QQInAppPurchaseStore.h"
 #import "GameManager.h"
 
-#define PRODUCT_THIRTY_TRAMPOLINES @"com.querika.tinybunnyjump.thirtytrampolines"
-#define PRODUCT_EIGHTY_TRAMPOLINES @"com.querika.tinybunnyjump.eightytrampolines"
 
-@interface QQInAppPurchaseLayer () <SKProductsRequestDelegate, SKPaymentTransactionObserver, QQProductDelegate>
+@interface QQInAppPurchaseLayer () <QQInAppPurchaseStoreDelegate>
 @end
 
 @implementation QQInAppPurchaseLayer {
-
-    NSArray *_products;
 }
 
 + (id)sharedInstance
@@ -32,371 +29,131 @@
     return _sharedObject;
 }
 
--(id)scene
-{
-    CCScene *scene = [CCScene node];    // 'scene' is an autorelease object.
-    //QQInAppPurchaseLayer *layer = [QQInAppPurchaseLayer node];    // 'layer' is an autorelease object.
-    _layer = [QQInAppPurchaseLayer node];    // 'layer' is an autorelease object.
-    
-    [scene addChild: _layer];    // add layer as a child to scene
-    
-	return scene; 	// return the scene
-}
-
 -(id)init
 {
-    NSLog(@"... init QQInAppPurchaseLayer");
+    NSLog(@"... init");
 	if( (self=[super init])) {
-
-        //[_loaderIAP addSpritesToLayer:self];
-        
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
         
         _priceFormatter = [[NSNumberFormatter alloc] init];
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        
-        _myQQProducts = [[NSMutableArray alloc] init];
-        //[self setupProductsFromHomeScreen];
 	}
 	return self;
 }
 
+-(void)showIAPStoreFromLevel:(QQLevel*)mainLayer {
+    
+    //dispatch only in main thread is required
+    //for the confirm dialog
+    //otherwise the app crashes
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"... openInAppPurchase Store");
+        _entryFromLevel = YES;
+        _mainLayer = mainLayer;
+        
+        [(QQLevel*)_mainLayer disableTouchesForPause:YES];
+        [(QQLevel*)_mainLayer setInAppPurchaseStoreOpen:YES];
+        
+        [self showIapStore];
+    });
+}
 
-//-(void)openIAPStore:(QQLevel*)mainLayer {
--(void)openIAPStoreFromHomeScreen:(CCScene*)mainScene {
-    NSLog(@"... openInAppPurchase Store");
+-(void)showIAPStoreFromHomescreen:(LHLayer*)mainLayer {
+    //dispatch only in main thread is required
+    //for the confirm dialog
+    //otherwise the app crashes
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"... openInAppPurchase Store");
+        _entryFromLevel = NO;
+        _mainLayer = mainLayer;
+        
+        [self showIapStore];
+    });
+}
+
+-(void)showIapStore {
     
-    //_mainLayer = mainLayer;
-    _layer = [QQInAppPurchaseLayer node];
-    [mainScene addChild: _layer];
+    if(![SKPaymentQueue canMakePayments]) {
+        [self inAppPurchaseDeactivated];
+    }
     
-    _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
-    [_loaderIAP addSpritesToLayer:_layer];
+    [_loaderIAP addSpritesToLayer:_mainLayer];
     
     _spriteBackButton = [_loaderIAP spriteWithUniqueName:@"buttonBack"];
     [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
     [_spriteBackButton registerTouchEndedObserver:self selector:@selector(touchEndedBackButton:)];
     
-    //[self setupThirtyTrampolinesButton];
-    //[self setupEightyTrampolinesButton];
+    [[QQInAppPurchaseStore sharedInstance] setDelegate:self];
+    [[QQInAppPurchaseStore sharedInstance] openIAPStore];
     
-    [self setupProducts];
-    
-    if([SKPaymentQueue canMakePayments]) {
-        // Display a store to the user
-        [self inAppPurchaseActivated];
-    } else {
-        // Warn the user that purchases are disabled
-        [self inAppPurchaseDeactivated];
-    }
+    [self populateGrayIcons];
 }
 
--(void)setupProductsFromHomeScreen {
-    NSArray *arrayOfProductIdentifiers = [NSArray arrayWithObjects:PRODUCT_THIRTY_TRAMPOLINES, PRODUCT_EIGHTY_TRAMPOLINES,nil];
+-(void)populateGrayIcons {
+    NSLog(@"xxx: xxx");
     
-    for(NSString *productIdentifier in arrayOfProductIdentifiers) {
-        QQProduct* product;
-        product = [[QQProduct alloc] initWithProductIdentifier:productIdentifier
-                                                     withLayer:self
-                                                    withLoader:_loaderIAP];
-        product.delegate = self;
+    for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
+        NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", qqProduct.productIdentifier, @"_spritePlaceholder"];
+        LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
         
-        [_myQQProducts addObject:product];
-    }
-}
-
-//-(void)openIAPStore:(QQLevel*)mainLayer {
--(void)openIAPStore:(QQLevel*)mainLayer {
-    NSLog(@"... openInAppPurchase Store");
-
-    _mainLayer = mainLayer;
-    [_mainLayer disableTouchesForPause:YES];
-    [_mainLayer setInAppPurchaseStoreOpen:YES];
-    
-    _loaderIAP = [[LevelHelperLoader alloc] initWithContentOfFile:@"inAppPurchase"];
-    [_loaderIAP addSpritesToLayer:mainLayer];
-    
-    _spriteBackButton = [_loaderIAP spriteWithUniqueName:@"buttonBack"];
-    [_spriteBackButton registerTouchBeganObserver:self selector:@selector(touchBeganBackButton:)];
-    [_spriteBackButton registerTouchEndedObserver:self selector:@selector(touchEndedBackButton:)];
-
-    //[self setupThirtyTrampolinesButton];
-    //[self setupEightyTrampolinesButton];
-    
-    [self setupProducts];
-    
-    if([SKPaymentQueue canMakePayments]) {
-        // Display a store to the user
-        [self inAppPurchaseActivated];
-    } else {
-        // Warn the user that purchases are disabled
-        [self inAppPurchaseDeactivated];
-    }
-}
-
--(void)setupProducts {
-    NSArray *arrayOfProductIdentifiers = [NSArray arrayWithObjects:PRODUCT_THIRTY_TRAMPOLINES, PRODUCT_EIGHTY_TRAMPOLINES,nil];
-    
-    for(NSString *productIdentifier in arrayOfProductIdentifiers) {
-        QQProduct* product;
-        product = [[QQProduct alloc] initWithProductIdentifier:productIdentifier
-                                                                withLayer:_mainLayer
-                                                               withLoader:_loaderIAP];
-        product.delegate = self;
+        [qqProduct.spriteProductButtonGray setPosition:[buttonSpritePlaceholder position]];
+        [qqProduct.spriteProductButtonGray setZOrder:5];
+        [_mainLayer addChild:qqProduct.spriteProductButtonGray];
         
-        [_myQQProducts addObject:product];
-        //[self setupProductWithProduct:product];
     }
-    
-//    NSString *productIdentifier = @"com.querika.tinybunnyjump.thirtytrampolines";
-//    QQProduct* productThirtyTrampolines = [[QQProduct alloc] initWithProductIdentifier:productIdentifier];
-//    
-//    [self setupProductWithProduct:productThirtyTrampolines];
-}
--(void)inAppPurchaseActivated {
-    NSLog(@"... display a store to the user");
-    [self setupPleaseWait];
-    [self.scheduler scheduleSelector:@selector(tickRotatePleaseWaitSprite:) forTarget:self interval:0.1f repeat:-1 delay:1 paused:NO];
-    [self requestProductData];
 }
 
--(void)inAppPurchaseDeactivated {
-    //Settings -> General -> Restrictions
-    NSLog(@"... warn the user that purchases are disabled");
-    [self setPleaseWaitActive:NO];
-    [self showConfirmAlert:@"Alert" withMessage:@"In-App Purchases deactivated!\nTo enable go to Settings -> General -> Restrictions"];
-}
+//-(void)removeGrayIcons {
+//    NSLog(@"xxx: removeGrayIcons");
+//    NSArray* myProducts = [[QQInAppPurchaseStore sharedInstance] arrayOfProductIdentifiers];
+//    for(NSString* productIdentifier in myProducts) {
+//
+//    }
+//}
 
-//add new products here
--(void)requestProductData {
-    SKProductsRequest *request= [[SKProductsRequest alloc] initWithProductIdentifiers:
-                                 [NSSet setWithObjects: PRODUCT_THIRTY_TRAMPOLINES, PRODUCT_EIGHTY_TRAMPOLINES, nil]];
-    
-    request.delegate = self;
-    [request start];
-}
-
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    NSLog(@"... QQInAppPurchase::productsRequest");
-    [self setPleaseWaitActive:NO];
-    
-    _priceFormatter = [[NSNumberFormatter alloc] init];
-    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    
-    myProducts = response.products;
-    
-    NSLog(@"... number of elements: %d", [myProducts count]);
-    for(SKProduct *myProductFromStore in myProducts) {
-        NSLog(@"... product: %@", [myProductFromStore productIdentifier]);
-        
-        for(QQProduct* myQQProduct in _myQQProducts) {
-            NSLog(@"myQQProduct: %@", [myQQProduct productIdentifier]);
-            NSLog(@"myProduct: %@", [myProductFromStore productIdentifier]);
-            if([[myQQProduct productIdentifier] isEqualToString:[myProductFromStore productIdentifier]]) {
-                [myQQProduct setAvailableForPurchase:YES];
-                [myQQProduct activateProductButton: myProductFromStore];
-                [myQQProduct registerTouchObserver:self];
-                NSLog(@"jajajajaja");
-            }
-        }
-//        
-//        if([PRODUCT_THIRTY_TRAMPOLINES isEqualToString:[myProduct productIdentifier]]) {
-//            NSLog(@"... PRODUCT_THIRTY_TRAMPOLINES found in Array");
-//            [self activateThirtyTrampolinesButtonToColor];
-//            [_priceFormatter setLocale:myProduct.priceLocale];
-//            NSLog(@"... the price is: %@", [_priceFormatter stringFromNumber:myProduct.price]);
-//            
-//            //-----
-//            LHSprite* spriteBuyTrampoline = [_loaderIAP spriteWithUniqueName:@"thirtyTrampolinesPlaceholderText"];
-//            _labelBuyTrampoline = [CCLabelTTF labelWithString:[_priceFormatter stringFromNumber:myProduct.price]
-//                                                     fontName:@"Marker Felt"
-//                                                     fontSize:12
-//                                                   dimensions:CGSizeMake(50, 50)
-//                                                   hAlignment:kCCTextAlignmentCenter
-//                                                   vAlignment:kCCVerticalTextAlignmentCenter];
-//            
-//            
-//            [_labelBuyTrampoline setColor:ccc3(0,0,0)];
-//            [_labelBuyTrampoline setPosition:[spriteBuyTrampoline position]];
-//            [_mainLayer addChild:_labelBuyTrampoline];
-//            //----
-//            
-//            
-//        } else if([PRODUCT_EIGHTY_TRAMPOLINES isEqualToString:[myProduct productIdentifier]]) {
-//            NSLog(@"... PRODUCT_EIGHTY_TRAMPOLINES found in Array");
-//            [self activateEightyTrampolinesButtonToColor];
-//            [_priceFormatter setLocale:myProduct.priceLocale];
-//            NSLog(@"... the price is: %@", [_priceFormatter stringFromNumber:myProduct.price]);
-//            
-//            //-----
-//            LHSprite* spriteBuyTrampoline = [_loaderIAP spriteWithUniqueName:@"eightyTrampolinesPlaceholderText"];
-//            _labelBuy80Trampoline = [CCLabelTTF labelWithString:[_priceFormatter stringFromNumber:myProduct.price]
-//                                                       fontName:@"Marker Felt"
-//                                                       fontSize:12
-//                                                     dimensions:CGSizeMake(50, 50)
-//                                                     hAlignment:kCCTextAlignmentCenter
-//                                                     vAlignment:kCCVerticalTextAlignmentCenter];
-//            
-//            
-//            [_labelBuy80Trampoline setColor:ccc3(0,0,0)];
-//            [_labelBuy80Trampoline setPosition:[spriteBuyTrampoline position]];
-//            [_mainLayer addChild:_labelBuy80Trampoline];
-//            //----
-//        }
-    }
-    
-    for(NSString *invalidProductIdentifier in response.invalidProductIdentifiers) {
-        NSLog(@"... invalide Products: %@", invalidProductIdentifier);
-    }
-    
-    // Populate your UI from the products list.
-    
-    // Save a reference to the products list.
-    
-}
-
-- (void)touchBeganProductButton:(QQProduct *)sender {
+- (void)touchBeganProductButton:(QQProduct*)sender {
     NSLog(@"Delegates are great!");
     if(_purchaseInProgress == NO) {
         _purchaseInProgress = YES;
         [self setPleaseWaitActive:YES];
-//        NSLog(@"+++ _chosenProductIdentifier: %@", _chosenProductIdentifier);
-//        [self makePayment:_chosenProductIdentifier];
-          NSLog(@"+++ _chosenProductIdentifier: %@", [sender productIdentifier]);
-          [self makePayment:[sender productIdentifier]];
-    }
-}
-
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    NSLog(@"Failed to load list of products.");
-}
-
--(void)makePayment:(NSString*)productIdentifier {
-    for(SKProduct *myProduct in myProducts) {
-        //NSLog(@"... product: %@", [myProduct productIdentifier]);
-        
-        if([productIdentifier isEqualToString:[myProduct productIdentifier]]) {
-            NSLog(@"... product payment");
-            SKPayment *payment = [SKPayment paymentWithProduct:myProduct];
-            NSLog(@"... xxx: %@", [myProduct productIdentifier]);
-            [[SKPaymentQueue defaultQueue] addPayment:payment];
-        }
-    }
-}
-
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
-    NSLog(@"... paymentQueue");
-    for (SKPaymentTransaction *transaction in transactions)     
-    {
-        NSLog(@"... transaction.payment.productIdentifier: %@", transaction.payment.productIdentifier);
-        switch (transaction.transactionState)
-        {     
-            case SKPaymentTransactionStatePurchased:
-                [self completeTransaction:transaction];
-                NSLog(@"... SKPaymentTransactionStatePurchased");
-                break;       
-            case SKPaymentTransactionStateFailed:    
-                [self failedTransaction:transaction];
-                NSLog(@"... SKPaymentTransactionStateFailed");
-                break;   
-            case SKPaymentTransactionStateRestored:
-                [self restoreTransaction:transaction];
-                NSLog(@"... SKPaymentTransactionStateRestored");
-            default:    
-                break;   
-        }
-    }
-}
-
-- (void)completeTransaction:(SKPaymentTransaction *)transaction {
-    // Your application should implement these two methods.
-    NSLog(@"... completeTransaction");
-    [self recordTransaction:transaction];
-    [self provideContent:transaction.payment.productIdentifier];
-    
-    // Remove the transaction from the payment queue.
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    [self setPleaseWaitActive:NO];
-    _purchaseInProgress = NO;
-    [self showConfirmAlert:@"Success" withMessage:@"Payment finished!\nThank You!"];
-}
-
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"... restored Transaction");
-    [self recordTransaction: transaction];
-    [self provideContent: transaction.originalTransaction.payment.productIdentifier];
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    [self setPleaseWaitActive:NO];
-    _purchaseInProgress = NO;
-}
-
-- (void)failedTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"... failedTransaction");
-    if (transaction.error.code != SKErrorPaymentCancelled) {
-        // Optionally, display an error here.
-    }   
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-    [self setPleaseWaitActive:NO];
-    _purchaseInProgress = NO;
-    [self showConfirmAlert:@"Error" withMessage:@"Payment cancled!"];
-}
-
--(void)recordTransaction:(SKPaymentTransaction*)transaction {
-    
-}
-
--(void)provideContent:(NSString*)productIdentifier {
-    NSLog(@"... provideContent");
-    if([PRODUCT_THIRTY_TRAMPOLINES isEqualToString:productIdentifier]) {
-        NSLog(@"... PRODUCT_THIRTY_TRAMPOLINES provide Content");
-        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 3];   //TODO change to 30
-    } else if([PRODUCT_EIGHTY_TRAMPOLINES isEqualToString:productIdentifier]) {
-        NSLog(@"... PRODUCT_EIGHTY_TRAMPOLINES provide Content");
-        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 8];   //TODO change to 80
     }
 }
 
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        NSLog(@"+++++++++++++++++++++++++++++++++ touchBeganBackButton");
+        NSLog(@"+++++++++++++++++++++++++++++++++ touchBeganBackButton: %@", info.sprite.uniqueName);
     }
 }
 
 -(void)touchEndedBackButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        if([_mainLayer getLevelState] == running) {
-            [_mainLayer makePlayerDynamic];
-        }
         NSLog(@"+++++++++++++++++++++++++++++++++ touchEndedBackButton");
         [self.scheduler unscheduleAllForTarget:self];
-        //[self removeFromParentAndCleanup:YES];
-
-        //[_mainLayer setLevelState:levelRunning];
         
         NSArray *sprites = [_loaderIAP allSprites];
         for(LHSprite *sprite in sprites) {
             [sprite removeSelf];
         }
         
-        for(QQProduct* myQQProduct in _myQQProducts) {
-            [[myQQProduct spriteProductButtonGrayscale] removeSelf];
-            [[myQQProduct spriteProductButtonColor] removeSelf];
-            [[myQQProduct labelProductPrice] removeFromParent];
+        for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
+        //for(QQProduct* myQQProduct in _myQQProducts) {
+            [[qqProduct spriteProductButtonGray] removeSelf];
+            [[qqProduct spriteProductButtonColor] removeSelf];
+            [[qqProduct labelPrice] removeFromParent];
         }
-        
-        //[_thirtyTrampolinesButton removeSelf];
-        //[_eightyTrampolinesButton removeSelf];
-        [self setPleaseWaitActive:NO];
-        //[_labelBuyTrampoline removeFromParent];     //TODO: sometimes it is not removed?!?
-        //[_labelBuy80Trampoline removeFromParent];
 
-        [_mainLayer disableTouchesForPause:NO];
-        [_mainLayer setInAppPurchaseStoreOpen:NO];
+        if(_entryFromLevel) {
+            if([(QQLevel*)_mainLayer getLevelState] == running) {
+                [(QQLevel*)_mainLayer makePlayerDynamic];
+            }
+            [(QQLevel*)_mainLayer disableTouchesForPause:NO];
+            [(QQLevel*)_mainLayer setInAppPurchaseStoreOpen:NO];
+        }
         
         [self removeFromParentAndCleanup:YES];
         
+        [self setPleaseWaitActive:NO];
         _mainLayer = nil;
     }
 }
@@ -406,7 +163,6 @@
     NSLog(@"... onEnter");
 	[super onEnter];
     [self.scheduler unscheduleAllForTarget:self];
-    //[self.scheduler unscheduleAllSelectorsForTarget:self];
 }
 
 #pragma mark progress HUD
@@ -451,17 +207,17 @@
 }
 
 #pragma mark alert dialog
-- (void)showConfirmAlert
-{
-    UIAlertView *alert = [[UIAlertView alloc] init];
-    [alert setTitle:@"Confirm"];
-    [alert setMessage:@"Do you pick Yes or No?"];
-    [alert setDelegate:self];
-    [alert addButtonWithTitle:@"OK"];
-//    [alert addButtonWithTitle:@"Yes"];
-//    [alert addButtonWithTitle:@"No"];
-    [alert show];
-}
+//- (void)showConfirmAlert
+//{
+//    UIAlertView *alert = [[UIAlertView alloc] init];
+//    [alert setTitle:@"Confirm"];
+//    [alert setMessage:@"Do you pick Yes or No?"];
+//    [alert setDelegate:self];
+//    [alert addButtonWithTitle:@"OK"];
+////    [alert addButtonWithTitle:@"Yes"];
+////    [alert addButtonWithTitle:@"No"];
+//    [alert show];
+//}
 
 - (void)showConfirmAlert:(NSString *)title withMessage:(NSString *)message {
     UIAlertView *alert = [[UIAlertView alloc] init];
@@ -469,8 +225,6 @@
     [alert setMessage:message];
     [alert setDelegate:self];
     [alert addButtonWithTitle:@"OK"];
-    //    [alert addButtonWithTitle:@"Yes"];
-    //    [alert addButtonWithTitle:@"No"];
     [alert show];
 }
 
@@ -488,260 +242,86 @@
     }
 }
 
+-(void)removePleaseWait {
+    [self setPleaseWaitActive:NO];
+}
+
+#pragma mark delegates
+
+-(void)productsRequest {
+//-(void)productsRequest:(QQInAppPurchaseStore*)response {
+    NSLog(@"xxx: the response is comming!");
+    [self removePleaseWait];
+    for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
+        NSLog(@"xxx: productIdentifier: %@", qqProduct.productIdentifier);
+        
+        //LHSprite* buttonColor = qqProduct.spriteProductButtonColor;
+        
+        if(qqProduct.availableForPurchase) {
+            NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", qqProduct.productIdentifier, @"_spritePlaceholder"];
+            LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
+            
+            [qqProduct.spriteProductButtonColor setPosition:[buttonSpritePlaceholder position]];
+            [qqProduct.spriteProductButtonColor setZOrder:6];
+            [qqProduct.spriteProductButtonColor setUniqueName:qqProduct.productIdentifier];
+            [_mainLayer addChild:qqProduct.spriteProductButtonColor];
+            
+            [qqProduct.spriteProductButtonColor registerTouchBeganObserver:self selector:@selector(touchBegan:)];
+            
+            ////////////////////////
+            [_priceFormatter setLocale:qqProduct.priceLocale];
+            NSString* stringPricePlaceholder = [NSString stringWithFormat:@"%@%@", qqProduct.productIdentifier, @"_pricePlaceholder"];
+            NSLog(@"... the price is: %@", [_priceFormatter stringFromNumber:qqProduct.price]);
+
+            LHSprite* spritePricePlaceholder = [_loaderIAP spriteWithUniqueName:stringPricePlaceholder];
+            qqProduct.labelPrice = [CCLabelTTF labelWithString:[_priceFormatter stringFromNumber:qqProduct.price]
+                                                     fontName:@"Marker Felt"
+                                                     fontSize:12
+                                                   dimensions:CGSizeMake(50, 50)
+                                                   hAlignment:kCCTextAlignmentCenter
+                                                   vAlignment:kCCVerticalTextAlignmentCenter];
+
+            [qqProduct.labelPrice setColor:ccc3(0,0,0)];
+            [qqProduct.labelPrice setPosition:[spritePricePlaceholder position]];
+            [qqProduct.labelPrice setZOrder:6];
+            [_mainLayer addChild:qqProduct.labelPrice];
+            
+            
+        } else {
+            NSLog(@"xxx: product not available for purchase: %@", qqProduct.productIdentifier);
+        }
+    }
+}
+
+-(void)showPleaseWait {
+    NSLog(@"------------------------- please Wait");
+    [self setupPleaseWait];
+    [self.scheduler scheduleSelector:@selector(tickRotatePleaseWaitSprite:) forTarget:self interval:0.1f repeat:-1 delay:1 paused:NO];
+}
+
+-(void)inAppPurchaseDeactivated {
+    //Settings -> General -> Restrictions
+    NSLog(@"... warn the user that purchases are disabled");
+    [self setPleaseWaitActive:NO];
+    [self showConfirmAlert:@"Alert" withMessage:@"In-App Purchases deactivated!\nTo enable go to Settings -> General -> Restrictions"];
+}
+
+#pragma mark touch receivers
+-(void)touchBegan:(LHTouchInfo*)info{
+    if(info.sprite) {
+        NSLog(@"xxx: Touch BEGIN on sprite %@", [info.sprite uniqueName]);
+        for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
+            if([qqProduct.productIdentifier isEqualToString:[info.sprite uniqueName]]) {
+                [[QQInAppPurchaseStore sharedInstance] touchBeganProductButton:qqProduct];
+            }
+        }
+    }
+}
 
 
 @end
 
 
-//-(void)touchBeganThirtyTrampolinesButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        if(_purchaseInProgress == NO) {
-//            NSLog(@"+++++++++++++++++++++++++++++++++ touchBeganThirtyTrampolinesButton");
-//            _purchaseInProgress = YES;
-//            [self setPleaseWaitActive:YES];
-//            [self makePayment:PRODUCT_THIRTY_TRAMPOLINES];
-//        }
-//    }
-//}
-//
-//-(void)touchEndedThirtyTrampolinesButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        NSLog(@"+++++++++++++++++++++++++++++++++ touchEndedThirtyTrampolinesButton");
-//    }
-//}
-//
-//-(void)touchBeganEightyTrampolinesButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        if(_purchaseInProgress == NO) {
-//            NSLog(@"+++++++++++++++++++++++++++++++++ touchBeganEightyTrampolinesButton");
-//            _purchaseInProgress = YES;
-//            [self setPleaseWaitActive:YES];
-//            [self makePayment:PRODUCT_EIGHTY_TRAMPOLINES];
-//        }
-//    }
-//}
-//
-//-(void)touchEndedEightyTrampolinesButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        NSLog(@"+++++++++++++++++++++++++++++++++ touchEndedEightyTrampolinesButton");
-//    }
-//}
 
-
-
-//-(void)touchBeganProductButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        NSLog(@"+++++++++++++++++++++++++++++++++ touchBeganProductButton");
-//
-//        //if(_purchaseInProgress == NO) {
-//            _purchaseInProgress = YES;
-//            [self setPleaseWaitActive:YES];
-//            NSLog(@"+++ _chosenProductIdentifier: %@", _chosenProductIdentifier);
-//            //[self makePayment:_chosenProductIdentifier];
-//        //}
-//    }
-//}
-//
-//-(void)touchEndedProductButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        NSLog(@"+++++++++++++++++++++++++++++++++ touchEndedProductButton");
-//    }
-//}
-
-//- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-//    NSLog(@"... QQInAppPurchase::productsRequest");
-//    [self setPleaseWaitActive:NO];
-//
-//    _priceFormatter = [[NSNumberFormatter alloc] init];
-//    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-//    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-//
-//    myProducts = response.products;
-//
-//    NSLog(@"... number of elements: %d", [myProducts count]);
-//    for(SKProduct *myProduct in myProducts) {
-//        NSLog(@"... product: %@", [myProduct productIdentifier]);
-//
-//
-//        if([PRODUCT_THIRTY_TRAMPOLINES isEqualToString:[myProduct productIdentifier]]) {
-//            NSLog(@"... PRODUCT_THIRTY_TRAMPOLINES found in Array");
-//            [self activateThirtyTrampolinesButtonToColor];
-//            [_priceFormatter setLocale:myProduct.priceLocale];
-//            NSLog(@"... the price is: %@", [_priceFormatter stringFromNumber:myProduct.price]);
-//
-//            //-----
-//            LHSprite* spriteBuyTrampoline = [_loaderIAP spriteWithUniqueName:@"thirtyTrampolinesPlaceholderText"];
-//            _labelBuyTrampoline = [CCLabelTTF labelWithString:[_priceFormatter stringFromNumber:myProduct.price]
-//                                                     fontName:@"Marker Felt"
-//                                                     fontSize:12
-//                                                   dimensions:CGSizeMake(50, 50)
-//                                                   hAlignment:kCCTextAlignmentCenter
-//                                                   vAlignment:kCCVerticalTextAlignmentCenter];
-//
-//
-//            [_labelBuyTrampoline setColor:ccc3(0,0,0)];
-//            [_labelBuyTrampoline setPosition:[spriteBuyTrampoline position]];
-//            [_mainLayer addChild:_labelBuyTrampoline];
-//            //----
-//
-//
-//        } else if([PRODUCT_EIGHTY_TRAMPOLINES isEqualToString:[myProduct productIdentifier]]) {
-//            NSLog(@"... PRODUCT_EIGHTY_TRAMPOLINES found in Array");
-//            [self activateEightyTrampolinesButtonToColor];
-//            [_priceFormatter setLocale:myProduct.priceLocale];
-//            NSLog(@"... the price is: %@", [_priceFormatter stringFromNumber:myProduct.price]);
-//
-//            //-----
-//            LHSprite* spriteBuyTrampoline = [_loaderIAP spriteWithUniqueName:@"eightyTrampolinesPlaceholderText"];
-//            _labelBuy80Trampoline = [CCLabelTTF labelWithString:[_priceFormatter stringFromNumber:myProduct.price]
-//                                                     fontName:@"Marker Felt"
-//                                                     fontSize:12
-//                                                   dimensions:CGSizeMake(50, 50)
-//                                                   hAlignment:kCCTextAlignmentCenter
-//                                                   vAlignment:kCCVerticalTextAlignmentCenter];
-//
-//
-//            [_labelBuy80Trampoline setColor:ccc3(0,0,0)];
-//            [_labelBuy80Trampoline setPosition:[spriteBuyTrampoline position]];
-//            [_mainLayer addChild:_labelBuy80Trampoline];
-//            //----
-//        }
-//    }
-//
-//    for(NSString *invalidProductIdentifier in response.invalidProductIdentifiers) {
-//        NSLog(@"... invalide Products: %@", invalidProductIdentifier);
-//    }
-//
-//    // Populate your UI from the products list.
-//
-//    // Save a reference to the products list.
-//
-//}
-
-
-//-(void)setupProductWithProduct:(QQProduct *)product {
-//    NSLog(@"... setupProductWithProductIdentifier");
-//
-//    NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", [product productIdentifier], @"_spritePlaceholder"];
-//    LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
-//
-//    NSString* spriteNameGrayscale = [NSString stringWithFormat:@"%@%@", [product productIdentifier], @"_grayscale"];
-//
-//    [product setSpriteProductButtonGrayscale: [LHSprite spriteWithName:spriteNameGrayscale
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"]];
-//
-//    [product.spriteProductButtonGrayscale setPosition:[buttonSpritePlaceholder position]];
-//    [product.spriteProductButtonGrayscale setZOrder:5];
-//    [_mainLayer addChild:product.spriteProductButtonGrayscale];
-//}
-
-//-(void)setupProductWithProduct:(QQProduct *)product {
-//    NSLog(@"... setupProductWithProductIdentifier");
-//
-//    NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", [product productIdentifier], @"_spritePlaceholder"];
-//    LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
-//
-//    NSString* spriteName = [NSString stringWithFormat:@"%@%@", [product productIdentifier], @"_grayscale"];
-//
-//    _thirtyTrampolinesButton = [LHSprite spriteWithName:spriteName
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_thirtyTrampolinesButton setPosition:[buttonSpritePlaceholder position]];
-//    [_thirtyTrampolinesButton setZOrder:5];
-//    [_mainLayer addChild:_thirtyTrampolinesButton];
-//}
-
-
-//-(void)setupThirtyTrampolinesButton {
-//    NSLog(@"... setupThirtyTrampolinesButton");
-//
-//    NSString *productIdentifier = @"com.querika.tinybunnyjump.thirtytrampolines";
-//
-//    NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_spritePlaceholder"];
-//    LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
-//
-//    NSString* spriteName = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_grayscale"];
-//
-//    _thirtyTrampolinesButton = [LHSprite spriteWithName:spriteName
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_thirtyTrampolinesButton setPosition:[buttonSpritePlaceholder position]];
-//    [_thirtyTrampolinesButton setZOrder:5];
-//    [_mainLayer addChild:_thirtyTrampolinesButton];
-//}
-
-//-(void)activateThirtyTrampolinesButtonToColor {
-//    NSLog(@"... activateThirtyTrampolinesButtonToColor");
-//
-//    NSString *productIdentifier = @"com.querika.tinybunnyjump.thirtytrampolines";
-//
-//    NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_spritePlaceholder"];
-//    LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
-//
-//    NSString* spriteName = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_color"];
-//
-//    [_thirtyTrampolinesButton removeSelf];
-//
-//    _thirtyTrampolinesButton = [LHSprite spriteWithName:spriteName
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_thirtyTrampolinesButton setPosition:[buttonSpritePlaceholder position]];
-//    [_thirtyTrampolinesButton registerTouchBeganObserver:self selector:@selector(touchBeganThirtyTrampolinesButton:)];
-//    [_thirtyTrampolinesButton registerTouchEndedObserver:self selector:@selector(touchEndedThirtyTrampolinesButton:)];
-//    [_mainLayer addChild:_thirtyTrampolinesButton];
-//}
-
-//-(void)activateEightyTrampolinesButtonToColor {
-//    NSLog(@"... activateEightyTrampolinesButtonToColor");
-//
-//    NSString *productIdentifier = PRODUCT_EIGHTY_TRAMPOLINES;
-//
-//    NSString* stringSpritePlaceholder = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_spritePlaceholder"];
-//    LHSprite *buttonSpritePlaceholder = [_loaderIAP spriteWithUniqueName:stringSpritePlaceholder];
-//
-//    NSString* spriteName = [NSString stringWithFormat:@"%@%@", productIdentifier, @"_color"];
-//
-//    [_eightyTrampolinesButton removeSelf];
-//
-//    _eightyTrampolinesButton = [LHSprite spriteWithName:spriteName
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_eightyTrampolinesButton setPosition:[buttonSpritePlaceholder position]];
-//    [_eightyTrampolinesButton registerTouchBeganObserver:self selector:@selector(touchBeganEightyTrampolinesButton:)];
-//    [_eightyTrampolinesButton registerTouchEndedObserver:self selector:@selector(touchEndedEightyTrampolinesButton:)];
-//    [_mainLayer addChild:_eightyTrampolinesButton];
-//}
-
-//-(void)setupEightyTrampolinesButton {
-//    NSLog(@"... setupEightyTrampolinesButton");
-//    LHSprite *eightyTrampolinesButtonPlaceholder = [_loaderIAP spriteWithUniqueName:@"com.querika.tinybunnyjump.eightytrampolines"];
-//    _eightyTrampolinesButton = [LHSprite spriteWithName:@"inAppPurchaseEightyTramplines_grayscale"
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_eightyTrampolinesButton setPosition:[eightyTrampolinesButtonPlaceholder position]];
-//    [_eightyTrampolinesButton setZOrder:5];
-//    [_mainLayer addChild:_eightyTrampolinesButton];
-//}
-
-//-(void)activateEightyTrampolinesButtonToColor {
-//    NSLog(@"... activateEightyTrampolinesButtonToColor");
-//    [_eightyTrampolinesButton removeSelf];
-//
-//    LHSprite *eightyTrampolinesButtonPlaceholder = [_loaderIAP spriteWithUniqueName:@"com.querika.tinybunnyjump.eightytrampolines"];
-//    _eightyTrampolinesButton = [LHSprite spriteWithName:@"inAppPurchaseEightyTramplines_color"
-//                                              fromSheet:@"assets"
-//                                                 SHFile:@"objects"];
-//
-//    [_eightyTrampolinesButton setPosition:[eightyTrampolinesButtonPlaceholder position]];
-//    [_eightyTrampolinesButton registerTouchBeganObserver:self selector:@selector(touchBeganEightyTrampolinesButton:)];
-//    [_eightyTrampolinesButton registerTouchEndedObserver:self selector:@selector(touchEndedEightyTrampolinesButton:)];
-//    [_mainLayer addChild:_eightyTrampolinesButton];
-//}
 
 

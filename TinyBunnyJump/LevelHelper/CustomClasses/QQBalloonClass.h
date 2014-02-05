@@ -10,8 +10,8 @@
 	float blinkInterval;
 	float blinkDelay;
 	float explodingEffect;
-	float blinkModulo;
 	float movingStartDelay;
+	float blinkModulo;
 	float scoreMultiplier;
 
 
@@ -26,8 +26,8 @@
 @property float blinkInterval;
 @property float blinkDelay;
 @property float explodingEffect;
-@property float blinkModulo;
 @property float movingStartDelay;
+@property float blinkModulo;
 @property float scoreMultiplier;
 
 +(QQBalloonClass*) customClassInstance;

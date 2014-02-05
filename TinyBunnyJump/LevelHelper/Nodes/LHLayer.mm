@@ -292,9 +292,6 @@ static int untitledLayersCount = 0;
     NSMutableArray* array = [NSMutableArray array];
     
     for(id node in self.children){
-        
-//NSLog(@"###### %@", [node description]);
-        
         if([node isKindOfClass:[LHSprite class]]){
             [array addObject:node];
         }

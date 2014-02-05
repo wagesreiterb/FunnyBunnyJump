@@ -14,9 +14,21 @@
 #endif // __has_feature(objc_arc)
 
 
-@implementation UIImage (AES256)
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
-+ (UIImage *)imageWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key {
+@implementation UIImage (AES256)
++ (UIImage *)imageWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key
+
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+
+@implementation NSImage (AES256)
++ (NSImage *)imageWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key
+
+#endif
+
+
+
+{
    
 #ifndef LH_ARC_ENABLED
     return [[[self alloc] initWithContentsOfEncryptedFile:path withKey:key] autorelease];

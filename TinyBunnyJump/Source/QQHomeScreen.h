@@ -20,7 +20,6 @@
 #import <GameKit/GameKit.h>
 #import "GameState.h"
 #import "CCFBProfilePicture.h"
-#import "QQInAppPurchaseLayer.h"
 
 
 // HelloWorld Layer

@@ -15,7 +15,7 @@
 #import "SimpleAudioEngine.h"
 #import "QQLevel.h"
 #import "QQCreditsScene.h"
-#import "QQInAppPurchaseLayer.h"
+#import "QQInAppPurchaseScene.h"
 
 @interface GameManager : NSObject {
     //BOOL musicOn;

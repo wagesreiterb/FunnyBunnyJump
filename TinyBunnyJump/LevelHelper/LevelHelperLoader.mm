@@ -1112,6 +1112,9 @@ CGSize  LHSizeFromString(NSString* val){
     
     float ptm = [[LHSettings sharedInstance] lhPtmRatio];
     
+    rect.origin.x += [[LHSettings sharedInstance] userOffset].x*0.5;
+    rect.origin.y += [[LHSettings sharedInstance] userOffset].y*0.5;
+    
     #ifndef LH_SCENE_TESTER
         rect.origin.x += pos_offset.x;
         rect.origin.y += pos_offset.y;

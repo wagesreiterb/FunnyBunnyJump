@@ -748,14 +748,39 @@
                 NSString *fullpath = [CCFileUtils fullPathFromRelativePath:path];
 #endif
                 
+                
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+                
                 UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
                                                                    withKey:decryptKey];
                 
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                
+                NSImage* image = [NSImage imageWithContentsOfEncryptedFile:fullpath
+                                                                   withKey:decryptKey];
+                
+#endif
+
                 if(image){
                     NSString* path = [fullpath stringByStandardizingPath];
+                    
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+                    
                     CGImageRef ref = image.CGImage;
+                    
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                    CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+                    CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
+                    
+                    CFRelease(source);
+#endif      
+
+                    
                     if(ref){
                         texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                        CGImageRelease(ref);
+#endif
                     }
                 }
             }

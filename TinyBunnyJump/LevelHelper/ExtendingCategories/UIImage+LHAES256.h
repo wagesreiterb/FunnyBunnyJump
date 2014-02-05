@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UIImage (LHAES256)
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
+@interface UIImage (LHAES256)
 + (UIImage *)imageWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key;
+
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+
+@interface NSImage (LHAES256)
++ (NSImage *)imageWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key;
+
+#endif
+
 - (id)initWithContentsOfEncryptedFile:(NSString *)path withKey:(NSData *)key;
 
 @end

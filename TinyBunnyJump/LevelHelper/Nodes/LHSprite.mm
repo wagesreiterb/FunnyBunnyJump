@@ -82,6 +82,7 @@ static int untitledSpritesCount = 0;
     if(body){
         if(body->GetWorld()->IsLocked()){
             [[LHSettings sharedInstance] markSpriteForRemoval:self];
+            userCustomInfo = nil;
             return;
         }
     }
@@ -646,14 +647,38 @@ static int untitledSpritesCount = 0;
         NSString *fullpath = [CCFileUtils fullPathFromRelativePath:imgPath];
 #endif
         
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+        
         UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
                                                            withKey:decryptKey];
         
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+        
+        NSImage* image = [NSImage imageWithContentsOfEncryptedFile:fullpath
+                                                           withKey:decryptKey];
+        
+#endif
+        
+        
         if(image){
             NSString* path = [fullpath stringByStandardizingPath];
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+            
             CGImageRef ref = image.CGImage;
+            
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+            CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+            CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
+            
+            CFRelease(source);
+#endif
+            
             if(ref){
                 texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                CGImageRelease(ref);
+#endif
             }
         }
     }
@@ -976,15 +1001,38 @@ static int untitledSpritesCount = 0;
 #else
                 NSString *fullpath = [CCFileUtils fullPathFromRelativePath:filePath];
 #endif
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
                 
                 UIImage* image = [UIImage imageWithContentsOfEncryptedFile:fullpath
                                                                    withKey:decryptKey];
                 
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                
+                NSImage* image = [NSImage imageWithContentsOfEncryptedFile:fullpath
+                                                                   withKey:decryptKey];
+                
+#endif
+                
                 if(image){
                     NSString* path = [fullpath stringByStandardizingPath];
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+                    
                     CGImageRef ref = image.CGImage;
+                    
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                    CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+                    CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
+                    
+                    CFRelease(source);
+#endif
+                    
                     if(ref){
                         texture = [[CCTextureCache sharedTextureCache] addCGImage:ref forKey:path];
+#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                        CGImageRelease(ref);
+#endif
                     }
                 }
             }

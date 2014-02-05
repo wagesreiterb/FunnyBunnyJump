@@ -10,6 +10,7 @@
 
 @implementation GameManager
 
+//TODO: change singleton to new standard
 static GameManager* _sharedGameManager = nil;
 
 @synthesize levelToRun;
@@ -20,6 +21,8 @@ static GameManager* _sharedGameManager = nil;
 @synthesize seasonName;
 @synthesize seasonPage;
 
+
+//TODO: change singleton to new standard
 +(GameManager*)sharedGameManager {
     @synchronized([GameManager class]) {
         if(!_sharedGameManager) {
@@ -74,6 +77,10 @@ static GameManager* _sharedGameManager = nil;
             
         case kCreditsScreen:
             sceneToRun =[QQCreditsScene scene];
+            break;
+            
+        case kInAppStore:
+            sceneToRun =[QQInAppPurchaseScene scene];
             break;
             
         case kLevel2012001: {

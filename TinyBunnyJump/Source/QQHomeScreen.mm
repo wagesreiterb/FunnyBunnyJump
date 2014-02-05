@@ -114,8 +114,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_creditsButton registerTouchEndedObserver:self selector:@selector(touchEndedCreditsButton:)];
     
     _inAppStoreButton = [loader spriteWithUniqueName:@"inAppStoreButton"];
-    [_inAppStoreButton registerTouchBeganObserver:self selector:@selector(touchBeganInAppStoreButton:)];
-    [_inAppStoreButton registerTouchEndedObserver:self selector:@selector(touchEndedInAppStoreButton:)];
+    [_inAppStoreButton registerTouchBeganObserver:self selector:@selector(touchBeganInAppStoreButtonButton:)];
+    [_inAppStoreButton registerTouchEndedObserver:self selector:@selector(touchEndedInAppStoreButtonButton:)];
     
     [self setupGameCenter];
     [self setupMusic];
@@ -143,6 +143,18 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     
 }
 
+-(void)touchBeganInAppStoreButtonButton:(LHTouchInfo*)info {
+    
+}
+
+-(void)touchEndedInAppStoreButtonButton:(LHTouchInfo*)info {
+    NSLog(@"touchEndedInAppStoreButtonButton");
+    if(info.sprite) {
+        [self showShadeForTransition];
+        [[GameManager sharedGameManager] runSceneWithID:kInAppStore];
+    }
+}
+
 -(void)setupGameCenter {
     _spriteAchievements = [loader spriteWithUniqueName:@"achievementsButton"];
     [_spriteAchievements registerTouchBeganObserver:self selector:@selector(touchBeganShowAchievementsButton:)];
@@ -150,18 +162,18 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [_spriteLeaderBoard registerTouchBeganObserver:self selector:@selector(touchBeganShowLeaderBoardButton:)];
 }
 
--(void)touchBeganHelpButton:(LHTouchInfo*)info{
-    NSLog(@"touchBeganHelpButton");
-}
+//-(void)touchBeganHelpButton:(LHTouchInfo*)info{
+//    NSLog(@"touchBeganHelpButton");
+//}
 
--(void)touchEndedHelpButton:(LHTouchInfo*)info{
-    //open Facebook Page
-    NSLog(@"touchEndedHelpButton");
-    if(info.sprite) {
-        [self showShadeForTransition];
-        [[GameManager sharedGameManager] runSceneWithID:kHelpScreen];
-    }
-}
+//-(void)touchEndedHelpButton:(LHTouchInfo*)info{
+//    //open Facebook Page
+//    NSLog(@"touchEndedHelpButton");
+//    if(info.sprite) {
+//        [self showShadeForTransition];
+//        [[GameManager sharedGameManager] runSceneWithID:kHelpScreen];
+//    }
+//}
 
 -(void)showShadeForTransition {
     LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
@@ -172,28 +184,6 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [shade setOpacity:OPACITY_OF_SHADE];
     [shade setScale:SCALE_OF_SHADE];
     [self addChild:shade];
-}
-
--(void)touchBeganInAppStoreButton:(LHTouchInfo*)info{
-    NSLog(@"touchBeganInAppStoreButton");
-}
-
--(void)touchEndedInAppStoreButton:(LHTouchInfo*)info{
-    NSLog(@"touchEndedInAppStoreButton");
-    if(info.sprite) {
-        [self showShadeForTransition];
-        //[[QQInAppPurchaseLayer sharedInstance] openIAPStoreFromHomeScreen];
-        
-        [[GameManager sharedGameManager] runSceneWithID:kInAppStore];
-        
-        //[[CCDirector sharedDirector] replaceScene:[CCTransitionFadeBL transitionWithDuration:0.5f
-        //                                                                               scene:[QQInAppPurchaseLayer scene]]];
-        
-        CCScene* myScene = [[CCScene alloc] init];
-        [[CCDirector sharedDirector] replaceScene:myScene];
-        //[[QQInAppPurchaseLayer sharedInstance] openIAPStoreFromHomeScreen];
-        [[QQInAppPurchaseLayer sharedInstance] openIAPStoreFromHomeScreen:myScene];
-    }
 }
 
 -(void)touchBeganCreditsButton:(LHTouchInfo*)info{

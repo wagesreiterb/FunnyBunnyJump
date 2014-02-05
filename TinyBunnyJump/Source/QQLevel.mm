@@ -789,7 +789,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 [[CCDirector sharedDirector] resume];
             }
             
-            [[QQInAppPurchaseLayer sharedInstance] openIAPStore:self];
+            [[QQInAppPurchaseLayer sharedInstance] showIAPStoreFromLevel:self];
         }
     }
 }
@@ -910,7 +910,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 [[CCDirector sharedDirector] resume];
             }
             
-            [[QQInAppPurchaseLayer sharedInstance] openIAPStore:self];
+            [[QQInAppPurchaseLayer sharedInstance] showIAPStoreFromLevel:self];
         }
     }
 }
@@ -1026,7 +1026,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 [[CCDirector sharedDirector] resume];
             }
             
-            [[QQInAppPurchaseLayer sharedInstance] openIAPStore:self];
+            [[QQInAppPurchaseLayer sharedInstance] showIAPStoreFromLevel:self];
         }
     }
 }

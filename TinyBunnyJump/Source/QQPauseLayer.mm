@@ -89,7 +89,6 @@
 {
 	[super onEnter];
     [self.scheduler unscheduleAllForTarget:self];
-    //[self.scheduler unscheduleAllSelectorsForTarget:self];
 }
 
 -(void)touchBeganBackButton:(LHTouchInfo*)info{
@@ -104,28 +103,8 @@
 
 -(void)touchBeganReloadButton:(LHTouchInfo*)info{
     if(info.sprite) {
-        //[self.scheduler unscheduleAllSelectorsForTarget:self];
     }
 }
-
-//-(void)touchEndedResumeButton:(LHTouchInfo*)info{
-//    if(info.sprite) {
-//        NSLog(@"..... touchEndedResumeButton");
-//        //[[NSNotificationCenter defaultCenter] postNotificationName:@"resumeLevel" object:nil];
-//        [self removeFromParentAndCleanup:YES];
-//        [_mainLayer enableTouches];
-//        [_mainLayer setLevelState:levelRunning];
-//        
-//        LevelHelperLoader *loader;
-//        NSArray *sprites = [loader allSprites];
-//        for(LHSprite *sprite in sprites) {
-//            [sprite removeSelf];
-//        }
-//        [[CCDirector sharedDirector] resume];
-//        _mainLayer = nil;
-//        loader = nil;
-//    }
-//}
 
 -(void)touchEndedResumeButton:(LHTouchInfo*)info{
     if(info.sprite) {

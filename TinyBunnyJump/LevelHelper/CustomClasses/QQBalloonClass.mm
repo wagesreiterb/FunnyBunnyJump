@@ -11,11 +11,21 @@
 @synthesize blinkInterval;
 @synthesize blinkDelay;
 @synthesize explodingEffect;
-@synthesize blinkModulo;
 @synthesize movingStartDelay;
+@synthesize blinkModulo;
 @synthesize scoreMultiplier;
 
 
+-(void) dealloc{
+#if __has_feature(objc_arc) && __clang_major__ >= 3
+
+#else
+
+
+[super dealloc];
+
+#endif // __has_feature(objc_arc)
+}
 
 +(QQBalloonClass*) customClassInstance{
 #if __has_feature(objc_arc) && __clang_major__ >= 3
@@ -40,11 +50,11 @@ return NSStringFromClass([self class]);
 	if([dictionary objectForKey:@"explodingEffect"])
 		[self setExplodingEffect:[[dictionary objectForKey:@"explodingEffect"] floatValue]];
 
-	if([dictionary objectForKey:@"blinkModulo"])
-		[self setBlinkModulo:[[dictionary objectForKey:@"blinkModulo"] floatValue]];
-
 	if([dictionary objectForKey:@"movingStartDelay"])
 		[self setMovingStartDelay:[[dictionary objectForKey:@"movingStartDelay"] floatValue]];
+
+	if([dictionary objectForKey:@"blinkModulo"])
+		[self setBlinkModulo:[[dictionary objectForKey:@"blinkModulo"] floatValue]];
 
 	if([dictionary objectForKey:@"scoreMultiplier"])
 		[self setScoreMultiplier:[[dictionary objectForKey:@"scoreMultiplier"] floatValue]];

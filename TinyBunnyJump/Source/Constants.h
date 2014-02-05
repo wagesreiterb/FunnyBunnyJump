@@ -30,6 +30,7 @@
 
 #define LEVELS_PER_SEASON 15
 
+//TODO: LAST_LEVEL
 NSInteger const LAST_LEVEL = 2012026;
 float const volumeBackgroundMusic = 0.2f;
 
