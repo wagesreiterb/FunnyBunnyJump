@@ -21,7 +21,8 @@
     
     NSDictionary *_countDown;
     
-    //NSDictionary *levelLocked;
+    NSArray *_seasonsAsStringArray;
+    NSArray *_levelsAsStringArray;
 }
 
 @property (assign) BOOL completedSeasonSpring2012;
@@ -46,9 +47,11 @@
 @property (getter = isMusicEnabled) BOOL musicEnabled;
 @property BOOL gameOnceStarted;
 
-@property (assign) NSInteger redTrampolinesLeft;
-@property (assign) NSInteger jumpButtonsLeft;
-@property (assign) NSInteger lifesLeft;
+@property () NSInteger redTrampolinesLeft;
+@property () NSInteger jumpButtonsLeft;
+@property () NSInteger lifesLeft;
+
+@property (getter = isPayingUser) BOOL payingUser;
 
 //@property BOOL reloadLevel;
 //@property BOOL backLevel;
@@ -76,7 +79,7 @@
 -(BOOL)isLevelPassedWithNoLivesLost:(NSString*)levelName_;
 -(void)setLevelPassedWithNoLivesLost;
 -(BOOL)isNextLevelUnlocked;
--(int)countDown;
--(BOOL)isPayingUser;
+//-(int)countDown;
+
 
 @end

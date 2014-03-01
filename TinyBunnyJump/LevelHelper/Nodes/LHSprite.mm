@@ -668,7 +668,13 @@ static int untitledSpritesCount = 0;
             CGImageRef ref = image.CGImage;
             
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+            
+            #ifndef LH_ARC_ENABLED
             CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+            #else
+            CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], NULL);
+            #endif
+            
             CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
             
             CFRelease(source);
@@ -1022,7 +1028,12 @@ static int untitledSpritesCount = 0;
                     CGImageRef ref = image.CGImage;
                     
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                    
+                    #ifndef LH_ARC_ENABLED
                     CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+                    #else
+                    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], NULL);
+                    #endif
                     CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
                     
                     CFRelease(source);

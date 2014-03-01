@@ -31,10 +31,29 @@
 #define LEVELS_PER_SEASON 15
 
 //TODO: LAST_LEVEL
-NSInteger const LAST_LEVEL = 2012026;
+NSInteger const LAST_LEVEL = 2012015;
 float const volumeBackgroundMusic = 0.2f;
 
+typedef enum {
+    kTop = 0,
+    kBottom = 1
+} BannerPositions;
+
+BannerPositions const bannerPosition = kBottom;
+
+enum stateMachine {
+    init,
+    helpLabels,
+    tapScreen,
+    bunnyJump,
+    running,
+    paused,
+    liveLost,
+    gameOver
+};
+
 @protocol Constants <NSObject>
+
 
 typedef enum {
     kNoSceneUninitialized = 0,
@@ -59,18 +78,18 @@ typedef enum {
     kLevel2012012 = 2012012,
     kLevel2012013 = 2012013,
     kLevel2012014 = 2012014,
-    kLevel2012015 = 2012015,
-    kLevel2012016 = 2012016,
-    kLevel2012017 = 2012017,
-    kLevel2012018 = 2012018,
-    kLevel2012019 = 2012019,
-    kLevel2012020 = 2012020,
-    kLevel2012021 = 2012021,
-    kLevel2012022 = 2012022,
-    kLevel2012023 = 2012023,
-    kLevel2012024 = 2012024,
-    kLevel2012025 = 2012025,
-    kLevel2012026 = 2012026
+    kLevel2012015 = 2012015
+//    kLevel2012016 = 2012016,
+//    kLevel2012017 = 2012017,
+//    kLevel2012018 = 2012018,
+//    kLevel2012019 = 2012019,
+//    kLevel2012020 = 2012020,
+//    kLevel2012021 = 2012021,
+//    kLevel2012022 = 2012022,
+//    kLevel2012023 = 2012023,
+//    kLevel2012024 = 2012024,
+//    kLevel2012025 = 2012025,
+//    kLevel2012026 = 2012026
     
 } SceneTypes;
 

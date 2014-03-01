@@ -35,8 +35,11 @@
     
 }
 
--(void)pauseLevel:(QQLevel*)mainLayer {
+//-(void)pauseLevel:(QQLevel*)mainLayer {
+-(void)pauseLevel:(QQLevel*)mainLayer withLevelState:(stateMachine)levelState {
     NSLog(@"... pauseLevel");
+    _levelState = levelState;
+        NSLog(@"##### 1 _levelState: %d", _levelState);
     
     if(!_pauseLayerVisible) {
         _pauseLayerVisible = YES;
@@ -61,6 +64,7 @@
         [_spriteReloadButton registerTouchBeganObserver:self selector:@selector(touchBeganReloadButton:)];
         [_spriteReloadButton registerTouchEndedObserver:self selector:@selector(touchEndedReloadButton:)];
         
+        [[GameManager sharedGameManager] stopMusic];
     }
 }
 
@@ -119,10 +123,12 @@
             [sprite removeSelf];
         }
         
-        [_mainLayer changeLevelStatus:running withActionRequired:NO];
+        NSLog(@"##### 2 _levelState: %d", _levelState);
+        [_mainLayer changeLevelStatus:_levelState withActionRequired:NO];
         [[CCDirector sharedDirector] resume];
         _mainLayer = nil;
         _pauseLayerVisible = NO;
+        [[GameManager sharedGameManager] startMusic];
     }
 }
 
@@ -143,6 +149,7 @@
 
         _mainLayer = nil;
         _pauseLayerVisible = NO;
+        [[GameManager sharedGameManager] startMusic];
     }
 }
 
@@ -162,6 +169,7 @@
         [[CCDirector sharedDirector] resume];
         _mainLayer = nil;
         _pauseLayerVisible = NO;
+        [[GameManager sharedGameManager] startMusic];
     }
 }
 

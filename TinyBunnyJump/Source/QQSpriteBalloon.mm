@@ -106,7 +106,7 @@
         [self body]->SetActive(false);
         [self removeSelf];
         
-        int scoreMultiplier = 1;
+        float scoreMultiplier = 1;
         QQBalloonClass* myScoreInfo = (QQBalloonClass*)[self userInfo];
         if(myScoreInfo != nil){
             scoreMultiplier = [myScoreInfo scoreMultiplier];

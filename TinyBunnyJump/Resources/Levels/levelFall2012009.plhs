@@ -1697,7 +1697,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 577}, {100, 20}}</string>
+								<string>{{331, 4}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1772,7 +1772,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{301, 590}, {18.75, 29}}</string>
+								<string>{{602, 395}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1847,7 +1847,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1014, 240}, {17.5, 8.75}}</string>
+								<string>{{348, 108}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1922,7 +1922,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1014, 240}, {17.5, 8.75}}</string>
+								<string>{{348, 108}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1997,7 +1997,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 516}, {5.5, 6.5}}</string>
+								<string>{{467, 77}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2072,7 +2072,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 516}, {5.5, 6.5}}</string>
+								<string>{{467, 77}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2167,7 +2167,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{978, 617}, {16, 16}}</string>
+								<string>{{578, 434}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -2242,7 +2242,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{978, 617}, {16, 16}}</string>
+								<string>{{578, 434}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -2386,19 +2386,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.11384379863739, 94.532165735960007}</string>
+								<string>{239.15378868579865, 94.532165735960007}</string>
 								<key>Scale</key>
 								<string>{2.0689654350280762, 1}</string>
 								<key>SpriteSize</key>
@@ -2530,19 +2530,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.11384379863739, 94.532165735960007}</string>
+								<string>{239.15378868579865, 94.532165735960007}</string>
 								<key>Scale</key>
 								<string>{2.0689654350280762, 1}</string>
 								<key>SpriteSize</key>
@@ -2674,19 +2674,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.11384379863739, 94.532165735960007}</string>
+								<string>{239.15378868579865, 94.532165735960007}</string>
 								<key>Scale</key>
 								<string>{2.0689654350280762, 1}</string>
 								<key>SpriteSize</key>
@@ -2749,7 +2749,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{821, 683}, {21.75, 30}}</string>
+								<string>{{969, 440}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2761,7 +2761,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{343.23059163987637, 29.86892050504683}</string>
+								<string>{277.27053652703762, 29.86892050504683}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -2824,7 +2824,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{821, 683}, {21.75, 30}}</string>
+								<string>{{969, 440}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2836,7 +2836,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{342.45533019304276, 159.28151369094849}</string>
+								<string>{276.49527508020401, 159.28151369094849}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -2899,7 +2899,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{821, 683}, {21.75, 30}}</string>
+								<string>{{969, 440}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2911,7 +2911,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{230.29511365294456, 94.532165735960007}</string>
+								<string>{164.33505854010582, 94.532165735960007}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -3043,19 +3043,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.11344665288925, 94.532622098922729}</string>
+								<string>{239.15339154005051, 94.532622098922729}</string>
 								<key>Scale</key>
 								<string>{1.2643678188323975, 1}</string>
 								<key>SpriteSize</key>
@@ -3187,19 +3187,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.11344665288925, 94.532622098922729}</string>
+								<string>{239.15339154005051, 94.532622098922729}</string>
 								<key>Scale</key>
 								<string>{1.2643678188323975, 1}</string>
 								<key>SpriteSize</key>
@@ -3315,7 +3315,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{297, 690}, {21.75, 30}}</string>
+								<string>{{971, 372}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3327,7 +3327,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{305.66318763237291, 133.32012223126571}</string>
+								<string>{239.70313251953417, 133.32012223126571}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -3443,7 +3443,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{297, 690}, {21.75, 30}}</string>
+								<string>{{971, 372}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3455,7 +3455,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{265.80066194214578, 94.003634075605561}</string>
+								<string>{199.84060682930703, 94.003634075605561}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -3571,7 +3571,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{297, 690}, {21.75, 30}}</string>
+								<string>{{971, 372}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3583,7 +3583,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{343.88758925519232, 94.27665053776542}</string>
+								<string>{277.92753414235358, 94.27665053776542}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -3699,7 +3699,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{297, 690}, {21.75, 30}}</string>
+								<string>{{971, 372}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -3711,7 +3711,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{305.39017750791339, 56.476905366561368}</string>
+								<string>{239.43012239507465, 56.476905366561368}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -3774,19 +3774,19 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{921, 657}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{305.38501906493275, 96.131654847168647}</string>
+								<string>{239.424963952094, 96.131654847168647}</string>
 								<key>Scale</key>
 								<string>{1.2000000476837158, 1.2000000476837158}</string>
 								<key>SpriteSize</key>
@@ -3849,27 +3849,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{305.95495785961361, 20.25206458690127}</string>
+								<string>{239.99490274677487, 20.25206458690127}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -3924,27 +3924,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{371.41640163009362, 56.922606318809486}</string>
+								<string>{305.45634651725487, 56.922606318809486}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -3999,27 +3999,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{369.90110810377405, 131.47591411293484}</string>
+								<string>{303.9410529909353, 131.47591411293484}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -4074,27 +4074,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{304.74269684710015, 169.05564598634507}</string>
+								<string>{238.7826417342614, 169.05564598634507}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -4149,27 +4149,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{239.5843286300088, 131.77898253196841}</string>
+								<string>{173.62427351717005, 131.77898253196841}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -4224,27 +4224,27 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{873, 724}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{239.88738447073331, 56.316473301308434}</string>
+								<string>{173.92732935789456, 56.316473301308434}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
 								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>13</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
@@ -4299,7 +4299,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{897, 167}, {154.5, 112.5}}</string>
+								<string>{{182, 381}, {154.5, 112.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -4374,13 +4374,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{895, 325}, {137, 114}}</string>
+								<string>{{788, 136}, {137, 114}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -4449,7 +4449,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{941, 722}, {21.75, 30}}</string>
+								<string>{{598, 488}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -4461,7 +4461,7 @@
 								<key>Opacity</key>
 								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{267.27099609375, 29.510000228881836}</string>
+								<string>{201.31094098091125, 29.510000228881836}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -4524,7 +4524,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{941, 722}, {21.75, 30}}</string>
+								<string>{{598, 488}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -4536,7 +4536,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{267.33401489257812, 159.41999816894531}</string>
+								<string>{201.37395977973938, 159.41999816894531}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -4599,7 +4599,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{941, 722}, {21.75, 30}}</string>
+								<string>{{598, 488}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -4611,7 +4611,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{380.0150146484375, 94.531997680664062}</string>
+								<string>{314.05495953559875, 94.531997680664062}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>

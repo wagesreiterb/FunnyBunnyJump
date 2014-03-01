@@ -8,14 +8,13 @@
 
 #import "QQAdmob.h"
 
+#ifndef ANDROID
+
 @implementation QQAdmob
 -(void)onEnter
 {
     [super onEnter];
-    
-    NSLog(@"XXXXX QQAdmob::onEnter");
     [self createAdmobAds];
-    
 }
 
 -(void)createAdmobAds
@@ -54,24 +53,22 @@
     
     mBannerView.frame = frame;
     
-    //NSLog(@"### height: %f, widht: %f", frame.size.height, frame.size.width);
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     
     frame = mBannerView.frame;
 
-    //frame.origin.y = s.height - frame.size.height;
-    frame.origin.y = 0;
+    if(bannerPosition == kTop) {
+        frame.origin.y = 0;
+    } else {
+        frame.origin.y = s.height - frame.size.height;
+    }
     frame.origin.x = (s.width/2.0f - frame.size.width/2.0f);
     
     mBannerView.frame = frame;
     [UIView commitAnimations];
-    
-    NSLog(@"XXXXX QQAdmob::createAdMobAds");
-    //[self.delegate admobAdReceived:self];
-    //[self.delegate adViewDidReceiveAd:mBannerView];
+
     [mBannerView setDelegate:self];
 }
 
@@ -80,7 +77,6 @@
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)view {
-    NSLog(@"x-x-x-x-x-x QQAdmob::adViewDidReceiveAd");
     [self.delegate admobAdReceived:self];
 }
 
@@ -91,7 +87,6 @@
 
 -(void)showBannerView
 {
-    NSLog(@"### showBannerView");
     if (mBannerView)
     {
         [UIView animateWithDuration:0.5
@@ -117,11 +112,8 @@
 
 -(void)hideBannerView
 {
-    NSLog(@"1.....hideBannerView");
     if (mBannerView)
     {
-        NSLog(@"2.....hideBannerView");
-
         [UIView animateWithDuration:0.5
                               delay:0.1
                             options: UIViewAnimationCurveEaseOut
@@ -130,14 +122,17 @@
              CGSize s = [[CCDirector sharedDirector] winSize];
              
              CGRect frame = mBannerView.frame;
-             frame.origin.y = frame.origin.y +  frame.size.height;
+             if(bannerPosition == kTop) {
+                 frame.origin.y = frame.origin.y -  frame.size.height;
+             } else {
+                 frame.origin.y = frame.origin.y +  frame.size.height;
+             }
              frame.origin.x = (s.width/2.0f - frame.size.width/2.0f);
          }
-                         completion:^(BOOL finished)
+             completion:^(BOOL finished)
          {
          }];
     }
-    
 }
 
 
@@ -153,7 +148,11 @@
              CGSize s = [[CCDirector sharedDirector] winSize];
              
              CGRect frame = mBannerView.frame;
-             frame.origin.y = frame.origin.y + frame.size.height ;
+             if(bannerPosition == kTop) {
+                 frame.origin.y = frame.origin.y - frame.size.height;
+             } else {
+                 frame.origin.y = frame.origin.y + frame.size.height;
+             }
              frame.origin.x = (s.width/2.0f - frame.size.width/2.0f);
              mBannerView.frame = frame;
          }
@@ -168,3 +167,5 @@
 }
 
 @end
+
+#endif

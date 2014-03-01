@@ -12,6 +12,48 @@
 	<array>
 		<dict>
 			<key>AnchorA</key>
+			<string>{1.8231797344217853, -7.895158486045716}</string>
+			<key>AnchorB</key>
+			<string>{3.9349018705026544, -14.556373148676517}</string>
+			<key>Axis</key>
+			<string>{1, 0}</string>
+			<key>CenterOfMass</key>
+			<false/>
+			<key>CollideConnected</key>
+			<false/>
+			<key>EnableLimit</key>
+			<false/>
+			<key>EnableMotor</key>
+			<false/>
+			<key>LHAnchorA</key>
+			<string>{1.8231797344217853, 7.895158486045716}</string>
+			<key>LHAnchorB</key>
+			<string>{3.9349018705026544, 14.556373148676517}</string>
+			<key>LowerTranslation</key>
+			<real>0.0</real>
+			<key>MaxMotorForce</key>
+			<real>0.0</real>
+			<key>MotorSpeed</key>
+			<real>0.0</real>
+			<key>ObjectA</key>
+			<string>trampoline</string>
+			<key>ObjectB</key>
+			<string>floor_neu</string>
+			<key>PointRelativeness</key>
+			<integer>0</integer>
+			<key>Tag</key>
+			<integer>0</integer>
+			<key>TagName</key>
+			<string>DEFAULT</string>
+			<key>Type</key>
+			<integer>2</integer>
+			<key>UniqueName</key>
+			<string>Untitled_Joint_1</string>
+			<key>UpperTranslation</key>
+			<real>0.0</real>
+		</dict>
+		<dict>
+			<key>AnchorA</key>
 			<string>{6.6123641997199911, -13.266771369761642}</string>
 			<key>AnchorB</key>
 			<string>{0, 0}</string>
@@ -175,174 +217,6 @@
 			<integer>1</integer>
 			<key>UniqueName</key>
 			<string>hand_left</string>
-			<key>UpperAngle</key>
-			<real>0.0</real>
-		</dict>
-		<dict>
-			<key>AnchorA</key>
-			<string>{0, 0}</string>
-			<key>AnchorB</key>
-			<string>{0, 0}</string>
-			<key>Axis</key>
-			<string>{1, 0}</string>
-			<key>CenterOfMass</key>
-			<false/>
-			<key>CollideConnected</key>
-			<false/>
-			<key>EnableLimit</key>
-			<false/>
-			<key>EnableMotor</key>
-			<false/>
-			<key>LHAnchorA</key>
-			<string>{0, 0}</string>
-			<key>LHAnchorB</key>
-			<string>{0, 0}</string>
-			<key>LowerTranslation</key>
-			<real>0.0</real>
-			<key>MaxMotorForce</key>
-			<real>0.0</real>
-			<key>MotorSpeed</key>
-			<real>0.0</real>
-			<key>ObjectA</key>
-			<string>trampoline</string>
-			<key>ObjectB</key>
-			<string>floor_neu</string>
-			<key>PointRelativeness</key>
-			<integer>0</integer>
-			<key>Tag</key>
-			<integer>0</integer>
-			<key>TagName</key>
-			<string>DEFAULT</string>
-			<key>Type</key>
-			<integer>2</integer>
-			<key>UniqueName</key>
-			<string>trampoline</string>
-			<key>UpperTranslation</key>
-			<real>0.0</real>
-		</dict>
-		<dict>
-			<key>AnchorA</key>
-			<string>{0, 0}</string>
-			<key>AnchorB</key>
-			<string>{81.219491199884942, 74.568753743732572}</string>
-			<key>CenterOfMass</key>
-			<false/>
-			<key>CollideConnected</key>
-			<false/>
-			<key>EnableLimit</key>
-			<false/>
-			<key>EnableMotor</key>
-			<true/>
-			<key>LHAnchorA</key>
-			<string>{0, 0}</string>
-			<key>LHAnchorB</key>
-			<string>{81.219491199884942, -74.568753743732572}</string>
-			<key>LowerAngle</key>
-			<real>0.0</real>
-			<key>MaxTorque</key>
-			<real>1</real>
-			<key>MotorSpeed</key>
-			<real>0.30000001192092896</real>
-			<key>ObjectA</key>
-			<string>windmill3</string>
-			<key>ObjectB</key>
-			<string>maxHeight_neu</string>
-			<key>PointRelativeness</key>
-			<integer>0</integer>
-			<key>RefAngle</key>
-			<real>0.0</real>
-			<key>Tag</key>
-			<integer>0</integer>
-			<key>TagName</key>
-			<string>DEFAULT</string>
-			<key>Type</key>
-			<integer>1</integer>
-			<key>UniqueName</key>
-			<string>motor1</string>
-			<key>UpperAngle</key>
-			<real>0.0</real>
-		</dict>
-		<dict>
-			<key>AnchorA</key>
-			<string>{0, 0}</string>
-			<key>AnchorB</key>
-			<string>{0, 0}</string>
-			<key>CenterOfMass</key>
-			<false/>
-			<key>CollideConnected</key>
-			<false/>
-			<key>EnableLimit</key>
-			<false/>
-			<key>EnableMotor</key>
-			<true/>
-			<key>LHAnchorA</key>
-			<string>{0, 0}</string>
-			<key>LHAnchorB</key>
-			<string>{0, 0}</string>
-			<key>LowerAngle</key>
-			<real>0.0</real>
-			<key>MaxTorque</key>
-			<real>1</real>
-			<key>MotorSpeed</key>
-			<real>-0.30000001192092896</real>
-			<key>ObjectA</key>
-			<string>windmill3_1</string>
-			<key>ObjectB</key>
-			<string>maxHeight_neu</string>
-			<key>PointRelativeness</key>
-			<integer>0</integer>
-			<key>RefAngle</key>
-			<real>0.0</real>
-			<key>Tag</key>
-			<integer>0</integer>
-			<key>TagName</key>
-			<string>DEFAULT</string>
-			<key>Type</key>
-			<integer>1</integer>
-			<key>UniqueName</key>
-			<string>motor2</string>
-			<key>UpperAngle</key>
-			<real>0.0</real>
-		</dict>
-		<dict>
-			<key>AnchorA</key>
-			<string>{0, 0}</string>
-			<key>AnchorB</key>
-			<string>{0, 0}</string>
-			<key>CenterOfMass</key>
-			<false/>
-			<key>CollideConnected</key>
-			<false/>
-			<key>EnableLimit</key>
-			<false/>
-			<key>EnableMotor</key>
-			<true/>
-			<key>LHAnchorA</key>
-			<string>{0, 0}</string>
-			<key>LHAnchorB</key>
-			<string>{0, 0}</string>
-			<key>LowerAngle</key>
-			<real>0.0</real>
-			<key>MaxTorque</key>
-			<real>1</real>
-			<key>MotorSpeed</key>
-			<real>0.30000001192092896</real>
-			<key>ObjectA</key>
-			<string>windmill3_2</string>
-			<key>ObjectB</key>
-			<string>maxHeight_neu</string>
-			<key>PointRelativeness</key>
-			<integer>0</integer>
-			<key>RefAngle</key>
-			<real>0.0</real>
-			<key>Tag</key>
-			<integer>0</integer>
-			<key>TagName</key>
-			<string>DEFAULT</string>
-			<key>Type</key>
-			<integer>1</integer>
-			<key>UniqueName</key>
-			<string>motor3</string>
 			<key>UpperAngle</key>
 			<real>0.0</real>
 		</dict>
@@ -518,7 +392,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{-328, 160}</string>
+								<string>{240, 160}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -530,12 +404,12 @@
 								<key>TextureOffset</key>
 								<string>{5.625, 52.375}</string>
 								<key>UniqueName</key>
-								<string>clouds_fall_1</string>
+								<string>clouds_fall</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>clouds_fall_1</string>
+							<string>clouds_fall</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -593,7 +467,7 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{240, 160}</string>
+								<string>{-328, 160}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
@@ -605,12 +479,12 @@
 								<key>TextureOffset</key>
 								<string>{5.625, 52.375}</string>
 								<key>UniqueName</key>
-								<string>clouds_fall</string>
+								<string>clouds_fall_1</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>clouds_fall</string>
+							<string>clouds_fall_1</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -642,81 +516,6 @@
 				<dict>
 					<key>Children</key>
 					<array>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>foregrounds</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>foregrounds</string>
-							<key>SHSpriteName</key>
-							<string>backgroundFallForeground</string>
-							<key>SheetImage</key>
-							<string>objects_foregrounds.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{8, 828}, {568, 179.75}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<false/>
-								<key>Locked</key>
-								<true/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{240, 160}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{568, 384}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0, -102.125}</string>
-								<key>UniqueName</key>
-								<string>backgroundFallForeground</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>backgroundFallForeground</string>
-						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
 							<dict/>
@@ -867,6 +666,81 @@
 							<key>UniqueName</key>
 							<string>floor_neu</string>
 						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>foregrounds</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>foregrounds</string>
+							<key>SHSpriteName</key>
+							<string>backgroundFallForeground</string>
+							<key>SheetImage</key>
+							<string>objects_foregrounds.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{8, 828}, {568, 179.75}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<true/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{240, 160}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{568, 384}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0, -102.125}</string>
+								<key>UniqueName</key>
+								<string>backgroundFallForeground</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>backgroundFallForeground</string>
+						</dict>
 					</array>
 					<key>CustomClassInfo</key>
 					<dict>
@@ -893,6 +767,111 @@
 					<string>foregrounds</string>
 					<key>ZOrder</key>
 					<integer>20</integer>
+				</dict>
+				<dict>
+					<key>Children</key>
+					<array>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict/>
+								<key>ClassName</key>
+								<string>No Class</string>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>backgrounds3</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>backgrounds3</string>
+							<key>SHSpriteName</key>
+							<string>backgroundFallForegroundTrampoline</string>
+							<key>SheetImage</key>
+							<string>objects_backgrounds3.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{912, 2}, {568, 73}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<true/>
+								<key>Locked</key>
+								<true/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{240, 190}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{568, 384}</string>
+								<key>Tag</key>
+								<integer>0</integer>
+								<key>TagName</key>
+								<string>DEFAULT</string>
+								<key>TextureOffset</key>
+								<string>{0, -155.5}</string>
+								<key>UniqueName</key>
+								<string>backgroundFallForegroundTrampoline</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>backgroundFallForegroundTrampoline</string>
+						</dict>
+					</array>
+					<key>CustomClassInfo</key>
+					<dict>
+						<key>ClassName</key>
+						<string>No Class</string>
+					</dict>
+					<key>NodeType</key>
+					<string>LHBatch</string>
+					<key>ParentClass</key>
+					<string>LHLayer</string>
+					<key>ParentName</key>
+					<string>MAIN_LAYER</string>
+					<key>SHScene</key>
+					<string>objects.pshs</string>
+					<key>SheetImage</key>
+					<string>objects_backgrounds3.png</string>
+					<key>SheetImageRelative</key>
+					<string>/Resources/Images/objects_backgrounds3.png</string>
+					<key>Tag</key>
+					<integer>0</integer>
+					<key>TagName</key>
+					<string>DEFAULT</string>
+					<key>UniqueName</key>
+					<string>backgrounds3</string>
+					<key>ZOrder</key>
+					<integer>30</integer>
 				</dict>
 				<dict>
 					<key>Children</key>
@@ -941,13 +920,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{482, 288}, {100, 20}}</string>
+								<string>{{999, 577}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1002,7 +981,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>bunny_earless</string>
+							<string>bunny_earless_sunglas</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1016,13 +995,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{753, 118}, {18.75, 29}}</string>
+								<string>{{301, 623}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1091,13 +1070,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{515, 361}, {17.5, 8.75}}</string>
+								<string>{{1014, 240}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1166,13 +1145,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{515, 361}, {17.5, 8.75}}</string>
+								<string>{{1014, 240}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1241,7 +1220,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{350, 209}, {5.5, 6.5}}</string>
+								<string>{{999, 516}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1316,7 +1295,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{350, 209}, {5.5, 6.5}}</string>
+								<string>{{999, 516}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1411,7 +1390,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1008, 103}, {16, 16}}</string>
+								<string>{{978, 617}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1472,7 +1451,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>lifes</string>
+							<string>ballonon_black</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1486,7 +1465,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1008, 103}, {16, 16}}</string>
+								<string>{{297, 690}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1496,26 +1475,26 @@
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
-								<real>1</real>
+								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{27.389466524124146, -54.187085628509521}</string>
+								<string>{155, 80}</string>
 								<key>Scale</key>
-								<string>{1, 1}</string>
+								<string>{1.5, 1.5}</string>
 								<key>SpriteSize</key>
-								<string>{16, 16}</string>
+								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>0</integer>
+								<integer>6</integer>
 								<key>TagName</key>
-								<string>DEFAULT</string>
+								<string>TAG_BEAM</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>fall</string>
+								<string>beam1</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>fall</string>
+							<string>beam1</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -1547,7 +1526,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>stone_left_iPhone5_summer</string>
+							<string>ballonon_black</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1561,36 +1540,36 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{299, 219}, {154.5, 112.5}}</string>
+								<string>{{297, 690}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
-								<true/>
+								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
-								<real>1</real>
+								<real>0.85000002384185791</real>
 								<key>Position</key>
-								<string>{-18, 222}</string>
+								<string>{325, 80}</string>
 								<key>Scale</key>
-								<string>{1, 1}</string>
+								<string>{1.5, 1.5}</string>
 								<key>SpriteSize</key>
-								<string>{154.5, 112.5}</string>
+								<string>{21.75, 30}</string>
 								<key>Tag</key>
-								<integer>0</integer>
+								<integer>6</integer>
 								<key>TagName</key>
-								<string>DEFAULT</string>
+								<string>TAG_BEAM</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>stone_left_iPhone5_summer</string>
+								<string>beam2</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>stone_left_iPhone5_summer</string>
+							<string>beam2</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -1636,7 +1615,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{331, 4}, {137, 114}}</string>
+								<string>{{895, 325}, {137, 114}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1697,7 +1676,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>windmill3</string>
+							<string>stone_left_iPhone5_summer</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1711,23 +1690,23 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{248, 630}, {99.75, 99.5}}</string>
+								<string>{{897, 167}, {154.5, 112.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{240, 230}</string>
+								<string>{-18, 222}</string>
 								<key>Scale</key>
-								<string>{0.5, 0.5}</string>
+								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{99.25, 99.5}</string>
+								<string>{154.5, 112.5}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>TagName</key>
@@ -1735,12 +1714,12 @@
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>windmill3</string>
+								<string>stone_left_iPhone5_summer</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>windmill3</string>
+							<string>stone_left_iPhone5_summer</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -1772,7 +1751,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>windmill3</string>
+							<string>lifes</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1786,9 +1765,9 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{248, 630}, {99.75, 99.5}}</string>
+								<string>{{978, 617}, {16, 16}}</string>
 								<key>IsDrawable</key>
-								<true/>
+								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
@@ -1798,11 +1777,11 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{240, 170}</string>
+								<string>{43.25, -53.5}</string>
 								<key>Scale</key>
-								<string>{0.5, 0.5}</string>
+								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{99.25, 99.5}</string>
+								<string>{16, 16}</string>
 								<key>Tag</key>
 								<integer>0</integer>
 								<key>TagName</key>
@@ -1810,87 +1789,12 @@
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>windmill3_1</string>
+								<string>leaves</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>windmill3_1</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>windmill3</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{248, 630}, {99.75, 99.5}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<false/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{240, 110}</string>
-								<key>Scale</key>
-								<string>{0.5, 0.5}</string>
-								<key>SpriteSize</key>
-								<string>{99.25, 99.5}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>windmill3_2</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>windmill3_2</string>
+							<string>leaves</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -1902,9 +1806,9 @@
 								<key>ClassDefaults</key>
 								<dict>
 									<key>blinkDelay</key>
-									<true/>
+									<false/>
 									<key>blinkInterval</key>
-									<true/>
+									<false/>
 									<key>blinkModulo</key>
 									<true/>
 									<key>explodingEffect</key>
@@ -1919,9 +1823,9 @@
 								<key>ClassRepresentation</key>
 								<dict>
 									<key>blinkDelay</key>
-									<real>2</real>
+									<real>1</real>
 									<key>blinkInterval</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkModulo</key>
 									<real>0.0</real>
 									<key>explodingEffect</key>
@@ -1950,7 +1854,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_orange2_1x5</string>
+							<string>balloon_rabbitsfoot_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -1964,82 +1868,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{781, 347}, {32.5, 44.75}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<true/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{190, 55}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{32.5, 44.75}</string>
-								<key>Tag</key>
-								<integer>10</integer>
-								<key>TagName</key>
-								<string>TAG_BALLOON_SIZECHANGER</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>balloon_orange2_1x5</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>balloon_orange2_1x5</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>balloon_orange2</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{1001, 301}, {21.75, 30}}</string>
+								<string>{{362, 529}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2051,99 +1880,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{365, 33}</string>
+								<string>{155, 30}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{21.75, 30}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>13</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_orange2</string>
+								<string>balloon_rabbitsfoot_1x5</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_orange2</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>balloon_orange2</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{1001, 301}, {21.75, 30}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<false/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{115, 33}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{21.75, 30}</string>
-								<key>Tag</key>
-								<integer>13</integer>
-								<key>TagName</key>
-								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>balloon_orange2_1</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>balloon_orange2_1</string>
+							<string>balloon_rabbitsfoot_1x5</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -2155,9 +1909,9 @@
 								<key>ClassDefaults</key>
 								<dict>
 									<key>blinkDelay</key>
-									<true/>
+									<false/>
 									<key>blinkInterval</key>
-									<true/>
+									<false/>
 									<key>blinkModulo</key>
 									<true/>
 									<key>explodingEffect</key>
@@ -2172,9 +1926,9 @@
 								<key>ClassRepresentation</key>
 								<dict>
 									<key>blinkDelay</key>
-									<real>2</real>
+									<real>1</real>
 									<key>blinkInterval</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkModulo</key>
 									<real>0.0</real>
 									<key>explodingEffect</key>
@@ -2203,7 +1957,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_purple_1x5</string>
+							<string>balloon_yellow_pattern_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -2217,7 +1971,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{907, 370}, {32.5, 44.75}}</string>
+								<string>{{324, 627}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2229,24 +1983,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{70, 55}</string>
+								<string>{325, 30}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{32.5, 44.75}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_purple_1x5</string>
+								<string>balloon_yellow_pattern_1x5</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_purple_1x5</string>
+							<string>balloon_yellow_pattern_1x5</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -2258,9 +2012,9 @@
 								<key>ClassDefaults</key>
 								<dict>
 									<key>blinkDelay</key>
-									<true/>
+									<false/>
 									<key>blinkInterval</key>
-									<true/>
+									<false/>
 									<key>blinkModulo</key>
 									<true/>
 									<key>explodingEffect</key>
@@ -2275,9 +2029,9 @@
 								<key>ClassRepresentation</key>
 								<dict>
 									<key>blinkDelay</key>
-									<real>2</real>
+									<real>1</real>
 									<key>blinkInterval</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkModulo</key>
 									<real>0.0</real>
 									<key>explodingEffect</key>
@@ -2306,7 +2060,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_purple_1x5</string>
+							<string>balloon_rabbitsfoot_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -2320,7 +2074,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{907, 370}, {32.5, 44.75}}</string>
+								<string>{{362, 529}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2332,99 +2086,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{240, 40}</string>
+								<string>{155, 130}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{32.5, 44.75}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_purple_1x5_1</string>
+								<string>balloon_rabbitsfoot_1x5_1</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_purple_1x5_1</string>
-						</dict>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>assets</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>assets</string>
-							<key>SHSpriteName</key>
-							<string>balloon_green</string>
-							<key>SheetImage</key>
-							<string>objects_assets.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{984, 395}, {21.75, 30}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<true/>
-								<key>Locked</key>
-								<false/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{150, 24}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{21.75, 30}</string>
-								<key>Tag</key>
-								<integer>13</integer>
-								<key>TagName</key>
-								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
-								<key>TextureOffset</key>
-								<string>{0, 0}</string>
-								<key>UniqueName</key>
-								<string>balloon_green</string>
-								<key>ZOrder</key>
-								<integer>0</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>balloon_green</string>
+							<string>balloon_rabbitsfoot_1x5_1</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -2436,9 +2115,9 @@
 								<key>ClassDefaults</key>
 								<dict>
 									<key>blinkDelay</key>
-									<true/>
+									<false/>
 									<key>blinkInterval</key>
-									<true/>
+									<false/>
 									<key>blinkModulo</key>
 									<true/>
 									<key>explodingEffect</key>
@@ -2453,9 +2132,9 @@
 								<key>ClassRepresentation</key>
 								<dict>
 									<key>blinkDelay</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkInterval</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkModulo</key>
 									<real>0.0</real>
 									<key>explodingEffect</key>
@@ -2484,7 +2163,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_green_1x5</string>
+							<string>balloon_rabbitsfoot_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -2498,7 +2177,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{866, 397}, {32.5, 44.75}}</string>
+								<string>{{362, 529}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2510,24 +2189,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{290, 55}</string>
+								<string>{280, 80}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{32.5, 44.75}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>10</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON_SIZECHANGER</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_green_1x5</string>
+								<string>balloon_rabbitsfoot_1x5_2</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_green_1x5</string>
+							<string>balloon_rabbitsfoot_1x5_2</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -2539,9 +2218,9 @@
 								<key>ClassDefaults</key>
 								<dict>
 									<key>blinkDelay</key>
-									<true/>
+									<false/>
 									<key>blinkInterval</key>
-									<true/>
+									<false/>
 									<key>blinkModulo</key>
 									<true/>
 									<key>explodingEffect</key>
@@ -2556,9 +2235,9 @@
 								<key>ClassRepresentation</key>
 								<dict>
 									<key>blinkDelay</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkInterval</key>
-									<real>2</real>
+									<real>0.5</real>
 									<key>blinkModulo</key>
 									<real>0.0</real>
 									<key>explodingEffect</key>
@@ -2587,7 +2266,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_green_1x5</string>
+							<string>balloon_rabbitsfoot_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -2601,7 +2280,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{866, 397}, {32.5, 44.75}}</string>
+								<string>{{362, 529}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2613,24 +2292,24 @@
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{405, 55}</string>
+								<string>{370, 80}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{32.5, 44.75}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>3</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_green_1x5_1</string>
+								<string>balloon_rabbitsfoot_1x5_3</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_green_1x5_1</string>
+							<string>balloon_rabbitsfoot_1x5_3</string>
 						</dict>
 						<dict>
 							<key>AnimationsProperties</key>
@@ -2640,9 +2319,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<false/>
+									<key>blinkInterval</key>
+									<false/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<false/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<true/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>1</real>
+									<key>blinkInterval</key>
+									<real>0.5</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>1</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2662,7 +2369,7 @@
 							<key>SHSheetName</key>
 							<string>assets</string>
 							<key>SHSpriteName</key>
-							<string>balloon_purple</string>
+							<string>balloon_yellow_pattern_1x5</string>
 							<key>SheetImage</key>
 							<string>objects_assets.png</string>
 							<key>TextureProperties</key>
@@ -2676,36 +2383,242 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{994, 369}, {21.75, 30}}</string>
+								<string>{{324, 627}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
 								<real>1</real>
 								<key>Position</key>
-								<string>{330, 24}</string>
+								<string>{325, 130}</string>
 								<key>Scale</key>
 								<string>{1, 1}</string>
 								<key>SpriteSize</key>
-								<string>{21.75, 30}</string>
+								<string>{32.75, 45}</string>
 								<key>Tag</key>
-								<integer>13</integer>
+								<integer>12</integer>
 								<key>TagName</key>
-								<string>TAG_BALLOON_THREETIMESTOUCHER</string>
+								<string>TAG_BALLOON_BLINKER</string>
 								<key>TextureOffset</key>
 								<string>{0, 0}</string>
 								<key>UniqueName</key>
-								<string>balloon_purple</string>
+								<string>balloon_yellow_pattern_1x5_1</string>
 								<key>ZOrder</key>
 								<integer>0</integer>
 							</dict>
 							<key>UniqueName</key>
-							<string>balloon_purple</string>
+							<string>balloon_yellow_pattern_1x5_1</string>
+						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict>
+									<key>blinkDelay</key>
+									<false/>
+									<key>blinkInterval</key>
+									<false/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<false/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<true/>
+								</dict>
+								<key>ClassName</key>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>0.5</real>
+									<key>blinkInterval</key>
+									<real>0.5</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>1</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
+								</dict>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>assets</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>assets</string>
+							<key>SHSpriteName</key>
+							<string>balloon_yellow_pattern_1x5</string>
+							<key>SheetImage</key>
+							<string>objects_assets.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{324, 627}, {32.75, 45}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{200, 80}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{32.75, 45}</string>
+								<key>Tag</key>
+								<integer>12</integer>
+								<key>TagName</key>
+								<string>TAG_BALLOON_BLINKER</string>
+								<key>TextureOffset</key>
+								<string>{0, 0}</string>
+								<key>UniqueName</key>
+								<string>balloon_yellow_pattern_1x5_2</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>balloon_yellow_pattern_1x5_2</string>
+						</dict>
+						<dict>
+							<key>AnimationsProperties</key>
+							<dict/>
+							<key>Children</key>
+							<array/>
+							<key>CustomClassInfo</key>
+							<dict>
+								<key>ClassDefaults</key>
+								<dict>
+									<key>blinkDelay</key>
+									<false/>
+									<key>blinkInterval</key>
+									<false/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<false/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<true/>
+								</dict>
+								<key>ClassName</key>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>0.5</real>
+									<key>blinkInterval</key>
+									<real>0.5</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>1</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>1</real>
+								</dict>
+							</dict>
+							<key>NodeType</key>
+							<string>LHSprite</string>
+							<key>ParentClass</key>
+							<string>LHBatch</string>
+							<key>ParentName</key>
+							<string>assets</string>
+							<key>PathProperties</key>
+							<dict/>
+							<key>PhysicProperties</key>
+							<dict>
+								<key>HandledBySH</key>
+								<true/>
+							</dict>
+							<key>SHSceneName</key>
+							<string>objects.pshs</string>
+							<key>SHSheetName</key>
+							<string>assets</string>
+							<key>SHSpriteName</key>
+							<string>balloon_yellow_pattern_1x5</string>
+							<key>SheetImage</key>
+							<string>objects_assets.png</string>
+							<key>TextureProperties</key>
+							<dict>
+								<key>Angle</key>
+								<integer>0</integer>
+								<key>Color</key>
+								<string>{{1, 1}, {1, 1}}</string>
+								<key>FlipX</key>
+								<false/>
+								<key>FlipY</key>
+								<false/>
+								<key>Frame</key>
+								<string>{{324, 627}, {32.75, 45}}</string>
+								<key>IsDrawable</key>
+								<true/>
+								<key>IsExpanded</key>
+								<false/>
+								<key>IsRotated</key>
+								<false/>
+								<key>Locked</key>
+								<false/>
+								<key>Opacity</key>
+								<real>1</real>
+								<key>Position</key>
+								<string>{110, 80}</string>
+								<key>Scale</key>
+								<string>{1, 1}</string>
+								<key>SpriteSize</key>
+								<string>{32.75, 45}</string>
+								<key>Tag</key>
+								<integer>12</integer>
+								<key>TagName</key>
+								<string>TAG_BALLOON_BLINKER</string>
+								<key>TextureOffset</key>
+								<string>{0, 0}</string>
+								<key>UniqueName</key>
+								<string>balloon_yellow_pattern_1x5_3</string>
+								<key>ZOrder</key>
+								<integer>0</integer>
+							</dict>
+							<key>UniqueName</key>
+							<string>balloon_yellow_pattern_1x5_3</string>
 						</dict>
 					</array>
 					<key>CustomClassInfo</key>
@@ -2733,111 +2646,6 @@
 					<string>assets</string>
 					<key>ZOrder</key>
 					<integer>50</integer>
-				</dict>
-				<dict>
-					<key>Children</key>
-					<array>
-						<dict>
-							<key>AnimationsProperties</key>
-							<dict/>
-							<key>Children</key>
-							<array/>
-							<key>CustomClassInfo</key>
-							<dict>
-								<key>ClassDefaults</key>
-								<dict/>
-								<key>ClassName</key>
-								<string>No Class</string>
-							</dict>
-							<key>NodeType</key>
-							<string>LHSprite</string>
-							<key>ParentClass</key>
-							<string>LHBatch</string>
-							<key>ParentName</key>
-							<string>backgrounds3</string>
-							<key>PathProperties</key>
-							<dict/>
-							<key>PhysicProperties</key>
-							<dict>
-								<key>HandledBySH</key>
-								<true/>
-							</dict>
-							<key>SHSceneName</key>
-							<string>objects.pshs</string>
-							<key>SHSheetName</key>
-							<string>backgrounds3</string>
-							<key>SHSpriteName</key>
-							<string>backgroundFallForegroundTrampoline</string>
-							<key>SheetImage</key>
-							<string>objects_backgrounds3.png</string>
-							<key>TextureProperties</key>
-							<dict>
-								<key>Angle</key>
-								<integer>0</integer>
-								<key>Color</key>
-								<string>{{1, 1}, {1, 1}}</string>
-								<key>FlipX</key>
-								<false/>
-								<key>FlipY</key>
-								<false/>
-								<key>Frame</key>
-								<string>{{912, 2}, {568, 73}}</string>
-								<key>IsDrawable</key>
-								<true/>
-								<key>IsExpanded</key>
-								<false/>
-								<key>IsRotated</key>
-								<true/>
-								<key>Locked</key>
-								<true/>
-								<key>Opacity</key>
-								<real>1</real>
-								<key>Position</key>
-								<string>{240, 190}</string>
-								<key>Scale</key>
-								<string>{1, 1}</string>
-								<key>SpriteSize</key>
-								<string>{568, 384}</string>
-								<key>Tag</key>
-								<integer>0</integer>
-								<key>TagName</key>
-								<string>DEFAULT</string>
-								<key>TextureOffset</key>
-								<string>{0, -155.5}</string>
-								<key>UniqueName</key>
-								<string>backgroundFallForegroundTrampoline</string>
-								<key>ZOrder</key>
-								<integer>60</integer>
-							</dict>
-							<key>UniqueName</key>
-							<string>backgroundFallForegroundTrampoline</string>
-						</dict>
-					</array>
-					<key>CustomClassInfo</key>
-					<dict>
-						<key>ClassName</key>
-						<string>No Class</string>
-					</dict>
-					<key>NodeType</key>
-					<string>LHBatch</string>
-					<key>ParentClass</key>
-					<string>LHLayer</string>
-					<key>ParentName</key>
-					<string>MAIN_LAYER</string>
-					<key>SHScene</key>
-					<string>objects.pshs</string>
-					<key>SheetImage</key>
-					<string>objects_backgrounds3.png</string>
-					<key>SheetImageRelative</key>
-					<string>/Resources/Images/objects_backgrounds3.png</string>
-					<key>Tag</key>
-					<integer>0</integer>
-					<key>TagName</key>
-					<string>DEFAULT</string>
-					<key>UniqueName</key>
-					<string>backgrounds3</string>
-					<key>ZOrder</key>
-					<integer>60</integer>
 				</dict>
 			</array>
 			<key>CustomClassInfo</key>
@@ -2953,7 +2761,7 @@
 		<key>ProjectName</key>
 		<string></string>
 		<key>ProjectPath</key>
-		<string>/Users/Que/Bernhard/xCodeProjects/FunnyBunnyJump/FunnyBunnyJump</string>
+		<string></string>
 		<key>SafeFrame</key>
 		<string>{480, 320}</string>
 		<key>Tags</key>

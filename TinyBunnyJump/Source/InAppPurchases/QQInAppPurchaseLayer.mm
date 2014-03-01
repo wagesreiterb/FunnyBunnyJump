@@ -117,6 +117,7 @@
     if(_purchaseInProgress == NO) {
         _purchaseInProgress = YES;
         [self setPleaseWaitActive:YES];
+        //[self showPleaseWait];
     }
 }
 
@@ -267,6 +268,7 @@
             [_mainLayer addChild:qqProduct.spriteProductButtonColor];
             
             [qqProduct.spriteProductButtonColor registerTouchBeganObserver:self selector:@selector(touchBegan:)];
+            [qqProduct.spriteProductButtonColor registerTouchEndedObserver:self selector:@selector(touchEnded:)];
             
             ////////////////////////
             [_priceFormatter setLocale:qqProduct.priceLocale];
@@ -294,9 +296,11 @@
 }
 
 -(void)showPleaseWait {
-    NSLog(@"------------------------- please Wait");
-    [self setupPleaseWait];
-    [self.scheduler scheduleSelector:@selector(tickRotatePleaseWaitSprite:) forTarget:self interval:0.1f repeat:-1 delay:1 paused:NO];
+    if(!_pleaseWaitActive) {
+        NSLog(@"------------------------- please Wait");
+        [self setupPleaseWait];
+        [self.scheduler scheduleSelector:@selector(tickRotatePleaseWaitSprite:) forTarget:self interval:0.1f repeat:-1 delay:1 paused:NO];
+    }
 }
 
 -(void)inAppPurchaseDeactivated {
@@ -313,9 +317,24 @@
         for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
             if([qqProduct.productIdentifier isEqualToString:[info.sprite uniqueName]]) {
                 [[QQInAppPurchaseStore sharedInstance] touchBeganProductButton:qqProduct];
+                NSLog(@"xxx: Touch xxx %@", [info.sprite uniqueName]);
+                [self showPleaseWait];
             }
         }
     }
+}
+
+-(void)touchEnded:(LHTouchInfo*)info{
+//    if(info.sprite) {
+//        NSLog(@"xxx: Touch END on sprite %@", [info.sprite uniqueName]);
+//        for(QQProduct* qqProduct in [[QQInAppPurchaseStore sharedInstance] myQQProducts]) {
+//            if([qqProduct.productIdentifier isEqualToString:[info.sprite uniqueName]]) {
+//                [[QQInAppPurchaseStore sharedInstance] touchBeganProductButton:qqProduct];
+//                NSLog(@"xxx: Touch END xxx %@", [info.sprite uniqueName]);
+//                [self showPleaseWait];
+//            }
+//        }
+//    }
 }
 
 

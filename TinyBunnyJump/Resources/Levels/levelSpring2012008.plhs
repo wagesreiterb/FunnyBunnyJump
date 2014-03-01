@@ -224,7 +224,7 @@
 			<key>AnchorA</key>
 			<string>{0, 0}</string>
 			<key>AnchorB</key>
-			<string>{0.32436045875097663, 14.529215808222915}</string>
+			<string>{145.22256223235627, 62.850728378842319}</string>
 			<key>CenterOfMass</key>
 			<false/>
 			<key>CollideConnected</key>
@@ -236,7 +236,7 @@
 			<key>LHAnchorA</key>
 			<string>{0, 0}</string>
 			<key>LHAnchorB</key>
-			<string>{0.32436045875097663, -14.529215808222915}</string>
+			<string>{145.22256223235627, -62.850728378842319}</string>
 			<key>LowerAngle</key>
 			<real>0.0</real>
 			<key>MaxTorque</key>
@@ -1277,7 +1277,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 577}, {100, 20}}</string>
+								<string>{{331, 4}, {100, 20}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1352,13 +1352,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{356, 926}, {18.75, 29}}</string>
+								<string>{{602, 395}, {18.75, 29}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -1427,7 +1427,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1014, 240}, {17.5, 8.75}}</string>
+								<string>{{348, 108}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1502,7 +1502,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{1014, 240}, {17.5, 8.75}}</string>
+								<string>{{348, 108}, {17.5, 8.75}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1577,7 +1577,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 516}, {5.5, 6.5}}</string>
+								<string>{{467, 77}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1652,7 +1652,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{999, 516}, {5.5, 6.5}}</string>
+								<string>{{467, 77}, {5.5, 6.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -1747,7 +1747,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{621, 959}, {16, 16}}</string>
+								<string>{{578, 434}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1822,7 +1822,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{621, 959}, {16, 16}}</string>
+								<string>{{578, 434}, {16, 16}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
@@ -1966,13 +1966,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{762, 393}, {87, 13}}</string>
+								<string>{{609, 265}, {87, 13}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<false/>
+								<true/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2041,13 +2041,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{532, 839}, {21.75, 30}}</string>
+								<string>{{570, 492}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2116,13 +2116,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{517, 916}, {21.75, 30}}</string>
+								<string>{{268, 575}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<false/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2191,7 +2191,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{897, 167}, {154.5, 112.5}}</string>
+								<string>{{182, 381}, {154.5, 112.5}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2266,13 +2266,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{895, 325}, {137, 114}}</string>
+								<string>{{788, 136}, {137, 114}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2305,9 +2305,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>2</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2341,13 +2369,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2380,9 +2408,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>2</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2416,13 +2472,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2455,9 +2511,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>3</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2491,13 +2575,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2530,9 +2614,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>3</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2566,13 +2678,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2605,9 +2717,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>3</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2641,13 +2781,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2680,9 +2820,37 @@
 							<key>CustomClassInfo</key>
 							<dict>
 								<key>ClassDefaults</key>
-								<dict/>
+								<dict>
+									<key>blinkDelay</key>
+									<true/>
+									<key>blinkInterval</key>
+									<true/>
+									<key>blinkModulo</key>
+									<true/>
+									<key>explodingEffect</key>
+									<true/>
+									<key>movingStartDelay</key>
+									<true/>
+									<key>scoreMultiplier</key>
+									<false/>
+								</dict>
 								<key>ClassName</key>
-								<string>No Class</string>
+								<string>QQBalloonClass</string>
+								<key>ClassRepresentation</key>
+								<dict>
+									<key>blinkDelay</key>
+									<real>2</real>
+									<key>blinkInterval</key>
+									<real>2</real>
+									<key>blinkModulo</key>
+									<real>0.0</real>
+									<key>explodingEffect</key>
+									<real>0.0</real>
+									<key>movingStartDelay</key>
+									<real>2</real>
+									<key>scoreMultiplier</key>
+									<real>2</real>
+								</dict>
 							</dict>
 							<key>NodeType</key>
 							<string>LHSprite</string>
@@ -2716,13 +2884,13 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{396, 842}, {21.75, 30}}</string>
+								<string>{{969, 474}, {21.75, 30}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
 								<false/>
 								<key>IsRotated</key>
-								<true/>
+								<false/>
 								<key>Locked</key>
 								<false/>
 								<key>Opacity</key>
@@ -2767,7 +2935,7 @@
 									<key>movingStartDelay</key>
 									<true/>
 									<key>scoreMultiplier</key>
-									<true/>
+									<false/>
 								</dict>
 								<key>ClassName</key>
 								<string>QQBalloonClass</string>
@@ -2784,7 +2952,7 @@
 									<key>movingStartDelay</key>
 									<real>2</real>
 									<key>scoreMultiplier</key>
-									<real>1</real>
+									<real>5</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2819,7 +2987,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{326, 529}, {32.75, 45}}</string>
+								<string>{{440, 406}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>
@@ -2870,7 +3038,7 @@
 									<key>movingStartDelay</key>
 									<true/>
 									<key>scoreMultiplier</key>
-									<true/>
+									<false/>
 								</dict>
 								<key>ClassName</key>
 								<string>QQBalloonClass</string>
@@ -2887,7 +3055,7 @@
 									<key>movingStartDelay</key>
 									<real>2</real>
 									<key>scoreMultiplier</key>
-									<real>1</real>
+									<real>5</real>
 								</dict>
 							</dict>
 							<key>NodeType</key>
@@ -2922,7 +3090,7 @@
 								<key>FlipY</key>
 								<false/>
 								<key>Frame</key>
-								<string>{{326, 529}, {32.75, 45}}</string>
+								<string>{{440, 406}, {32.75, 45}}</string>
 								<key>IsDrawable</key>
 								<true/>
 								<key>IsExpanded</key>

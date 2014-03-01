@@ -9,6 +9,7 @@
 #import "CCLayer.h"
 #import "GADBannerView.h"
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @class QQAdmob;
 
@@ -19,6 +20,7 @@
 
 @interface QQAdmob : CCLayer <GADBannerViewDelegate> {
     GADBannerView *mBannerView;
+    
 }
 
 @property (nonatomic, weak) id <QQAdmobDelegate> delegate;

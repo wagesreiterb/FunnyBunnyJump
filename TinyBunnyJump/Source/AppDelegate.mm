@@ -62,7 +62,10 @@
 	// Create the main window
     //GameCenter, Game Center
     NSLog(@"-- AppDelegate::application");
+    #ifndef ANDROID
     [[GCHelper sharedInstance] authenticateLocalUser];
+    #endif
+    
     [[GameState sharedInstance] initGameState];
     
     //Facebook
@@ -89,6 +92,7 @@
 	director_.wantsFullScreenLayout = YES;
 	
 	// Display FSP and SPF
+    // Querika
 	[director_ setDisplayStats:NO];
 	
 	// set FPS at 60
@@ -144,6 +148,8 @@
 {
 	if( [navController_ visibleViewController] == director_ )
 		[director_ pause];
+
+    [[GameState sharedInstance] save];
 }
 
 // call got rejected
@@ -175,6 +181,8 @@
 // application will be killed
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[GameState sharedInstance] save];
+    
 	CC_DIRECTOR_END();
 }
 

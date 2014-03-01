@@ -69,9 +69,9 @@
     
     //LH sends the points triangulated
     
-    tile_pointCount = [points count];
-    tile_points = (CGPoint *) malloc(sizeof(CGPoint) * tile_pointCount);
-    tile_texCoords = (CGPoint *) malloc(sizeof(CGPoint) * tile_pointCount);
+    tile_pointCount = (int)[points count];
+    tile_points = (ccVertex2F *) malloc(sizeof(ccVertex2F) * tile_pointCount);
+    tile_texCoords = (ccVertex2F *) malloc(sizeof(ccVertex2F) * tile_pointCount);
     tile_colors = (ccColor4F *) malloc(sizeof(ccColor4F) * tile_pointCount);
     
     int i = 0;
@@ -80,7 +80,8 @@
         CGPoint pt = LHPointFromValue(value);
         
 #if COCOS2D_VERSION >= 0x00020000
-        tile_points[i] = pt;
+        tile_points[i].x = pt.x;
+        tile_points[i].y = pt.y;
 #else
         tile_points[i].x = pt.x*CC_CONTENT_SCALE_FACTOR();;
         tile_points[i].y = pt.y*CC_CONTENT_SCALE_FACTOR();;
@@ -106,8 +107,8 @@
     if(line_colors)
         free(line_colors);
     
-    line_pointCount = [points count];
-    line_points = (CGPoint *) malloc(sizeof(CGPoint) * line_pointCount);
+    line_pointCount = (int)[points count];
+    line_points = (ccVertex2F *) malloc(sizeof(ccVertex2F) * line_pointCount);
     line_colors = (ccColor4F *) malloc(sizeof(ccColor4F) * line_pointCount);
     
     int i = 0;
@@ -116,7 +117,8 @@
         CGPoint pt = LHPointFromValue(value);
         
 #if COCOS2D_VERSION >= 0x00020000
-        line_points[i] = pt;
+        line_points[i].x = pt.x;
+        line_points[i].y = pt.y;
 #else
         line_points[i].x = pt.x*CC_CONTENT_SCALE_FACTOR();;
         line_points[i].y = pt.y*CC_CONTENT_SCALE_FACTOR();;
@@ -136,7 +138,7 @@
 
 -(void) setupTileShapeTexCoordinates{
     for(int i = 0; i< tile_pointCount; ++i){
-        CGPoint pt = tile_points[i];
+        CGPoint pt = ccp(tile_points[i].x, tile_points[i].y);
         tile_texCoords[i].x = pt.x/(tile_texture.pixelsWide/CC_CONTENT_SCALE_FACTOR());
         tile_texCoords[i].y = 1.0f -  pt.y/(tile_texture.pixelsHigh/CC_CONTENT_SCALE_FACTOR());
     }
@@ -769,7 +771,12 @@
                     CGImageRef ref = image.CGImage;
                     
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+                    
+                    #ifndef LH_ARC_ENABLED
                     CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[image TIFFRepresentation], NULL);
+                    #else
+                    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], NULL);
+                    #endif
                     CGImageRef ref =  CGImageSourceCreateImageAtIndex(source, 0, NULL);
                     
                     CFRelease(source);

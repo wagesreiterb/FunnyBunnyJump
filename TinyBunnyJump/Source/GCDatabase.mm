@@ -38,8 +38,11 @@ id loadData(NSString * filename) {
         id retval = [unarchiver decodeObjectForKey:@"Data"];
         [unarchiver finishDecoding];
         NSLog(@"+++ loadData");
+
         return retval;
     }
+    
+
     
     /*else {
         NSLog(@"+++ loadData else else else");
@@ -66,22 +69,26 @@ id loadData(NSString * filename) {
 }
 
 void saveData(id theData, NSString *filename) {
+    NSLog(@"saveData");
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:theData forKey:@"Data"];
     [archiver finishEncoding];
     
 
-    [data writeToFile:pathForFile(filename) atomically:YES];
+//    BOOL result = [data writeToFile:pathForFile(filename) atomically:YES];
+//    NSLog(@"--- the result is: %d", result);
     
-    /*
-    BOOL retVal = [data writeToFile:pathForFile(filename) atomically:YES];
+    
+    BOOL retVal = [data writeToFile:pathForFile(filename) atomically:NO];
     NSLog(@"save: filePath: %@", pathForFile(filename));
     NSLog(@"%i", retVal);
     BOOL yes = YES;
     BOOL no = NO;
     NSLog(@"YES: %i, NO: %i", yes = YES, no = NO);
-    */
+    
+    NSLog(@"save lifesLeft: %d",[[GameState sharedInstance] lifesLeft]);
+    
 }
 
 //@implementation GCDatabase

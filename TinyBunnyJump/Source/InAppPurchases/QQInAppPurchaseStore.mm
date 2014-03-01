@@ -12,7 +12,7 @@
 #define PRODUCT_THIRTY_TRAMPOLINES @"com.querika.tinybunnyjump.thirtytrampolines"
 #define PRODUCT_EIGHTY_TRAMPOLINES @"com.querika.tinybunnyjump.eightytrampolines"
 #define PRODUCT_HUNDREDSEVENTY_TRAMPOLINES @"com.querika.tinybunnyjump.hundredseventytrampolines"
-#define PRODUCT_FOURHUNDRED_TRAMPOLINES @"com.querika.tinybunnyjump.fourhundredtrampolines"
+#define PRODUCT_FOURHUNDRED_TRAMPOLINES @"com.querika.tinybunnyjump.fourhundredtrampolines2"
 
 #define PRODUCT_THIRTY_LIFES @"com.querika.tinybunnyjump.thirtylifes"
 #define PRODUCT_EIGHTY_LIFES @"com.querika.tinybunnyjump.eightylifes"
@@ -23,6 +23,11 @@
 #define PRODUCT_EIGHTY_SUPERJUMPS @"com.querika.tinybunnyjump.eightysuperjumps"
 #define PRODUCT_HUNDREDSEVENTY_SUPERJUMPS @"com.querika.tinybunnyjump.hundredseventysuperjumps"
 #define PRODUCT_FOURHUNDRED_SUPERJUMPS @"com.querika.tinybunnyjump.fourhundredsuperjumps"
+
+#define PRODUCT_THIRTY_ALL @"com.querika.tinybunnyjump.thirtyall"
+#define PRODUCT_EIGHTY_ALL @"com.querika.tinybunnyjump.eightyall"
+#define PRODUCT_HUNDREDSEVENTY_ALL @"com.querika.tinybunnyjump.hundredseventyall"
+#define PRODUCT_FOURHUNDRED_ALL @"com.querika.tinybunnyjump.fourhundredall"
 
 @interface QQInAppPurchaseStore () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 @end
@@ -89,6 +94,10 @@
                                   PRODUCT_EIGHTY_SUPERJUMPS,
                                   PRODUCT_HUNDREDSEVENTY_SUPERJUMPS,
                                   PRODUCT_FOURHUNDRED_SUPERJUMPS,
+                                  PRODUCT_THIRTY_ALL,
+                                  PRODUCT_EIGHTY_ALL,
+                                  PRODUCT_HUNDREDSEVENTY_ALL,
+                                  PRODUCT_FOURHUNDRED_ALL,
                                   nil];
     
     for(NSString *productIdentifier in _arrayOfProductIdentifiers) {
@@ -128,6 +137,10 @@
                                   PRODUCT_EIGHTY_SUPERJUMPS,
                                   PRODUCT_HUNDREDSEVENTY_SUPERJUMPS,
                                   PRODUCT_FOURHUNDRED_SUPERJUMPS,
+                                  PRODUCT_THIRTY_ALL,
+                                  PRODUCT_EIGHTY_ALL,
+                                  PRODUCT_HUNDREDSEVENTY_ALL,
+                                  PRODUCT_FOURHUNDRED_ALL,
                                   nil]];
     
     request.delegate = self;
@@ -186,6 +199,7 @@
 }
 
 -(void)makePayment:(NSString*)productIdentifier {
+    NSLog(@"... makePayment");
     for(SKProduct *myProduct in _myProducts) {
         if([productIdentifier isEqualToString:[myProduct productIdentifier]]) {
             SKPayment *payment = [SKPayment paymentWithProduct:myProduct];
@@ -227,6 +241,7 @@
     // Remove the transaction from the payment queue.
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     _purchaseInProgress = NO;
+    [self.delegate removePleaseWait];
     [self.delegate showConfirmAlert:@"Success" withMessage:@"Payment finished!\nThank You!"];
 }
 
@@ -236,6 +251,7 @@
     [self provideContent: transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     _purchaseInProgress = NO;
+    [self.delegate removePleaseWait];
 }
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
@@ -245,6 +261,7 @@
     }   
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     _purchaseInProgress = NO;
+    [self.delegate removePleaseWait];
     [self.delegate showConfirmAlert:@"Error" withMessage:@"Payment cancled!"];
 }
 
@@ -254,10 +271,12 @@
 
 -(void)provideContent:(NSString*)productIdentifier {
     NSLog(@"... provideContent");
+    [[GameState sharedInstance] setPayingUser:YES];
+    
     if([PRODUCT_THIRTY_TRAMPOLINES isEqualToString:productIdentifier]) {
-        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 3];   //TODO change to 30
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 30];
     } else if([PRODUCT_EIGHTY_TRAMPOLINES isEqualToString:productIdentifier]) {
-        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 8];   //TODO change to 80
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 80];
     } else if([PRODUCT_HUNDREDSEVENTY_TRAMPOLINES isEqualToString:productIdentifier]) {
         [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 170];
     } else if([PRODUCT_FOURHUNDRED_TRAMPOLINES isEqualToString:productIdentifier]) {
@@ -284,6 +303,26 @@
         [[GameState sharedInstance] setJumpButtonsLeft:[[GameState sharedInstance] jumpButtonsLeft] + 400];
     }
     
+    else if([PRODUCT_THIRTY_ALL isEqualToString:productIdentifier]) {
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 30];
+        [[GameState sharedInstance] setLifesLeft:[[GameState sharedInstance] lifesLeft] + 30];
+        [[GameState sharedInstance] setJumpButtonsLeft:[[GameState sharedInstance] jumpButtonsLeft] + 30];
+    } else if([PRODUCT_EIGHTY_ALL isEqualToString:productIdentifier]) {
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 80];
+        [[GameState sharedInstance] setLifesLeft:[[GameState sharedInstance] lifesLeft] + 80];
+        [[GameState sharedInstance] setJumpButtonsLeft:[[GameState sharedInstance] jumpButtonsLeft] + 80];
+    } else if([PRODUCT_HUNDREDSEVENTY_ALL isEqualToString:productIdentifier]) {
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 170];
+        [[GameState sharedInstance] setLifesLeft:[[GameState sharedInstance] lifesLeft] + 170];
+        [[GameState sharedInstance] setJumpButtonsLeft:[[GameState sharedInstance] jumpButtonsLeft] + 170];
+    } else if([PRODUCT_FOURHUNDRED_ALL isEqualToString:productIdentifier]) {
+        [[GameState sharedInstance] setRedTrampolinesLeft:[[GameState sharedInstance] redTrampolinesLeft] + 400];
+        [[GameState sharedInstance] setLifesLeft:[[GameState sharedInstance] lifesLeft] + 400];
+        [[GameState sharedInstance] setJumpButtonsLeft:[[GameState sharedInstance] jumpButtonsLeft] + 400];
+    }
+    
+    NSLog(@"[[GameState sharedInstance] save];");
+    [[GameState sharedInstance] save];
 }
 
 

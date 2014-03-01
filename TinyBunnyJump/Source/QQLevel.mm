@@ -498,11 +498,17 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     _spritePauseButton = [loaderJoystick spriteWithUniqueName:@"buttonPause"];
     [_spritePauseButton registerTouchBeganObserver:self selector:@selector(touchBeganPauseButton:)];
     [_spritePauseButton registerTouchEndedObserver:self selector:@selector(touchEndedPauseButton:)];
+    _originalPositionPauseButton = CGPointMake([_spritePauseButton position].x, [_spritePauseButton position].y);
     
     _tapScreenButton = [loaderJoystick spriteWithUniqueName:@"tapScreenButton"];
     _tapScreenButtonInitialPosition = [_tapScreenButton position];
     [_tapScreenButton registerTouchBeganObserver:self selector:@selector(touchBeganTapScreenButton:)];
     [_tapScreenButton registerTouchEndedObserver:self selector:@selector(touchEndedTapScreenButton:)];
+    
+    _spritebuyLifeButton = [loaderJoystick spriteWithUniqueName:@"buyLifeButton"];
+    _originalPositionBuyLifeButton = CGPointMake([_spritebuyLifeButton position].x, [_spritebuyLifeButton position].y);
+    _buyLife = [loaderJoystick spriteWithUniqueName:@"buyLife"];
+    _originalPositionBuyLife = CGPointMake([_buyLife position].x, [_buyLife position].y);
 }
 
 
@@ -1322,8 +1328,17 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [[SimpleAudioEngine sharedEngine] playEffect:@"balloon.wav"];
         
         [self changeLevelStatus:bunnyJump withActionRequired:YES];
+        //[self scheduleOnce:@selector(spritePauseButtonToHome) delay:0.3];
     }
 }
+
+//-(void)spritePauseButtonToHome {
+//    NSLog(@"--- xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+//    [_spritePauseButton stopAllActions];
+//    _moveActionPauseButton = [CCMoveTo actionWithDuration:0.3
+//                                                   position:_originalPositionPauseButton];
+//    [_spritePauseButton runAction:[CCSequence actions:_moveActionPauseButton,nil]];
+//}
 
 -(void)touchBeganPauseButton:(LHTouchInfo*)info{
     if(info.sprite) {
@@ -1333,6 +1348,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 -(void)touchEndedPauseButton:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"xxxxxxxxxxxxxxxxxxxxxxxx");
+        _myPreviousLevelState=_myLevelState;
         [self changeLevelStatus:paused withActionRequired:YES];
     }
 }
@@ -1418,7 +1434,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 # pragma mark cleanup
 -(void)saveGameState {
-
+    #ifndef ANDROID
     
     //NSLog(@"--- saveGameState");
     //save gameCenter
@@ -1467,9 +1483,13 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[GameState sharedInstance] save];
     
     [self saveLeaderboard];
+    
+    #endif
 }
 
 -(void)saveLeaderboard {
+    #ifndef ANDROID
+    
     //report Leaderboard to iTunes Connect
     //int sumHighscoreAllLevels = 0;
     int sumHighscoreSpring2012 = 0;
@@ -1505,33 +1525,89 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[GCHelper sharedInstance] reportScore:kLeaderBoardSummer2012 score:(int)sumHighscoreSummer2012];
     [[GCHelper sharedInstance] reportScore:kLeaderBoardFall2012 score:(int)sumHighscoreFall2012];
     [[GCHelper sharedInstance] reportScore:kLeaderBoardWinter2012 score:(int)sumHighscoreWinter2012];
+    
+    #endif
 }
 
 #pragma mark AdMob
 //in case of an AbMob AdBanner is shown, the pauseButton is moved down
 -(void)admobAdReceived:(QQAdmob *)sender {
+#ifndef ANDROID
     NSLog(@"XXXXX admobAdReceived");
     NSLog(@"XXXXX 2.) height: %f", [_myAdmob bannerHeight]);
-    [_spritePauseButton setPosition:
-     CGPointMake([_spritePauseButton position].x, [_spritePauseButton position].y - [_myAdmob bannerHeight])];
+    
+    _adActive = YES;
+    
+    //#################################################################
+    
+//    if(_myLevelState != running &&
+//       [_spritePauseButton position].y == _originalPositionPauseButton.y) {
+//        float duration = 0.3;
+//
+//        _moveActionPauseButton = [CCMoveTo actionWithDuration:duration
+//                                            position:CGPointMake([_spritePauseButton position].x,
+//                                                         [_spritePauseButton position].y - [_myAdmob bannerHeight])];
+//        [_spritePauseButton runAction:[CCSequence actions:_moveActionPauseButton,nil]];
+//        
+//        id moveActionbuyLifeButton = [CCMoveTo actionWithDuration:duration
+//                                            position:CGPointMake([_spritebuyLifeButton position].x,
+//                                                                 [_spritebuyLifeButton position].y - [_myAdmob bannerHeight])];
+//        [_spritebuyLifeButton runAction:[CCSequence actions:moveActionbuyLifeButton,nil]];
+//        
+//        id moveActionBuyLifeButton = [CCMoveTo actionWithDuration:duration
+//                                            position:CGPointMake([_labelBuyLifeButton position].x,
+//                                                                 [_labelBuyLifeButton position].y - [_myAdmob bannerHeight])];
+//        [_labelBuyLifeButton runAction:[CCSequence actions:moveActionBuyLifeButton,nil]];
+//    }
+    
+    //#################################################################
+#endif
 }
 
 -(void)requestAd {
-    if(![[GameState sharedInstance] isPayingUser]) {
+#ifndef ANDROID
+    if(![[GameState sharedInstance] isPayingUser]
+       && _adActive == NO) {
         _myAdmob = [QQAdmob node];
         [self addChild:_myAdmob];
         [_myAdmob setDelegate:self];
-        NSLog(@"XXXXX 1.) height: %f", [_myAdmob bannerHeight]);
+        [_myAdmob setTouchEnabled:YES];
+        //NSLog(@"XXXXX 1.) height: %f", [_myAdmob bannerHeight]);
     }
+#endif
 }
 
 -(void)removeAd {
+#ifndef ANDROID
+    //if(![[GameState sharedInstance] isPayingUser] && _adActive == YES) {
     if(![[GameState sharedInstance] isPayingUser]) {
-        [_spritePauseButton setPosition:
-         CGPointMake([_spritePauseButton position].x, [_spritePauseButton position].y + [_myAdmob bannerHeight])];
+        NSLog(@"################################# removead");
+        NSLog(@"x: %f, y: %f", _originalPositionPauseButton.x, _originalPositionPauseButton.y);
+        
+        _adActive = NO;
+
+        //#################################################################
+        
+//        float duration = 0.3;
+//        [_spritePauseButton stopAllActions];
+//        _moveActionPauseButton = [CCMoveTo actionWithDuration:duration
+//                                            position:_originalPositionPauseButton];
+//        [_spritePauseButton runAction:[CCSequence actions:_moveActionPauseButton,nil]];
+//        id moveActionbuyLifeButton = [CCMoveTo actionWithDuration:duration
+//                                            position:_originalPositionBuyLifeButton];
+//        [_spritebuyLifeButton runAction:[CCSequence actions:moveActionbuyLifeButton,nil]];
+//        
+//        id moveActionBuyLifeButton = [CCMoveTo actionWithDuration:duration
+//                                            position:_originalPositionBuyLife];
+//        [_labelBuyLifeButton runAction:[CCSequence actions:moveActionBuyLifeButton,nil]];
+        
+        //#################################################################
+        
         [_myAdmob dismissAdView];
     }
+#endif
 }
+
 
 #pragma mark cleanup
 -(void)myCleanup {
@@ -1735,9 +1811,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
                 
             case paused: {
                 NSLog(@"********** levelStatus::paused - %d", _bled++);
-                
-                
-                [[QQPauseLayer sharedInstance] pauseLevel:self];
+
+                [[QQPauseLayer sharedInstance] pauseLevel:self withLevelState:_myPreviousLevelState];
                 [self disableTouches];
                 break;
             }

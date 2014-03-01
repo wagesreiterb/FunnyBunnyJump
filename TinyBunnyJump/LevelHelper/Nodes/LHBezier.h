@@ -59,15 +59,15 @@
 #endif
 {
     int             line_pointCount;
-    CGPoint*        line_points;
+    ccVertex2F*     line_points;
     ccColor4F*      line_colors;
 #if COCOS2D_VERSION >= 0x00020000
     CCGLProgram*    lineShaderProgram;
 #endif
     
     int             tile_pointCount;
-    CGPoint*        tile_points;
-	CGPoint*        tile_texCoords;
+    ccVertex2F*     tile_points;
+	ccVertex2F*     tile_texCoords;
     ccColor4F*      tile_colors;
     
     __strong CCTexture2D*    tile_texture;

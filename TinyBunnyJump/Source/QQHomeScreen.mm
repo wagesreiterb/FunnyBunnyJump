@@ -58,7 +58,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         [self setupWorld];
         [self setupLevelHelper];
         [self setupDebugDraw];
-        self.isTouchEnabled = YES;  // Add at bottom of init
+        //self.isTouchEnabled = YES;  // Add at bottom of init
+        [self setTouchEnabled:YES];
         _repeat = 10;
         _scaleFactor = 90;
         _balloonMusicButtonCompletelyInflated = YES;
@@ -78,7 +79,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [LevelHelperLoader dontStretchArt];
     
     //[LevelHelperLoader useHDonIpad:YES];
-    self.isTouchEnabled = YES;
+    [self setTouchEnabled:YES];
     //self.isAccelerometerEnabled = YES;
     //[[[CCDirector sharedDirector] openGLView] setMultipleTouchEnabled:YES];
     [self schedule: @selector(tick:) interval:1.0f/70.0f];
@@ -374,6 +375,7 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
 
 -(void)touchBeganShowLeaderBoardButton:(LHTouchInfo*)info {
     // Leaderboard Menu Item using blocks
+    #ifndef ANDROID
 
         GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
         leaderboardViewController.leaderboardDelegate = self;
@@ -382,11 +384,12 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             
         [[app navController] presentModalViewController:leaderboardViewController animated:YES];
 
-
+    #endif
 }
 
 -(void)touchBeganShowAchievementsButton:(LHTouchInfo*)info {
 	// Achievement Menu Item using blocks
+    #ifndef ANDROID
 
         GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
         achivementViewController.achievementDelegate = self;
@@ -394,7 +397,8 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
         AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 		
         [[app navController] presentModalViewController:achivementViewController animated:YES];
-
+    
+    #endif
 }
 
 -(void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController

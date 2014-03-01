@@ -9,6 +9,8 @@
 #import "GCHelper.h"
 #import "GCDatabase.h"
 
+#ifndef ANDROID
+
 @implementation GCHelper
 
 @synthesize scoresToReport;
@@ -227,3 +229,5 @@ static GCHelper *sharedHelper = nil;
 }
 
 @end
+
+#endif

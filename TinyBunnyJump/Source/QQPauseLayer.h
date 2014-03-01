@@ -9,6 +9,7 @@
 #import "CCLayer.h"
 #import "LevelHelperLoader.h"
 #import "NSNotificationCenter+Utils.h"
+#import "Constants.h"
 
 @class QQLevel;
 
@@ -22,11 +23,12 @@
     NSMutableArray *_arrayLoaders;
     
     BOOL _pauseLayerVisible;
+    stateMachine _levelState;
 }
 
 +(id)sharedInstance;
 
--(void)pauseLevel:(QQLevel*)mainLayer;
+-(void)pauseLevel:(QQLevel*)mainLayer withLevelState:(stateMachine)levelState;
 -(void)disableTouchesWithLoader:(LevelHelperLoader*)loader;
 -(void)disableButtons;
 

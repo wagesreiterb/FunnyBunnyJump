@@ -360,22 +360,27 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
     [[GameManager sharedGameManager] runSceneWithID:kLevel2012001];
 }
 
+-(void)addShade {
+    LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
+                                     fromSheet:@"assets"
+                                        SHFile:@"objects"];
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    [shade setPosition:ccp(size.width/2, size.height/2)];
+    [shade setOpacity:OPACITY_OF_SHADE];
+    [shade setScale:SCALE_OF_SHADE];
+    [self addChild:shade];
+}
+
 -(void)touchBegan:(LHTouchInfo*)info{
     if(info.sprite) {
         NSLog(@"Touch BEGIN on sprite %@", [info.sprite uniqueName]);
-        LHSprite *shade = [LHSprite spriteWithName:@"blackRectangle"    //blende für transitions
-                                         fromSheet:@"assets"
-                                            SHFile:@"objects"];
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        [shade setPosition:ccp(size.width/2, size.height/2)];
-        [shade setOpacity:OPACITY_OF_SHADE];
-        [shade setScale:SCALE_OF_SHADE];
-        [self addChild:shade];
     
         switch ([[info.sprite uniqueName] intValue]) {
             case 1: {
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012001]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012001];
                 }
                 break;
@@ -383,153 +388,167 @@ const int32 MAXIMUM_NUMBER_OF_STEPS = 25;
             case 2:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012002]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012002];
                 }
                 break;
             case 3:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012003]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012003];
                 }
                 break;
             case 4:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012004]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012004];
                 }
                 break;
             case 5:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012005]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012005];
                 }
                 break;
             case 6:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012006]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012006];
                 }
                 break;
             case 7:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012007]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012007];
                 }
                 break;
             case 8:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012008]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012008];
                 }
                 break;
             case 9:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012009]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012009];
                 }
                 break;
             case 10:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012010]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012010];
                 }
                 break;
             case 11:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012011]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012011];
                 }
                 break;
             case 12:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012012]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012012];
                 }
                 break;
             case 13:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012013]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012013];
                 }
                 break;
             case 14:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012014]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012014];
                 }
                 break;
             case 15:
                 if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
                                                                andLevel:2012015]) {
+                    [self addShade];
                     [[GameManager sharedGameManager] runSceneWithID:kLevel2012015];
                 }
                 break;
-            case 16:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012016]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012016];
-                }
-                break;
-            case 17:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012017]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012017];
-                }
-                break;
-            case 18:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012018]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012018];
-                }
-                break;
-            case 19:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012019]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012019];
-                }
-                break;
-            case 20:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012020]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012020];
-                }
-                break;
-            case 21:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012021]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012021];
-                }
-                break;
-            case 22:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012022]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012022];
-                }
-                break;
-            case 23:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012023]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012023];
-                }
-                break;
-            case 24:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012024]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012024];
-                }
-                break;
-            case 25:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012025]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012025];
-                }
-                break;
-            case 26:
-                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
-                                                               andLevel:2012026]) {
-                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012026];
-                }
-                break;
+//            case 16:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012016]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012016];
+//                }
+//                break;
+//            case 17:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012017]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012017];
+//                }
+//                break;
+//            case 18:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012018]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012018];
+//                }
+//                break;
+//            case 19:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012019]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012019];
+//                }
+//                break;
+//            case 20:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012020]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012020];
+//                }
+//                break;
+//            case 21:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012021]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012021];
+//                }
+//                break;
+//            case 22:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012022]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012022];
+//                }
+//                break;
+//            case 23:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012023]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012023];
+//                }
+//                break;
+//            case 24:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012024]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012024];
+//                }
+//                break;
+//            case 25:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012025]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012025];
+//                }
+//                break;
+//            case 26:
+//                if(![[GameState sharedInstance] isLevelLockedWithSeason:[[GameManager sharedGameManager] seasonName]
+//                                                               andLevel:2012026]) {
+//                    [[GameManager sharedGameManager] runSceneWithID:kLevel2012026];
+//                }
+//                break;
 
             case 1001:
                 //BackButton

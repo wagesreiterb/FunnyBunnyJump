@@ -40,7 +40,10 @@
 -(void)openSiteWithLinkType:(LinkTypes)linkTypeToOpen;
 -(void)playOrNotMusic;
 -(void)playOrNotSound;
+-(void)stopMusic;
+-(void)startMusic;
 -(void)toggleMusic;
 -(void)toggleSound;
+-(void)gameManagerProvideContent;
 
 @end

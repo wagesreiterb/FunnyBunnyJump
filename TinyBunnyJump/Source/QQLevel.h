@@ -69,16 +69,16 @@
         levelPausedLifeLost,
         levelGameOver};
     
-    enum stateMachine {
-        init,
-        helpLabels,
-        tapScreen,
-        bunnyJump,
-        running,
-        paused,
-        liveLost,
-        gameOver
-    };
+//    enum stateMachine {
+//        init,
+//        helpLabels,
+//        tapScreen,
+//        bunnyJump,
+//        running,
+//        paused,
+//        liveLost,
+//        gameOver
+//    };
     
     //enum levelStates _levelState;
     BOOL _gameOverLevelPassed;
@@ -143,6 +143,8 @@
     LHSprite *_spritePlayButton;
     LHSprite *_spriteBackButton;
     LHSprite *_spriteReloadButton;
+    LHSprite *_spritebuyLifeButton;
+    LHSprite *_buyLife;
 
     BOOL alreadyFired;
     BOOL alreadyFiredBallon;
@@ -155,6 +157,8 @@
     BOOL _levelPaused;
     
     QQAdmob *_myAdmob;
+    BOOL _adActive;
+    
     BOOL redTrampolineActive;
     
     BOOL _cleanupRequired;
@@ -165,10 +169,16 @@
     //BOOL _myCleanUp;
     int _bled;
     BOOL _joystickUpActive;
+    
+    CGPoint _originalPositionPauseButton;
+    CGPoint _originalPositionBuyLifeButton;
+    CGPoint _originalPositionBuyLife;
+    id _moveActionPauseButton;
 }
 
 @property enum levelStates levelState;
 @property enum stateMachine myLevelState;
+@property enum stateMachine myPreviousLevelState;
 @property BOOL backLevel;
 @property BOOL reloadLevel;
 @property BOOL myCleanUp;
@@ -183,6 +193,7 @@
 -(void)changeLevelStatus:(stateMachine)levelStatus_ withActionRequired:(BOOL)actionRequired;
 -(void)makePlayerDynamic;
 -(stateMachine)getLevelState;
+-(void)spritePauseButtonToHome;
 
 
 //+(id)scene:(NSString*)level;
